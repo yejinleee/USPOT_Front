@@ -56,6 +56,10 @@ const config: webpack.Configuration = {
         test: /\.css?$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.scss$/,
+        loaders: [require.resolve('style-loader'), require.resolve('css-loader'), require.resolve('sass-loader')],
+      },
     ],
   },
   plugins: [
