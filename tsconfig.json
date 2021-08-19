@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true, // import * as React from 'react'; -> import React from 'react';로 할 수 있음
+    "sourceMap": true, //에러 났을때 에러 위치 찾아가기 편해서
+    "lib": ["ES2020", "DOM"], //프론트 개발할때 켜두기
+    "jsx": "react", //jsx를 react에서 사용함
+    "module": "esnext", //최신 모듈 사용
+    "moduleResolution": "Node", //import export도 node가 해석할 수 있게 함
+    "target": "es5", //es2020으로 작성을 해도 es5로 번역함
+    "strict": true, //타입 체크를 엄격하게 진행
+    "resolveJsonModule": true, //import json파일 하는 것을 허락함
+    "baseUrl": ".",
+    "paths": {
+      "@hooks/*": ["hooks/*"],
+      "@components/*": ["components/*"],
+      "@layouts/*": ["layouts/*"],
+      "@pages/*": ["pages/*"],
+      "@utils/*": ["utils/*"],
+      "@typings/*": ["typings/*"]
+    } //import할때 편하게 import할 수 있음
+  }
+} //여기까지가 기본 설정 항상 해두기
