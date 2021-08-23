@@ -10,6 +10,7 @@
     "strict": true, //타입 체크를 엄격하게 진행
     "resolveJsonModule": true, //import json파일 하는 것을 허락함
     "baseUrl": ".",
+    "noImplicitAny": true,
     "paths": {
       "@hooks/*": ["hooks/*"],
       "@components/*": ["components/*"],

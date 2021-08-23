@@ -78,14 +78,14 @@ const config: webpack.Configuration = {
   },
   devServer: {
     historyApiFallback: true, // react router
-    port: 3090,
+    port: 8080,
     publicPath: '/dist/',
-    proxy: {
-      '/api/': {
-        target: 'http://localhost:3095',
-        changeOrigin: true,
-      },
-    },
+    // proxy: {
+    //   '/api/': {
+    //     target: 'http://localhost:3095',
+    //     changeOrigin: true,
+    //   },
+    // },
   },
 };
 
