@@ -1,0 +1,26 @@
+.App {
+  display: inline-flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.App input {
+  margin-top: 20px;
+  width: 250px;
+  height: 30px;
+  font-size: 15px;
+  padding-left: 10px;
+}
+
+p {
+  font-size: 15px;
+  line-height: 100%;
+}
+
+.container {
+  margin-top: 10px;
+  width: 250px;
+  height: 150px;
+  overflow: scroll;
+  padding-left: 10px;
+}

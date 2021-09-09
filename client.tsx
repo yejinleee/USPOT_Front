@@ -1,13 +1,6 @@
+import Routes from '@components/Routers/Router';
+import HomePage from '@pages/Home/Mainhome';
 import React from 'react';
-import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
-import KakaoMap from '@pages/Map/KaKaomap';
-import HomePage from '@layouts/App';
-
-render(
-  <BrowserRouter>
-    <HomePage />
-  </BrowserRouter>,
-  document.querySelector('#app'),
-);
+ReactDOM.render(<Routes />, document.querySelector('#root'));

@@ -42,7 +42,7 @@ export default function Map() {
     const position = new kakao.maps.LatLng(37.54699, 127.09598);
 
     // 커스텀 오버레이를 생성합니다
-    const customOverlay = new kakao.maps.CustomOverlay({
+    var customOverlay = new kakao.maps.CustomOverlay({
       map: map,
       position: position,
       content: content,
