@@ -3,8 +3,7 @@ import './Toggle.css';
 
 const Toggle =() => {
 
-    // 커..밋..????
-    // djdjdjj ?
+    // 으악
     const gyeongi = ['가평', '광명', '연천']
     const gangwon = ['강릉', '춘천', '정선']
     const seoul = ['홍대', '성수', '종로']
