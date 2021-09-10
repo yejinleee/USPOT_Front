@@ -4,6 +4,12 @@
     vertical-align: middle;
     /*display: inline;*/
 }
+label {
+    vertical-align: middle;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
 .gyeongi{
     cursor:pointer;
     display:block;
@@ -76,24 +82,25 @@
 .map{
     /*position: absolute;*/
     position: -webkit-sticky;
-    position: sticky;
+    position: fixed;
     float:right;
-    width:35%;
-    height: 50%;
-    top: 13%;
-    left:100px;
+    width:30%;
+    /*height: 50%;*/
+    top: 15%;
+    /*left:100px;*/
+    right:10%;
 }
 
 .pin{
     position: sticky;
     width: 3%;
-    top: 53%;
-    left: 80%;
+    /*top: 53%;*/
+    /*left: 80%;*/
 }
 /*.map:hover ~ .district_toggle #수원{*/
 /*    background: aqua;*/
 /*    }*/
 
-#수원:hover .district{
+#가평:hover #가평{
     background: aqua;
 }
