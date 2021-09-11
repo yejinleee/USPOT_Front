@@ -1,9 +1,13 @@
-import React, {useRef, useState} from "react";
-import styled from "styled-components";
+import React, {FC, memo, useMemo, useState} from 'react';
+// import styled from "styled-components";
 import './Slide.css';
-import {scryRenderedComponentsWithType} from "react-dom/test-utils";
+// import {scryRenderedComponentsWithType} from "react-dom/test-utils";
 
-const Slide =()=>{
+interface Props {
+  city : string;
+}
+
+const Slide : FC<Props> = ({children, city }) => {
 
   const pic1 = "https://user-images.githubusercontent.com/81412212/132859482-98355de1-63a3-41ea-b7f6-f8ce34f758f0.jpg"
   const pic2 = "https://user-images.githubusercontent.com/81412212/132859641-e6650092-45a9-4b17-b2ad-6fe8ef06a161.png"
@@ -21,7 +25,8 @@ const Slide =()=>{
   return (
 
     <>
-      <div>2페이지 : {btn_pic}번그림 관광명소 TOP 5</div>
+      <h2 className={city}>{city} 추천장소 TOP 5 </h2>
+      {/*<div>2페이지 : {btn_pic}번그림 관광명소 TOP 5</div>*/}
       <div className="carousel">
         <div className="carousel_card">
           {/*<div className="top5_carousel_container" style={ top5slide()}>*/}

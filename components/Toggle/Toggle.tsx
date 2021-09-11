@@ -1,4 +1,5 @@
-import React, {memo, useMemo,useState} from 'react';
+import React, {FC,memo, useCallback, useMemo, useState} from 'react';
+
 import './Toggle.css';
 
 const gyeongi = ['가평', '광명', '연천','남양주','파주','동두천','하남','양평','고양','평택','수원','안양','오산','의정부']
@@ -12,10 +13,13 @@ const gyeongnam = ['함안','창원','밀양','진주','하동','김해','사천
 const gyeonbuk = ['영덕','구미','예천','경주','경산','청도','남원','양산','봉화','영천','상주','군위','영주','포항','의성','문경','칠곡','영월','안동']
 const seoul = ['홍대', '성수', '종로']
 // !! 광역시 아직 안함, 서울 제외해야함
-// 커어밋
 
+// interface Props {
+//     city : string;
+// }
 
-const Toggle =() => {
+// const Toggle : FC<Props> = ({ city }) => {
+const Toggle =() =>{
 
     const [seoultoggle, setSeoultoggle] = useState(false);
     const [gyeongitoggle, setGyeongitoggle] = useState(false);
@@ -23,7 +27,8 @@ const Toggle =() => {
     const [pin_top,setPin_top] = useState('\'3%\'');
     const [pin_left,setPin_left] = useState('\'88%\'')
 
-    // const [selectedcity, setSelectedcity] = useState("");
+    const [selectedcity, setSelectedcity] = useState("");
+    // city = selectedcity;
 
     const pin = "./images/pin.png"
     const [map,setMap] = useState("https://user-images.githubusercontent.com/63544044/132854633-87a1c788-d972-4375-96bb-eacc081ec93b.png");
@@ -40,6 +45,12 @@ const Toggle =() => {
     const gyeongi_list = gyeongi.map((v) => (<div id={v} key={v} onMouseOver={() => gyeongiMouseover(v)}>{v}</div>));
     const gangwon_list = gangwon.map((v) => (<div id={v} key={v}>{v}<br/></div>));
 
+    // const onClickSeoul = useCallback( () => {
+    //     setSeoultoggle(!seoultoggle); 이게 작동안함 ㅠㅠㅠㅠㅠㅠㅠ왜왜왜???
+    //     console.log(seoultoggle);
+    //     {!seoultoggle && setMap('https://user-images.githubusercontent.com/63544044/132631037-6b6a923a-1b62-4e5e-927a-f957fb568f54.png')}
+    // },[]);
+
     return (
       <>
           <img src={map} className="map" alt="map"/>
@@ -47,10 +58,10 @@ const Toggle =() => {
           {/*!! 왜변수로 안들어가나요 style={top:'15%'} 이렇게 왜 안되유 ㅠㅠㅠ*/}
 
           <div className="district_toggle">
-              <label className="district" onClick={() => {
-                  setSeoultoggle(!seoultoggle);
-                  // setSelectedcity("seoul");
-                  {!seoultoggle && setMap('https://user-images.githubusercontent.com/63544044/132631037-6b6a923a-1b62-4e5e-927a-f957fb568f54.png')};
+              <label className="district" onClick={() =>{
+                  setSeoultoggle(!seoultoggle)
+                  setSelectedcity("seoul")
+                  {!seoultoggle && setMap('https://user-images.githubusercontent.com/63544044/132631037-6b6a923a-1b62-4e5e-927a-f957fb568f54.png')}
               }}>서울</label>
               <div>{seoultoggle && seoul_list}</div>
               <label className="district" onClick={() => {
@@ -58,7 +69,6 @@ const Toggle =() => {
                   {!gyeongitoggle && setMap('https://user-images.githubusercontent.com/63544044/132631033-9d4b6c68-a18f-48f5-a7a9-f2da3468a899.png')};
               }}>경기도</label>
               <div>{gyeongitoggle && gyeongi_list}</div>
-
 
               <label className="district" onClick={() => {
                   setGangwontoggle(!gangwontoggle)
