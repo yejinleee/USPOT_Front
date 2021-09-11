@@ -21,6 +21,7 @@ const seoul = ['홍대', '성수', '종로']
 // const Toggle : FC<Props> = ({ city }) => {
 const Toggle =() =>{
 
+
     const [seoultoggle, setSeoultoggle] = useState(false);
     const [gyeongitoggle, setGyeongitoggle] = useState(false);
     const [gangwontoggle, setGangwontoggle] = useState(false);
