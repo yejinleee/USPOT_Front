@@ -6,9 +6,9 @@ import Second from '@components/Secondpage/Second';
 
 const HomePage = () => (
   <Layouts>
-    <Container />
+    {/*<Container />*/}
     <Toggle />
-    <Second />
+    {/*<Second />*/}
   </Layouts>
 );
 

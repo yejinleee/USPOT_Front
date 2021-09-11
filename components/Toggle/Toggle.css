@@ -84,9 +84,9 @@ label {
     position: -webkit-sticky;
     position: fixed;
     float:right;
-    width:30%;
+    width:25%;
     /*height: 50%;*/
-    top: 15%;
+    top: 13%;
     /*left:100px;*/
     right:10%;
 }

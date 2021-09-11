@@ -67,13 +67,13 @@ const Toggle =() =>{
               <div>{seoultoggle && seoul_list}</div>
               <label className="district" onClick={() => {
                   setGyeongitoggle(!gyeongitoggle);
-                  {!gyeongitoggle && setMap('https://user-images.githubusercontent.com/63544044/132631033-9d4b6c68-a18f-48f5-a7a9-f2da3468a899.png')};
+                  {!gyeongitoggle && setMap('https://user-images.githubusercontent.com/63544044/132631033-9d4b6c68-a18f-48f5-a7a9-f2da3468a899.png')}
               }}>경기도</label>
               <div>{gyeongitoggle && gyeongi_list}</div>
 
               <label className="district" onClick={() => {
                   setGangwontoggle(!gangwontoggle)
-                  setMap('https://user-images.githubusercontent.com/63544044/132631035-ac204099-5480-4818-8afd-8163a4e6a55a.png');
+                  {!gangwontoggle && setMap('https://user-images.githubusercontent.com/63544044/132631035-ac204099-5480-4818-8afd-8163a4e6a55a.png')}
               }}>강원도</label>
               <div>{gangwontoggle && gangwon_list}</div>
 
