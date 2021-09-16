@@ -78,7 +78,7 @@ const config: webpack.Configuration = {
   },
   devServer: {
     historyApiFallback: true, // react router
-    port: 8080,
+    port: 8090,
     publicPath: '/dist/',
     // proxy: {
     //   '/api/': {
