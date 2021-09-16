@@ -1,4 +1,5 @@
 import React, {FC,memo, useCallback, useMemo, useState} from 'react';
+import axios from 'axios';
 
 import './Toggle.css';
 import Child from '@components/Category/child';
@@ -21,7 +22,7 @@ const seoul = ['홍대', '성수', '종로']
 // }
 
 // const Toggle : FC<Props> = ({ city }) => {
-    
+
 const Toggle =() =>{
 
     const [cate,setCate]=useState("안");
@@ -56,6 +57,16 @@ const Toggle =() =>{
     //     console.log(seoultoggle);
     //     {!seoultoggle && setMap('https://user-images.githubusercontent.com/63544044/132631037-6b6a923a-1b62-4e5e-927a-f957fb568f54.png')}
     // },[]);
+
+    const [cities,setCities] = useState([]);
+
+    async function getapi(){
+        const {
+            data:{cities}
+        } = await axios.get('http://localhost:8080/api/province/findprovince');
+        setCities(cities);
+    }
+    console.log(cities);
 
     return (
         <>
