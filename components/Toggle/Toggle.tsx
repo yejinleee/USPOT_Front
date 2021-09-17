@@ -7,132 +7,228 @@ import Category from '@components/Category/category';
 import Province from '@components/Category/Province';
 import { type } from 'os';
 import Citylist from '@components/Category/citylist';
+import Getapi from '@components/Category/Getapi';
 
-const Toggle = () => {
-  const [cate, setCate] = useState('안');
+const Toggle =() => {
 
-  const [seoultoggle, setSeoultoggle] = useState(false);
+  const [cate, setCate] = useState("안");
+
   const [gyeongitoggle, setGyeongitoggle] = useState(false);
   const [gangwontoggle, setGangwontoggle] = useState(false);
+  const [chungnamtoggle, setChungnamtoggle] = useState(false);
+  const [chungbuktoggle, setChungbuktoggle] = useState(false);
+  const [jeonnamtoggle, setJeonnamtoggle] = useState(false);
+  const [jeonbuktoggle, setJeonbuktoggle] = useState(false);
+  const [gyeongnamtoggle, setGyeonnamtoggle] = useState(false);
+  const [gyeongbuktoggle, setGyeonbuktoggle] = useState(false);
+  const [incheontoggle, setIncheontoggle] = useState(false);
+  const [daejeontoggle, setDaejeontoggle] = useState(false);
+  const [daegutoggle, setDaegutoggle] = useState(false);
+  const [busantoggle, setBusantoggle] = useState(false);
+  const [ulsantoggle, setUlsantoggle] = useState(false);
+  const [gwangjutoggle, setGwangjutoggle] = useState(false);
+  const [sejongtoggle, setSejongtoggle] = useState(false);
 
-  const [selectedcity, setSelectedcity] = useState(''); //선택된도시 props로 넘겨주려고
+  const [selectedcity, setSelectedcity] = useState(""); //선택된도시 props로 넘겨주려고
 
-  const pin = './images/pin.png';
-  const [map, setMap] = useState(
-    'https://user-images.githubusercontent.com/63544044/132854633-87a1c788-d972-4375-96bb-eacc081ec93b.png',
-  );
+  const [map, setMap] = useState("https://user-images.githubusercontent.com/63544044/132854633-87a1c788-d972-4375-96bb-eacc081ec93b.png");
 
-  // const gyeongi_list = gyeongi.map((v) => (<div id={v} key={v}>{v}</div>));
-
-  const [province, setProvince] = useState([] as any);
-  const [provincelink, setProvincelink] = useState([] as any);
-  const [gyeongi, setGyeongi] = useState([] as any);
-  const [gangwon, setGangwon] = useState([] as any);
-  const [chungnam, setChungnam] = useState([] as any);
-  const [chungbuk, setcCungbuk] = useState([] as any);
-  const [gyeongnam, setGyeongnam] = useState([] as any);
-  const [gyeonbuk, setGyeonbuk] = useState([] as any);
-  const [jeonbuk, setJeonbuk] = useState([] as any);
-  const [jeonnam, setJeonnam] = useState([] as any);
-  const [incheon, setIncheon] = useState([] as any);
-  const [daejeon, setDajeon] = useState([] as any);
-  const [gwangju, setGwangju] = useState([] as any);
-  const [daegu, setDaegu] = useState([] as any);
-  const [ulsan, setUlsan] = useState([] as any);
-  const [busan, setBusan] = useState([] as any);
-  const [sejong, setSejong] = useState([] as any);
-
-  const [gyeongilink, setGyeongilink] = useState([] as any);
-  const [gangwonlink, setGangwonlink] = useState([] as any);
-  const [chungnamlink, setChungnamlink] = useState([] as any);
-  const [chungbuklink, setcCungbuklink] = useState([] as any);
-  const [gyeongnamlink, setGyeongnamlink] = useState([] as any);
-  const [gyeonbuklink, setGyeonbuklink] = useState([] as any);
-  const [jeonbuklink, setJeonbuklink] = useState([] as any);
-  const [jeonnamlink, setJeonnamlink] = useState([] as any);
-  const [incheonlink, setIncheonlink] = useState([] as any);
-  const [daejeonlink, setDajeonlink] = useState([] as any);
-  const [gwangjulink, setGwangjulink] = useState([] as any);
-  const [daegulink, setDaegulink] = useState([] as any);
-  const [ulsanlink, setUlsanlink] = useState([] as any);
-  const [busanlink, setBusanlink] = useState([] as any);
-  const [sejonglink, setSejonglink] = useState([] as any);
+  const [gyeongi, setGyeongi] = useState({
+    id: '',
+    name: '',
+    link: '',
+  } as any);
+  const [gangwon, setGangwon] = useState({
+    id: '',
+    name: '',
+    link: '',
+  } as any);
+  const [chungnam, setChungnam] = useState({
+    id: '',
+    name: '',
+    link: '',
+  } as any);
+  const [chungbuk, setcCungbuk] = useState({
+    id: '',
+    name: '',
+    link: '',
+  } as any);
+  const [gyeongnam, setGyeongnam] = useState({
+    id: '',
+    name: '',
+    link: '',
+  } as any);
+  const [gyeongbuk, setGyeongbuk] = useState({
+    id: '',
+    name: '',
+    link: '',
+  } as any);
+  const [jeonbuk, setJeonbuk] = useState({
+    id: '',
+    name: '',
+    link: '',
+  } as any);
+  const [jeonnam, setJeonnam] = useState({
+    id: '',
+    name: '',
+    link: '',
+  } as any);
+  const [incheon, setIncheon] = useState({
+    id: '',
+    name: '',
+    link: '',
+  } as any);
+  const [daejeon, setDajeon] = useState({
+    id: '',
+    name: '',
+    link: '',
+  } as any);
+  const [gwangju, setGwangju] = useState({
+    id: '',
+    name: '',
+    link: '',
+  } as any);
+  const [daegu, setDaegu] = useState({
+    id: '',
+    name: '',
+    link: '',
+  } as any);
+  const [ulsan, setUlsan] = useState({
+    id: '',
+    name: '',
+    link: '',
+  } as any);
+  const [busan, setBusan] = useState({
+    id: '',
+    name: '',
+    link: '',
+  } as any);
+  const [sejong, setSejong] = useState({
+    id: '',
+    name: '',
+    link: '',
+  } as any);
 
   useEffect(() => {
     axios.get('api/province/findprovince').then((response) => {
       for (var i = 0; i < response.data.data.length; i++) {
-        setProvince((prev: any) => [...prev, response.data.data[i].name]);
-        setProvincelink((prev: any) => [...prev, response.data.data[i].provinceLink]);
-        for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-          if (i === 0) {
-            setGyeongi((prev: any) => [...prev, response.data.data[i].cityList[j].name]);
-            setGyeongilink((prev: any) => [...prev, response.data.data[i].cityList[j].cityLink]);
-          } else if (i === 1) {
-            setGangwon((prev: any) => [...prev, response.data.data[i].cityList[j].name]);
-            setGangwonlink((prev: any) => [...prev, response.data.data[i].cityList[j].cityLink]);
-          } else if (i === 2) {
-            setChungnam((prev: any) => [...prev, response.data.data[i].cityList[j].name]);
-            setChungnamlink((prev: any) => [...prev, response.data.data[i].cityList[j].cityLink]);
-          } else if (i === 3) {
-            setcCungbuk((prev: any) => [...prev, response.data.data[i].cityList[j].name]);
-            setcCungbuklink((prev: any) => [...prev, response.data.data[i].cityList[j].cityLink]);
-          } else if (i === 4) {
-            setJeonnam((prev: any) => [...prev, response.data.data[i].cityList[j].name]);
-            setJeonnamlink((prev: any) => [...prev, response.data.data[i].cityList[j].cityLink]);
-          } else if (i === 5) {
-            setJeonbuk((prev: any) => [...prev, response.data.data[i].cityList[j].name]);
-            setJeonbuklink((prev: any) => [...prev, response.data.data[i].cityList[j].cityLink]);
-          } else if (i === 6) {
-            setGyeongnam((prev: any) => [...prev, response.data.data[i].cityList[j].name]);
-            setGyeongnamlink((prev: any) => [...prev, response.data.data[i].cityList[j].cityLink]);
-          } else if (i === 7) {
-            setGyeonbuk((prev: any) => [...prev, response.data.data[i].cityList[j].name]);
-            setGyeonbuklink((prev: any) => [...prev, response.data.data[i].cityList[j].cityLink]);
-          } else if (i === 8) {
-            setIncheon((prev: any) => [...prev, response.data.data[i].cityList[j].name]);
-            setIncheonlink((prev: any) => [...prev, response.data.data[i].cityList[j].cityLink]);
-          } else if (i === 9) {
-            setDajeon((prev: any) => [...prev, response.data.data[i].cityList[j].name]);
-            setDajeonlink((prev: any) => [...prev, response.data.data[i].cityList[j].cityLink]);
-          } else if (i === 10) {
-            setGwangju((prev: any) => [...prev, response.data.data[i].cityList[j].name]);
-            setGwangjulink((prev: any) => [...prev, response.data.data[i].cityList[j].cityLink]);
-          } else if (i === 11) {
-            setDaegu((prev: any) => [...prev, response.data.data[i].cityList[j].name]);
-            setDaegulink((prev: any) => [...prev, response.data.data[i].cityList[j].cityLink]);
-          } else if (i === 12) {
-            setUlsan((prev: any) => [...prev, response.data.data[i].cityList[j].name]);
-            setUlsanlink((prev: any) => [...prev, response.data.data[i].cityList[j].cityLink]);
-          } else if (i === 13) {
-            setBusan((prev: any) => [...prev, response.data.data[i].cityList[j].name]);
-            setBusanlink((prev: any) => [...prev, response.data.data[i].cityList[j].cityLink]);
-          } else {
-            setSejong((prev: any) => [...prev, response.data.data[i].cityList[j].name]);
-            setSejonglink((prev: any) => [...prev, response.data.data[i].cityList[j].cityLink]);
-          }
+        if (i == 0) {
+          setGyeongi({
+            ...gyeongi,
+            id: i + 1,
+            name: response.data.data[i].name,
+            link: response.data.data[i].provinceLink,
+          });
+        } else if (i === 1) {
+          setGangwon({
+            ...gangwon,
+            id: i + 1,
+            name: response.data.data[i].name,
+            link: response.data.data[i].provinceLink,
+          });
+        } else if (i === 2) {
+          setChungnam({
+            ...chungnam,
+            id: i + 1,
+            name: response.data.data[i].name,
+            link: response.data.data[i].provinceLink,
+          });
+        } else if (i === 3) {
+          setcCungbuk({
+            ...chungbuk,
+            id: i + 1,
+            name: response.data.data[i].name,
+            link: response.data.data[i].provinceLink,
+          });
+        } else if (i === 4) {
+          setJeonnam({
+            ...jeonnam,
+            id: i + 1,
+            name: response.data.data[i].name,
+            link: response.data.data[i].provinceLink,
+          });
+        } else if (i === 5) {
+          setJeonbuk({
+            ...jeonbuk,
+            id: i + 1,
+            name: response.data.data[i].name,
+            link: response.data.data[i].provinceLink,
+          });
+        } else if (i === 6) {
+          setGyeongnam({
+            ...gyeongnam,
+            id: i + 1,
+            name: response.data.data[i].name,
+            link: response.data.data[i].provinceLink,
+          });
+        } else if (i === 7) {
+          setGyeongbuk({
+            ...gyeongbuk,
+            id: i + 1,
+            name: response.data.data[i].name,
+            link: response.data.data[i].provinceLink,
+          });
+        } else if (i === 8) {
+          setIncheon({
+            ...incheon,
+            id: i + 1,
+            name: response.data.data[i].name,
+            link: response.data.data[i].provinceLink,
+          });
+        } else if (i === 9) {
+          setDajeon({
+            ...daejeon,
+            id: i + 1,
+            name: response.data.data[i].name,
+            link: response.data.data[i].provinceLink,
+          });
+        } else if (i === 10) {
+          setDaegu({
+            ...daegu,
+            id: i + 1,
+            name: response.data.data[i].name,
+            link: response.data.data[i].provinceLink,
+          });
+
+        } else if (i === 11) {
+          setBusan({
+            ...busan,
+            id: i + 1,
+            name: response.data.data[i].name,
+            link: response.data.data[i].provinceLink,
+          });
+        } else if (i === 12) {
+          setUlsan({
+            ...ulsan,
+            id: i + 1,
+            name: response.data.data[i].name,
+            link: response.data.data[i].provinceLink,
+          });
+        } else if (i === 13) {
+          setGwangju({
+            ...gwangju,
+            id: i + 1,
+            name: response.data.data[i].name,
+            link: response.data.data[i].provinceLink,
+          });
+
+        } else {
+          setSejong({
+            ...sejong,
+            id: i + 1,
+            name: response.data.data[i].name,
+            link: response.data.data[i].provinceLink,
+          });
         }
       }
+      console.log(response.data.data[10])
     });
   }, []);
 
-  const gyeongi_list = gyeongi.map((v: string) => (
-    <div id={v} key={v}>
-      {v}
-    </div>
-  ));
-  const gyeongi_link = gyeongilink.map((v: string) => (
-    <div id={v} key={v}>
-      {v}
-      <br />
-    </div>
-  ));
-  const gangwon_list = gangwon.map((v: string) => (
-    <div id={v} key={v}>
-      {v}
-      <br />
-    </div>
-  ));
+  // const gyeongi_list = gyeongi.map((v:string) => (<div id={v} key={v}>{v}</div>));
 
+  // console.log(gyeongi)
+  // console.log(province)
   return (
     <>
       {/*<Province city={names}></Province>*/}
@@ -145,163 +241,75 @@ const Toggle = () => {
       <img src={map} className="map" alt="map" />
 
       <div className="district_toggle">
-        <label
-          className="district"
-          onClick={() => {
-            setGyeongitoggle(!gyeongitoggle);
-            !gyeongitoggle && setMap(provincelink[0]);
-          }}
-        >
-          {province[0]}
-        </label>{' '}
-        {/*경기*/}
-        <div>{gyeongitoggle && gyeongi_list}</div>
-        <label
-          className="district"
-          onClick={() => {
-            setGangwontoggle(!gangwontoggle);
-            setMap(provincelink[1]);
-          }}
-        >
-          {province[1]}
-        </label>{' '}
-        {/*강원*/}
-        <div>{gangwontoggle && gangwon_list}</div>
-        <label
-          className="district"
-          onClick={() => {
-            setGangwontoggle(!gangwontoggle);
-            setMap(provincelink[8]);
-          }}
-        >
-          {province[8]}
-        </label>{' '}
-        {/*인천*/}
-        {/*이 아래부터는 지역리스트 토글 안만들어둠. 아직데이터없어서! 위에거도 그냥 아무지역이나 한거긴 하구*/}
-        <label
-          className="district"
-          onClick={() => {
-            // setGangwontoggle(!gangwontoggle)
-            setMap(provincelink[3]);
-          }}
-        >
-          {province[3]}
-        </label>{' '}
-        {/*충북*/}
-        <label
-          className="district"
-          onClick={() => {
-            // setGangwontoggle(!gangwontoggle)
-            setMap(provincelink[2]);
-          }}
-        >
-          {province[2]}
-        </label>{' '}
-        {/*충남*/}
-        <label
-          className="district"
-          onClick={() => {
-            // setGangwontoggle(!gangwontoggle)
-            setMap(provincelink[9]);
-          }}
-        >
-          {province[9]}
-        </label>{' '}
-        {/*대전*/}
-        <label
-          className="district"
-          onClick={() => {
-            // setGangwontoggle(!gangwontoggle)
-            // setMap(
-            //   provincelink[]
-            // );
-          }}
-        >
-          세종특별시
-        </label>
-        <label
-          className="district"
-          onClick={() => {
-            // setGangwontoggle(!gangwontoggle)
-            setMap(provincelink[5]);
-          }}
-        >
-          {province[5]}
-        </label>{' '}
-        {/*전북*/}
-        <label
-          className="district"
-          onClick={() => {
-            // setGangwontoggle(!gangwontoggle)
-            setMap(provincelink[4]);
-          }}
-        >
-          {province[4]}
-        </label>{' '}
-        {/*전남*/}
-        <label
-          className="district"
-          onClick={() => {
-            // setGangwontoggle(!gangwontoggle)
-            setMap(provincelink[13]);
-          }}
-        >
-          {province[13]}
-        </label>{' '}
-        {/*광주*/}
-        <label
-          className="district"
-          onClick={() => {
-            // setGangwontoggle(!gangwontoggle)
-            setMap(provincelink[7]);
-          }}
-        >
-          {province[7]}
-        </label>{' '}
-        {/*경북*/}
-        <label
-          className="district"
-          onClick={() => {
-            // setGangwontoggle(!gangwontoggle)
-            setMap(provincelink[6]);
-          }}
-        >
-          {province[6]}
-        </label>{' '}
-        {/*경남*/}
-        <label
-          className="district"
-          onClick={() => {
-            // setGangwontoggle(!gangwontoggle)
-            setMap(provincelink[10]);
-          }}
-        >
-          {province[10]}
-        </label>{' '}
-        {/*대구*/}
-        <label
-          className="district"
-          onClick={() => {
-            // setGangwontoggle(!gangwontoggle)
-            setMap(provincelink[12]);
-          }}
-        >
-          {province[12]}
-        </label>{' '}
-        {/*울산*/}
-        <label
-          className="district"
-          onClick={() => {
-            // setGangwontoggle(!gangwontoggle)
-            setMap(provincelink[11]);
-          }}
-        >
-          {province[11]}
-        </label>{' '}
-        {/*부산*/}
+
+        <label className="district" onClick={() => {
+          setGyeongitoggle(!gyeongitoggle);
+          !gyeongitoggle && setMap(gyeongi.link)
+        }}>{gyeongi.name}</label> {/*경기*/}
+        {/*<div>{gyeongitoggle && gyeongi_list}</div>*/}
+
+        <label className="district" onClick={() => {
+          setGangwontoggle(!gangwontoggle)
+          !gangwontoggle && setMap(gangwon.link);
+        }}>{gangwon.name}</label> {/*강원*/}
+        {/*<div>{gangwontoggle && gangwon_list}</div>*/}
+
+        <label className="district" onClick={() => {
+          setIncheontoggle(!incheontoggle)
+          !incheontoggle && setMap(incheon.link);
+        }}>{incheon.name}</label> {/*인천*/}
+        <label className="district" onClick={() => {
+          setChungbuktoggle(!chungbuktoggle)
+          !chungbuktoggle && setMap(chungbuk.link);
+        }}>{chungbuk.name}</label> {/*충북*/}
+        <label className="district" onClick={() => {
+          setChungnamtoggle(!chungnamtoggle)
+          !chungnamtoggle && setMap(chungnam.link);
+        }}>{chungnam.name}</label> {/*충남*/}
+        <label className="district" onClick={() => {
+          setDaejeontoggle(!daejeontoggle)
+          !daejeontoggle && setMap(daejeon.link);
+        }}>{daejeon.name}</label> {/*대전*/}
+        <label className="district" onClick={() => {
+          setSejongtoggle(!sejongtoggle)
+          !sejongtoggle && setMap(sejong.link);
+        }}>{sejong.name}</label>{/*세종*/}
+        <label className="district" onClick={() => {
+          setJeonbuktoggle(!jeonbuktoggle)
+          !jeonbuktoggle && setMap(jeonbuk.link);
+        }}>{jeonbuk.name}</label> {/*전북*/}
+        <label className="district" onClick={() => {
+          setJeonnamtoggle(!jeonnamtoggle)
+          !jeonnamtoggle && setMap(jeonnam.link);
+        }}>{jeonnam.name}</label> {/*전남*/}
+        <label className="district" onClick={() => {
+          setGwangjutoggle(!gwangjutoggle)
+          !gwangjutoggle && setMap(gwangju.link);
+        }}>{gwangju.name}</label> {/*광주*/}
+        <label className="district" onClick={() => {
+          setGyeonbuktoggle(!gyeongbuktoggle)
+          !gyeongbuktoggle && setMap(gyeongbuk.link);
+        }}>{gyeongbuk.name}</label> {/*경북*/}
+        <label className="district" onClick={() => {
+          setGyeonnamtoggle(!gyeongnamtoggle)
+          !gyeongnamtoggle && setMap(gyeongnam.link);
+        }}>{gyeongnam.name}</label> {/*경남*/}
+        <label className="district" onClick={() => {
+          setDaegutoggle(!daegutoggle)
+          !daegutoggle && setMap(daegu.link);
+        }}>{daegu.name}</label> {/*대구*/}
+        <label className="district" onClick={() => {
+          setUlsantoggle(!ulsantoggle)
+          !ulsantoggle && setMap(ulsan.link);
+        }}>{ulsan.name}</label> {/*울산*/}
+        <label className="district" onClick={() => {
+          setBusantoggle(!busantoggle)
+          !busantoggle && setMap(busan.link);
+        }}>{busan.name}</label> {/*부산*/}
+
       </div>
     </>
   );
-};
+}
 
 export default Toggle;
