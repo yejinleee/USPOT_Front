@@ -1,3 +1,16 @@
 img{
     vertical-align: middle;
 }
+
+.button{
+    border: 1px solid #cdd0d2;
+    border-radius: 8px;
+}
+
+.clicked{
+    background-color: #F08080;
+}
+label{
+    border: 1px solid #cdd0d2;
+    border-radius: 8px;
+}
