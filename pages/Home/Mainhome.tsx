@@ -8,8 +8,8 @@ import KakaoMap from '@components/Map/KaKaomap';
 const HomePage = () => (
   <Layouts>
     {/*<Container />*/}
-    {/* <Toggle /> */}
-    <KakaoMap />
+     <Toggle />
+    {/*<KakaoMap />*/}
   </Layouts>
 );
 
