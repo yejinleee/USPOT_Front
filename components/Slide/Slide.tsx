@@ -20,12 +20,10 @@ const Slide : FC<Props> = ({children, city }) => {
   const [start,setStart] = useState(0);
 
   const [imgloc,setImgloc]=useState(['carousel_card_item center','carousel_card_item right','carousel_card_item leftback','carousel_card_item rightback','carousel_card_item left']);
-  console.log(start)
 
   return (
 
     <>
-      <h2 className={city}>{city} 추천장소 TOP 5 </h2>
       {/*<div>2페이지 : {btn_pic}번그림 관광명소 TOP 5</div>*/}
       <div className="carousel">
         <div className="carousel_card">

@@ -9,7 +9,7 @@ const HomePage = () => (
   <Layouts>
     {/*<Container />*/}
     <Toggle />
-    <KakaoMap />
+    {/*<KakaoMap />*/}
   </Layouts>
 );
 

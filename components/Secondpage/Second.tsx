@@ -1,18 +1,16 @@
 import React, {FC, memo, useMemo, useState} from 'react';
 import Slide from "@components/Slide/Slide";
+import Layout from '@components/Layouts';
 
-interface Props {
-  city : string;
-}
+const Second=(props:any)=> {
+  const selectedcity = props.match.params.selectedcity;
+  const selectedcategory = props.match.params.selectedcategory;
 
-const Second=()=> {
-  const city="~선택한 장소~"
-  return(
-    <>
-      <Slide city={city}> </Slide>
-      <div className="top5map" style={{background:"#d9dfe4", height:"250px"}}>top5장소 카카오 맵</div>
-    </>
-
+  return (
+    <Layout>
+      <h2>{selectedcity}의 {selectedcategory} 추천장소 TOP5 </h2>
+      <Slide city={selectedcity} />
+    </Layout>
   );
 
 }

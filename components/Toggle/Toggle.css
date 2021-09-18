@@ -10,13 +10,6 @@ label {
     padding-bottom: 1%;
 }
 
-.gyeongi{
-    cursor:pointer;
-    display:block;
-    background:#eee;
-    text-align:center;
-    border:1px solid #ccc;
-}
 .district {
     cursor:pointer;
     display:block;
@@ -24,60 +17,6 @@ label {
     text-align:center;
     border:1px solid #ccc;
 }
-#gyeongi_button,
-#gyeongi_contents {
-    height:0;
-    overflow:hidden;
-    position:absolute;
-}
-#gangwon_button,
-#gangwon_contents {
-    height:0;
-    overflow:hidden;
-    position:absolute;
-}
-
-#gyeongi_button:checked + #gyeongi_contents {
-    height:auto;
-    position:relative;
-    border:1px solid #ccc;
-    border-top:0;
-    padding:10px;
-}
-#gangwon_button:checked + #gangwon_contents {
-    height:auto;
-    position:relative;
-    border:1px solid #ccc;
-    border-top:0;
-    padding:10px;
-}
-.close_button {
-    cursor:pointer;
-    position:absolute;
-    top:5px;
-    right:5px;
-    padding:3px;
-    font-size:10px;
-    line-height:1;
-    background:#555;
-    color:#fff;
-}
-#구리:hover{
-    font-size: 25px;
-}
-
-/*.pin{*/
-/*    position: relative;*/
-/*    left: 77%;*/
-/*    top: 95px;*/
-/*    width: 2%;*/
-/*}*/
-/*#구리:hover .pin {*/
-/*    position: relative;*/
-/*    left: 77%;*/
-/*    top: 95px;*/
-/*    width: 20%;*/
-/*}*/
 
 .map{
     /*position: absolute;*/
@@ -91,16 +30,17 @@ label {
     right:10%;
 }
 
-.pin{
-    position: sticky;
-    width: 3%;
-    /*top: 53%;*/
-    /*left: 80%;*/
-}
-/*.map:hover ~ .district_toggle #수원{*/
-/*    background: aqua;*/
-/*    }*/
 
-#가평:hover #가평{
-    background: aqua;
+.citylist:hover{
+    background: #F08080;
+}
+
+.citylist{
+    cursor: pointer;
+}
+
+.gotosecondbtn{
+    /*이거 어떻게할지 생각해야할듯 ㅠㅠ*/
+    position: fixed;
+    float:right;
 }

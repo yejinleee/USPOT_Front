@@ -7,9 +7,12 @@ import Category from '@components/Category/category';
 import Province from '@components/Category/Province';
 import { type } from 'os';
 import Citylist from '@components/Category/citylist';
+import Second from '@components/Secondpage/Second';
+import { Link, Route } from 'react-router-dom';
 
-const Toggle = () => {
-  const [cate, setCate] = useState('안');
+const Toggle = (props:any) => {
+  const [selectedcategory, setSelectedcategory] = useState('안');
+  const [selectedcity, setSelectedcity] = useState('없음'); //선택된도시 props로 넘겨주려고
 
   const [gyeongitoggle, setGyeongitoggle] = useState(false);
   const [gangwontoggle, setGangwontoggle] = useState(false);
@@ -27,7 +30,6 @@ const Toggle = () => {
   const [gwangjutoggle, setGwangjutoggle] = useState(false);
   const [sejongtoggle, setSejongtoggle] = useState(false);
 
-  const [selectedcity, setSelectedcity] = useState(''); //선택된도시 props로 넘겨주려고
 
   const [map, setMap] = useState(
     'https://user-images.githubusercontent.com/63544044/132854633-87a1c788-d972-4375-96bb-eacc081ec93b.png',
@@ -37,14 +39,17 @@ const Toggle = () => {
     id: '',
     name: '',
     link: '',
-    city: [
-      // {
-      //   city_name: '',
-      //   city_link: '',
-      //   station: [],
-      // },
+    cities:[],
+    cities_link:[],
+    city:[
+      {
+        city_name: '',
+        city_link: '',
+        station: [],
+      },
     ],
   } as any);
+
   const [gangwon, setGangwon] = useState({
     id: '',
     name: '',
@@ -132,6 +137,8 @@ const Toggle = () => {
               id: i + 1,
               name: response.data.data[i].name,
               link: response.data.data[i].provinceLink,
+              cities : [...prev.cities,response.data.data[i].cityList[j].name],
+              cities_link : [...prev.cities_link,response.data.data[i].cityList[j].cityLink],
               city: [
                 ...prev.city,
                 {
@@ -141,6 +148,7 @@ const Toggle = () => {
                 },
               ],
             }));
+            // console.log(gyeongi);
           }
         } else if (i === 1) {
           setGangwon({
@@ -244,25 +252,80 @@ const Toggle = () => {
       }
     });
   }, []);
+  // console.log(gyeongi.city[1].city_name)
   // gyeongi.city.map((v: any) => {
   //   console.log(v.city_name);
   // });
-  console.log(gyeongi.city[1]);
-  gyeongi.city.map((v: any) => {
-    console.log(v.city_name);
-  });
-  // const gyeongi_list = gyeongi.map((v:string) => (<div id={v} key={v}>{v}</div>));
+  // console.log(gyeongi.city[1]);
+
+  // console.log(gyeongi.city.city_name)
+  // console.log(gyeongi.city_link)
+  /////////////////////////////////////////////////////////////////////////
+
+  // console.log(typeof(gyeongi.city[1]))
+  // const asdf = gyeongi.city.map((v:string) => (<div id="1" key="c">{v}</div>))
+  // function asdf(){
+  //   return(
+  //     gyeongi.city.map((v: any) => {
+  //       <p>zx</p>
+  //       // <p>{v.city_name}</p>
+  //       // console.log(v.city_name);
+  //     })
+  //   )
+  // }
+
+  const [a,setA]=useState('none');
+  const gyeongi_list = gyeongi.cities.map((v:string,index:number) =>
+    (<div id={v} key={index} className="citylist"
+          onClick={()=>{setMap(gyeongi.cities_link[index]); setSelectedcity(v)}}
+          // onMouseOver = {()=>{setMap(gangwon.link)}}
+          // onMouseOut = {()=>{setMap(gyeongi.link)}} 렌더링양 에반데...~
+      >
+      {v}
+    </div>));
+  // const gyeongilist = gyeongi.city.map((v:string)=>(<p>{v}</p>));
+
+
+  // setGyeongi((prev: any) => ({
+  //   ...prev,
+  //   id: i + 1,
+  //   name: response.data.data[i].name,
+  //   link: response.data.data[i].provinceLink,
+  //   cities : [...prev.cities,response.data.data[i].cityList[j].name],
+  //   cities_link : [...prev.cities_link,response.data.data[i].cityList[j].cityLink],
+  //   city: [
+  //     ...prev.city,
+  //     {
+  //       city_name: response.data.data[i].cityList[j].name,
+  //       city_link: response.data.data[i].cityList[j].cityLink,
+  //       station: stationlist,
+  //     },
+
+  console.log(gyeongi.city[1])
+
+  // gyeongi.city.map((v:string)=>{
+  //   console.log(v)
+  // })
 
   return (
     <>
+      {/*{gyeongilist}*/}
+      {/*<div>{asdf}</div>*/}
       {/*<Province city={names}></Province>*/}
       {/*<Citylist city={ggc}></Citylist>*/}
-      <Category setCate={setCate} />
-      <p>{cate} 골랐음</p>
-      <Child setSelectedcity={setSelectedcity} />
-      {/*Child : 선택한 city넘겨줘서 연결되는 컴포넌트. 테스트용 아마도 Child를 Second로 넘겨주거나 그런식*/}
+      <Category setSelectedcategory={setSelectedcategory} />
+      {/*<p>{cate} 골랐음</p>*/}
+      {/*선택한 지역 : {selectedcity}<br/>*/}
 
+      {/*<Second setSelectedcity={setSelectedcity} />*/}
+      {/*Child : 선택한 city넘겨줘서 연결되는 컴포넌트. 테스트용 아마도 Child를 Second로 넘겨주거나 그런식*/}
       <img src={map} className="map" alt="map" />
+
+      <button className="gotosecondbtn">
+        <Link to={`/second/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>
+          {selectedcity}의 추천 {selectedcategory} 보기 !
+        </Link>
+      </button>
 
       <div className="district_toggle">
         <label
@@ -273,9 +336,9 @@ const Toggle = () => {
           }}
         >
           {gyeongi.name}
-        </label>{' '}
+        </label>
         {/*경기*/}
-        {/*<div>{gyeongitoggle && gyeongi_list}</div>*/}
+        <div>{gyeongitoggle && gyeongi_list}</div>
         <label
           className="district"
           onClick={() => {

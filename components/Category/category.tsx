@@ -9,7 +9,7 @@ const Category=(props:any)=>{
         <>
             <br/>
             <label onClick={() => {
-                props.setCate("음식점")
+                props.setSelectedcategory("음식점")
                 setClicked('res');
                 }
             }
@@ -19,7 +19,7 @@ const Category=(props:any)=>{
                 <p style={{display:'inline'}}>음식점</p>
             </label>
             <label onClick={() => {
-                props.setCate("카페")
+                props.setSelectedcategory("카페")
                 setClicked('caf');
                 }
             }
@@ -29,7 +29,7 @@ const Category=(props:any)=>{
                 <p style={{display:'inline'}}>카페</p>
             </label>
             <label onClick={() => {
-                props.setCate("관광명소")
+                props.setSelectedcategory("관광명소")
                 setClicked('tor');
                 }
             }
