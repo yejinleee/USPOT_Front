@@ -1,7 +1,5 @@
 import React, {FC, memo, useMemo, useState} from 'react';
-// import styled from "styled-components";
 import './Slide.css';
-// import {scryRenderedComponentsWithType} from "react-dom/test-utils";
 
 interface Props {
   city : string;
@@ -62,8 +60,6 @@ const Slide : FC<Props> = ({children, city }) => {
         </div>
       </div>
 
-
-      {/*<button className="btn3">3</button>*/}
     </>
 
   );

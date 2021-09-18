@@ -13,7 +13,6 @@ const Routes =()=>{
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/mypage" component={Mypage} />
-          {/*<Route exact path="/second" render={() => <Second selectedcity={selectedcity} />} />*/}
           <Route exact path="/second/:selectedcity/:selectedcategory" component={Second} />
         </Switch>
       </Router>

@@ -16,5 +16,3 @@ const Second=(props:any)=> {
 }
 
 export default Second;
-
-// 이게 /pages/로 가야할지 모르겠다  ? ?
