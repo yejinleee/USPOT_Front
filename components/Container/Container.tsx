@@ -24,8 +24,7 @@ const Container = () => {
         }).map((val: any, key: any) => {
           return (
             <div className="contry" key={key}>
-              <p>{val.name}</p>
-              {/* <img src={val.beach_img}/> */}
+              <div>{val.name}</div>
             </div>
           );
         })}

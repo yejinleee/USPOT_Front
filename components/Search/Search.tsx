@@ -1,4 +1,4 @@
-import Container from '@components/Search/Container';
+import Container from '@components/Container/Container';
 import React from 'react';
 
 const Search = () => {

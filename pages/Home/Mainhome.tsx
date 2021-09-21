@@ -1,4 +1,4 @@
-import Container from '@components/Search/Container';
+import Search from '@components/Search/Search';
 import Toggle from '@components/Toggle/Toggle';
 import React from 'react';
 import Layouts from '@layouts/Layouts';
@@ -7,7 +7,7 @@ import KakaoMap from '@components/Map/KaKaomap';
 
 const HomePage = () => (
   <Layouts>
-    {/*<Container />*/}
+    <Search />
     <Toggle />
     {/*<KakaoMap />*/}
   </Layouts>

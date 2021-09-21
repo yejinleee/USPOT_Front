@@ -1,12 +1,11 @@
-import React, { FC, memo, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { FC, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, Route } from 'react-router-dom';
 import axios from 'axios';
 
 import './Toggle.css';
 import Category from '@components/Category/category';
-import Getapi from '@components/GetAPI/Getapi';
 
-const Toggle = (props: any) => {
+const Toggle = () => {
   const [selectedcategory, setSelectedcategory] = useState('안');
   const [selectedcity, setSelectedcity] = useState('없음'); //선택된도시 props로 넘겨주려고
 
@@ -121,8 +120,531 @@ const Toggle = (props: any) => {
     link: '',
     city: [],
   } as any);
+  const [stationlist, setStationlist] = useState([] as any);
+  const [flag, setFlag] = useState(false);
+  const [index, setIndex] = useState(0);
 
-  // Getapi 컴포넌트 분리해서 뺐음
+  const gyeongiindex = useRef(0);
+  const gangwonindex = useRef(0);
+  const chungnamindex = useRef(0);
+  const chungbukindex = useRef(0);
+  const jeonnamindex = useRef(0);
+  const jeonbukindex = useRef(0);
+  const gyeongnamindex = useRef(0);
+  const gyeongbukindex = useRef(0);
+  const incheonindex = useRef(0);
+  const daejeonindex = useRef(0);
+  const daeguindex = useRef(0);
+  const busanindex = useRef(0);
+  const ulsanindex = useRef(0);
+  const gwangjuindex = useRef(0);
+  const sejongindex = useRef(0);
+
+  useEffect(() => {
+    axios.get('api/province/findprovince').then((response) => {
+      for (var i = 0; i < response.data.data.length; i++) {
+        setIndex(i);
+        if (i === 0) {
+          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            setStationlist([]);
+            setFlag(false);
+            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+            }
+            setGyeongi((prev: any) => ({
+              ...prev,
+              id: i + 1,
+              name: response.data.data[i].name,
+              link: response.data.data[i].provinceLink,
+              city: [
+                ...prev.city,
+                {
+                  city_name: response.data.data[i].cityList[j].name,
+                  city_link: response.data.data[i].cityList[j].cityLink,
+                  station: [],
+                },
+              ],
+            }));
+            setFlag(true);
+          }
+          setFlag(false);
+        } else if (i === 1) {
+          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            setStationlist([]);
+            setFlag(false);
+            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+            }
+            setGangwon((prev: any) => ({
+              ...prev,
+              id: i + 1,
+              name: response.data.data[i].name,
+              link: response.data.data[i].provinceLink,
+              city: [
+                ...prev.city,
+                {
+                  city_name: response.data.data[i].cityList[j].name,
+                  city_link: response.data.data[i].cityList[j].cityLink,
+                  station: [],
+                },
+              ],
+            }));
+            setFlag(true);
+          }
+          setFlag(false);
+        } else if (i === 2) {
+          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            setStationlist([]);
+            setFlag(false);
+            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+            }
+            setChungnam((prev: any) => ({
+              ...prev,
+              id: i + 1,
+              name: response.data.data[i].name,
+              link: response.data.data[i].provinceLink,
+              city: [
+                ...prev.city,
+                {
+                  city_name: response.data.data[i].cityList[j].name,
+                  city_link: response.data.data[i].cityList[j].cityLink,
+                  station: [],
+                },
+              ],
+            }));
+            setFlag(true);
+          }
+          setFlag(false);
+        } else if (i === 3) {
+          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            setStationlist([]);
+            setFlag(false);
+            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+            }
+            setChungbuk((prev: any) => ({
+              ...prev,
+              id: i + 1,
+              name: response.data.data[i].name,
+              link: response.data.data[i].provinceLink,
+              city: [
+                ...prev.city,
+                {
+                  city_name: response.data.data[i].cityList[j].name,
+                  city_link: response.data.data[i].cityList[j].cityLink,
+                  station: [],
+                },
+              ],
+            }));
+            setFlag(true);
+          }
+          setFlag(false);
+        } else if (i === 4) {
+          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            setStationlist([]);
+            setFlag(false);
+            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+            }
+            setJeonnam((prev: any) => ({
+              ...prev,
+              id: i + 1,
+              name: response.data.data[i].name,
+              link: response.data.data[i].provinceLink,
+              city: [
+                ...prev.city,
+                {
+                  city_name: response.data.data[i].cityList[j].name,
+                  city_link: response.data.data[i].cityList[j].cityLink,
+                  station: [],
+                },
+              ],
+            }));
+            setFlag(true);
+          }
+          setFlag(false);
+        } else if (i === 5) {
+          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            setStationlist([]);
+            setFlag(false);
+            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+            }
+            setJeonbuk((prev: any) => ({
+              ...prev,
+              id: i + 1,
+              name: response.data.data[i].name,
+              link: response.data.data[i].provinceLink,
+              city: [
+                ...prev.city,
+                {
+                  city_name: response.data.data[i].cityList[j].name,
+                  city_link: response.data.data[i].cityList[j].cityLink,
+                  station: [],
+                },
+              ],
+            }));
+            setFlag(true);
+          }
+          setFlag(false);
+        } else if (i === 6) {
+          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            setStationlist([]);
+            setFlag(false);
+            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+            }
+            setGyeongnam((prev: any) => ({
+              ...prev,
+              id: i + 1,
+              name: response.data.data[i].name,
+              link: response.data.data[i].provinceLink,
+              city: [
+                ...prev.city,
+                {
+                  city_name: response.data.data[i].cityList[j].name,
+                  city_link: response.data.data[i].cityList[j].cityLink,
+                  station: [],
+                },
+              ],
+            }));
+            setFlag(true);
+          }
+          setFlag(false);
+        } else if (i === 7) {
+          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            setStationlist([]);
+            setFlag(false);
+            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+            }
+            setGyeongbuk((prev: any) => ({
+              ...prev,
+              id: i + 1,
+              name: response.data.data[i].name,
+              link: response.data.data[i].provinceLink,
+              city: [
+                ...prev.city,
+                {
+                  city_name: response.data.data[i].cityList[j].name,
+                  city_link: response.data.data[i].cityList[j].cityLink,
+                  station: [],
+                },
+              ],
+            }));
+            setFlag(true);
+          }
+          setFlag(false);
+        } else if (i === 8) {
+          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            setStationlist([]);
+            setFlag(false);
+            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+            }
+            setIncheon((prev: any) => ({
+              ...prev,
+              id: i + 1,
+              name: response.data.data[i].name,
+              link: response.data.data[i].provinceLink,
+              city: [
+                ...prev.city,
+                {
+                  city_name: response.data.data[i].cityList[j].name,
+                  city_link: response.data.data[i].cityList[j].cityLink,
+                  station: [],
+                },
+              ],
+            }));
+            setFlag(true);
+          }
+          setFlag(false);
+        } else if (i === 9) {
+          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            setStationlist([]);
+            setFlag(false);
+            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+            }
+            setDajeon((prev: any) => ({
+              ...prev,
+              id: i + 1,
+              name: response.data.data[i].name,
+              link: response.data.data[i].provinceLink,
+              city: [
+                ...prev.city,
+                {
+                  city_name: response.data.data[i].cityList[j].name,
+                  city_link: response.data.data[i].cityList[j].cityLink,
+                  station: [],
+                },
+              ],
+            }));
+            setFlag(true);
+          }
+          setFlag(false);
+        } else if (i === 10) {
+          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            setStationlist([]);
+            setFlag(false);
+            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+            }
+            setDaegu((prev: any) => ({
+              ...prev,
+              id: i + 1,
+              name: response.data.data[i].name,
+              link: response.data.data[i].provinceLink,
+              city: [
+                ...prev.city,
+                {
+                  city_name: response.data.data[i].cityList[j].name,
+                  city_link: response.data.data[i].cityList[j].cityLink,
+                  station: [],
+                },
+              ],
+            }));
+            setFlag(true);
+          }
+          setFlag(false);
+        } else if (i === 11) {
+          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            setStationlist([]);
+            setFlag(false);
+            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+            }
+            setBusan((prev: any) => ({
+              ...prev,
+              id: i + 1,
+              name: response.data.data[i].name,
+              link: response.data.data[i].provinceLink,
+              city: [
+                ...prev.city,
+                {
+                  city_name: response.data.data[i].cityList[j].name,
+                  city_link: response.data.data[i].cityList[j].cityLink,
+                  station: [],
+                },
+              ],
+            }));
+            setFlag(true);
+          }
+          setFlag(false);
+        } else if (i === 12) {
+          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            setStationlist([]);
+            setFlag(false);
+            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+            }
+            setUlsan((prev: any) => ({
+              ...prev,
+              id: i + 1,
+              name: response.data.data[i].name,
+              link: response.data.data[i].provinceLink,
+              city: [
+                ...prev.city,
+                {
+                  city_name: response.data.data[i].cityList[j].name,
+                  city_link: response.data.data[i].cityList[j].cityLink,
+                  station: [],
+                },
+              ],
+            }));
+            setFlag(true);
+          }
+          setFlag(false);
+        } else if (i === 13) {
+          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            setStationlist([]);
+            setFlag(false);
+            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+            }
+            setGwangju((prev: any) => ({
+              ...prev,
+              id: i + 1,
+              name: response.data.data[i].name,
+              link: response.data.data[i].provinceLink,
+              city: [
+                ...prev.city,
+                {
+                  city_name: response.data.data[i].cityList[j].name,
+                  city_link: response.data.data[i].cityList[j].cityLink,
+                  station: [],
+                },
+              ],
+            }));
+            setFlag(true);
+          }
+          setFlag(false);
+        } else {
+          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            setStationlist([]);
+            setFlag(false);
+            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+            }
+            setSejong((prev: any) => ({
+              ...prev,
+              id: i + 1,
+              name: response.data.data[i].name,
+              link: response.data.data[i].provinceLink,
+              city: [
+                ...prev.city,
+                {
+                  city_name: response.data.data[i].cityList[j].name,
+                  city_link: response.data.data[i].cityList[j].cityLink,
+                  station: [],
+                },
+              ],
+            }));
+            setFlag(true);
+          }
+          setFlag(false);
+        }
+      }
+    });
+  }, []);
+
+  if (index === 0) {
+    if (gyeongi.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          gyeongi.city[gyeongiindex.current].station = stationlist;
+          gyeongiindex.current += 1;
+        }
+      }
+    }
+  } else if (index === 1) {
+    if (gangwon.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          gangwon.city[gangwonindex.current].station = stationlist;
+          gangwonindex.current += 1;
+        }
+      }
+    }
+  } else if (index === 2) {
+    if (chungnam.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          chungnam.city[chungnamindex.current].station = stationlist;
+          chungnamindex.current += 1;
+        }
+      }
+    }
+  } else if (index === 3) {
+    if (chungbuk.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          chungbuk.city[chungbukindex.current].station = stationlist;
+          chungbukindex.current += 1;
+        }
+      }
+    }
+  } else if (index === 4) {
+    if (jeonnam.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          jeonnam.city[jeonnamindex.current].station = stationlist;
+          jeonnamindex.current += 1;
+        }
+      }
+    }
+  } else if (index === 5) {
+    if (jeonbuk.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          jeonbuk.city[jeonbukindex.current].station = stationlist;
+          jeonbukindex.current += 1;
+        }
+      }
+    }
+  } else if (index === 6) {
+    if (gyeongnam.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          gyeongnam.city[gyeongnamindex.current].station = stationlist;
+          gyeongnamindex.current += 1;
+        }
+      }
+    }
+  } else if (index === 7) {
+    if (gyeongbuk.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          gyeongbuk.city[gyeongbukindex.current].station = stationlist;
+          gyeongbukindex.current += 1;
+        }
+      }
+    }
+  } else if (index === 8) {
+    if (incheon.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          incheon.city[incheonindex.current].station = stationlist;
+          incheonindex.current += 1;
+        }
+      }
+    }
+  } else if (index === 9) {
+    if (daejeon.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          daejeon.city[daejeonindex.current].station = stationlist;
+          daejeonindex.current += 1;
+        }
+      }
+    }
+  } else if (index === 10) {
+    if (daegu.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          daegu.city[daeguindex.current].station = stationlist;
+          daeguindex.current += 1;
+        }
+      }
+    }
+  } else if (index === 11) {
+    if (busan.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          busan.city[busanindex.current].station = stationlist;
+          busanindex.current += 1;
+        }
+      }
+    }
+  } else if (index === 12) {
+    if (ulsan.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          ulsan.city[ulsanindex.current].station = stationlist;
+          ulsanindex.current += 1;
+        }
+      }
+    }
+  } else if (index === 13) {
+    if (gwangju.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          gwangju.city[gwangjuindex.current].station = stationlist;
+          gwangjuindex.current += 1;
+        }
+      }
+    }
+  } else {
+    if (sejong.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          sejong.city[sejongindex.current].station = stationlist;
+          sejongindex.current += 1;
+        }
+      }
+    }
+  }
 
   const gyeongi_list = gyeongi.city.map((v: string, index: number) => (
     <div
@@ -338,23 +860,6 @@ const Toggle = (props: any) => {
   }
   return (
     <>
-      <Getapi
-        setGyeongi={setGyeongi}
-        setGangwon={setGangwon}
-        setChungnam={setChungnam}
-        setChungbuk={setChungbuk}
-        setGyeongnam={setGyeongnam}
-        setGyeongbuk={setGyeongbuk}
-        setJeonbuk={setJeonbuk}
-        setJeonnam={setJeonnam}
-        setIncheon={setIncheon}
-        setDajeon={setDajeon}
-        setGwangju={setGwangju}
-        setDaegu={setDaegu}
-        setUlsan={setUlsan}
-        setBusan={setBusan}
-        setSejong={setSejong}
-      />
       <Category setSelectedcategory={setSelectedcategory} />
 
       <img src={map} className="map" alt="map" />
