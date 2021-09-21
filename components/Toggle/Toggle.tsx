@@ -124,6 +124,7 @@ const Toggle = (props: any) => {
 
   // Getapi 컴포넌트 분리해서 뺐음
 
+<<<<<<< Updated upstream
   const gyeongi_list = gyeongi.city.map((v: string, index: number) => (
     <div
       id={v}
@@ -143,7 +144,236 @@ const Toggle = (props: any) => {
   // gyeongi.city.map((v: string, index: number) => {
   //   console.log(gyeongi.city[index].city_name);
   // });
+=======
+>>>>>>> Stashed changes
 
+  const gyeongi_list = gyeongi.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(gyeongi.city[index].city_link);
+        setSelectedcity(gyeongi.city[index].city_name);
+      }}
+      // onMouseOver = {()=>{setMap(gangwon.link)}} //시군에 마우스 오버하면 지도 바뀌는거
+      // onMouseOut = {()=>{setMap(gyeongi.link)}} //렌더링양 에반데...~
+    >
+      {gyeongi.city[index].city_name}
+    </div>
+  ));
+  const gangwon_list = gangwon.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(gangwon.city[index].city_link);
+        setSelectedcity(gangwon.city[index].city_name);
+
+      }}
+    >
+      {gangwon.city[index].city_name}
+    </div>
+  ));
+  const chungnam_list = chungnam.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(chungnam.city[index].city_link);
+        setSelectedcity(chungnam.city[index].city_name);
+
+      }}
+    >
+      {chungnam.city[index].city_name}
+    </div>
+  ));
+  const chungbuk_list = chungbuk.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(chungbuk.city[index].city_link);
+        setSelectedcity(chungbuk.city[index].city_name);
+
+      }}
+    >
+      {chungbuk.city[index].city_name}
+    </div>
+  ));
+  const jeonnam_list = jeonnam.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(jeonnam.city[index].city_link);
+        setSelectedcity(jeonnam.city[index].city_name);
+
+      }}
+    >
+      {jeonnam.city[index].city_name}
+    </div>
+  ));
+  const jeonbuk_list = jeonbuk.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(jeonbuk.city[index].city_link);
+        setSelectedcity(jeonbuk.city[index].city_name);
+
+      }}
+    >
+      {jeonbuk.city[index].city_name}
+    </div>
+  ));
+  const gyeongnam_list = gyeongnam.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(gyeongnam.city[index].city_link);
+        setSelectedcity(gyeongnam.city[index].city_name);
+
+      }}
+    >
+      {gyeongnam.city[index].city_name}
+    </div>
+  ));
+  const gyeongbuk_list = gyeongbuk.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(gyeongbuk.city[index].city_link);
+        setSelectedcity(gyeongbuk.city[index].city_name);
+
+      }}
+    >
+      {gyeongbuk.city[index].city_name}
+    </div>
+  ));
+  const incheon_list = incheon.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(incheon.city[index].city_link);
+        setSelectedcity(incheon.city[index].city_name);
+
+      }}
+    >
+      {incheon.city[index].city_name}
+    </div>
+  ));
+  const daejeon_list = daejeon.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(daejeon.city[index].city_link);
+        setSelectedcity(daejeon.city[index].city_name);
+
+      }}
+    >
+      {daejeon.city[index].city_name}
+    </div>
+  ));
+  const daegu_list = daegu.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(daegu.city[index].city_link);
+        setSelectedcity(daegu.city[index].city_name);
+
+      }}
+    >
+      {daegu.city[index].city_name}
+    </div>
+  ));
+  const busan_list = busan.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(busan.city[index].city_link);
+        setSelectedcity(busan.city[index].city_name);
+
+      }}
+    >
+      {busan.city[index].city_name}
+    </div>
+  ));
+  const ulsan_list = ulsan.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(ulsan.city[index].city_link);
+        setSelectedcity(ulsan.city[index].city_name);
+
+      }}
+    >
+      {ulsan.city[index].city_name}
+    </div>
+  ));
+  const gwangju_list = gwangju.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(gwangju.city[index].city_link);
+        setSelectedcity(gwangju.city[index].city_name);
+
+      }}
+    >
+      {gwangju.city[index].city_name}
+    </div>
+  ));
+  const sejong_list = sejong.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(sejong.city[index].city_link);
+        setSelectedcity(sejong.city[index].city_name);
+
+      }}
+    >
+      {sejong.city[index].city_name}
+    </div>
+  ));
+
+  function selectedalert(){
+    if (selectedcity==='없음'){
+      if (selectedcategory==='안'){
+        return (alert("지역과 카테고리 모두 선택하여 주십시오"))
+      }
+      else{
+        return (alert("지역을 선택하여 주십시오"))
+      }
+    }
+    if (selectedcategory==='안'){
+      if (selectedcity !=='없음'){
+        return ( alert("카테고리를 선택하여 주십시오"))
+      }
+    }
+  }
   return (
     <>
       <Getapi
@@ -172,6 +402,23 @@ const Toggle = (props: any) => {
           {selectedcity}의 추천 {selectedcategory} 보기 !
         </Link>
       </button>
+=======
+      {/*/!*1번) 암것도 없다가 카테고리랑 지역 둘다 고르면 버튼 생김. alert기능의미없음*!/*/}
+      {selectedcity!=='없음' && selectedcategory!=='안' &&
+      <Link to={`/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>
+        <button className="gotosecondbtn" onClick={selectedalert}>
+          {selectedcity}의 추천 {selectedcategory} 보기 !!
+        </button>
+      </Link>}
+
+      {/*2번) 버튼은 계속 있는데 둘다 고르면 보러가기!! 부분을 눌러야 링크연결됨, alert유효*/}
+      {/*<button className="gotosecondbtn" onClick={selectedalert}>*/}
+      {/*  {selectedcity}의 추천 {selectedcategory}*/}
+      {/*  {selectedcity!=='없음' && selectedcategory!=='안' &&*/}
+      {/*  <Link to={`/second/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>*/}
+      {/*       보러가기!!*/}
+      {/*  </Link>}*/}
+      {/*</button>*/}
 
       <div className="district_toggle">
         <label
@@ -185,6 +432,7 @@ const Toggle = (props: any) => {
         </label>
         {/*경기*/}
         <div>{gyeongitoggle && gyeongi_list}</div>
+
         <label
           className="district"
           onClick={() => {
@@ -194,8 +442,7 @@ const Toggle = (props: any) => {
         >
           {gangwon.name}
         </label>{' '}
-        {/*강원*/}
-        {/*<div>{gangwontoggle && gangwon_list}</div>*/}
+        <div>{gangwontoggle && gangwon_list}</div>
         <label
           className="district"
           onClick={() => {
@@ -205,7 +452,7 @@ const Toggle = (props: any) => {
         >
           {incheon.name}
         </label>{' '}
-        {/*인천*/}
+        <div>{incheontoggle && incheon_list}</div>
         <label
           className="district"
           onClick={() => {
@@ -215,7 +462,7 @@ const Toggle = (props: any) => {
         >
           {chungbuk.name}
         </label>
-        {/*충북*/}
+        <div>{chungbuktoggle && chungbuk_list}</div>
         <label
           className="district"
           onClick={() => {
@@ -225,7 +472,7 @@ const Toggle = (props: any) => {
         >
           {chungnam.name}
         </label>
-        {/*충남*/}
+        <div>{chungnamtoggle && chungnam_list}</div>
         <label
           className="district"
           onClick={() => {
@@ -235,7 +482,7 @@ const Toggle = (props: any) => {
         >
           {daejeon.name}
         </label>
-        {/*대전*/}
+        <div>{daejeontoggle && daejeon_list}</div>
         <label
           className="district"
           onClick={() => {
@@ -245,7 +492,7 @@ const Toggle = (props: any) => {
         >
           {sejong.name}
         </label>
-        {/*세종*/}
+        <div>{sejongtoggle && sejong_list}</div>
         <label
           className="district"
           onClick={() => {
@@ -255,7 +502,7 @@ const Toggle = (props: any) => {
         >
           {jeonbuk.name}
         </label>
-        {/*전북*/}
+        <div>{jeonbuktoggle && jeonbuk_list}</div>
         <label
           className="district"
           onClick={() => {
@@ -265,7 +512,7 @@ const Toggle = (props: any) => {
         >
           {jeonnam.name}
         </label>
-        {/*전남*/}
+        <div>{jeonnamtoggle && jeonnam_list}</div>
         <label
           className="district"
           onClick={() => {
@@ -275,7 +522,7 @@ const Toggle = (props: any) => {
         >
           {gwangju.name}
         </label>
-        {/*광주*/}
+        <div>{gwangjutoggle && gwangju_list}</div>
         <label
           className="district"
           onClick={() => {
@@ -285,7 +532,7 @@ const Toggle = (props: any) => {
         >
           {gyeongbuk.name}
         </label>
-        {/*경북*/}
+        <div>{gyeongbuktoggle && gyeongbuk_list}</div>
         <label
           className="district"
           onClick={() => {
@@ -295,7 +542,7 @@ const Toggle = (props: any) => {
         >
           {gyeongnam.name}
         </label>
-        {/*경남*/}
+        <div>{gyeongnamtoggle && gyeongnam_list}</div>
         <label
           className="district"
           onClick={() => {
@@ -305,7 +552,7 @@ const Toggle = (props: any) => {
         >
           {daegu.name}
         </label>
-        {/*대구*/}
+        <div>{daegutoggle && daegu_list}</div>
         <label
           className="district"
           onClick={() => {
@@ -315,7 +562,7 @@ const Toggle = (props: any) => {
         >
           {ulsan.name}
         </label>
-        {/*울산*/}
+        <div>{ulsantoggle && ulsan_list}</div>
         <label
           className="district"
           onClick={() => {
@@ -325,7 +572,7 @@ const Toggle = (props: any) => {
         >
           {busan.name}
         </label>
-        {/*부산*/}
+        <div>{busantoggle && busan_list}</div>
       </div>
     </>
   );
