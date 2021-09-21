@@ -518,7 +518,8 @@ const Toggle = () => {
         }
       }
     }
-  } else if (index === 1) {
+  }
+  else if (index === 1) {
     if (gangwon.id != '') {
       if (flag) {
         if (stationlist != '') {
@@ -646,20 +647,57 @@ const Toggle = () => {
     }
   }
 
+
+  //
+  // const gyeongi_station = gyeongi.city.map((v:string, index:number)=>{
+  //   if (gyeongi.id != '') {
+  //     console.log(typeof(gyeongi.city[0].station[index]))
+  //     console.log(v)
+  //     // <div>{gyeongi.city[0].station[index]}
+  //     // </div>
+  //   }
+  // })
+
+  // console.log(gyeongi)
+  // console.log(gyeongi.city)
+  // console.log(gyeongi.city[0])
+  // gyeongi.city.map((v: string, index: number) => {
+  //   console.log(gyeongi.city[index].station);
+  // });
+
+  // gyeongi.city[index].station[1],
+  //   gyeongi.city[index].station[2],
+  //   gyeongi.city[index].station[4],
+
+  // console.log(gyeongi.city[0].station)
+  // const sta = gyeongi.city[0].station.map((v:string, index:number)=>{
+  //   <div>
+  //     {gyeongi.city[0].station[index]}
+  //   </div>
+  // })
+
   const gyeongi_list = gyeongi.city.map((v: string, index: number) => (
-    <div
-      id={v}
-      key={index}
-      className="citylist"
-      onClick={() => {
-        setMap(gyeongi.city[index].city_link);
-        setSelectedcity(gyeongi.city[index].city_name);
-      }}
-      // onMouseOver = {()=>{setMap(gangwon.link)}} //시군에 마우스 오버하면 지도 바뀌는거
-      // onMouseOut = {()=>{setMap(gyeongi.link)}} //렌더링양 에반데...~
-    >
-      {gyeongi.city[index].city_name}
-    </div>
+      <>
+      <div
+        id={v}
+        key={index}
+        className="citylist"
+        onClick={() => {
+          setMap(gyeongi.city[index].city_link);
+          setSelectedcity(gyeongi.city[index].city_name);
+        }}
+      >
+        {gyeongi.city[index].city_name}
+        {map===gyeongi.city[index].city_link && (
+          <div>
+            {gyeongi.city[index].station.map((li: any) => (
+              <li>{li}</li>
+            ))}
+          </div>
+        )}
+      </div>
+
+      </>
   ));
   const gangwon_list = gangwon.city.map((v: string, index: number) => (
     <div
@@ -672,6 +710,13 @@ const Toggle = () => {
       }}
     >
       {gangwon.city[index].city_name}
+      {map===gangwon.city[index].city_link && (
+        <div>
+          {gangwon.city[index].station.map((li: any) => (
+            <li>{li}</li>
+          ))}
+        </div>
+      )}
     </div>
   ));
   const chungnam_list = chungnam.city.map((v: string, index: number) => (
@@ -685,6 +730,13 @@ const Toggle = () => {
       }}
     >
       {chungnam.city[index].city_name}
+      {map===chungnam.city[index].city_link && (
+        <div>
+          {chungnam.city[index].station.map((li: any) => (
+            <li>{li}</li>
+          ))}
+        </div>
+      )}
     </div>
   ));
   const chungbuk_list = chungbuk.city.map((v: string, index: number) => (
@@ -698,6 +750,13 @@ const Toggle = () => {
       }}
     >
       {chungbuk.city[index].city_name}
+      {map===chungbuk.city[index].city_link && (
+        <div>
+          {chungbuk.city[index].station.map((li: any) => (
+            <li>{li}</li>
+          ))}
+        </div>
+      )}
     </div>
   ));
   const jeonnam_list = jeonnam.city.map((v: string, index: number) => (
@@ -711,6 +770,13 @@ const Toggle = () => {
       }}
     >
       {jeonnam.city[index].city_name}
+      {map===jeonnam.city[index].city_link && (
+        <div>
+          {jeonnam.city[index].station.map((li: any) => (
+            <li>{li}</li>
+          ))}
+        </div>
+      )}
     </div>
   ));
   const jeonbuk_list = jeonbuk.city.map((v: string, index: number) => (
@@ -724,6 +790,13 @@ const Toggle = () => {
       }}
     >
       {jeonbuk.city[index].city_name}
+      {map===jeonbuk.city[index].city_link && (
+        <div>
+          {jeonbuk.city[index].station.map((li: any) => (
+            <li>{li}</li>
+          ))}
+        </div>
+      )}
     </div>
   ));
   const gyeongnam_list = gyeongnam.city.map((v: string, index: number) => (
@@ -737,6 +810,13 @@ const Toggle = () => {
       }}
     >
       {gyeongnam.city[index].city_name}
+      {map===gyeongnam.city[index].city_link && (
+        <div>
+          {gyeongnam.city[index].station.map((li: any) => (
+            <li>{li}</li>
+          ))}
+        </div>
+      )}
     </div>
   ));
   const gyeongbuk_list = gyeongbuk.city.map((v: string, index: number) => (
@@ -750,6 +830,13 @@ const Toggle = () => {
       }}
     >
       {gyeongbuk.city[index].city_name}
+      {map===gyeongbuk.city[index].city_link && (
+        <div>
+          {gyeongbuk.city[index].station.map((li: any) => (
+            <li>{li}</li>
+          ))}
+        </div>
+      )}
     </div>
   ));
   const incheon_list = incheon.city.map((v: string, index: number) => (
@@ -763,6 +850,13 @@ const Toggle = () => {
       }}
     >
       {incheon.city[index].city_name}
+      {map===incheon.city[index].city_link && (
+        <div>
+          {incheon.city[index].station.map((li: any) => (
+            <li>{li}</li>
+          ))}
+        </div>
+      )}
     </div>
   ));
   const daejeon_list = daejeon.city.map((v: string, index: number) => (
@@ -776,6 +870,13 @@ const Toggle = () => {
       }}
     >
       {daejeon.city[index].city_name}
+      {map===daejeon.city[index].city_link && (
+        <div>
+          {daejeon.city[index].station.map((li: any) => (
+            <li>{li}</li>
+          ))}
+        </div>
+      )}
     </div>
   ));
   const daegu_list = daegu.city.map((v: string, index: number) => (
@@ -789,6 +890,13 @@ const Toggle = () => {
       }}
     >
       {daegu.city[index].city_name}
+      {map===daegu.city[index].city_link && (
+        <div>
+          {daegu.city[index].station.map((li: any) => (
+            <li>{li}</li>
+          ))}
+        </div>
+      )}
     </div>
   ));
   const busan_list = busan.city.map((v: string, index: number) => (
@@ -802,6 +910,13 @@ const Toggle = () => {
       }}
     >
       {busan.city[index].city_name}
+      {map===busan.city[index].city_link && (
+        <div>
+          {busan.city[index].station.map((li: any) => (
+            <li>{li}</li>
+          ))}
+        </div>
+      )}
     </div>
   ));
   const ulsan_list = ulsan.city.map((v: string, index: number) => (
@@ -815,6 +930,13 @@ const Toggle = () => {
       }}
     >
       {ulsan.city[index].city_name}
+      {map===ulsan.city[index].city_link && (
+        <div>
+          {ulsan.city[index].station.map((li: any) => (
+            <li>{li}</li>
+          ))}
+        </div>
+      )}
     </div>
   ));
   const gwangju_list = gwangju.city.map((v: string, index: number) => (
@@ -828,6 +950,13 @@ const Toggle = () => {
       }}
     >
       {gwangju.city[index].city_name}
+      {map===gwangju.city[index].city_link && (
+        <div>
+          {gwangju.city[index].station.map((li: any) => (
+            <li>{li}</li>
+          ))}
+        </div>
+      )}
     </div>
   ));
   const sejong_list = sejong.city.map((v: string, index: number) => (
@@ -841,6 +970,13 @@ const Toggle = () => {
       }}
     >
       {sejong.city[index].city_name}
+      {map===sejong.city[index].city_link && (
+        <div>
+          {sejong.city[index].station.map((li: any) => (
+            <li>{li}</li>
+          ))}
+        </div>
+      )}
     </div>
   ));
 
