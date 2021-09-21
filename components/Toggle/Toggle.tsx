@@ -124,21 +124,25 @@ const Toggle = (props: any) => {
 
   // Getapi 컴포넌트 분리해서 뺐음
 
-  // const gyeongi_list = gyeongi.cities.map((v: string, index: number) => (
-  //   <div
-  //     id={v}
-  //     key={index}
-  //     className="citylist"
-  //     onClick={() => {
-  //       setMap(gyeongi.cities_link[index]);
-  //       setSelectedcity(v);
-  //     }}
-  //     // onMouseOver = {()=>{setMap(gangwon.link)}} //시군에 마우스 오버하면 지도 바뀌는거
-  //     // onMouseOut = {()=>{setMap(gyeongi.link)}} //렌더링양 에반데...~
-  //   >
-  //     {v}
-  //   </div>
-  // ));
+  const gyeongi_list = gyeongi.city.map((v: string, index: number) => (
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(gyeongi.city[index].city_link);
+        setSelectedcity(gyeongi.city[index].city_name);
+      }}
+      // onMouseOver = {()=>{setMap(gangwon.link)}} //시군에 마우스 오버하면 지도 바뀌는거
+      // onMouseOut = {()=>{setMap(gyeongi.link)}} //렌더링양 에반데...~
+    >
+      {gyeongi.city[index].city_name}
+    </div>
+  ));
+
+  // gyeongi.city.map((v: string, index: number) => {
+  //   console.log(gyeongi.city[index].city_name);
+  // });
 
   return (
     <>
@@ -164,7 +168,7 @@ const Toggle = (props: any) => {
       <img src={map} className="map" alt="map" />
 
       <button className="gotosecondbtn">
-        <Link to={`/second/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>
+        <Link to={`/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>
           {selectedcity}의 추천 {selectedcategory} 보기 !
         </Link>
       </button>
@@ -180,7 +184,7 @@ const Toggle = (props: any) => {
           {gyeongi.name}
         </label>
         {/*경기*/}
-        <div>{gyeongitoggle}</div>
+        <div>{gyeongitoggle && gyeongi_list}</div>
         <label
           className="district"
           onClick={() => {
