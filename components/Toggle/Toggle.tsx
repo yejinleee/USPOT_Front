@@ -6,8 +6,7 @@ import './Toggle.css';
 import Category from '@components/Category/category';
 import Getapi from '@components/GetAPI/Getapi';
 
-const Toggle = (props:any) => {
-
+const Toggle = (props: any) => {
   const [selectedcategory, setSelectedcategory] = useState('안');
   const [selectedcity, setSelectedcity] = useState('없음'); //선택된도시 props로 넘겨주려고
 
@@ -35,109 +34,130 @@ const Toggle = (props:any) => {
     id: '',
     name: '',
     link: '',
-    cities:[],
-    cities_link:[],
-    city:[
-      {
-        city_name: '',
-        city_link: '',
-        station: [],
-      },
-    ],
+    city: [],
   } as any);
 
   const [gangwon, setGangwon] = useState({
     id: '',
     name: '',
     link: '',
+    city: [],
   } as any);
   const [chungnam, setChungnam] = useState({
     id: '',
     name: '',
     link: '',
+    city: [],
   } as any);
   const [chungbuk, setChungbuk] = useState({
     id: '',
     name: '',
     link: '',
+    city: [],
   } as any);
   const [gyeongnam, setGyeongnam] = useState({
     id: '',
     name: '',
     link: '',
+    city: [],
   } as any);
   const [gyeongbuk, setGyeongbuk] = useState({
     id: '',
     name: '',
     link: '',
+    city: [],
   } as any);
   const [jeonbuk, setJeonbuk] = useState({
     id: '',
     name: '',
     link: '',
+    city: [],
   } as any);
   const [jeonnam, setJeonnam] = useState({
     id: '',
     name: '',
     link: '',
+    city: [],
   } as any);
   const [incheon, setIncheon] = useState({
     id: '',
     name: '',
     link: '',
+    city: [],
   } as any);
   const [daejeon, setDajeon] = useState({
     id: '',
     name: '',
     link: '',
+    city: [],
   } as any);
   const [gwangju, setGwangju] = useState({
     id: '',
     name: '',
     link: '',
+    city: [],
   } as any);
   const [daegu, setDaegu] = useState({
     id: '',
     name: '',
     link: '',
+    city: [],
   } as any);
   const [ulsan, setUlsan] = useState({
     id: '',
     name: '',
     link: '',
+    city: [],
   } as any);
   const [busan, setBusan] = useState({
     id: '',
     name: '',
     link: '',
+    city: [],
   } as any);
   const [sejong, setSejong] = useState({
     id: '',
     name: '',
     link: '',
+    city: [],
   } as any);
 
   // Getapi 컴포넌트 분리해서 뺐음
 
-  const gyeongi_list = gyeongi.cities.map((v:string,index:number) =>
-    (<div id={v} key={index} className="citylist"
-          onClick={()=>{setMap(gyeongi.cities_link[index]); setSelectedcity(v)}}
-          // onMouseOver = {()=>{setMap(gangwon.link)}} //시군에 마우스 오버하면 지도 바뀌는거
-          // onMouseOut = {()=>{setMap(gyeongi.link)}} //렌더링양 에반데...~
-      >
-      {v}
-    </div>));
-
+  // const gyeongi_list = gyeongi.cities.map((v: string, index: number) => (
+  //   <div
+  //     id={v}
+  //     key={index}
+  //     className="citylist"
+  //     onClick={() => {
+  //       setMap(gyeongi.cities_link[index]);
+  //       setSelectedcity(v);
+  //     }}
+  //     // onMouseOver = {()=>{setMap(gangwon.link)}} //시군에 마우스 오버하면 지도 바뀌는거
+  //     // onMouseOut = {()=>{setMap(gyeongi.link)}} //렌더링양 에반데...~
+  //   >
+  //     {v}
+  //   </div>
+  // ));
 
   return (
     <>
-      <Getapi setGyeongi={setGyeongi} setGangwon={setGangwon}
-              setChungnam={setChungnam} setChungbuk={setChungbuk}
-              setGyeongnam={setGyeongnam} setGyeongbuk={setGyeongbuk}
-              setJeonbuk={setJeonbuk} setJeonnam={setJeonnam}
-              setIncheon={setIncheon} setDajeon={setDajeon}
-              setGwangju={setGwangju} setDaegu={setDaegu}
-              setUlsan={setUlsan} setBusan={setBusan} setSejong={setSejong}
+      <Getapi
+        setGyeongi={setGyeongi}
+        setGangwon={setGangwon}
+        setChungnam={setChungnam}
+        setChungbuk={setChungbuk}
+        setGyeongnam={setGyeongnam}
+        setGyeongbuk={setGyeongbuk}
+        setJeonbuk={setJeonbuk}
+        setJeonnam={setJeonnam}
+        setIncheon={setIncheon}
+        setDajeon={setDajeon}
+        setGwangju={setGwangju}
+        setDaegu={setDaegu}
+        setUlsan={setUlsan}
+        setBusan={setBusan}
+        setSejong={setSejong}
       />
       <Category setSelectedcategory={setSelectedcategory} />
 
@@ -160,7 +180,7 @@ const Toggle = (props:any) => {
           {gyeongi.name}
         </label>
         {/*경기*/}
-        <div>{gyeongitoggle && gyeongi_list}</div>
+        <div>{gyeongitoggle}</div>
         <label
           className="district"
           onClick={() => {
