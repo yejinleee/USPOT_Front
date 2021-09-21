@@ -1,6 +1,6 @@
 import React from 'react';
-import Footer from './Footer/Footer';
-import Header from './Header/Header';
+import Footer from '@layouts/Footer/Footer';
+import Header from '@layouts/Header/Header';
 import './Layouts.scss';
 
 const Layout = (props: { children: React.ReactNode }) => {

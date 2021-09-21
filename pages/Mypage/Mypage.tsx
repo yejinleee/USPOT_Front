@@ -1,4 +1,4 @@
-import Layout from '@components/Layouts';
+import Layout from '@layouts/Layouts';
 import React from 'react';
 import axios, { AxiosResponse } from 'axios';
 
