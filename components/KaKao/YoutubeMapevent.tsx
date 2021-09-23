@@ -1,17 +1,24 @@
 /*global kakao */
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { markerdata } from './MarkerData';
 
 export default function YoutubeMap() {
+  const latt = useRef(0);
+  const long = useRef(0);
   const kakao = (window as any).kakao;
   useEffect(() => {
     mapscript();
   }, []);
 
   const mapscript = () => {
+    markerdata.forEach((el) => {
+      latt.current += el.lat;
+      long.current += el.lng;
+    });
+
     let container = document.getElementById('ytmap');
     let options = {
-      center: new kakao.maps.LatLng(37.624915253753194, 127.15122688059974),
+      center: new kakao.maps.LatLng(latt.current / 4, long.current / 4),
       level: 5,
     };
 
