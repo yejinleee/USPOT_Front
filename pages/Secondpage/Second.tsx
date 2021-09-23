@@ -1,6 +1,7 @@
-import React, { FC, memo, useMemo, useState } from 'react';
+import React, { FC, memo, useEffect, useMemo, useState } from 'react';
 import Slide from '@components/Slide/Slide';
 import Layout from '@layouts/Layouts';
+import axios from 'axios';
 
 const Second = (props: any) => {
   const selectedcity = props.match.params.selectedcity;

@@ -6,52 +6,67 @@ import './Container.css';
 const Container = (props: any) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const selectCity = (id: any, link: any) => {
-    if (id === 1) {
+  const selectCity = (value: any) => {
+    if (value.id === 1) {
       props.setGyeongitoggle(true);
-      props.setMap(link);
-    } else if (id === 2) {
+      props.setMap(value.cityLink);
+      props.setSelectedcity(value.name);
+    } else if (value.id === 2) {
       props.setGangwontoggle(true);
-      props.setMap(link);
-    } else if (id === 3) {
+      props.setMap(value.cityLink);
+      props.setSelectedcity(value.name);
+    } else if (value.id === 3) {
       props.setChungnamtoggle(true);
-      props.setMap(link);
-    } else if (id === 4) {
+      props.setMap(value.cityLink);
+      props.setSelectedcity(value.name);
+    } else if (value.id === 4) {
       props.setChungbuktoggle(true);
-      props.setMap(link);
-    } else if (id === 5) {
+      props.setMap(value.cityLink);
+      props.setSelectedcity(value.name);
+    } else if (value.id === 5) {
       props.setJeonnamtoggle(true);
-      props.setMap(link);
-    } else if (id === 6) {
+      props.setMap(value.cityLink);
+      props.setSelectedcity(value.name);
+    } else if (value.id === 6) {
       props.setJeonbuktoggle(true);
-      props.setMap(link);
-    } else if (id === 7) {
+      props.setMap(value.cityLink);
+      props.setSelectedcity(value.name);
+    } else if (value.id === 7) {
       props.setGyeonnamtoggle(true);
-      props.setMap(link);
-    } else if (id === 8) {
+      props.setMap(value.cityLink);
+      props.setSelectedcity(value.name);
+    } else if (value.id === 8) {
       props.setGyeonbuktoggle(true);
-      props.setMap(link);
-    } else if (id === 9) {
+      props.setMap(value.cityLink);
+      props.setSelectedcity(value.name);
+    } else if (value.id === 9) {
       props.setIncheontoggle(true);
-      props.setMap(link);
-    } else if (id === 10) {
+      props.setMap(value.cityLink);
+      props.setSelectedcity(value.name);
+    } else if (value.id === 10) {
       props.setDaejeontoggle(true);
-      props.setMap(link);
-    } else if (id === 11) {
+      props.setMap(value.cityLink);
+      props.setSelectedcity(value.name);
+    } else if (value.id === 11) {
       props.setDaegutoggle(true);
-      props.setMap(link);
-    } else if (id === 12) {
+      props.setMap(value.cityLink);
+      props.setSelectedcity(value.name);
+    } else if (value.id === 12) {
       props.setBusantoggle(true);
-      props.setMap(link);
-    } else if (id === 13) {
+      props.setMap(value.cityLink);
+      props.setSelectedcity(value.name);
+    } else if (value.id === 13) {
       props.setUlsantoggle(true);
-      props.setMap(link);
-    } else if (id === 14) {
+      props.setMap(value.cityLink);
+      props.setSelectedcity(value.name);
+    } else if (value.id === 14) {
       props.setGwangjutoggle(true);
-      props.setMap(link);
+      props.setMap(value.cityLink);
+      props.setSelectedcity(value.name);
     } else {
       props.setSejongtoggle(true);
-      props.setMap(link);
+      props.setMap(value.cityLink);
+      props.setSelectedcity(value.name);
     }
   };
 
@@ -74,7 +89,7 @@ const Container = (props: any) => {
         }).map((val: any, key: any) => {
           return (
             <div className="contry" key={key}>
-              <p onClick={() => selectCity(val.id, val.cityLink)}>{val.name}</p>
+              <p onClick={() => selectCity(val)}>{val.name}</p>
             </div>
           );
         })}

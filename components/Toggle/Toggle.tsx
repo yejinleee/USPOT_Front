@@ -142,7 +142,7 @@ const Toggle = () => {
   const sejongindex = useRef(0);
 
   useEffect(() => {
-    axios.get('api/province/findprovince').then((response) => {
+    axios.get('/api/province/findprovince').then((response) => {
       for (var i = 0; i < response.data.data.length; i++) {
         setIndex(i);
         if (i === 0) {
@@ -160,6 +160,7 @@ const Toggle = () => {
               city: [
                 ...prev.city,
                 {
+                  city_id: response.data.data[i].cityList[j].cityid,
                   city_name: response.data.data[i].cityList[j].name,
                   city_link: response.data.data[i].cityList[j].cityLink,
                   station: [],
@@ -184,6 +185,7 @@ const Toggle = () => {
               city: [
                 ...prev.city,
                 {
+                  city_id: response.data.data[i].cityList[j].cityid,
                   city_name: response.data.data[i].cityList[j].name,
                   city_link: response.data.data[i].cityList[j].cityLink,
                   station: [],
@@ -208,6 +210,7 @@ const Toggle = () => {
               city: [
                 ...prev.city,
                 {
+                  city_id: response.data.data[i].cityList[j].cityid,
                   city_name: response.data.data[i].cityList[j].name,
                   city_link: response.data.data[i].cityList[j].cityLink,
                   station: [],
@@ -232,6 +235,7 @@ const Toggle = () => {
               city: [
                 ...prev.city,
                 {
+                  city_id: response.data.data[i].cityList[j].cityid,
                   city_name: response.data.data[i].cityList[j].name,
                   city_link: response.data.data[i].cityList[j].cityLink,
                   station: [],
@@ -256,6 +260,7 @@ const Toggle = () => {
               city: [
                 ...prev.city,
                 {
+                  city_id: response.data.data[i].cityList[j].cityid,
                   city_name: response.data.data[i].cityList[j].name,
                   city_link: response.data.data[i].cityList[j].cityLink,
                   station: [],
@@ -280,6 +285,7 @@ const Toggle = () => {
               city: [
                 ...prev.city,
                 {
+                  city_id: response.data.data[i].cityList[j].cityid,
                   city_name: response.data.data[i].cityList[j].name,
                   city_link: response.data.data[i].cityList[j].cityLink,
                   station: [],
@@ -304,6 +310,7 @@ const Toggle = () => {
               city: [
                 ...prev.city,
                 {
+                  city_id: response.data.data[i].cityList[j].cityid,
                   city_name: response.data.data[i].cityList[j].name,
                   city_link: response.data.data[i].cityList[j].cityLink,
                   station: [],
@@ -328,6 +335,7 @@ const Toggle = () => {
               city: [
                 ...prev.city,
                 {
+                  city_id: response.data.data[i].cityList[j].cityid,
                   city_name: response.data.data[i].cityList[j].name,
                   city_link: response.data.data[i].cityList[j].cityLink,
                   station: [],
@@ -352,6 +360,7 @@ const Toggle = () => {
               city: [
                 ...prev.city,
                 {
+                  city_id: response.data.data[i].cityList[j].cityid,
                   city_name: response.data.data[i].cityList[j].name,
                   city_link: response.data.data[i].cityList[j].cityLink,
                   station: [],
@@ -376,6 +385,7 @@ const Toggle = () => {
               city: [
                 ...prev.city,
                 {
+                  city_id: response.data.data[i].cityList[j].cityid,
                   city_name: response.data.data[i].cityList[j].name,
                   city_link: response.data.data[i].cityList[j].cityLink,
                   station: [],
@@ -400,6 +410,7 @@ const Toggle = () => {
               city: [
                 ...prev.city,
                 {
+                  city_id: response.data.data[i].cityList[j].cityid,
                   city_name: response.data.data[i].cityList[j].name,
                   city_link: response.data.data[i].cityList[j].cityLink,
                   station: [],
@@ -424,6 +435,7 @@ const Toggle = () => {
               city: [
                 ...prev.city,
                 {
+                  city_id: response.data.data[i].cityList[j].cityid,
                   city_name: response.data.data[i].cityList[j].name,
                   city_link: response.data.data[i].cityList[j].cityLink,
                   station: [],
@@ -448,6 +460,7 @@ const Toggle = () => {
               city: [
                 ...prev.city,
                 {
+                  city_id: response.data.data[i].cityList[j].cityid,
                   city_name: response.data.data[i].cityList[j].name,
                   city_link: response.data.data[i].cityList[j].cityLink,
                   station: [],
@@ -472,6 +485,7 @@ const Toggle = () => {
               city: [
                 ...prev.city,
                 {
+                  city_id: response.data.data[i].cityList[j].cityid,
                   city_name: response.data.data[i].cityList[j].name,
                   city_link: response.data.data[i].cityList[j].cityLink,
                   station: [],
@@ -496,6 +510,7 @@ const Toggle = () => {
               city: [
                 ...prev.city,
                 {
+                  city_id: response.data.data[i].cityList[j].cityid,
                   city_name: response.data.data[i].cityList[j].name,
                   city_link: response.data.data[i].cityList[j].cityLink,
                   station: [],
@@ -649,7 +664,7 @@ const Toggle = () => {
   const [data, setData] = useState([] as any);
 
   useEffect(() => {
-    axios.get('api/province/findprovince').then((response) => {
+    axios.get('/api/province/findprovince').then((response) => {
       setData(response.data.data);
     });
   }, []);
@@ -1021,7 +1036,9 @@ const Toggle = () => {
         setBusantoggle={setBusantoggle}
         setSejongtoggle={setSejongtoggle}
         setMap={setMap}
+        setSelectedcity={setSelectedcity}
       />
+
       <div className="district_toggle">
         <label
           className="district"
