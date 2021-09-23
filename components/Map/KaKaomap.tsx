@@ -1,11 +1,13 @@
 import React from 'react';
 // import './kakaomap.css';
-import Mapevent from '@components/KaKao/Mapevent';
+import Top5Mapevent from '@components/KaKao/Top5Mapevent';
+import YoutubeMapevent from '@components/KaKao/YoutubeMapevent';
 
 const KakaoMap = () => {
   return (
     <div className="kakaomap">
-      <Mapevent />
+      <Top5Mapevent />
+      <YoutubeMapevent />
     </div>
   );
 };

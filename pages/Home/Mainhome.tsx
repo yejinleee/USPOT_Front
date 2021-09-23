@@ -7,9 +7,9 @@ import KakaoMap from '@components/Map/KaKaomap';
 
 const HomePage = () => (
   <Layouts>
-    <Search />
+    {/* <Search /> */}
     <Toggle />
-    {/*<KakaoMap />*/}
+    <KakaoMap />
   </Layouts>
 );
 
