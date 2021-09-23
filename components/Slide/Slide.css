@@ -18,8 +18,8 @@
 span button {
     display: inline-block;
     width: .875rem;
-    height: .875rem;
-    border-radius: 50%;
+    /*height: .875rem;*/
+    border-radius: 30%;
     margin: 0 .25rem;
     z-index: 10;
     -webkit-transition: all .3s;
@@ -50,28 +50,42 @@ button.btn_now{
 .leftback{
     transform: translateX(4vw) translateY(-2vh)scale(0.83);
     opacity: .2;
-    z-index: -2;
+    z-index: -3;
     transition: .5s;
 }
 .rightback{
     transform: translateX(44vw) translateY(-2vh) scale(0.83);
     opacity: .2;
-    z-index: -2;
+    z-index: -3;
     transition: .5s;
 }
 .center{
     transform: translateX(25vw) scale(1);
     transition: .5s;
+    z-index: -1;
 }
 .left{
     transform: translateX(1vw) scale(0.83);
     opacity: .75;
-    z-index: -1;
+    z-index: -2;
     transition: .5s;
 }
 .right{
     transform: translateX(47vw) scale(0.83);
     opacity: .75;
-    z-index: -1;
+    z-index: -2;
     transition: .5s;
+}
+
+
+/*Thumbnail*/
+
+.youtubebutton {
+    display: inline-block;
+    /*margin: 0 .25rem;*/
+    /*z-index: 10;*/
+    /*-webkit-transition: all .3s;*/
+    /*transition: all .3s;*/
+    /*cursor: pointer;*/
+    /*background-color: #d9dfe4;*/
 }

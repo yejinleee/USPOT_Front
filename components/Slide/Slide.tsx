@@ -1,11 +1,14 @@
-import React, {FC, memo, useMemo, useState} from 'react';
+import React, { FC, memo, useEffect, useMemo, useState } from 'react';
 import './Slide.css';
+import Thumbnail from '@components/Thumbnail/Thumbnail';
+import axios from 'axios';
 
 interface Props {
-  city : string;
+  selectedcity : string;
+  selectedcategory : string;
 }
 
-const Slide : FC<Props> = ({children, city }) => {
+const Slide : FC<Props> = ({children, selectedcity,selectedcategory }) => {
 
   const pic1 = "https://user-images.githubusercontent.com/81412212/132859482-98355de1-63a3-41ea-b7f6-f8ce34f758f0.jpg"
   const pic2 = "https://user-images.githubusercontent.com/81412212/132859641-e6650092-45a9-4b17-b2ad-6fe8ef06a161.png"
@@ -18,6 +21,7 @@ const Slide : FC<Props> = ({children, city }) => {
   const [start,setStart] = useState(0);
 
   const [imgloc,setImgloc]=useState(['carousel_card_item center','carousel_card_item right','carousel_card_item leftback','carousel_card_item rightback','carousel_card_item left']);
+
 
   return (
 
@@ -40,19 +44,19 @@ const Slide : FC<Props> = ({children, city }) => {
               </div>
             </div>
             <div className={imgloc[(start+2)%5]}>
-              <div className="carousel-card-mask"> 
+              <div className="carousel-card-mask">
                 <img src={pic3} alt="pic"/>
                 3번 장소이름
               </div>
             </div>
             <div className={imgloc[(start+3)%5]}>
-              <div className="carousel-card-mask"> 
+              <div className="carousel-card-mask">
                 <img src={pic4} alt="pic"/>
                 4번 장소이름
               </div>
             </div>
             <div className={imgloc[(start+4)%5]}>
-              <div className="carousel-card-mask"> 
+              <div className="carousel-card-mask">
                 <img src={pic5} alt="pic"/>
                 5번 장소이름
               </div>
@@ -69,6 +73,7 @@ const Slide : FC<Props> = ({children, city }) => {
         </div>
       </div>
 
+      <Thumbnail selectedcity={selectedcity} selectedcategory={selectedcategory} btn_pic={btn_pic}/>
     </>
 
   );

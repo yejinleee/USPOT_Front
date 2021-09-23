@@ -11,6 +11,7 @@ const HomePage = () => (
     {/* <Search /> */}
     <Toggle />
     {/* <KakaoMap /> */}
+    {/*<KakaoMap />*/}
   </Layouts>
 );
 

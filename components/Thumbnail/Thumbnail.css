@@ -1,0 +1,7 @@
+.youtube_each {
+    display: table-cell;
+    padding: 10px;
+}
+.youtube_all{
+    overflow: hidden;
+}
