@@ -5,9 +5,7 @@ import HomePage from '@pages/Home/Mainhome';
 import Mypage from '@pages/Mypage/Mypage';
 import Second from '@pages/Secondpage/Second';
 
-// class Routes extends React.Component {
 const Routes = () => {
-  // render() {
   return (
     <Router>
       <Switch>

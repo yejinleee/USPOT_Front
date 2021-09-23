@@ -10,9 +10,7 @@ const Toggle = () => {
   const [selectedcategory, setSelectedcategory] = useState('안');
   const [selectedcity, setSelectedcity] = useState('없음'); //선택된도시 props로 넘겨주려고
 
-  const [map, setMap] = useState(
-    'https://user-images.githubusercontent.com/63544044/132854633-87a1c788-d972-4375-96bb-eacc081ec93b.png',
-  );
+  const [map, setMap] = useState('src/지도.png');
 
   const [gyeongitoggle, setGyeongitoggle] = useState(false);
   const [gangwontoggle, setGangwontoggle] = useState(false);
@@ -121,6 +119,7 @@ const Toggle = () => {
     link: '',
     city: [],
   } as any);
+
   const [stationlist, setStationlist] = useState([] as any);
   const [flag, setFlag] = useState(false);
   const [index, setIndex] = useState(0);
@@ -661,13 +660,6 @@ const Toggle = () => {
       }
     }
   }
-  const [data, setData] = useState([] as any);
-
-  useEffect(() => {
-    axios.get('/api/province/findprovince').then((response) => {
-      setData(response.data.data);
-    });
-  }, []);
 
   const gyeongi_list = gyeongi.city.map((v: string, index: number) => (
     <>
@@ -986,17 +978,23 @@ const Toggle = () => {
       }
     }
   }
+
   return (
     <>
       {/* <div>
         {data.map((datas: any, i: any) => (
           <li key={i}>
             {datas.cityList.map((da: any, idx: any) => (
-              <li key={idx}>{da.name}</li>
+              <li key={idx}>
+                {data[0].cityList[0].stationList.map((data: any, index: any) => (
+                  <li key={index}>{data.name}</li>
+                ))}
+              </li>
             ))}
           </li>
         ))}
       </div> */}
+
       <Category setSelectedcategory={setSelectedcategory} />
 
       <img src={map} className="map" alt="map" />
@@ -1059,7 +1057,7 @@ const Toggle = () => {
           }}
         >
           {gangwon.name}
-        </label>{' '}
+        </label>
         <div>{gangwontoggle && gangwon_list}</div>
         <label
           className="district"
@@ -1069,7 +1067,7 @@ const Toggle = () => {
           }}
         >
           {incheon.name}
-        </label>{' '}
+        </label>
         <div>{incheontoggle && incheon_list}</div>
         <label
           className="district"
