@@ -22,31 +22,40 @@ const Slide : FC<Props> = ({children, city }) => {
   return (
 
     <>
-      {/*<div>2페이지 : {btn_pic}번그림 관광명소 TOP 5</div>*/}
       <div className="carousel">
         <div className="carousel_card">
           {/*<div className="top5_carousel_container" style={ top5slide()}>*/}
           <div className="top5_carousel_container">
             <div className={imgloc[start]}>
               {/*여기에 style={btn_pic ===각번호 ? view_pic3 : view_pic5} 머이런식으로*/}
-              <div className="carousel-card-mask"> </div>
-              <img src={pic1} alt="pic"/>
+              <div className="carousel-card-mask">
+                <img src={pic1} alt="pic"/>
+                1번 장소이름 : 나중에 api에서 불러와서 . 암튼 여기
+              </div>
             </div>
             <div className={imgloc[(start+1)%5]}>
-              <div className="carousel-card-mask"> </div>
-              <img src={pic2} alt="pic"/>
+              <div className="carousel-card-mask">
+                <img src={pic2} alt="pic"/>
+                2번 장소이름
+              </div>
             </div>
             <div className={imgloc[(start+2)%5]}>
-              <div className="carousel-card-mask"> </div>
-              <img src={pic3} alt="pic"/>
+              <div className="carousel-card-mask"> 
+                <img src={pic3} alt="pic"/>
+                3번 장소이름
+              </div>
             </div>
             <div className={imgloc[(start+3)%5]}>
-              <div className="carousel-card-mask"> </div>
-              <img src={pic4} alt="pic"/>
+              <div className="carousel-card-mask"> 
+                <img src={pic4} alt="pic"/>
+                4번 장소이름
+              </div>
             </div>
             <div className={imgloc[(start+4)%5]}>
-              <div className="carousel-card-mask"> </div>
-              <img src={pic5} alt="pic"/>
+              <div className="carousel-card-mask"> 
+                <img src={pic5} alt="pic"/>
+                5번 장소이름
+              </div>
             </div>
           </div>
 

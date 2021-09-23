@@ -1,7 +1,7 @@
 .top5_carousel_container{
     position: relative;
     /*transform: translate(-0vw);*/
-    height: 200px;
+    height: 400px;
 }
 .carousel_card_item {
     /*width : 100vw;*/
@@ -43,6 +43,10 @@ button.btn_now{
     width: fit-content;
     margin: 0 auto;
 }
+.carousel-card-mask{
+    text-align: center;
+}
+
 .leftback{
     transform: translateX(4vw) translateY(-2vh)scale(0.83);
     opacity: .2;
