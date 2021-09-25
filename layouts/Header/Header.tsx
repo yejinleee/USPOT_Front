@@ -7,7 +7,9 @@ class Header extends Component {
     return (
       <header className="Header">
         <div className="Contents">
-          <img id="logo" src="src/icon/USPOT로고.png" alt="USPOT" width="120" height="90" />
+          <Link to="/" style={{ textDecoration: 'none', color: '#000000' }}>
+            <img id="logo" src="src/icon/USPOT로고.png" alt="USPOT" width="120" height="90" />
+          </Link>
           <nav className="Navigation">
             <ul>
               <li>

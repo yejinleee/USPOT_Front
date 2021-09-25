@@ -981,33 +981,21 @@ const Toggle = () => {
 
   return (
     <>
-      {/* <div>
-        {data.map((datas: any, i: any) => (
-          <li key={i}>
-            {datas.cityList.map((da: any, idx: any) => (
-              <li key={idx}>
-                {data[0].cityList[0].stationList.map((data: any, index: any) => (
-                  <li key={index}>{data.name}</li>
-                ))}
-              </li>
-            ))}
-          </li>
-        ))}
-      </div> */}
-
       <Category setSelectedcategory={setSelectedcategory} />
 
       <img src={map} className="map" alt="map" />
 
-      {selectedcity !=='없음' && selectedcategory !=='안' ?
+      {selectedcity !== '없음' && selectedcategory !== '안' ? (
         <button className="gotosecondbtn" onClick={selectedalert}>
           <Link to={`/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>
             보러가기!!
           </Link>
-      </button>
-        : <button className="gotosecondbtn" onClick={selectedalert}>
+        </button>
+      ) : (
+        <button className="gotosecondbtn" onClick={selectedalert}>
           {selectedcity}의 추천 {selectedcategory}보기
-      </button> }
+        </button>
+      )}
 
       <Container
         setGyeongitoggle={setGyeongitoggle}
