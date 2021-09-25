@@ -1,4 +1,5 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
+import { Link, Route } from 'react-router-dom';
 import './Slide.css';
 import Thumbnail from '@components/Thumbnail/Thumbnail';
 import axios from 'axios';
@@ -73,6 +74,12 @@ const Slide : FC<Props> = ({children, selectedcity,selectedcategory }) => {
         </div>
       </div>
 
+
+      <button className="gotothirdbtn" >
+          <Link to='/third' style={{ textDecoration: 'none', color: '#000000' }}>
+            주변장소 더 보기
+          </Link>
+        </button>
       <Thumbnail selectedcity={selectedcity} selectedcategory={selectedcategory} btn_pic={btn_pic}/>
     </>
 
