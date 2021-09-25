@@ -1,136 +1,91 @@
 import React, {createRef, FC, memo, useMemo, useRef, useState} from 'react';
 import {useEffect} from "react";
-// import "./styles.css";
 import './Controller.css'
 
+const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) => {
+  const [state, setSlide] = useState(defaultState);
+  const handleChange = (e: any) => {
+    setSlide(e.target.value);
+  };
+
+  const Slider = () => (
+    <input
+      type="range"
+      id={id}
+      min={min}
+      max={max}
+      step={0.5}
+      // value={state} // don't set value from state
+      defaultValue={state} // but instead pass state value as default value
+      // onChange={(e) => console.log(e.target.value)} // don't set state on all change as react will re-render
+      onMouseUp={handleChange} // only set state when handle is released
+    />
+  );
+  return [state, Slider, setSlide];
+};
+
 const Controller =() =>{
-    const [selectedOrder,setSelectedOrder] = useState("");  //선택한 정렬기준 : popularity (or) distance
-    const selectedDistance = useRef(0);
 
-    const [selectedCate,setSelectedCate] = useState("");
-    const selectedCategory = useRef("");
-    const [value,onChange]=useState(1);
+    const [slideValue, Slider] = useSlider(1, 100, 70, 'Threshold', 'threshold');
+    const [selectedArrange,setSelectedArrange] = useState("");  //  정렬기준 *인기순 B / 거리순 E
+    const [selectedType,setSelectedType] = useState(0);
 
-    const [checkedInputs, setCheckedInputs] = useState([]as any);
-
-    const changeHandler = (checked:any, id:any) => {
-        if (checked) {
-            setCheckedInputs([...checkedInputs, id]);
-        } else {
-            // 체크 해제
-            setCheckedInputs(checkedInputs.filter((el:any) => el !== id));
-        }
-    };
-
-    // useEffect(()=>{
-    //     const ele = document.querySelector('.buble');
-    //     if (ele) {
-    //         ele.style.left = `${Number(value / 200)}px`;
-    //     }
-    // })
-
-    const clickPopularity=() =>{
-        setSelectedOrder("popularity");
+    function funcType(selected:number){
+      setSelectedType(selected);
     }
-    const clickDistance=()=>{
-        setSelectedOrder("distance");
-    }
-
-    const [ inputStatus, setInputStatus ] = useState('')
-
-    const handleClickRadioButton = (radioBtnName :any) => {
-        setInputStatus(radioBtnName)
+    function funcArrange(selected:string){
+      setSelectedArrange(selected);
     }
 
     return (
         <>
-            <div className="input_radio">
-                <form>
-                    <input type="radio" name="food" id="ipt1" className="c" value="치킨" checked/>
-                    <label htmlFor="ip1t" className="ccc">치킨</label>
-                    <input type="radio" name="food" id="ipt2" className="c" value="피자"/>
-                    <label htmlFor="ipt2" className="ccc">피자</label>
-                    <input type="radio" name="food" id="ipt3" className="c" value="짜장면"/>
-                    <label htmlFor="ipt3" className="ccc">짜장</label>
-                    <input type="radio" name="food" id="ipt4" className="c" value="짬뽕"/>
-                    <label htmlFor="ipt4" className="ccc">짬뽕</label>
-                </form>
-            </div>
-            {/*왜 두번선택을 해야 선택이되는지..*/}
-            {/*렌더링 새로되면 날라감*/}
-
-
+          <div className="controller">
 
             {/*슬라이더*/}
             <div className="slider-parent">
-                0
-                <input type="range" min="1" max="20000" value={value}
-                       // onChange={({ target: { value: radius } }) => {
-                       //     onChange(radius);
-                       // }}
-                    // 이렇게가 jsx코든데 뭐 왜 tsx안바껴주냐고
-                />
-                20km
-                <div className="buble">
-                    {value}m
-                </div>
+              0
+              <Slider />
+              20km
+              <div className="buble">{slideValue}m</div>
             </div>
             <br />
 
-
             {/*인기순거리순*/}
-            {/*selectedOrder를 바꾸는 함수를 만들어서 onClick에서 호출하면*/}
-            {/*웹페이지 실행이 안됨. Toomanyrender 샬라샬라 오류 ;;*/}
             <div className="order">
-                <button onClick={clickPopularity} className = {selectedOrder==="popularity" ? "selected" : "unselected"}>인기순</button>
-                <button onClick={clickDistance} className = {selectedOrder==="distance" ? "selected" : "unselected"}>거리순</button>
+              {/*인기순 B / 거리순 E*/}
+                <button onClick={()=>funcArrange('B')} className = {selectedArrange==="popularity" ? "selected" : "unselected"}>인기순</button>
+                <button onClick={()=>funcArrange('E')} className = {selectedArrange==="distance" ? "selected" : "unselected"}>거리순</button>
             </div>
-            {selectedOrder}
 
-
-
-            {/*<div className = "category">*/}
-            {/*    <input*/}
-            {/*        id={"aaa"}*/}
-            {/*        type="checkbox"*/}
-            {/*        onChange={(e)=>{*/}
-            {/*            changeHandler(e.currentTarget.checked, 'aaa')*/}
-            {/*        }}*/}
-            {/*        checked={checkedInputs.includes('aaa') ? true : false}*/}
-            {/*    />*/}
-            {/*    <input*/}
-            {/*    id={"bb"}*/}
-            {/*    type="checkbox"*/}
-            {/*    onChange={(e)=>{*/}
-            {/*        changeHandler(e.currentTarget.checked, 'bb')*/}
-            {/*    }}*/}
-            {/*    checked={checkedInputs.includes('bb') ? true : false}*/}
-            {/*    />*/}
-            {/*</div>*/}
-
-
-            {/*<button onClick={() => {selectedCategory.current ="tour"}}>관광명소</button>*/}
-            {/*<button onClick={() => {selectedCategory.current ="RES"}}>식당</button>*/}
+            {/*카테고리*/}
             <div className="category">
-                <button className = {selectedCate==="TOR" ? "selected" : "unselected"}>관광명소</button>
-                <button className = {selectedCate==="RES" ? "selected" : "unselected"}>음식점</button>
-                <button className = {selectedCate==="CAF" ? "selected" : "unselected"}>카페</button>
+                <button onClick={()=>funcType(12)} className = {selectedType===12 ? "selected" : "unselected"}>관광지</button>
+                <button onClick={()=>funcType(14)} className = {selectedType===14 ? "selected" : "unselected"}>문화시설</button>
+                <button onClick={()=>funcType(15)} className = {selectedType===15 ? "selected" : "unselected"}>축제,공연,행사</button>
+                <button onClick={()=>funcType(25)} className = {selectedType===25 ? "selected" : "unselected"}>여행코스</button>
+                <button onClick={()=>funcType(28)} className = {selectedType===28 ? "selected" : "unselected"}>레포츠</button>
+                <button onClick={()=>funcType(32)} className = {selectedType===32 ? "selected" : "unselected"}>숙박</button>
+                <button onClick={()=>funcType(38)} className = {selectedType===38 ? "selected" : "unselected"}>쇼핑</button>
+                <button onClick={()=>funcType(39)} className = {selectedType===39 ? "selected" : "unselected"}>음식</button>
             </div>
             <br/>
+            Arrange : {selectedArrange}
             <br/>
+            거리 : {slideValue}
             <br/>
+            Type : {selectedType}
+            <br/>
+          </div>
 
-
-            {/*샌드비*/}
-            <ul>
-                <li className = "icon_li custom-control">
-                    <input type="checkbox" className="cate" id="cate_li" value="편의점" />
-                    <label className="custom" htmlFor="cate_li">
-                        <div className="cate_1">편의점</div>
-                    </label>
-                </li>
-            </ul>
-
+          <div className="gobtn">
+            <button className="go">
+              장소 더보기 GO
+            </button>
+          </div>
+          
+          <div className="클래스명모하지">
+            GO 누르면 여기에 선택한거에 맞는 추천 장소 쥬륵 나올거에요
+          </div>
         </>
     )
 
