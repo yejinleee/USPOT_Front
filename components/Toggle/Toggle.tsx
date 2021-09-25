@@ -999,23 +999,15 @@ const Toggle = () => {
 
       <img src={map} className="map" alt="map" />
 
-      {/*/!*1번) 암것도 없다가 카테고리랑 지역 둘다 고르면 버튼 생김. alert기능의미없음*!/*/}
-      {selectedcity !== '없음' && selectedcategory !== '안' && (
-        <Link to={`/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>
-          <button className="gotosecondbtn" onClick={selectedalert}>
-            {selectedcity}의 추천 {selectedcategory} 보기 !!
-          </button>
-        </Link>
-      )}
-
-      {/*2번) 버튼은 계속 있는데 둘다 고르면 보러가기!! 부분을 눌러야 링크연결됨, alert유효*/}
-      {/*<button className="gotosecondbtn" onClick={selectedalert}>*/}
-      {/*  {selectedcity}의 추천 {selectedcategory}*/}
-      {/*  {selectedcity!=='없음' && selectedcategory!=='안' &&*/}
-      {/*  <Link to={`/second/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>*/}
-      {/*       보러가기!!*/}
-      {/*  </Link>}*/}
-      {/*</button>*/}
+      {selectedcity !=='없음' && selectedcategory !=='안' ?
+        <button className="gotosecondbtn" onClick={selectedalert}>
+          <Link to={`/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>
+            보러가기!!
+          </Link>
+      </button>
+        : <button className="gotosecondbtn" onClick={selectedalert}>
+          {selectedcity}의 추천 {selectedcategory}보기
+      </button> }
 
       <Container
         setGyeongitoggle={setGyeongitoggle}
