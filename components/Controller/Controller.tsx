@@ -30,11 +30,17 @@ const Controller = () => {
   const [selectedArrange, setSelectedArrange] = useState(''); //  정렬기준 *인기순 B / 거리순 E
   const [selectedType, setSelectedType] = useState(0);
   const [apiopen, setApigopen] = useState(false);
+  
   function funcType(selected: number) {
     setSelectedType(selected);
   }
   function funcArrange(selected: string) {
     setSelectedArrange(selected);
+  }
+  function selectedalert() {
+    if (selectedType===0 || selectedArrange==="" ){
+      return alert('검색 조건을 모두 선택하여 주세요')
+    }
   }
 
   return (
@@ -105,13 +111,14 @@ const Controller = () => {
           className="go"
           onClick={() => {
             setApigopen(!apiopen);
-          }}
+            selectedalert;
+          } }
         >
           장소 더보기 GO
         </button>
       </div>
 
-      <div className="클래스명모하지">{apiopen && <Getapi />}</div>
+       <div className="클래스명모하지">{apiopen && <Getapi />}</div>
     </>
   );
 };

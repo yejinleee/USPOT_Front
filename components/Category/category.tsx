@@ -9,6 +9,16 @@ const Category = (props: any) => {
       <br />
       <label
         onClick={() => {
+          props.setSelectedcategory('관광명소');
+          setClicked('tor');
+        }}
+        className={clicked === 'tor' ? 'clicked' : 'button'}
+      >
+        <img src="src/icon/관광명소.png" style={{ width: '5%' }} />
+        <p style={{ display: 'inline' }}>관광명소</p>
+      </label>
+      <label
+        onClick={() => {
           props.setSelectedcategory('음식점');
           setClicked('res');
         }}
@@ -26,16 +36,6 @@ const Category = (props: any) => {
       >
         <img src="src/icon/카페.png" style={{ width: '5%' }} />
         <p style={{ display: 'inline' }}>카페</p>
-      </label>
-      <label
-        onClick={() => {
-          props.setSelectedcategory('관광명소');
-          setClicked('tor');
-        }}
-        className={clicked === 'tor' ? 'clicked' : 'button'}
-      >
-        <img src="src/icon/관광명소.png" style={{ width: '5%' }} />
-        <p style={{ display: 'inline' }}>관광명소</p>
       </label>
     </>
   );
