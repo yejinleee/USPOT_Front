@@ -13,7 +13,7 @@ const Routes = () => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/mypage" component={Mypage} />
         <Route exact path="/:selectedcity/:selectedcategory" component={Second} />
-        <Route exact path="/third" component={Third} />
+        <Route exact path="/:selectedcity/:selectedcategory/more" component={Third} />
       </Switch>
     </Router>
   );

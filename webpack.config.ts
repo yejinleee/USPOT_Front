@@ -3,6 +3,7 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import webpack from 'webpack';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 // import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+const Dotenv = require('dotenv-webpack');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -10,6 +11,10 @@ const config: webpack.Configuration = {
   name: 'sleact',
   mode: isDevelopment ? 'development' : 'production',
   devtool: !isDevelopment ? 'hidden-source-map' : 'eval',
+  node: {
+    fs: 'empty',
+    net: 'empty',
+  },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
@@ -70,6 +75,7 @@ const config: webpack.Configuration = {
       // },
     }),
     new webpack.EnvironmentPlugin({ NODE_ENV: isDevelopment ? 'development' : 'production' }),
+    new Dotenv(),
   ],
   output: {
     path: path.join(__dirname, 'dist'),
