@@ -12,6 +12,7 @@ const Getapi: FC<Props> = ({ children, arrange, type, distance }) => {
   let pnumber = 1;
   let mapX = 127.5091156306887;
   let mapY = 34.8867806675504;
+  var datas;
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
@@ -19,11 +20,10 @@ const Getapi: FC<Props> = ({ children, arrange, type, distance }) => {
         `http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${arrange}&contentTypeId=${type}&mapX=${mapX}&mapY=${mapY}&radius=${distance}&listYN=Y&_type=json`,
       )
       .then((response) => {
-        // console.log(response);
         setData(response.data.response.body.items.item);
       });
   }, []);
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <div>{process.env.REACT_APP_KAKAO_MAP_KEY}12343</div>

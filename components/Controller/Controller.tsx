@@ -42,7 +42,6 @@ const Controller = () => {
       return alert('검색 조건을 모두 선택하여 주세요');
     }
   }
-
   return (
     <>
       <div className="controller">
@@ -71,7 +70,7 @@ const Controller = () => {
           </button>
         </div>
         {/*카테고리*/}
-        <div className="category">
+        <div className="category" onClick={()=>setApigopen(false)}>
           <button onClick={() => funcType(12)} className={selectedType === 12 ? 'selected' : 'unselected'}>
             관광지
           </button>
@@ -110,14 +109,13 @@ const Controller = () => {
         <button
           className="go"
           onClick={() => {
-            setApigopen(!apiopen);
-            selectedalert;
+            setApigopen(true);
+            selectedalert();
           }}
         >
           장소 더보기 GO
         </button>
       </div>
-
       <div className="클래스명모하지">
         {apiopen && <Getapi arrange={selectedArrange} distance={slideValue} type={selectedType} />}
       </div>
