@@ -81,9 +81,6 @@ const Controller = () => {
           <button onClick={() => funcType(15)} className={selectedType === 15 ? 'selected' : 'unselected'}>
             축제,공연,행사
           </button>
-          <button onClick={() => funcType(25)} className={selectedType === 25 ? 'selected' : 'unselected'}>
-            여행코스
-          </button>
           <button onClick={() => funcType(28)} className={selectedType === 28 ? 'selected' : 'unselected'}>
             레포츠
           </button>
@@ -110,7 +107,7 @@ const Controller = () => {
         <button
           className="go"
           onClick={() => {
-            setApigopen(!apiopen);
+            setApigopen(apiopen);
             selectedalert();
           }}
         >

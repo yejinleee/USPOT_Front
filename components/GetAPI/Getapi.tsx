@@ -7,12 +7,12 @@ interface Props {
   distance: number;
 }
 const Getapi: FC<Props> = ({ children, arrange, type, distance }) => {
-  let api = process.env.REACT_APP_TOUR_API_KEY;
+  let api = process.env.REACT_APP_TOUR_API_KEY_2;
   let number = 5;
   let pnumber = 1;
   let mapX = 127.5091156306887;
   let mapY = 34.8867806675504;
-  var datas = 'not exist';
+  var datas;
   const [data, setData] = useState([] as any);
 
   useEffect(() => {
@@ -28,14 +28,31 @@ const Getapi: FC<Props> = ({ children, arrange, type, distance }) => {
 
   console.log(data);
   if (data) {
-    datas = data.map((v: any) => {
-      return (
+    if (data.length > 1) {
+      datas = data.map((v: any) => {
+        return (
+          <>
+            <div>
+              <div>{v.title}</div>
+              <div>{v.addr1}</div>
+              <div>{v.dist}m</div>
+              <img src={v.firstimage}></img>
+            </div>
+          </>
+        );
+      });
+    } else {
+      datas = (
         <>
-          <div>{v.title}</div>
-          <img src={v.firstimage}></img>
+          <div>
+            <div>{data.title}</div>
+            <div>{data.addr1}</div>
+            <div>{data.dist}m</div>
+            <img src={data.firstimage}></img>
+          </div>
         </>
       );
-    });
+    }
   } else {
     datas = 'not exist';
   }
