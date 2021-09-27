@@ -12,7 +12,9 @@ const Getapi: FC<Props> = ({ children, arrange, type, distance }) => {
   let pnumber = 1;
   let mapX = 127.5091156306887;
   let mapY = 34.8867806675504;
-  const [data, setData] = useState([]);
+  var datas = 'not exist';
+  const [data, setData] = useState([] as any);
+
   useEffect(() => {
     axios
       .get(
@@ -22,13 +24,23 @@ const Getapi: FC<Props> = ({ children, arrange, type, distance }) => {
         // console.log(response);
         setData(response.data.response.body.items.item);
       });
-  }, []);
+  }, [datas]);
+
   console.log(data);
-  return (
-    <>
-      <div>{process.env.REACT_APP_KAKAO_MAP_KEY}12343</div>
-    </>
-  );
+  if (data) {
+    datas = data.map((v: any) => {
+      return (
+        <>
+          <div>{v.title}</div>
+          <img src={v.firstimage}></img>
+        </>
+      );
+    });
+  } else {
+    datas = 'not exist';
+  }
+
+  return <>{datas}</>;
 };
 
 export default Getapi;

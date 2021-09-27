@@ -111,7 +111,7 @@ const Controller = () => {
           className="go"
           onClick={() => {
             setApigopen(!apiopen);
-            selectedalert;
+            selectedalert();
           }}
         >
           장소 더보기 GO
