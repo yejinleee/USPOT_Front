@@ -11,6 +11,8 @@ interface Props {
   btn_pic: number;
 }
 
+// selcetedcity지역의 selectedcategory 카테고리에 해당되는 장소 top5 중 btn_pic번째 장소의 유튜브 보여주는것
+
 const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pic }) => {
   // const selectedcity = props.match.params.selectedcity;
   // const selectedcategory = props.match.params.selectedcategory;
