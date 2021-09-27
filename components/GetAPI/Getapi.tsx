@@ -13,6 +13,7 @@ const Getapi: FC<Props> = ({ children, arrange, type, distance }) => {
   let mapX = 127.5091156306887;
   let mapY = 34.8867806675504;
   var datas;
+
   const [data, setData] = useState([] as any);
 
   useEffect(() => {
@@ -21,7 +22,6 @@ const Getapi: FC<Props> = ({ children, arrange, type, distance }) => {
         `http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${arrange}&contentTypeId=${type}&mapX=${mapX}&mapY=${mapY}&radius=${distance}&listYN=Y&_type=json`,
       )
       .then((response) => {
-        // console.log(response);
         setData(response.data.response.body.items.item);
       });
   }, [datas]);
