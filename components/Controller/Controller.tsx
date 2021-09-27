@@ -26,7 +26,7 @@ const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) =
 };
 
 const Controller = () => {
-  const [slideValue, Slider] = useSlider(1, 5000, 70, 'Threshold', 'threshold');
+  const [slideValue, Slider] = useSlider(1, 10000, 1000, 'Threshold', 'threshold');
   const [selectedArrange, setSelectedArrange] = useState(''); //  정렬기준 *인기순 B / 거리순 E
   const [selectedType, setSelectedType] = useState(0);
   const [apiopen, setApigopen] = useState(false);
@@ -49,7 +49,7 @@ const Controller = () => {
         <div className="slider-parent">
           0
           <Slider />
-          20km
+          5km
           <div className="buble">{slideValue}m</div>
         </div>
         <br />

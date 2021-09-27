@@ -32,8 +32,6 @@ export default function Top5Map() {
 
       const markerImage = new kakao.maps.MarkerImage(el.imageSrc, imageSize, imageOption);
       const marker = new kakao.maps.Marker({
-        //마커가 표시 될 지도
-        // map: map,
         //마커가 표시 될 위치
         position: new kakao.maps.LatLng(el.lat, el.lng),
         //이미지 마커 불러오기
