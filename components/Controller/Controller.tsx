@@ -26,7 +26,7 @@ const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) =
 };
 
 const Controller = () => {
-  const [slideValue, Slider] = useSlider(1, 100, 70, 'Threshold', 'threshold');
+  const [slideValue, Slider] = useSlider(1, 5000, 70, 'Threshold', 'threshold');
   const [selectedArrange, setSelectedArrange] = useState(''); //  정렬기준 *인기순 B / 거리순 E
   const [selectedType, setSelectedType] = useState(0);
   const [apiopen, setApigopen] = useState(false);
@@ -111,7 +111,9 @@ const Controller = () => {
         </button>
       </div>
 
-      <div className="클래스명모하지">{apiopen && <Getapi />}</div>
+      <div className="클래스명모하지">
+        {apiopen && <Getapi arrange={selectedArrange} distance={slideValue} type={selectedType} />}
+      </div>
     </>
   );
 };
