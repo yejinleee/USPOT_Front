@@ -88,7 +88,7 @@ const config: webpack.Configuration = {
     publicPath: '/dist/',
     proxy: {
       '/api/': {
-        target: 'http://localhost:8080',
+        target: 'http://localhost:8080',//배포후엔 프록시잘안쓴대
         changeOrigin: true,
       },
     },
