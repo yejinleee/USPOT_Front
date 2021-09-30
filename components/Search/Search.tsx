@@ -17,7 +17,7 @@ const LandingPage = () => {
   return (
     <>
       <form className="inputForm" onSubmit={handleSubmit}>
-        <input placeholder="검색어를 입력하세요" onChange={onChange} value={InputText} />
+        <input placeholder="출발지를 입력하세요" onChange={onChange} value={InputText} />
         <button type="submit">검색</button>
       </form>
       <Map searchPlace={Place} />
@@ -25,4 +25,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default React.memo(LandingPage);
