@@ -1,4 +1,6 @@
-import React, { FC, useEffect, useState } from 'react';
+import Coursemap from '@components/KaKao/Coursemap';
+import MakeCourse from '@components/MakeCoures/MakeCourse';
+import React, { FC, useEffect, useMemo, useState } from 'react';
 
 interface Props {
   searchPlace: string;
@@ -7,6 +9,7 @@ interface Props {
 const Map: FC<Props> = ({ children, searchPlace }) => {
   const kakao = (window as any).kakao;
   const [select, setSelect] = useState('');
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
@@ -52,19 +55,19 @@ const Map: FC<Props> = ({ children, searchPlace }) => {
         infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
         infowindow.open(map, marker);
         setSelect(place);
+        setOpen(true);
       });
     }
   }, [searchPlace]);
+
   console.log(select);
+
   return (
-    <div
-      id="myMap"
-      style={{
-        width: '500px',
-        height: '500px',
-      }}
-    ></div>
+    <>
+      <div id="myMap" style={{ width: '30vw', height: '30vw' }}></div>
+      {open && <MakeCourse />}
+    </>
   );
 };
 
-export default Map;
+export default React.memo(Map);
