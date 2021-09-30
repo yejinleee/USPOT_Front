@@ -4,6 +4,7 @@ import './Slide.css';
 import Thumbnail from '@components/Thumbnail/Thumbnail';
 import axios from 'axios';
 import Top5Mapevent from '@components/KaKao/Top5Mapevent';
+import { markerdata} from '@components/KaKao/MarkerData';
 
 interface Props {
   selectedcity: string;
@@ -134,7 +135,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
         </Link>
       </button>
       <Top5Mapevent />
-      <Thumbnail selectedcity={selectedcity} selectedcategory={selectedcategory} btn_pic={btn_pic} />
+      {/*<Thumbnail selectedcity={selectedcity} selectedcategory={selectedcategory} btn_pic={btn_pic} />*/}
     </>
   );
 };

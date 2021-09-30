@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 
 const SignUp = () => {
   const [email,onChangeEmail] = useInput('');
-  const [nickname, onChangeNickname] = useInput('');
+  const [username, onChangeUsername] = useInput('');
   const [password, ,setPassword] = useInput('');
   const [passwordCheck, , setPasswordCheck] = useInput('');
   const [signUpError, setSignUpError] = useState(false);
@@ -27,25 +27,28 @@ const SignUp = () => {
 
   const onSubmit = useCallback((e) => {
     e.preventDefault();
-    if (!mismatchError){
+    if (!mismatchError) {
       console.log('서버로 회원가입')
       setSignUpError(false);
       setSignUpSuccess(false);// 요청보내기전에 초기화
-      axios.post('/api/savemember', {
-        nickname,
-        password, //이건 백에 물어봤음 인자 어케해 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      })
-        .then( (response)=> {
-          console.log(response);
-          setSignUpSuccess(true);
-        } ) //성공
-        .catch( (error) => {
-          console.log(error.response);
-          setSignUpError(true);
-        }) //실패
-        .finally( () => {} )//성공하든 실패하든
+      if (username !== "" && password !== "") {
+        axios.post('/api/savemember', {
+          username,
+          password,
+        })
+          .then((response) => {
+            console.log('suc', response);
+            setSignUpSuccess(true);
+          }) //성공
+          .catch((error) => {
+            console.log('err', error.response);
+            setSignUpError(true);
+          }) //실패
+          .finally(() => {
+          })//성공하든 실패하든
+      }
     }
-  },[nickname, password, passwordCheck,mismatchError]);
+  },[username, password, passwordCheck,mismatchError]);
 
   return(
     <>
@@ -60,7 +63,7 @@ const SignUp = () => {
           <label id="nickname-label">
             <span>닉네임</span>
             <div>
-              <input type="text" id="nickname" name="nickname" value={nickname} onChange={onChangeNickname} />
+              <input type="text" id="username" name="username" value={username} onChange={onChangeUsername} />
             </div>
           </label>
           <label id="password-label">
@@ -81,7 +84,7 @@ const SignUp = () => {
               />
             </div>
             {mismatchError && <p>비밀번호가 일치하지 않습니다.</p>}
-            {!nickname && <p>닉네임을 입력해주세요.</p>}
+            {!username && <p>닉네임을 입력해주세요.</p>}
             {/*{signUpError && <p>이미 가입된 이메일입니다.</p>}*/}
             {signUpSuccess && <p>회원가입되었습니다! 로그인해주세요.</p>}
           </label>

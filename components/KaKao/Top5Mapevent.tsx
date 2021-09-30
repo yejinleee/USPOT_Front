@@ -66,5 +66,26 @@ export default function Top5Map() {
     }
   };
 
-  return <div id="top5map" style={{ width: '500px', height: '500px' }}></div>;
+  return (
+    <div style={{position:'relative'}}>
+      <div id="star"></div>
+      <div id="top5map" style={{ width: '50vw', height: '40vw',display:'inline-block' }}></div>
+      <span style={{position:'absolute'}}>
+        ☆ 장소
+      </span>
+    {/*
+           <span style={{ left: '500px' }}>
+        {markerdata.map((el:any) => {
+          console.log(el.title)
+        })}
+      </span>
+
+    */}
+    </div>
+  );
 }
+
+//글자부분
+// right: 400;
+// position: absolute;
+// top: 0;
