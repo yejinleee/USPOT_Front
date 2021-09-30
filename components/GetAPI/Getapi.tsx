@@ -7,7 +7,7 @@ interface Props {
   distance: number;
 }
 const Getapi: FC<Props> = ({ children, arrange, type, distance }) => {
-  let api = process.env.REACT_APP_TOUR_API_KEY_2;
+  let api = process.env.REACT_APP_TOUR_API_KEY;
   let number = 5;
   let pnumber = 1;
   let mapX = 127.5091156306887;

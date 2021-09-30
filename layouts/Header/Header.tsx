@@ -24,6 +24,12 @@ class Header extends Component {
                   MYPAGE
                 </Link>
               </li>
+              <li>
+                <Link to="/signup" style={{ textDecoration: 'none', color: '#000000' }}>
+                  <img id="mypage" src="/src/icon/mypage.png" alt="mypage" width="30" height="30" />
+                  회원가입
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
