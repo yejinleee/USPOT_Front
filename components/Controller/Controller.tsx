@@ -41,6 +41,9 @@ const Controller = () => {
     if (selectedType === 0 || selectedArrange === '') {
       return alert('검색 조건을 모두 선택하여 주세요');
     }
+    else{
+      setApigopen(true);
+    }
   }
   return (
     <>
@@ -106,7 +109,7 @@ const Controller = () => {
         <button
           className="go"
           onClick={() => {
-            setApigopen(true);
+            // setApigopen(true);
             selectedalert();
           }}
         >

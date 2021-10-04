@@ -9,34 +9,34 @@ import fetcher from '@utils/fetcher';
 
 const LogIn = () => {
   // const {data,error,revalidate} = useSWR('/api/savemember',fetcher); //로그인후에 데이터를 전해줄 api //유저정보가 data에 담길 것임
+  const {data,error,revalidate} = useSWR('/api/login'); //로그인후에 데이터를 전해줄 api //유저정보가 data에 담길 것임
   const [logInError, setLogInError] = useState(false);
   const [email, onChangeEmail] = useInput('');
-  const [nickname, onChangeNickname] = useInput('');
+  const [username, onChangeUsername] = useInput('');
   const [password, onChangePassword] = useInput('');
 
-  console.log('a')
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
       setLogInError(false);
-      console.log("cc")
 
       axios
         .post(
-          '/api/login',
-          { nickname, password },
+          '/api/savemember',
+          { username, password },
           {withCredentials:true} //post에선 3번째자리에 설정
         )
+
         .then(() => {
           // revalidate();
         })
         .catch((error) => {
+          console.log("err")
           setLogInError(error.response?.data?.statusCode === 401);
         });
     },
-    [nickname, password],
+    [username, password],
   );
-  console.log("b")
 
   return (
     <>
@@ -52,7 +52,7 @@ const LogIn = () => {
             <label id="nickname-label">
               <span>닉네임</span>
               <div>
-                <input type="text" id="nickname" name="nickname" value={nickname} onChange={onChangeNickname} />
+                <input type="text" id="username" name="username" value={username} onChange={onChangeUsername} />
               </div>
             </label>
             <label id="password-label">
@@ -60,7 +60,7 @@ const LogIn = () => {
               <div>
                 <input type="password" id="password" name="password" value={password} onChange={onChangePassword} />
               </div>
-              {logInError && <p>이메일과 비밀번호 조합이 일치하지 않습니다.</p>}
+              {logInError && <p> 이름과 비밀번호 조합이 일치하지 않습니다.</p>}
             </label>
             <button type="submit">로그인</button>
           </form>

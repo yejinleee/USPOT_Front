@@ -1,6 +1,7 @@
 /*global kakao */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { markerdata } from './MarkerData';
+import './Top5Mapevent.css'
 
 export default function Top5Map() {
   const latt = useRef(0);
@@ -54,38 +55,43 @@ export default function Top5Map() {
 
     // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
     function makeOverListener(map: any, marker: any, infowindow: { open: (arg0: any, arg1: any) => void }) {
-      return function () {
+      return function() {
         infowindow.open(map, marker);
       };
     }
+
     // 인포윈도우를 닫는 클로저를 만드는 함수입니다
     function makeOutListener(infowindow: { close: () => void }) {
-      return function () {
+      return function() {
         infowindow.close();
       };
     }
   };
 
+  var unfull = '/src/icon/star.png'
+  var full = '/src/icon/fullstar.png'
+
+  var [star, setStar] = useState('/src/icon/star.png')
+
   return (
-    <div style={{position:'relative'}}>
+    <div style={{ position: 'relative' }}>
       <div id="star"></div>
-      <div id="top5map" style={{ width: '50vw', height: '40vw',display:'inline-block' }}></div>
-      <span style={{position:'absolute'}}>
-        ☆ 장소
-      </span>
-    {/*
-           <span style={{ left: '500px' }}>
-        {markerdata.map((el:any) => {
-          console.log(el.title)
-        })}
+      <div id="top5map" style={{ width: '50vw', height: '40vw', display: 'inline-block' }}></div>
+      <span style={{ position: 'absolute' }}>
+        <img className="star" onClick={() => star === full ? (setStar(unfull)) : (setStar(full))} src={star} />
+        <p className="place_info"> 장소</p>
       </span>
 
-    */}
     </div>
   );
-}
 
 //글자부분
 // right: 400;
 // position: absolute;
 // top: 0;
+
+// {markerdata.map((e:any,idx:any) => {
+//   console.log(e.title);
+//   <p key={idx}>{e.title}</p>
+// })}
+}

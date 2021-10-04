@@ -141,6 +141,7 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
       }
     });
   }, [btn_pic]);
+  // console.log(vloglist)
   const onViewkakao = (data: any) => axios.get(`/api/vlog/findplace/${data}`).then((response) => {});
   return (
     <>
@@ -161,8 +162,8 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
               <button className="youtubebutton">이영상에나온 장소들 지도에서 보기 </button>
             </div>
           ))}
-        <YoutubeMapevent />
       </div>
+      <YoutubeMapevent />
     </>
   );
 };
