@@ -1,40 +1,52 @@
 /*global kakao */
-import React, { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { markerdata } from './MarkerData';
-import './Top5Mapevent.css'
+import './Top5Mapevent.css';
 
-export default function Top5Map() {
+interface Props {
+  top5data: any;
+}
+
+const Top5Mapevent: FC<Props> = ({ children, top5data }) => {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
+  // console.log(top5data);
   useEffect(() => {
-    mapscript();
-  }, []);
-
+    top5data !== [] && mapscript();
+  }, [top5data]);
+  console.log(top5data);
   const mapscript = () => {
-    markerdata.forEach((el) => {
-      latt.current += el.lat;
-      long.current += el.lng;
+    // top5data.map((el: any, index: number) => {
+    //   latt.current += el[index].location_x;
+    //   long.current += el[index].location_y;
+    //   console.log(el[index].name);
+    // });
+    top5data.forEach((el: any) => {
+      latt.current += el.location_y;
+      long.current += el.location_x;
     });
 
+    let imageSrc = '/src/icon/식당핀.png';
     let container = document.getElementById('top5map');
     let options = {
-      center: new kakao.maps.LatLng(latt.current / 4, long.current / 4),
-      level: 5,
+      center: new kakao.maps.LatLng(latt.current / 5, long.current / 5),
+      level: 10,
     };
 
     //map
     const top5map = new kakao.maps.Map(container, options);
 
-    markerdata.forEach((el) => {
+    top5data.forEach((el: any) => {
       // 마커를 생성합니다
-      var imageSize = new kakao.maps.Size(64, 69),
+      var imageSize = new kakao.maps.Size(30, 30),
         imageOption = { offset: new kakao.maps.Point(27, 69) };
 
-      const markerImage = new kakao.maps.MarkerImage(el.imageSrc, imageSize, imageOption);
+      const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
       const marker = new kakao.maps.Marker({
         //마커가 표시 될 위치
-        position: new kakao.maps.LatLng(el.lat, el.lng),
+        position: new kakao.maps.LatLng(el.location_y, el.location_x),
         //이미지 마커 불러오기
         image: markerImage,
         // content: el.title,
@@ -43,7 +55,7 @@ export default function Top5Map() {
       marker.setMap(top5map);
       // 마커에 표시할 인포윈도우를 생성합니다
       var infowindow = new kakao.maps.InfoWindow({
-        content: el.title, // 인포윈도우에 표시할 내용
+        content: el.name, // 인포윈도우에 표시할 내용
       });
 
       // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
@@ -55,43 +67,44 @@ export default function Top5Map() {
 
     // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
     function makeOverListener(map: any, marker: any, infowindow: { open: (arg0: any, arg1: any) => void }) {
-      return function() {
+      return function () {
         infowindow.open(map, marker);
       };
     }
 
     // 인포윈도우를 닫는 클로저를 만드는 함수입니다
     function makeOutListener(infowindow: { close: () => void }) {
-      return function() {
+      return function () {
         infowindow.close();
       };
     }
   };
 
-  var unfull = '/src/icon/star.png'
-  var full = '/src/icon/fullstar.png'
+  var unfull = '/src/icon/star.png';
+  var full = '/src/icon/fullstar.png';
 
-  var [star, setStar] = useState('/src/icon/star.png')
+  var [star, setStar] = useState('/src/icon/star.png');
 
   return (
     <div style={{ position: 'relative' }}>
       <div id="star"></div>
       <div id="top5map" style={{ width: '50vw', height: '40vw', display: 'inline-block' }}></div>
       <span style={{ position: 'absolute' }}>
-        <img className="star" onClick={() => star === full ? (setStar(unfull)) : (setStar(full))} src={star} />
+        <img className="star" onClick={() => (star === full ? setStar(unfull) : setStar(full))} src={star} />
         <p className="place_info"> 장소</p>
       </span>
-
     </div>
   );
 
-//글자부분
-// right: 400;
-// position: absolute;
-// top: 0;
+  //글자부분
+  // right: 400;
+  // position: absolute;
+  // top: 0;
 
-// {markerdata.map((e:any,idx:any) => {
-//   console.log(e.title);
-//   <p key={idx}>{e.title}</p>
-// })}
-}
+  // {markerdata.map((e:any,idx:any) => {
+  //   console.log(e.title);
+  //   <p key={idx}>{e.title}</p>
+  // })}
+};
+
+export default Top5Mapevent;

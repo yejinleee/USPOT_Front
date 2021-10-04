@@ -4,7 +4,7 @@ import './Slide.css';
 import Thumbnail from '@components/Thumbnail/Thumbnail';
 import axios from 'axios';
 import Top5Mapevent from '@components/KaKao/Top5Mapevent';
-import { markerdata} from '@components/KaKao/MarkerData';
+import Top5Map from '@components/KaKao/Top5Mapevent';
 
 interface Props {
   selectedcity: string;
@@ -30,7 +30,8 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
     'carousel_card_item left',
   ]);
 
-  const [top5name,setTop5name] = useState([]as any);
+  const [top5name, setTop5name] = useState([] as any);
+  const [top5data, setTop5data] = useState([] as any);
   var dic: { [key: string]: number } = {
     가평군: 1,
     광명시: 2,
@@ -131,18 +132,16 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
     음식점: 2,
     카페: 3,
   };
+
   useEffect(() => {
-    setTop5name([]);
     axios.get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`).then((response) => {
-      // for (var j = 0; j < response.data.data[btn_pic - 1].vlog_list.length; j++) {
-      //   setTop5list((prev: any) => [...prev, response.data.data[btn_pic - 1].vlog_list[j].url]);
-      // }
-      for (var i=0 ; i < 5;i++){ //top5니까  ===response.data.data.length
-        setTop5name((prev:any) => [...prev, response.data.data[i].name])
+      setTop5data(response.data.data);
+      for (var i = 0; i < 5; i++) {
+        //top5니까  ===response.data.data.length
+        setTop5name((prev: any) => [...prev, response.data.data[i].name]);
       }
     });
-  }, [btn_pic]);
-  console.log(top5name)
+  }, []);
 
   return (
     <>
@@ -248,7 +247,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
           주변장소 더 보기
         </Link>
       </button>
-      <Top5Mapevent />
+      <Top5Mapevent top5data={top5data} />
       <Thumbnail selectedcity={selectedcity} selectedcategory={selectedcategory} btn_pic={btn_pic} />
     </>
   );
