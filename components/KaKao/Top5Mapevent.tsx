@@ -6,9 +6,10 @@ import './Top5Mapevent.css';
 
 interface Props {
   top5data: any;
+  top5name: any;
 }
 
-const Top5Mapevent: FC<Props> = ({ children, top5data }) => {
+const Top5Mapevent: FC<Props> = ({ children, top5data,top5name }) => {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
@@ -16,7 +17,7 @@ const Top5Mapevent: FC<Props> = ({ children, top5data }) => {
   useEffect(() => {
     top5data !== [] && mapscript();
   }, [top5data]);
-  console.log(top5data);
+
   const mapscript = () => {
     // top5data.map((el: any, index: number) => {
     //   latt.current += el[index].location_x;
@@ -34,7 +35,6 @@ const Top5Mapevent: FC<Props> = ({ children, top5data }) => {
       center: new kakao.maps.LatLng(latt.current / 5, long.current / 5),
       level: 10,
     };
-
     //map
     const top5map = new kakao.maps.Map(container, options);
 
@@ -82,16 +82,91 @@ const Top5Mapevent: FC<Props> = ({ children, top5data }) => {
 
   var unfull = '/src/icon/star.png';
   var full = '/src/icon/fullstar.png';
-
   var [star, setStar] = useState('/src/icon/star.png');
+  top5data.map((v:any, i:number)=>{
+    // console.log('!',v.name);
+  })
+  function getCheckboxValue(e:any)  {
+    let result = '';
+    if(e.target.checked)  {
+      result = '💛'
+    }else {
+      result = '🤍';
+    }
+    // @ts-ignore
+    document.getElementById('result').innerText
+      = result;
+  }
 
+  const [like0,setLike0] = useState(false);
+  const [like1,setLike1] = useState(false);
+  const [like2,setLike2] = useState(false);
+  const [like3,setLike3] = useState(false);
+  const [like4,setLike4] = useState(false);
+
+  function ma(){
+      return (
+        <>
+          <input type="checkbox" className="cate" id="cate_li" onClick={(() => {setLike1(!like1)})} value="편의점" />
+          <label className="custom" htmlFor="cate_li">
+            <span id="result">{like1 ?'💛' : '🤍'}</span>
+            <span className="cate_1">{top5name[0]}</span>
+          </label>
+        </>
+      );
+  }
   return (
     <div style={{ position: 'relative' }}>
       <div id="star"></div>
       <div id="top5map" style={{ width: '50vw', height: '40vw', display: 'inline-block' }}></div>
-      <span style={{ position: 'absolute' }}>
-        <img className="star" onClick={() => (star === full ? setStar(unfull) : setStar(full))} src={star} />
-        <p className="place_info"> 장소</p>
+
+      {/*즐겨찾기랑 장소명들*/}
+
+      <span style={{ position: 'absolute'}}>
+        {/*<img className="star" id="currentClick" onClick={() => funcfull()} src={star}/>*/}
+        {/*<img className="star" id="currentClick" onClick={() => (star === full ? setStar(unfull) : setStar(full))} src={star}/>*/}
+        {/*<p className="place_info"> 장소</p>*/}
+
+        {/*{ma()}*/}
+
+        <ul>
+          <li className = "icon_li custom-control">
+              <input type="checkbox" className="cate" id="listidx0" onClick={(() => {setLike0(!like0)})} value="0" />
+              <label className="custom" htmlFor="listidx0">
+                  <span id="result">{like0 ?'💛' : '🤍'}</span>
+                  <span>{top5name[0]}</span>
+              </label>
+          </li>
+          <li className = "icon_li custom-control">
+              <input type="checkbox" className="cate" id="listidx1" onClick={(() => {setLike1(!like1)})} value="1" />
+              <label className="custom" htmlFor="listidx1">
+                  <span id="result">{like1 ?'💛' : '🤍'}</span>
+                  <span> {top5name[1]}</span>
+              </label>
+          </li>
+          <li className = "icon_li custom-control">
+              <input type="checkbox" className="cate" id="listidx2" onClick={() => {setLike2(!like2)}} value="2" />
+              <label className="custom" htmlFor="listidx2">
+                  <span id="result">{like2 ?'💛' : '🤍'}</span>
+                  <span> {top5name[2]}</span>
+              </label>
+          </li>
+          <li className = "icon_li custom-control">
+              <input type="checkbox" className="cate" id="listidx3" onClick={() => {setLike3(!like3)}} value="3" />
+              <label className="custom" htmlFor="listidx3">
+                  <span id="result">{like3 ?'💛' : '🤍'}</span>
+                  <span> {top5name[3]}</span>
+              </label>
+          </li>
+          <li className = "icon_li custom-control">
+              <input type="checkbox" className="cate" id="listidx4" onClick={() => {setLike4(!like4)}} value="4" />
+              <label className="custom" htmlFor="listidx4">
+                  <span id="result">{like4 ?'💛' : '🤍'}</span>
+                  <span> {top5name[4]}</span>
+              </label>
+          </li>
+        </ul>
+
       </span>
     </div>
   );

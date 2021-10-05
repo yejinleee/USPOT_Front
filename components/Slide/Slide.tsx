@@ -31,6 +31,10 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
   ]);
 
   const [top5name, setTop5name] = useState([] as any);
+  const [top5phone, setTop5phone] = useState([] as any);
+  const [top5add, setTop5add] = useState([] as any);
+
+
   const [top5data, setTop5data] = useState([] as any);
   var dic: { [key: string]: number } = {
     가평군: 1,
@@ -139,6 +143,8 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
       for (var i = 0; i < 5; i++) {
         //top5니까  ===response.data.data.length
         setTop5name((prev: any) => [...prev, response.data.data[i].name]);
+        setTop5phone((prev: any) => [...prev, response.data.data[i].phone]);
+        setTop5add((prev: any) => [...prev, response.data.data[i].address]);
       }
     });
   }, []);
@@ -152,32 +158,44 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
             <div className={imgloc[start]}>
               {/*여기에 style={btn_pic ===각번호 ? view_pic3 : view_pic5} 머이런식으로*/}
               <div className="carousel-card-mask">
-                <img src={pic1} alt="pic" />
-                {top5name[0]}
+                <img src={pic1} alt="pic" className="carousel-img" />
+                <span>
+                  <p>{top5name[0]}</p>
+                  {top5phone[0]}
+                  {top5add[0]}
+                </span>
               </div>
             </div>
             <div className={imgloc[(start + 1) % 5]}>
               <div className="carousel-card-mask">
-                <img src={pic2} alt="pic" />
+                <img src={pic2} alt="pic" className="carousel-img" />
                 {top5name[1]}
+                {top5phone[1]}
+                {top5add[1]}
               </div>
             </div>
             <div className={imgloc[(start + 2) % 5]}>
               <div className="carousel-card-mask">
-                <img src={pic3} alt="pic" />
+                <img src={pic3} alt="pic" className="carousel-img" />
                 {top5name[2]}
+                {top5phone[2]}
+                {top5add[2]}
               </div>
             </div>
             <div className={imgloc[(start + 3) % 5]}>
               <div className="carousel-card-mask">
-                <img src={pic4} alt="pic" />
+                <img src={pic4} alt="pic" className="carousel-img" />
                 {top5name[3]}
+                {top5phone[3]}
+                {top5add[3]}
               </div>
             </div>
             <div className={imgloc[(start + 4) % 5]}>
               <div className="carousel-card-mask">
-                <img src={pic5} alt="pic" />
+                <img src={pic5} alt="pic" className="carousel-img" />
                 {top5name[4]}
+                {top5phone[4]}
+                {top5add[4]}
               </div>
             </div>
           </div>
@@ -189,7 +207,8 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
                   setBtn_pic(1);
                   setStart(0);
                 }}
-                className={btn_pic === 1 ? 'btn_now' : 'btn1'}
+                className="carousel-btn"
+                id={btn_pic === 1 ? 'btn_now' : 'btn1'}
               >
                 1
               </button>
@@ -200,7 +219,8 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
                   setBtn_pic(2);
                   setStart(4);
                 }}
-                className={btn_pic === 2 ? 'btn_now' : 'btn2'}
+                className="carousel-btn"
+                id={btn_pic === 2 ? 'btn_now' : 'btn2'}
               >
                 2
               </button>
@@ -211,7 +231,8 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
                   setBtn_pic(3);
                   setStart(3);
                 }}
-                className={btn_pic === 3 ? 'btn_now' : 'btn3'}
+                className="carousel-btn"
+                id={btn_pic === 3 ? 'btn_now' : 'btn3'}
               >
                 3
               </button>
@@ -222,7 +243,8 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
                   setBtn_pic(4);
                   setStart(2);
                 }}
-                className={btn_pic === 4 ? 'btn_now' : 'btn4'}
+                className="carousel-btn"
+                id={btn_pic === 4 ? 'btn_now' : 'btn4'}
               >
                 4
               </button>
@@ -233,7 +255,8 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
                   setBtn_pic(5);
                   setStart(1);
                 }}
-                className={btn_pic === 5 ? 'btn_now' : 'btn5'}
+                className="carousel-btn"
+                id={btn_pic === 5 ? 'btn_now' : 'btn5'}
               >
                 5
               </button>
@@ -247,7 +270,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
           주변장소 더 보기
         </Link>
       </button>
-      <Top5Mapevent top5data={top5data} />
+      <Top5Mapevent top5data={top5data} top5name={top5name}/>
       <Thumbnail selectedcity={selectedcity} selectedcategory={selectedcategory} btn_pic={btn_pic} />
     </>
   );

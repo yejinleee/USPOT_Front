@@ -5,6 +5,7 @@ import axios from 'axios';
 import './Toggle.css';
 import Category from '@components/Category/category';
 import Container from '@components/Container/Container';
+import { inspect } from 'util';
 
 const Toggle = () => {
   const [selectedcategory, setSelectedcategory] = useState('안');
@@ -672,13 +673,13 @@ const Toggle = () => {
           setSelectedcity(gyeongi.city[index].city_name);
         }}
       >
-        {gyeongi.city[index].city_name}
+        <li className="city_li" style={{color:'#F08080'}}>{gyeongi.city[index].city_name}</li>
         {map === gyeongi.city[index].city_link && (
-          <div>
+          <ul className="station_ul">
             {gyeongi.city[index].station.map((li: any) => (
-              <li>{li}</li>
+              <li style={{color:'#F08080'}}>{li}</li>
             ))}
-          </div>
+          </ul>
         )}
       </div>
     </>
@@ -985,18 +986,6 @@ const Toggle = () => {
 
       <img src={map} className="map" alt="map" />
 
-      {selectedcity !== '없음' && selectedcategory !== '안' ? (
-        <button className="gotosecondbtn" onClick={selectedalert}>
-          <Link to={`/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>
-            보러가기!!
-          </Link>
-        </button>
-      ) : (
-        <button className="gotosecondbtn" onClick={selectedalert}>
-          {selectedcity}의 추천 {selectedcategory}보기
-        </button>
-      )}
-
       <Container
         setGyeongitoggle={setGyeongitoggle}
         setGangwontoggle={setGangwontoggle}
@@ -1016,6 +1005,19 @@ const Toggle = () => {
         setMap={setMap}
         setSelectedcity={setSelectedcity}
       />
+      <span>
+        {selectedcity !== '없음' && selectedcategory !== '안' ? (
+          <button className="gotosecondbtn" onClick={selectedalert}>
+            <Link to={`/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>
+              보러가기!!
+            </Link>
+          </button>
+        ) : (
+          <button className="gotosecondbtn" onClick={selectedalert}>
+            {selectedcity}의 추천 {selectedcategory}보기
+          </button>
+        )}
+      </span>
 
       <div className="district_toggle">
         <label
@@ -1024,8 +1026,9 @@ const Toggle = () => {
             setGyeongitoggle(!gyeongitoggle);
             !gyeongitoggle && setMap(gyeongi.link);
           }}
+          style={gyeongitoggle ? {background:'#F08080'}:{background:''}}
         >
-          {gyeongi.name}
+          <span style={gyeongitoggle ? {color:'white'} : {color:'#D85959'}}>{gyeongi.name}</span>
         </label>
         {/*경기*/}
         <div>{gyeongitoggle && gyeongi_list}</div>
@@ -1035,6 +1038,8 @@ const Toggle = () => {
             setGangwontoggle(!gangwontoggle);
             !gangwontoggle && setMap(gangwon.link);
           }}
+          style={gangwontoggle ? {background:'#F08080'}:{background:''}}
+
         >
           {gangwon.name}
         </label>

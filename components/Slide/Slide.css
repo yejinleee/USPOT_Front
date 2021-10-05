@@ -9,13 +9,14 @@
     /*float:left;*/
     display: inline-table;
     position: absolute;
+    background-color: white;
 }
 
 .carousel_card_item img{
     width:100%;
     transition : .2s;
 }
-span button {
+.carousel-btn {
     display: inline-block;
     width: .875rem;
     /*height: .875rem;*/
@@ -27,7 +28,7 @@ span button {
     cursor: pointer;
     background-color: #d9dfe4;
 }
-button.btn_now{
+button#btn_now{
     /*box-shadow: 0 0 5px 0 rgb(0 138 244 /60%);*/
     width: 2.5rem;
     border-radius: 5px;

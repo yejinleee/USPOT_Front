@@ -1,7 +1,116 @@
 .star{
-    width:2vw;
+    /*width:2vw;*/
+    width:15px;
+    /*글자크기랑 똑같이 너비하는게 좋을 듯*/
 }
 
 .place_info{
     display: inline-block;
+}
+
+.icon_li{
+    margin: 0 0.69% 1%;
+    overflow: hidden;
+}
+.cate{
+    display: none;
+}
+.custom{
+    padding: 0.65em 0;
+    display: block;
+    border-radius: inherit;
+    border: none;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.7em;
+    color: #666;
+}
+
+.cate_1{
+    line-height: 1.4em;
+    font-weight: 400;
+    /*margin-top: 1.5em;*/
+    padding: 0 0.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*display: -webkit-box;*/
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    height: 2.7em;
+}
+ul{
+    list-style:none;
+}
+.cate:checked + .custom{
+    /*background-color: #F08080;*/
+}
+
+.input_radio{
+    visibility: hidden;
+    display: none;
+}
+
+.input_radio label {
+    display: inline-block;
+    background-color: white;
+    padding: 10px 20px;
+    font-family: sans-serif, Arial;
+    font-size: 16px;
+    border: 2px solid #F08080;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*.input_radio label:hover {*/
+/*    background-color:#F08080;*/
+/*    color:white*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+#star-five {
+    margin: 50px 0;
+    position: relative;
+    display: block;
+    color: pink;
+    width: 0px;
+    height: 0px;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid pink;
+    border-left: 100px solid transparent;
+    transform: rotate(35deg);
+}
+#star-five:before {
+    border-bottom: 80px solid pink;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -45px;
+    left: -65px;
+    display: block;
+    content: '';
+    transform: rotate(-35deg);
+}
+#star-five:after {
+    position: absolute;
+    display: block;
+    color: pink;
+    top: 3px;
+    left: -105px;
+    width: 0px;
+    height: 0px;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid pink;
+    border-left: 100px solid transparent;
+    transform: rotate(-70deg);
+    content: '';
 }
