@@ -1,72 +1,89 @@
 /*global kakao */
-import React, { useEffect, useRef, useState } from 'react';
-import { markerdata } from './MarkerData';
+import axios from 'axios';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import './Top5Mapevent.css';
 
-export default function YoutubeMap() {
+interface Props {
+  videoid: any;
+  count: number;
+}
+
+const YoutubeMapevent: FC<Props> = ({ children, videoid, count }) => {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
+  const [place, setPlace] = useState([] as any);
   useEffect(() => {
-    mapscript();
-  }, []);
+    setPlace([]);
+    axios.get(`/api/vlog/findplace/${videoid}`).then((response) => {
+      setPlace(response.data.data);
+    });
+  }, [videoid]);
+
+  useEffect(() => {
+    if (place.length !== 0) {
+      mapscript();
+    }
+  }, [place]);
 
   const mapscript = () => {
-    markerdata.forEach((el) => {
-      latt.current += el.lat;
-      long.current += el.lng;
-    });
+    kakao.maps.load(() => {
+      place.forEach((el: any) => {
+        latt.current += el.location_y;
+        long.current += el.location_x;
+      });
+      let container = document.getElementById('youtubemap');
+      let options = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667),
+        level: 10,
+      };
+      let youtubemap = new kakao.maps.Map(container, options);
 
-    let container = document.getElementById('ytmap');
-    let options = {
-      center: new kakao.maps.LatLng(latt.current / 4, long.current / 4),
-      level: 5,
-    };
+      place.forEach((el: any) => {
+        // 마커를 생성합니다
+        var imageSize = new kakao.maps.Size(30, 30),
+          imageOption = { offset: new kakao.maps.Point(27, 69) };
 
-    //map
-    const ytmap = new kakao.maps.Map(container, options);
+        const markerImage = new kakao.maps.MarkerImage(`/src/icon/${el.categoryid}.png`, imageSize, imageOption);
+        const marker = new kakao.maps.Marker({
+          //마커가 표시 될 위치
+          position: new kakao.maps.LatLng(el.location_y, el.location_x),
+          //이미지 마커 불러오기
+          image: markerImage,
+        });
+        marker.setMap(youtubemap);
+        // 마커에 표시할 인포윈도우를 생성합니다
+        var infowindow = new kakao.maps.InfoWindow({
+          content: el.name, // 인포윈도우에 표시할 내용
+        });
 
-    markerdata.forEach((el) => {
-      // 마커를 생성합니다
-      var imageSize = new kakao.maps.Size(64, 69),
-        imageOption = { offset: new kakao.maps.Point(27, 69) };
-
-      const markerImage = new kakao.maps.MarkerImage(el.imageSrc, imageSize, imageOption);
-      const marker = new kakao.maps.Marker({
-        //마커가 표시 될 지도
-        // map: map,
-        //마커가 표시 될 위치
-        position: new kakao.maps.LatLng(el.lat, el.lng),
-        //이미지 마커 불러오기
-        image: markerImage,
-        // content: el.title,
+        // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+        // 이벤트 리스너로는 클로저를 만들어 등록합니다
+        // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(youtubemap, marker, infowindow));
+        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
       });
 
-      marker.setMap(ytmap);
-      // 마커에 표시할 인포윈도우를 생성합니다
-      var infowindow = new kakao.maps.InfoWindow({
-        content: el.title, // 인포윈도우에 표시할 내용
-      });
+      // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+      function makeOverListener(map: any, marker: any, infowindow: { open: (arg0: any, arg1: any) => void }) {
+        return function () {
+          infowindow.open(map, marker);
+        };
+      }
 
-      // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-      // 이벤트 리스너로는 클로저를 만들어 등록합니다
-      // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(ytmap, marker, infowindow));
-      kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+      // 인포윈도우를 닫는 클로저를 만드는 함수입니다
+      function makeOutListener(infowindow: { close: () => void }) {
+        return function () {
+          infowindow.close();
+        };
+      }
     });
-
-    // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
-    function makeOverListener(map: any, marker: any, infowindow: { open: (arg0: any, arg1: any) => void }) {
-      return function () {
-        infowindow.open(map, marker);
-      };
-    }
-    // 인포윈도우를 닫는 클로저를 만드는 함수입니다
-    function makeOutListener(infowindow: { close: () => void }) {
-      return function () {
-        infowindow.close();
-      };
-    }
   };
+  return (
+    <div style={{ position: 'relative' }}>
+      <div id="youtubemap" style={{ width: '50vw', height: '40vw', display: 'inline-block' }}></div>
+    </div>
+  );
+};
 
-  return <div id="ytmap" style={{ width: '500px', height: '500px' }}></div>;
-}
+export default YoutubeMapevent;
