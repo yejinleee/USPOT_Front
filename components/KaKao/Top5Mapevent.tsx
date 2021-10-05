@@ -6,9 +6,10 @@ import './Top5Mapevent.css';
 
 interface Props {
   top5data: any;
+  imageSrc: any;
 }
 
-const Top5Mapevent: FC<Props> = ({ children, top5data }) => {
+const Top5Mapevent: FC<Props> = ({ children, top5data, imageSrc }) => {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
@@ -16,22 +17,16 @@ const Top5Mapevent: FC<Props> = ({ children, top5data }) => {
   useEffect(() => {
     top5data !== [] && mapscript();
   }, [top5data]);
-  console.log(top5data);
+
   const mapscript = () => {
-    // top5data.map((el: any, index: number) => {
-    //   latt.current += el[index].location_x;
-    //   long.current += el[index].location_y;
-    //   console.log(el[index].name);
-    // });
     top5data.forEach((el: any) => {
       latt.current += el.location_y;
       long.current += el.location_x;
     });
 
-    let imageSrc = '/src/icon/식당핀.png';
     let container = document.getElementById('top5map');
     let options = {
-      center: new kakao.maps.LatLng(latt.current / 5, long.current / 5),
+      center: new kakao.maps.LatLng(latt.current / top5data.length, long.current / top5data.length),
       level: 10,
     };
 

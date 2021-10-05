@@ -1,6 +1,4 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
-import Slide from '@components/Slide/Slide';
-import Layout from '@layouts/Layouts';
 import axios from 'axios';
 import './Thumbnail.css';
 import YoutubeMapevent from '@components/KaKao/YoutubeMapevent';
@@ -14,25 +12,11 @@ interface Props {
 // selcetedcity지역의 selectedcategory 카테고리에 해당되는 장소 top5 중 btn_pic번째 장소의 유튜브 보여주는것
 
 const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pic }) => {
-  // const selectedcity = props.match.params.selectedcity;
-  // const selectedcategory = props.match.params.selectedcategory;
-  // let data = ['7I_UkvpJhqM','97fFo6qMU6s','Bkiq64Y8VHk','B-vV0NVcOh0','cx1ZJrclkAI']
-  // return (
-  //   <>
-  //     <div>
-  //       <div>
-  //         {data.map((datas: any, i: any) => (
-  //           <iframe width="280" height="157" src={`https://www.youtube.com/embed/${datas}?controls=0`}
-  //                   title="YouTube video player" frameBorder="0"
-  //                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  //                   allowFullScreen></iframe>
-  //         ))}
-  //       </div>
-  //     </div>
-  //   </>
-  // );
-
   const [vloglist, setVloglist] = useState([] as any); //브이로그 id들 저장할 배열
+  const [map, setMap] = useState(false);
+  const [id, setId] = useState(null);
+  const [count, setCount] = useState(0);
+  const kakao = (window as any).kakao;
   var dic: { [key: string]: number } = {
     가평군: 1,
     광명시: 2,
@@ -133,6 +117,7 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
     음식점: 2,
     카페: 3,
   };
+
   useEffect(() => {
     setVloglist([]);
     axios.get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`).then((response) => {
@@ -141,15 +126,14 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
       }
     });
   }, [btn_pic]);
-  // console.log(vloglist)
-  const onViewkakao = (data: any) => axios.get(`/api/vlog/findplace/${data}`).then((response) => {});
+
   return (
     <>
       <div className="youtube_all">
         여기에 동영상이 나와여
         {vloglist !== [] &&
           vloglist.map((datas: any, i: any) => (
-            <div className="youtube_each">
+            <div key={i} className="youtube_each">
               <iframe
                 width="336"
                 height="188"
@@ -159,11 +143,20 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
-              <button className="youtubebutton">이영상에나온 장소들 지도에서 보기 </button>
+              <button
+                className="youtubebutton"
+                onClick={() => {
+                  setMap(true);
+                  setId(datas);
+                  setCount((prevCount) => prevCount + 1);
+                }}
+              >
+                이영상에나온 장소들 지도에서 보기{' '}
+              </button>
             </div>
           ))}
       </div>
-      <YoutubeMapevent />
+      {map && <YoutubeMapevent videoid={id} count={count} />}
     </>
   );
 };

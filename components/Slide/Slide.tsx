@@ -132,7 +132,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
     음식점: 2,
     카페: 3,
   };
-
+  let imageSrc = `/src/icon/${dic_category[selectedcategory]}.png`;
   useEffect(() => {
     axios.get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`).then((response) => {
       setTop5data(response.data.data);
@@ -247,7 +247,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
           주변장소 더 보기
         </Link>
       </button>
-      <Top5Mapevent top5data={top5data} />
+      <Top5Mapevent top5data={top5data} imageSrc={imageSrc} />
       <Thumbnail selectedcity={selectedcity} selectedcategory={selectedcategory} btn_pic={btn_pic} />
     </>
   );
