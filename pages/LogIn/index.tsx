@@ -6,6 +6,7 @@ import useInput from '@pages/Signup/useinput';
 import { Link } from 'react-router-dom';
 import Layout from '@layouts/Layouts';
 import fetcher from '@utils/fetcher';
+import Sample from './sample';
 
 
 // const CLIENT_ID = process.env.REACT_APP_KAKAO_KEY;
@@ -82,31 +83,7 @@ const LogIn = () => {
             <button type="submit">로그인</button>
           </form>
         </div>
-        <Link to={KAKAO_AUTH_URL}>
-          <p>로그인 좀 돼주세요</p>
-        </Link>
-
-      {/*  Kakao.Auth.createLoginButton({*/}
-      {/*  container: '#kakao-login-btn',*/}
-      {/*  success: function(authObj) {*/}
-      {/*  Kakao.API.request({*/}
-      {/*  url: '/v2/user/me',*/}
-      {/*  success: function(res) {*/}
-      {/*  alert(JSON.stringify(res))*/}
-      {/*},*/}
-      {/*  fail: function(error) {*/}
-      {/*  alert(*/}
-      {/*  'login success, but failed to request user information: ' +*/}
-      {/*  JSON.stringify(error)*/}
-      {/*  )*/}
-      {/*},*/}
-      {/*})*/}
-      {/*},*/}
-      {/*  fail: function(err) {*/}
-      {/*  alert('failed to login: ' + JSON.stringify(err))*/}
-      {/*},*/}
-      {/*})*/}
-
+        <Sample />
       </Layout>
     </>
   );
