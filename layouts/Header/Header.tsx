@@ -26,8 +26,9 @@ class Header extends Component {
               </li>
               <li>
                 <Link to="/login" style={{ textDecoration: 'none', color: '#000000' }}>
-                  <img id="mypage" src="/src/icon/mypage.png" alt="mypage" width="30" height="30" />
-                  회원가입
+                  <img id="login" src="/src/icon/mypage.png" alt="login" width="30" height="30" />
+                  로그인
+
                 </Link>
               </li>
             </ul>

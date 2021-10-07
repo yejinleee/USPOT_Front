@@ -8,6 +8,16 @@ import Layout from '@layouts/Layouts';
 import fetcher from '@utils/fetcher';
 import Sample from './sample';
 
+
+// const CLIENT_ID = process.env.REACT_APP_KAKAO_KEY;
+// const REDIRECT_URI =  "http://localhost:8090/oauth/callback/kakao";
+
+// const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
+// //JavaScript SDK로 Kakao.Auth.authorize 함수를 호출할 때는 SDK 초기화 시 사용된 JavaScript 키를 사용합니다.
+// //하지만 REST API로 토큰 받기를 요청할 때는 REST API 키를 사용해야 합니다.
+
+
 const LogIn = () => {
   // const { data, error, revalidate } = useSWR('/api/login', fetch); //로그인후에 데이터를 전해줄 api //유저정보가 data에 담길 것임
   const [logInError, setLogInError] = useState(false);
