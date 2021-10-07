@@ -7,6 +7,16 @@ import { Link } from 'react-router-dom';
 import Layout from '@layouts/Layouts';
 import fetcher from '@utils/fetcher';
 
+
+// const CLIENT_ID = process.env.REACT_APP_KAKAO_KEY;
+// const REDIRECT_URI =  "http://localhost:8090/oauth/callback/kakao";
+
+// const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
+// //JavaScript SDK로 Kakao.Auth.authorize 함수를 호출할 때는 SDK 초기화 시 사용된 JavaScript 키를 사용합니다.
+// //하지만 REST API로 토큰 받기를 요청할 때는 REST API 키를 사용해야 합니다.
+
+
 const LogIn = () => {
   // const { data, error, revalidate } = useSWR('/api/login', fetch); //로그인후에 데이터를 전해줄 api //유저정보가 data에 담길 것임
   const [logInError, setLogInError] = useState(false);
@@ -56,12 +66,6 @@ const LogIn = () => {
       <Layout>
         <div id="container">
           <form onSubmit={onSubmit}>
-            {/*<label id="email-label">*/}
-            {/*  <span>이메일 주소</span>*/}
-            {/*  <div>*/}
-            {/*    <input type="email" id="email" name="email" value={email} onChange={onChangeEmail} />*/}
-            {/*  </div>*/}
-            {/*</label>*/}
             <label id="nickname-label">
               <span>닉네임</span>
               <div>
@@ -77,11 +81,32 @@ const LogIn = () => {
             </label>
             <button type="submit">로그인</button>
           </form>
-          <div>
-            아직 회원이 아니신가요?&nbsp;
-            <Link to="/signup">회원가입 하러가기</Link>
-          </div>
         </div>
+        <Link to={KAKAO_AUTH_URL}>
+          <p>로그인 좀 돼주세요</p>
+        </Link>
+
+      {/*  Kakao.Auth.createLoginButton({*/}
+      {/*  container: '#kakao-login-btn',*/}
+      {/*  success: function(authObj) {*/}
+      {/*  Kakao.API.request({*/}
+      {/*  url: '/v2/user/me',*/}
+      {/*  success: function(res) {*/}
+      {/*  alert(JSON.stringify(res))*/}
+      {/*},*/}
+      {/*  fail: function(error) {*/}
+      {/*  alert(*/}
+      {/*  'login success, but failed to request user information: ' +*/}
+      {/*  JSON.stringify(error)*/}
+      {/*  )*/}
+      {/*},*/}
+      {/*})*/}
+      {/*},*/}
+      {/*  fail: function(err) {*/}
+      {/*  alert('failed to login: ' + JSON.stringify(err))*/}
+      {/*},*/}
+      {/*})*/}
+
       </Layout>
     </>
   );
