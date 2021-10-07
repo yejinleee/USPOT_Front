@@ -65,24 +65,6 @@ const LogIn = () => {
   return (
     <>
       <Layout>
-        <div id="container">
-          <form onSubmit={onSubmit}>
-            <label id="nickname-label">
-              <span>닉네임</span>
-              <div>
-                <input type="text" id="nickname" name="nickname" value={nickname} onChange={onChangeNickname} />
-              </div>
-            </label>
-            <label id="password-label">
-              <span>비밀번호</span>
-              <div>
-                <input type="password" id="password" name="password" value={password} onChange={onChangePassword} />
-              </div>
-              {logInError && <p>이메일과 비밀번호 조합이 일치하지 않습니다.</p>}
-            </label>
-            <button type="submit">로그인</button>
-          </form>
-        </div>
         <Sample />
       </Layout>
     </>
