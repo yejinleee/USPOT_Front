@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect, useMemo, useState } from 'react';
+import React, { FC, memo, useEffect, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 import './Thumbnail.css';
 import YoutubeMapevent from '@components/KaKao/YoutubeMapevent';
@@ -15,8 +15,6 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
   const [vloglist, setVloglist] = useState([] as any); //브이로그 id들 저장할 배열
   const [map, setMap] = useState(false);
   const [id, setId] = useState(null);
-  const [count, setCount] = useState(0);
-  const kakao = (window as any).kakao;
   var dic: { [key: string]: number } = {
     가평군: 1,
     광명시: 2,
@@ -148,7 +146,6 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
                 onClick={() => {
                   setMap(true);
                   setId(datas);
-                  setCount((prevCount) => prevCount + 1);
                 }}
               >
                 이영상에나온 장소들 지도에서 보기{' '}
@@ -156,10 +153,9 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
             </div>
           ))}
       </div>
-      {map && <YoutubeMapevent videoid={id} count={count} />}
+      {map && <YoutubeMapevent videoid={id} />}
     </>
   );
 };
 
 export default Thumbnail;
-//onClick={onViewkakao(datas)} -> 이건 나중에 youtubebutton안에 넣을거임

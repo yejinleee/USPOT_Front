@@ -7,6 +7,7 @@ import Second from '@pages/Secondpage/Second';
 import Third from '@pages/Thirdpage/Third';
 import SignUp from '@pages/Signup';
 import LogIn from '@pages/LogIn';
+import OAuth2RedirectHandler from '@pages/LogIn/Hi';
 
 const Routes = () => {
   return (
@@ -16,8 +17,8 @@ const Routes = () => {
         <Route exact path="/mypage" component={Mypage} />
         <Route exact path="/:selectedcity/:selectedcategory" component={Second} />
         <Route exact path="/:selectedcity/:selectedcategory/more" component={Third} />
-        <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={LogIn} />
+        <Route path="/oauth/callback/kakao" component={OAuth2RedirectHandler}></Route>
       </Switch>
     </Router>
   );
