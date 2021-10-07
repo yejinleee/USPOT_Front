@@ -5,7 +5,6 @@ import HomePage from '@pages/Home/Mainhome';
 import Mypage from '@pages/Mypage/Mypage';
 import Second from '@pages/Secondpage/Second';
 import Third from '@pages/Thirdpage/Third';
-import SignUp from '@pages/Signup';
 import LogIn from '@pages/LogIn';
 import OAuth2RedirectHandler from '@pages/LogIn/Hi';
 
