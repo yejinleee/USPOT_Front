@@ -33,7 +33,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
   const [top5name, setTop5name] = useState([] as any);
   const [top5phone, setTop5phone] = useState([] as any);
   const [top5add, setTop5add] = useState([] as any);
-
+  const [top5placeid,setTop5placeid] = useState([] as any);
 
   const [top5data, setTop5data] = useState([] as any);
   var dic: { [key: string]: number } = {
@@ -145,6 +145,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
         setTop5name((prev: any) => [...prev, response.data.data[i].name]);
         setTop5phone((prev: any) => [...prev, response.data.data[i].phone]);
         setTop5add((prev: any) => [...prev, response.data.data[i].address]);
+        setTop5placeid((prev : any) => [...prev,response.data.data[i].id]);
       }
     });
   }, []);
@@ -271,7 +272,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
         </Link>
       </button>
 
-      <Top5Mapevent top5data={top5data} imageSrc={imageSrc} top5name={top5name}/>
+      <Top5Mapevent top5data={top5data} imageSrc={imageSrc} top5name={top5name} top5placeid={top5placeid}/>
       <Thumbnail selectedcity={selectedcity} selectedcategory={selectedcategory} btn_pic={btn_pic} />
     </>
   );
