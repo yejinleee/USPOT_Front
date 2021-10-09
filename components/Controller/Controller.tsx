@@ -15,9 +15,9 @@ const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) =
 };
 
 const Controller = () => {
-  const [slideValue, Slider] = useSlider(1, 100000, 1000, 'Threshold', 'threshold');
-  const [selectedArrange, setSelectedArrange] = useState(''); //  정렬기준 *인기순 B / 거리순 E
-  const [selectedType, setSelectedType] = useState(0);
+  const [slideValue, Slider] = useSlider(1, 100000, 50000, 'Threshold', 'threshold');
+  const [selectedArrange, setSelectedArrange] = useState('B'); //  정렬기준 *인기순 B / 거리순 E
+  const [selectedType, setSelectedType] = useState(12);
   const [apiopen, setApigopen] = useState(false);
 
   function funcType(selected: number) {
@@ -37,7 +37,7 @@ const Controller = () => {
     <>
       <div className="controller">
         {/*슬라이더*/}
-        <div className="slider-parent">
+        <div className="slider-parent" onChange={()=>setApigopen(false)}>
           0
           <Slider />
           10 km
@@ -45,7 +45,7 @@ const Controller = () => {
         </div>
         <br />
         {/*인기순거리순*/}
-        <div className="order">
+        <div className="order" onClick={() => setApigopen(false)}>
           {/*인기순 B / 거리순 E*/}
           <button
             onClick={() => funcArrange('B')}

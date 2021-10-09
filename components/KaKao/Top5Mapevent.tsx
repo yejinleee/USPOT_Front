@@ -3,7 +3,8 @@ import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { markerdata } from './MarkerData';
 import './Top5Mapevent.css';
-import Like from '@components/Like/Like';
+import LikeTop5 from '@components/Like/Liketop5';
+import Liketop5 from '@components/Like/Liketop5';
 
 interface Props {
   top5data: any;
@@ -77,41 +78,10 @@ const Top5Mapevent: FC<Props> = ({ children, top5data, imageSrc , top5name,top5p
     }
   };
 
-  var unfull = '/src/icon/star.png';
-  var full = '/src/icon/fullstar.png';
-  var [star, setStar] = useState('/src/icon/star.png');
   top5data.map((v:any, i:number)=>{
     // console.log('!',v.name);
   })
-  function getCheckboxValue(e:any)  {
-    let result = '';
-    if(e.target.checked)  {
-      result = '💛'
-    }else {
-      result = '🤍';
-    }
-    // @ts-ignore
-    document.getElementById('result').innerText
-      = result;
-  }
 
-  const [like0,setLike0] = useState(false);
-  const [like1,setLike1] = useState(false);
-  const [like2,setLike2] = useState(false);
-  const [like3,setLike3] = useState(false);
-  const [like4,setLike4] = useState(false);
-
-  function ma(){
-      return (
-        <>
-          <input type="checkbox" className="cate" id="cate_li" onClick={(() => {setLike1(!like1)})} value="편의점" />
-          <label className="custom" htmlFor="cate_li">
-            <span id="result">{like1 ?'💛' : '🤍'}</span>
-            <span className="cate_1">{top5name[0]}</span>
-          </label>
-        </>
-      );
-  }
   return (
     <>
       <div style={{ position: 'relative' }}>
@@ -119,7 +89,7 @@ const Top5Mapevent: FC<Props> = ({ children, top5data, imageSrc , top5name,top5p
         <div id="top5map" style={{ width: '50vw', height: '40vw', display: 'inline-block' }}></div>
 
         <span style={{ position: 'absolute'}}>
-          <Like top5name={top5name} top5placeid={top5placeid}/>
+          <Liketop5 top5name={top5name} top5placeid={top5placeid}/>
         </span>
       </div>
     </>
