@@ -1,51 +1,51 @@
-import Mypage from '@pages/Mypage/Mypage';
-import LogIn from '@pages/LogIn';
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
+import HomePage from '@pages/Home/Mainhome';
+import Mypage from '@pages/Mypage/Mypage';
+import { useSelector, useDispatch } from 'react-redux';
+import { loginCheck } from './changeLoginStatus';
 
 const OAuth2RedirectHandler = () => {
-  // const dispatch = useDispatch();
-  // const isLogin = useSelector((state) => state.changeLoginStatus.isLogin);
-  // console.log('isLogin', isLogin);
-  // const localStoragetokenCheck = localStorage.getItem('token');
-
-  // useEffect(() => {
-  // 	if (localStoragetokenCheck) {
-  // 		// 로그인유지를 위해서 isLogin을 true로 변경해줘야한다.
-  // 		dispatch(loginCheck());
-  // 	}
-  // }, []);
-
-  // return (
-  // 	<>
-  // 		<Router>
-  // 			<Switch>
-  // 				{isLogin ? (
-  // 					<Route path="/mypage" component={Mypage}></Route>
-  // 				) : (
-  // 					<Route path="/login" exact component={LogIn}></Route>
-  // 				)}
-  // 			</Switch>
-  // 		</Router>
-  // 	</>
-  // );
   let code = new URL(window.location.href).searchParams.get('code');
-  // const dispatch = useDispatch();
-  console.log(code);
   const url = '/api/oauth2/authorization/kakao';
   const [response, setResponse] = useState(false);
+  const [localStoragetokenCheck, setLocalStoragetokenCheck] = useState();
+  // const dispatch = useDispatch();
   axios.get(url, { params: { code } }).then((res) => {
     console.log(res);
-    console.log(res.request.statusText);
     if (res.request.statsText === 'OK') {
       setResponse(true);
+      setLocalStoragetokenCheck(res.request.data.accesstoken);
+      console.log(res.request.data.accesstoken);
     } else {
       setResponse(false);
     }
   });
-  return { response } && <Redirect to="/mypage" />;
+
+  // const isLogin = useSelector((state: any) => state.changeLoginStatus.isLogin);
+  // console.log('isLogin', isLogin);
+  // useEffect(() => {
+  //   if (localStoragetokenCheck) {
+  //     // 로그인유지를 위해서 isLogin을 true로 변경해줘야한다.
+  //     dispatch(loginCheck());
+  //   }
+  // }, []);
+
+  return (
+    <>
+      <div>hh</div>
+      {/* <Router>
+        <Switch>
+          {isLogin ? (
+            <Route path="/mypage" component={Mypage}></Route>
+          ) : (
+            <Route path="/home" exact component={HomePage}></Route>
+          )}
+        </Switch>
+      </Router> */}
+    </>
+  );
 };
 
 export default OAuth2RedirectHandler;

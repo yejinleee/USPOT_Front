@@ -1,20 +1,16 @@
 import React from 'react';
-import ReducerSample from './ReducerSample';
-import { SampleProvider } from './SampleContext';
+// import ReducerSample from './ReducerSample';
+// import { SampleProvider } from './SampleContext';
 
-const Counter = () => {
-  return (
-    <SampleProvider>
-      <ReducerSample />
-    </SampleProvider>
-  );
-};
+// const Counter = () => {
+//   return (
+//     <SampleProvider>
+//       <ReducerSample />
+//     </SampleProvider>
+//   );
+// };
 
-export default Counter;
-
-
-
-
+// export default Counter;
 
 // import React, { createContext, useMemo, useReducer } from 'react';
 //
