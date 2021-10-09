@@ -1,6 +1,5 @@
 import Getapi from '@components/GetAPI/Getapi';
-import React, { createRef, FC, memo, useMemo, useRef, useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState } from 'react';
 import './Controller.css';
 
 const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) => {
@@ -10,17 +9,7 @@ const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) =
   };
 
   const Slider = () => (
-    <input
-      type="range"
-      id={id}
-      min={min}
-      max={max}
-      step={0.5}
-      // value={state} // don't set value from state
-      defaultValue={state} // but instead pass state value as default value
-      // onChange={(e) => console.log(e.target.value)} // don't set state on all change as react will re-render
-      onMouseUp={handleChange} // only set state when handle is released
-    />
+    <input type="range" id={id} min={min} max={max} step={0.5} defaultValue={state} onMouseUp={handleChange} />
   );
   return [state, Slider, setSlide];
 };
@@ -40,8 +29,7 @@ const Controller = () => {
   function selectedalert() {
     if (selectedType === 0 || selectedArrange === '') {
       return alert('검색 조건을 모두 선택하여 주세요');
-    }
-    else{
+    } else {
       setApigopen(true);
     }
   }
@@ -52,7 +40,7 @@ const Controller = () => {
         <div className="slider-parent">
           0
           <Slider />
-          10  km
+          10 km
           <div className="buble">{slideValue}m</div>
         </div>
         <br />

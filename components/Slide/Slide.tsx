@@ -4,7 +4,6 @@ import './Slide.css';
 import Thumbnail from '@components/Thumbnail/Thumbnail';
 import axios from 'axios';
 import Top5Mapevent from '@components/KaKao/Top5Mapevent';
-import Top5Map from '@components/KaKao/Top5Mapevent';
 
 interface Props {
   selectedcity: string;
@@ -33,7 +32,6 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
   const [top5name, setTop5name] = useState([] as any);
   const [top5phone, setTop5phone] = useState([] as any);
   const [top5add, setTop5add] = useState([] as any);
-
 
   const [top5data, setTop5data] = useState([] as any);
   var dic: { [key: string]: number } = {
@@ -271,7 +269,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
         </Link>
       </button>
 
-      <Top5Mapevent top5data={top5data} imageSrc={imageSrc} top5name={top5name}/>
+      <Top5Mapevent top5data={top5data} imageSrc={imageSrc} top5name={top5name} />
       <Thumbnail selectedcity={selectedcity} selectedcategory={selectedcategory} btn_pic={btn_pic} />
     </>
   );
