@@ -6,11 +6,14 @@
 }
 
 .App input {
-  margin-top: 20px;
-  width: 250px;
-  height: 30px;
+  border: 2px solid #f08080;
+  margin-top: 1%;
+  width: 26%;
+  height: 5%;
   font-size: 15px;
-  padding-left: 10px;
+  border-radius: 15px;
+  padding-left: 2%;
+  margin-left: 1%;
 }
 
 p {
@@ -19,9 +22,9 @@ p {
 }
 
 .container {
-  margin-top: 10px;
-  width: 250px;
-  height: 150px;
+  margin-top: 1%;
+  width: 25%;
+  height: 13%;
   overflow: scroll;
-  padding-left: 10px;
+  padding-left: 2%;
 }

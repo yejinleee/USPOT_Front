@@ -673,11 +673,13 @@ const Toggle = () => {
           setSelectedcity(gyeongi.city[index].city_name);
         }}
       >
-        <li className="city_li" style={{color:'#F08080'}}>{gyeongi.city[index].city_name}</li>
+        <li className="city_li" style={{ color: '#F08080' }}>
+          {gyeongi.city[index].city_name}
+        </li>
         {map === gyeongi.city[index].city_link && (
           <ul className="station_ul">
             {gyeongi.city[index].station.map((li: any) => (
-              <li style={{color:'#F08080'}}>{li}</li>
+              <li style={{ color: '#F08080' }}>{li}</li>
             ))}
           </ul>
         )}
@@ -1026,9 +1028,9 @@ const Toggle = () => {
             setGyeongitoggle(!gyeongitoggle);
             !gyeongitoggle && setMap(gyeongi.link);
           }}
-          style={gyeongitoggle ? {background:'#F08080'}:{background:''}}
+          style={gyeongitoggle ? { background: '#F08080' } : { background: '' }}
         >
-          <span style={gyeongitoggle ? {color:'white'} : {color:'#D85959'}}>{gyeongi.name}</span>
+          <span style={gyeongitoggle ? { color: 'white' } : { color: '#D85959' }}>{gyeongi.name}</span>
         </label>
         {/*경기*/}
         <div>{gyeongitoggle && gyeongi_list}</div>
@@ -1038,8 +1040,7 @@ const Toggle = () => {
             setGangwontoggle(!gangwontoggle);
             !gangwontoggle && setMap(gangwon.link);
           }}
-          style={gangwontoggle ? {background:'#F08080'}:{background:''}}
-
+          style={gangwontoggle ? { background: '#F08080' } : { background: '' }}
         >
           {gangwon.name}
         </label>

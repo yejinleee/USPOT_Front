@@ -1,63 +1,70 @@
-.district_toggle{
-    width:40%;
-    /*position: absolute;*/
-    vertical-align: middle;
-    /*display: inline;*/
+@font-face {
+  font-family: 'InfinitySans-RegularA1';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  font-family: 'InfinitySans-RegularA1' !important;
+}
+.district_toggle {
+  width: 40%;
+  /*position: absolute;*/
+  vertical-align: middle;
+  /*display: inline;*/
 }
 label {
-    vertical-align: middle;
-    padding-top: 1%;
-    padding-bottom: 1%;
+  vertical-align: middle;
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
-
 .district {
-    cursor: pointer;
-    display: block;
-    /* background: #eee; */
-    text-align: center;
-    border: 2px solid #F08080;
-    border-radius: 30px;
-    width: 8em;
-    margin: .3em;
-    margin-left: 10%;
+  cursor: pointer;
+  display: block;
+  /* background: #eee; */
+  text-align: center;
+  border: 2px solid #f08080;
+  border-radius: 30px;
+  width: 8em;
+  margin: 0.3em;
+  margin-left: 10%;
 }
 
-.map{
-    /*position: absolute;*/
-    position: -webkit-sticky;
-    position: fixed;
-    float:right;
-    width:25%;
-    /*height: 50%;*/
-    top: 13%;
-    /*left:100px;*/
-    right:10%;
+.map {
+  /*position: absolute;*/
+  position: -webkit-sticky;
+  position: fixed;
+  float: right;
+  width: 25%;
+  /*height: 50%;*/
+  top: 13%;
+  /*left:100px;*/
+  right: 10%;
 }
 
-
-.citylist:hover{
-    background: #FFC0BA;
+.citylist:hover {
+  background: #ffc0ba;
 }
 
-.citylist{
-    cursor: pointer;
-    margin-left: 16%;
+.citylist {
+  cursor: pointer;
+  margin-left: 16%;
 }
-.city_li{
-    list-style: circle;
-    padding-bottom: .3em;
+.city_li {
+  list-style: circle;
+  padding-bottom: 0.3em;
+}
+.station_ul {
+  /*list-style: circle;*/
+}
 
-}
-.station_ul{
-    /*list-style: circle;*/
-}
-
-.gotosecondbtn{
-    /*이거 어떻게할지 생각해야할듯 ㅠㅠ*/
-    position: fixed;
-    float:right;
-    right:50%;
-    background: #F08080;
-    color: white;
-    border: none;
+.gotosecondbtn {
+  /*이거 어떻게할지 생각해야할듯 ㅠㅠ*/
+  position: fixed;
+  float: right;
+  right: 20vw;
+  background: #f08080;
+  color: white;
+  border: none;
+  top: 48vw;
 }

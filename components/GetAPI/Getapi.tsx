@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-import path from 'path';
 interface Props {
   arrange: string;
   type: number;
@@ -22,7 +21,6 @@ const Getapi: FC<Props> = ({ children, arrange, type, distance }) => {
         `http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${arrange}&contentTypeId=${type}&mapX=${mapX}&mapY=${mapY}&radius=${distance}&listYN=Y&_type=json`,
       )
       .then((response) => {
-
         try {
           setData(response.data.response.body.items.item);
         } catch {}
@@ -51,7 +49,7 @@ const Getapi: FC<Props> = ({ children, arrange, type, distance }) => {
             <div>{data.title}</div>
             <div>{data.addr1}</div>
             <div>{data.dist}m</div>
-            <img src={data.firstimage} alt={data.title}/>
+            <img src={data.firstimage} alt={data.title} />
           </div>
         </>
       );
