@@ -22,12 +22,14 @@ const Getapi: FC<Props> = ({ children, arrange, type, distance }) => {
         `http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${arrange}&contentTypeId=${type}&mapX=${mapX}&mapY=${mapY}&radius=${distance}&listYN=Y&_type=json`,
       )
       .then((response) => {
-        setData(response.data.response.body.items.item);
+        try {
+          setData(response.data.response.body.items.item);
+        } catch {}
       });
   }, [datas]);
 
   console.log(data);
-  if (data) {
+  if (data.length !== 0) {
     if (data.length > 1) {
       datas = data.map((v: any) => {
         return (
