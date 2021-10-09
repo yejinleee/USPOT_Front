@@ -4,7 +4,6 @@ import './Slide.css';
 import Thumbnail from '@components/Thumbnail/Thumbnail';
 import axios from 'axios';
 import Top5Mapevent from '@components/KaKao/Top5Mapevent';
-import Top5Map from '@components/KaKao/Top5Mapevent';
 
 interface Props {
   selectedcity: string;
