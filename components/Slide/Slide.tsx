@@ -4,6 +4,7 @@ import './Slide.css';
 import Thumbnail from '@components/Thumbnail/Thumbnail';
 import axios from 'axios';
 import Top5Mapevent from '@components/KaKao/Top5Mapevent';
+import { imageSearch } from './image';
 
 interface Props {
   selectedcity: string;
@@ -11,12 +12,11 @@ interface Props {
 }
 
 const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
-  const pic1 = 'https://user-images.githubusercontent.com/81412212/132859482-98355de1-63a3-41ea-b7f6-f8ce34f758f0.jpg';
-  const pic2 = 'https://user-images.githubusercontent.com/81412212/132859641-e6650092-45a9-4b17-b2ad-6fe8ef06a161.png';
-  const pic3 = 'https://user-images.githubusercontent.com/81412212/132859644-e57852f7-7e2f-4d9a-95d0-b8ff678e8a52.jpg';
-  const pic4 = 'https://user-images.githubusercontent.com/81412212/132859652-bf4c8160-b59e-4857-9f4c-62dfd4039ad1.jpg';
-  const pic5 = 'https://user-images.githubusercontent.com/81412212/132859719-38e290d8-8757-4864-8ac3-ebdaf6e4beb1.jpg';
-
+  const [pic1, setPic1] = useState('' as any);
+  const [pic2, setPic2] = useState('' as any);
+  const [pic3, setPic3] = useState('' as any);
+  const [pic4, setPic4] = useState('' as any);
+  const [pic5, setPic5] = useState('' as any);
   const [btn_pic, setBtn_pic] = useState(1);
   // 이걸 자리 번호별 transform 값으로 지정해두자. 주로 바뀌는게 transform: translateX 랑 translate 일듯
   const [start, setStart] = useState(0);
@@ -32,7 +32,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
   const [top5name, setTop5name] = useState([] as any);
   const [top5phone, setTop5phone] = useState([] as any);
   const [top5add, setTop5add] = useState([] as any);
-  const [top5placeid,setTop5placeid] = useState([] as any);
+  const [top5placeid, setTop5placeid] = useState([] as any);
 
   const [top5data, setTop5data] = useState([] as any);
   var dic: { [key: string]: number } = {
@@ -136,15 +136,36 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
     카페: 3,
   };
   let imageSrc = `/src/icon/${dic_category[selectedcategory]}.png`;
+
   useEffect(() => {
-    axios.get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`).then((response) => {
+    axios.get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`).then(async (response) => {
       setTop5data(response.data.data);
       for (var i = 0; i < 5; i++) {
-        //top5니까  ===response.data.data.length
         setTop5name((prev: any) => [...prev, response.data.data[i].name]);
         setTop5phone((prev: any) => [...prev, response.data.data[i].phone]);
         setTop5add((prev: any) => [...prev, response.data.data[i].address]);
-        setTop5placeid((prev : any) => [...prev,response.data.data[i].id]);
+        setTop5placeid((prev: any) => [...prev, response.data.data[i].id]);
+      }
+      for (var i = 0; i < 5; i++) {
+        const name = response.data.data[i].name;
+        const params = {
+          query: name,
+          sort: 'accuracy',
+          size: 5,
+        };
+        const { data } = await imageSearch(params);
+        console.log(data);
+        if (i === 0) {
+          setPic1(data.documents[0].image_url);
+        } else if (i === 1) {
+          setPic2(data.documents[0].image_url);
+        } else if (i === 2) {
+          setPic3(data.documents[3].image_url);
+        } else if (i === 3) {
+          setPic4(data.documents[1].image_url);
+        } else {
+          setPic5(data.documents[1].image_url);
+        }
       }
     });
   }, []);
@@ -271,7 +292,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
         </Link>
       </button>
 
-      <Top5Mapevent top5data={top5data} imageSrc={imageSrc} top5name={top5name} top5placeid={top5placeid}/>
+      <Top5Mapevent top5data={top5data} imageSrc={imageSrc} top5name={top5name} top5placeid={top5placeid} />
       <Thumbnail selectedcity={selectedcity} selectedcategory={selectedcategory} btn_pic={btn_pic} />
     </>
   );
