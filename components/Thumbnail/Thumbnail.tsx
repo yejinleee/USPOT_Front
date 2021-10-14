@@ -15,6 +15,8 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
   const [vloglist, setVloglist] = useState([] as any); //브이로그 id들 저장할 배열
   const [map, setMap] = useState(false);
   const [id, setId] = useState(null);
+  const [x, setX] = useState();
+  const [y, setY] = useState();
   var dic: { [key: string]: number } = {
     가평군: 1,
     광명시: 2,
@@ -148,7 +150,7 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
                   setId(datas);
                 }}
               >
-                이영상에나온 장소들 지도에서 보기{' '}
+                이영상에나온 장소들 지도에서 보기
               </button>
             </div>
           ))}

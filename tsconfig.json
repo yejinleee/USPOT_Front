@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "strictNullChecks": false,
     "esModuleInterop": true, // import * as React from 'react'; -> import React from 'react';로 할 수 있음
     "sourceMap": true, //에러 났을때 에러 위치 찾아가기 편해서
     "lib": ["ES2020", "DOM"], //프론트 개발할때 켜두기

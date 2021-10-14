@@ -6,8 +6,7 @@ import Mypage from '@pages/Mypage/Mypage';
 import Second from '@pages/Secondpage/Second';
 import Third from '@pages/Thirdpage/Third';
 import Hello from '@pages/Signup/Hello';
-import LogIn from '@pages/LogIn';
-
+import LogIn from '@pages/LogIn/login';
 const Routes = () => {
   return (
     <Router>

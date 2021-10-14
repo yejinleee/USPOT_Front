@@ -140,7 +140,6 @@ const Toggle = () => {
   const ulsanindex = useRef(0);
   const gwangjuindex = useRef(0);
   const sejongindex = useRef(0);
-
   useEffect(() => {
     axios.get('/api/province/findall').then((response) => {
       for (var i = 0; i < response.data.data.length; i++) {
@@ -661,7 +660,6 @@ const Toggle = () => {
       }
     }
   }
-
   const gyeongi_list = gyeongi.city.map((v: string, index: number) => (
     <>
       <div
