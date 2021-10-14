@@ -31,15 +31,15 @@ label {
 }
 
 .map {
-  /*position: absolute;*/
+  /* position: absolute; */
   position: -webkit-sticky;
   position: fixed;
   float: right;
   width: 25%;
-  /*height: 50%;*/
+  /* height: 50%; */
   top: 13%;
-  /*left:100px;*/
-  right: 10%;
+  right: 15vw;
+  /* left: 100px; */
 }
 
 .citylist:hover {
