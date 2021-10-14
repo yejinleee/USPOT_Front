@@ -157,10 +157,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
           size: 5,
         };
         const { data } = await imageSearch(params);
-<<<<<<< HEAD
-        console.log('img',data);
-=======
->>>>>>> 1f3de6b2ccb9dc0e62b0edbb86403f6893b5d494
+
         if (i === 0) {
           setPic1(data.documents[0].image_url);
         } else if (i === 1) {
@@ -170,15 +167,9 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
         } else if (i === 3) {
           setPic4(data.documents[1].image_url);
         } else {
-<<<<<<< HEAD
-          // setPic5(data.documents[0].image_url);
-          setPic5(data.documents[1].image_url);
-=======
           setPic5(data.documents[0].image_url);
->>>>>>> 1f3de6b2ccb9dc0e62b0edbb86403f6893b5d494
         }
       }
-
     });
   }, []);
 
@@ -194,41 +185,49 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
                 <img src={pic1} alt="pic" className="carousel-img" />
                 <span>
                   <p>{top5name[0]}</p>
-                  {top5phone[0]}
-                  {top5add[0]}
+                  <p>{top5phone[0]}</p>
+                  <p>{top5add[0]}</p>
                 </span>
               </div>
             </div>
             <div className={imgloc[(start + 1) % 5]}>
               <div className="carousel-card-mask">
                 <img src={pic2} alt="pic" className="carousel-img" />
-                {top5name[1]}
-                {top5phone[1]}
-                {top5add[1]}
+                <span>
+                  <p>{top5name[1]}</p>
+                  <p>{top5phone[1]}</p>
+                  <p>{top5add[1]}</p>
+                </span>
               </div>
             </div>
             <div className={imgloc[(start + 2) % 5]}>
               <div className="carousel-card-mask">
                 <img src={pic3} alt="pic" className="carousel-img" />
-                {top5name[2]}
-                {top5phone[2]}
-                {top5add[2]}
+                <span>
+                  <p>{top5name[2]}</p>
+                  <p>{top5phone[2]}</p>
+                  <p>{top5add[2]}</p>
+                </span>
               </div>
             </div>
             <div className={imgloc[(start + 3) % 5]}>
               <div className="carousel-card-mask">
                 <img src={pic4} alt="pic" className="carousel-img" />
-                {top5name[3]}
-                {top5phone[3]}
-                {top5add[3]}
+                <span>
+                  <p>{top5name[3]}</p>
+                  <p>{top5phone[3]}</p>
+                  <p>{top5add[3]}</p>
+                </span>
               </div>
             </div>
             <div className={imgloc[(start + 4) % 5]}>
               <div className="carousel-card-mask">
                 <img src={pic5} alt="pic" className="carousel-img" />
-                {top5name[4]}
-                {top5phone[4]}
-                {top5add[4]}
+                <span>
+                  <p>{top5name[4]}</p>
+                  <p>{top5phone[4]}</p>
+                  <p>{top5add[4]}</p>
+                </span>
               </div>
             </div>
           </div>
