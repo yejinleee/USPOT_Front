@@ -157,10 +157,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
           size: 5,
         };
         const { data } = await imageSearch(params);
-<<<<<<< HEAD
         console.log('img',data);
-=======
->>>>>>> 1f3de6b2ccb9dc0e62b0edbb86403f6893b5d494
         if (i === 0) {
           setPic1(data.documents[0].image_url);
         } else if (i === 1) {
@@ -170,12 +167,9 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
         } else if (i === 3) {
           setPic4(data.documents[1].image_url);
         } else {
-<<<<<<< HEAD
           // setPic5(data.documents[0].image_url);
           setPic5(data.documents[1].image_url);
-=======
           setPic5(data.documents[0].image_url);
->>>>>>> 1f3de6b2ccb9dc0e62b0edbb86403f6893b5d494
         }
       }
 

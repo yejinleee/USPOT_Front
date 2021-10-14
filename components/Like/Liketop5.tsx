@@ -127,7 +127,7 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
   return (
     <>
       <div style={{ position: 'relative' }}>
-        <span style={{ position: 'absolute' }}>
+        <span>
           <ul>
             <li className="icon_li custom-control">
               <input
@@ -142,8 +142,8 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
               />
               {/*{func(0)}*/}
               <label className="custom" htmlFor="listidx0">
-                <span id="result">{like0 === 1 ? '💛' : '🤍'}</span>
-                <span>{top5name[0]}</span>
+                <span className="like">{like0 === 1 ? '💛' : '🤍'}</span>
+                <span className="likeplace">{top5name[0]}</span>
               </label>
             </li>
             <li className="icon_li custom-control">
@@ -159,8 +159,8 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
               />
               {/*{func(1)}*/}
               <label className="custom" htmlFor="listidx1">
-                <span id="result">{like1 === 1 ? '💛' : '🤍'}</span>
-                <span> {top5name[1]}</span>
+                <span className="like">{like1 === 1 ? '💛' : '🤍'}</span>
+                <span className="likeplace"> {top5name[1]}</span>
               </label>
             </li>
             <li className="icon_li custom-control">
@@ -176,8 +176,8 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
               />
               {/*{func(2)}*/}
               <label className="custom" htmlFor="listidx2">
-                <span id="result">{like2 === 1 ? '💛' : '🤍'}</span>
-                <span> {top5name[2]}</span>
+                <span className="like">{like2 === 1 ? '💛' : '🤍'}</span>
+                <span className="likeplace"> {top5name[2]}</span>
               </label>
             </li>
             <li className="icon_li custom-control">
@@ -193,8 +193,8 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
               />
               {/*{func(3)}*/}
               <label className="custom" htmlFor="listidx3">
-                <span id="result">{like3 === 1 ? '💛' : '🤍'}</span>
-                <span> {top5name[3]}</span>
+                <span className="like">{like3 === 1 ? '💛' : '🤍'}</span>
+                <span className="likeplace"> {top5name[3]}</span>
               </label>
             </li>
             <li className="icon_li custom-control">
@@ -210,8 +210,8 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
               />
               {/*{func(4)}*/}
               <label className="custom" htmlFor="listidx4">
-                <span id="result">{like4 === 1 ? '💛' : '🤍'}</span>
-                <span> {top5name[4]}</span>
+                <span className="like">{like4 === 1 ? '💛' : '🤍'}</span>
+                <span className="likeplace"> {top5name[4]}</span>
               </label>
             </li>
           </ul>
