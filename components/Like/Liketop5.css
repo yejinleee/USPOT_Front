@@ -11,6 +11,8 @@
 .icon_li{
     margin: 0 0.69% 1%;
     overflow: hidden;
+    width: max-content;
+
 }
 .cate{
     display: none;
@@ -61,7 +63,10 @@ ul{
     cursor: pointer;
 }
 
-/*.input_radio label:hover {*/
-/*    background-color:#F08080;*/
-/*    color:white*/
-/*}*/
+.like{
+    padding : .5em;
+}
+.likeplace{
+    padding-right: 1em;
+
+}

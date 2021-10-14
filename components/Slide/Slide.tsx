@@ -167,7 +167,8 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
         } else if (i === 3) {
           setPic4(data.documents[1].image_url);
         } else {
-          setPic5(data.documents[0].image_url);
+          // setPic5(data.documents[0].image_url);
+          setPic5(data.documents[1].image_url);
         }
       }
     });

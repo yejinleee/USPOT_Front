@@ -1,7 +1,7 @@
-.top5_carousel_container {
-  position: relative;
-  /*transform: translate(-0vw);*/
-  height: 400px;
+.top5_carousel_container{
+    position: relative;
+    /*transform: translate(-0vw);*/
+    height: 30vw;
 }
 .carousel_card_item {
   /*width : 100vw;*/
