@@ -4,95 +4,98 @@
     height: 30vw;
 }
 .carousel_card_item {
-    /*width : 100vw;*/
-    width : 50%;
-    /*float:left;*/
-    display: inline-table;
-    position: absolute;
-    background-color: white;
+  /*width : 100vw;*/
+  width: 50%;
+  /*float:left;*/
+  display: inline-table;
+  position: absolute;
+  background-color: white;
 }
 
-.carousel_card_item img{
-    width:100%;
-    transition : .2s;
+.carousel_card_item img {
+  width: 100%;
+  transition: 0.2s;
 }
-.carousel-img{
-    height: 30vw;
+.carousel-img {
+  height: 30vw;
 }
 .carousel-btn {
-    display: inline-block;
-    width: .875rem;
-    /*height: .875rem;*/
-    border-radius: 30%;
-    margin: 0 .25rem;
-    z-index: 10;
-    -webkit-transition: all .3s;
-    transition: all .3s;
-    cursor: pointer;
-    background-color: #d9dfe4;
+  display: inline-block;
+  width: 0.875rem;
+  /*height: .875rem;*/
+  border-radius: 30%;
+  margin: 0 0.25rem;
+  z-index: 10;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
+  background-color: #d9dfe4;
 }
-button#btn_now{
-    /*box-shadow: 0 0 5px 0 rgb(0 138 244 /60%);*/
-    width: 2.5rem;
-    border-radius: 5px;
-    background: #F08080;
+button#btn_now {
+  /*box-shadow: 0 0 5px 0 rgb(0 138 244 /60%);*/
+  width: 2.5rem;
+  border-radius: 5px;
+  background: #f08080;
 }
-.carousel-card-pager-zoomable{
-    position: relative;
-    padding: 2rem 0;
-    text-align: center;
-    line-height: 0;
-    /*width: -webkit-fit-content;*/
-    width: -moz-fit-content;
-    width: fit-content;
-    margin: 0 auto;
+.carousel-card-pager-zoomable {
+  position: relative;
+  padding: 2rem 0;
+  text-align: center;
+  line-height: 0;
+  /*width: -webkit-fit-content;*/
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
 }
-.carousel-card-mask{
-    text-align: center;
-    /*background-color: #F08080;*/
-    /*height: 30vw;*/
-    /*이런식으로 카드 크기 정해두어야할듯*/
-}
-
-.leftback{
-    transform: translateX(4vw) translateY(-2vh)scale(0.83);
-    opacity: .2;
-    z-index: -3;
-    transition: .5s;
-}
-.rightback{
-    transform: translateX(44vw) translateY(-2vh) scale(0.83);
-    opacity: .2;
-    z-index: -3;
-    transition: .5s;
-}
-.center{
-    transform: translateX(25vw) scale(1);
-    transition: .5s;
-    z-index: -1;
-}
-.left{
-    transform: translateX(1vw) scale(0.83);
-    opacity: .75;
-    z-index: -2;
-    transition: .5s;
-}
-.right{
-    transform: translateX(47vw) scale(0.83);
-    opacity: .75;
-    z-index: -2;
-    transition: .5s;
+.carousel-card-mask {
+  text-align: center;
+  /*background-color: #F08080;*/
+  /*height: 30vw;*/
+  /*이런식으로 카드 크기 정해두어야할듯*/
 }
 
+.leftback {
+  transform: translateX(4vw) translateY(-2vh) scale(0.83);
+  opacity: 0.2;
+  z-index: -3;
+  transition: 0.5s;
+}
+.rightback {
+  transform: translateX(44vw) translateY(-2vh) scale(0.83);
+  opacity: 0.2;
+  z-index: -3;
+  transition: 0.5s;
+}
+.center {
+  transform: translateX(25vw) scale(1);
+  transition: 0.5s;
+  z-index: -1;
+}
+.left {
+  transform: translateX(1vw) scale(0.83);
+  opacity: 0.75;
+  z-index: -2;
+  transition: 0.5s;
+}
+.right {
+  transform: translateX(47vw) scale(0.83);
+  opacity: 0.75;
+  z-index: -2;
+  transition: 0.5s;
+}
 
 /*Thumbnail*/
 
 .youtubebutton {
-    display: inline-block;
-    /*margin: 0 .25rem;*/
-    /*z-index: 10;*/
-    /*-webkit-transition: all .3s;*/
-    /*transition: all .3s;*/
-    /*cursor: pointer;*/
-    /*background-color: #d9dfe4;*/
+  display: inline-block;
+  /*margin: 0 .25rem;*/
+  /*z-index: 10;*/
+  /*-webkit-transition: all .3s;*/
+  /*transition: all .3s;*/
+  /*cursor: pointer;*/
+  /*background-color: #d9dfe4;*/
+}
+.carousel-card-mask p {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
