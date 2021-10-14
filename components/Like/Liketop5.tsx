@@ -15,7 +15,7 @@ interface Props {
 const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
   // const {data,error,revalidate} = useSWR('/api/savemember',fetcher); //로그인후에 데이터를 전해줄 api //유저정보가 data에 담길 것임
   const [logInError, setLogInError] = useState(false);
-  const [memberid, setMemberid] = useState(0);
+  const [memberid, setMemberid] = useState(1);
   const [placeid, setPlaceid] = useState(0);
 
   {
@@ -60,17 +60,16 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
     var ethplaceid = top5placeid[e];
     console.log('즐겨찾기 할 id:', memberid, 'placeid', ethplaceid);
 
-    // axios.post(
-    //     `/api/myplace/add/${memberid}/${top5placeid[e]}`,
-    //     { memberid, ethplaceid },
-    //     {withCredentials:true} //post에선 3번째자리에 설정
-    //   )
-    //   .then(() => {
-    //     console.log('넣을 id: ',memberid, 'placeid',ethplaceid);
-    //   })
-    //   .catch((error) => {
-    //     setLogInError(error.response?.data?.statusCode === 401);
-    //   });
+    axios.post(
+        `/api/myplace/add/${memberid}/${top5placeid[e]}`,
+        { memberid, ethplaceid },
+        {withCredentials:true} //post에선 3번째자리에 설정
+      )
+      .then(() => {
+        console.log('넣을 id: ',memberid, 'placeid',ethplaceid);
+      })
+      .catch((error) => {
+      });
   }
   function func_delete(e: number) {
     var ethplaceid = top5placeid[e];

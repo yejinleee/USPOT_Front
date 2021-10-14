@@ -1,6 +1,6 @@
-import Getapi from '@components/GetAPI/Getapi';
 import React, { FC, useState } from 'react';
 import './Controller.css';
+import Tourapilist from '@components/Tourapi/Tourapilist';
 interface Props {
   mapx: any;
   mapy: any;
@@ -22,7 +22,6 @@ const Controller: FC<Props> = ({ children, mapx, mapy }) => {
   const [selectedArrange, setSelectedArrange] = useState('B'); //  정렬기준 *인기순 B / 거리순 E
   const [selectedType, setSelectedType] = useState(12);
   const [apiopen, setApigopen] = useState(false);
-
   function funcType(selected: number) {
     setSelectedType(selected);
   }
@@ -109,7 +108,7 @@ const Controller: FC<Props> = ({ children, mapx, mapy }) => {
       </div>
       <div className="클래스명모하지">
         {apiopen && (
-          <Getapi arrange={selectedArrange} distance={slideValue} type={selectedType} mapx={mapx} mapy={mapy} />
+          <Tourapilist arrange={selectedArrange} distance={slideValue} type={selectedType} mapx={mapx} mapy={mapy} />
         )}
       </div>
     </>
