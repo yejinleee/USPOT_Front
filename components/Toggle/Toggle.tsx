@@ -142,7 +142,7 @@ const Toggle = () => {
   const sejongindex = useRef(0);
 
   useEffect(() => {
-    axios.get('/api/province/findAll').then((response) => {
+    axios.get('/api/province/findall').then((response) => {
       for (var i = 0; i < response.data.data.length; i++) {
         setIndex(i);
         if (i === 0) {
