@@ -23,7 +23,18 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
   const [addr, setAddr] = useState([] as any);
   const [dist,setDistance] = useState([] as any);
   const [img,setImg] = useState([] as any);
-  var memberid = 1; //id 전역에서 받아올거!!!!!!!!!!
+
+  var local = localStorage.getItem('memberid');
+  try{
+    var memberid = Number(local.split("")[1]);
+  }
+  catch{
+    var memberid=0;
+  }
+  if (memberid===0){
+    // console.log("예외");
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+  }
 
   // 한광공api에서의 카테고리를 우리 카테고리(1,2,3)으로. 근데 카페는  ?  ? ? ?
   var ggcategory='관광명소';
@@ -90,6 +101,7 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
         console.log('넣을 id: ',memberid, 'place명',names[e]);
       })
       .catch((error) => {
+        alert('로그인하세욥');
         console.log(error);
       });
   }

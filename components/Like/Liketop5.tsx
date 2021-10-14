@@ -7,48 +7,23 @@ import fetcher from '@utils/fetcher';
 import './Liketop5.css';
 
 interface Props {
-  // top5data: any;
   top5name: any;
   top5placeid: any;
 }
 
 const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
-  // const {data,error,revalidate} = useSWR('/api/savemember',fetcher); //로그인후에 데이터를 전해줄 api //유저정보가 data에 담길 것임
-  const [logInError, setLogInError] = useState(false);
-  const [memberid, setMemberid] = useState(1);
-  const [placeid, setPlaceid] = useState(0);
 
-  {
-    /*
-  1. 로그인 해결 되면 받아오는 id를 memberid 에 넣어야 한다.
-  2. post 되는지 확인
-     - 슬리액 로그인 해볼 때 따라 짠 코드가 밑에 onSubmit인데 이렇게 useCallback으로 해야하는건가 ? ?
-     - 아니면 Getapi 한광공 할때처럼 useEffect ?
-  */
+  var local = localStorage.getItem('memberid');
+  try{
+    var memberid = Number(local.split("")[1]);
   }
-
-  const onSubmit = useCallback(
-    (idx, placeid) => {
-      // e.preventDefault();
-      // setLogInError(false);
-      // api보내는코드 위에 문제해결하면서 고치고 활성화
-      // axios
-      //   .post(
-      //     `/api/myplace/add/${memberid}/${e}`,
-      //     { memberid, e },
-      //     {withCredentials:true} //post에선 3번째자리에 설정
-      //   )
-      //   .then(() => {
-      //     // revalidate();
-      //   })
-      //   .catch((error) => {
-      //     setLogInError(error.response?.data?.statusCode === 401);
-      //   });
-    },
-    [memberid],
-    //[memberid,idx]
-    //왜 idx에 빨간..
-  );
+  catch{
+    var memberid=0;
+  }
+  if (memberid===0){
+    // console.log("예외");
+      //////////////////////////////////////////////////////////////////////////////////////////////////////
+  }
 
   const [like0, setLike0] = useState(0); //초기0 누르면1 눌렀다 빼면 2 //처음렌더링대 false라 else문들어갈까봐
   const [like1, setLike1] = useState(0);
@@ -69,6 +44,7 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
         console.log('넣어진 id: ',memberid, 'placeid',ethplaceid);
       })
       .catch((error) => {
+        alert('로그인하세욥');
       });
   }
   function func_delete(e: number) {
