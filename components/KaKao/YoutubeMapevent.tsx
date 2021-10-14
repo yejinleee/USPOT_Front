@@ -12,8 +12,9 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid }) => {
   const long = useRef(0);
   const kakao = (window as any).kakao;
   const [place, setPlace] = useState([] as any);
-  const [youtubemap, setYoutubemap] = useState();
+  const [youtubemap, setYoutubemap] = useState(null);
   const [markers, setMarkers] = useState([] as any);
+
   useEffect(() => {
     setPlace([]);
     axios.get(`/api/vlog/findplace/${videoid}`).then((response) => {
@@ -37,10 +38,6 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid }) => {
   }, []);
 
   const mapscript = () => {
-    place.forEach((el: any) => {
-      latt.current += el.location_y;
-      long.current += el.location_x;
-    });
     removeMarker();
     for (var i = 0; i < place.length; i++) {
       var placePosition = new kakao.maps.LatLng(place[i].location_y, place[i].location_x),
@@ -52,6 +49,7 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid }) => {
       kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
     }
   };
+
   function addMarker(position: any, idx: any, id: any) {
     var imageSrc = `/src/icon/${id}.png`, // 마커 이미지 url, 스프라이트 이미지를 씁니다
       imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
@@ -78,7 +76,6 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid }) => {
     };
   }
   function removeMarker() {
-    console.log(markers);
     for (var i = 0; i < markers.length; i++) {
       markers[i].setMap(null);
     }
