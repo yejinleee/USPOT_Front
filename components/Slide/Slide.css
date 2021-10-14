@@ -16,6 +16,9 @@
     width:100%;
     transition : .2s;
 }
+.carousel-img{
+    height: 30vw;
+}
 .carousel-btn {
     display: inline-block;
     width: .875rem;
@@ -46,6 +49,9 @@ button#btn_now{
 }
 .carousel-card-mask{
     text-align: center;
+    /*background-color: #F08080;*/
+    /*height: 30vw;*/
+    /*이런식으로 카드 크기 정해두어야할듯*/
 }
 
 .leftback{

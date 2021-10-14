@@ -136,7 +136,6 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
     카페: 3,
   };
   let imageSrc = `/src/icon/${dic_category[selectedcategory]}.png`;
-
   useEffect(() => {
     axios.get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`).then(async (response) => {
       setTop5data(response.data.data);
@@ -146,6 +145,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
         setTop5add((prev: any) => [...prev, response.data.data[i].address]);
         setTop5placeid((prev: any) => [...prev, response.data.data[i].id]);
       }
+
       for (var i = 0; i < 5; i++) {
         const name = response.data.data[i].name;
         const params = {
@@ -154,7 +154,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
           size: 5,
         };
         const { data } = await imageSearch(params);
-        console.log(data);
+        console.log('img',data);
         if (i === 0) {
           setPic1(data.documents[0].image_url);
         } else if (i === 1) {
@@ -164,9 +164,11 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
         } else if (i === 3) {
           setPic4(data.documents[1].image_url);
         } else {
+          // setPic5(data.documents[0].image_url);
           setPic5(data.documents[1].image_url);
         }
       }
+
     });
   }, []);
 

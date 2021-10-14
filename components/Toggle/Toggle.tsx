@@ -1042,7 +1042,7 @@ const Toggle = () => {
           }}
           style={gangwontoggle ? { background: '#F08080' } : { background: '' }}
         >
-          {gangwon.name}
+          <span style={gangwontoggle ? { color: 'white' } : { color: '#D85959' }}>{gangwon.name}</span>
         </label>
         <div>{gangwontoggle && gangwon_list}</div>
         <label
@@ -1052,7 +1052,7 @@ const Toggle = () => {
             !incheontoggle && setMap(incheon.link);
           }}
         >
-          {incheon.name}
+          <span style={incheontoggle ? { color: 'white' } : { color: '#D85959' }}>{incheon.name}</span>
         </label>
         <div>{incheontoggle && incheon_list}</div>
         <label
@@ -1062,7 +1062,7 @@ const Toggle = () => {
             !chungbuktoggle && setMap(chungbuk.link);
           }}
         >
-          {chungbuk.name}
+          <span style={chungbuktoggle ? { color: 'white' } : { color: '#D85959' }}>{chungbuk.name}</span>
         </label>
         <div>{chungbuktoggle && chungbuk_list}</div>
         <label
@@ -1072,7 +1072,7 @@ const Toggle = () => {
             !chungnamtoggle && setMap(chungnam.link);
           }}
         >
-          {chungnam.name}
+          <span style={chungnamtoggle ? { color: 'white' } : { color: '#D85959' }}>{chungnam.name}</span>
         </label>
         <div>{chungnamtoggle && chungnam_list}</div>
         <label
@@ -1082,7 +1082,7 @@ const Toggle = () => {
             !daejeontoggle && setMap(daejeon.link);
           }}
         >
-          {daejeon.name}
+          <span style={daejeontoggle ? { color: 'white' } : { color: '#D85959' }}>{daejeon.name}</span>
         </label>
         <div>{daejeontoggle && daejeon_list}</div>
         <label
@@ -1092,7 +1092,7 @@ const Toggle = () => {
             !sejongtoggle && setMap(sejong.link);
           }}
         >
-          {sejong.name}
+          <span style={sejongtoggle ? { color: 'white' } : { color: '#D85959' }}>{sejong.name}</span>
         </label>
         <div>{sejongtoggle && sejong_list}</div>
         <label
@@ -1102,7 +1102,7 @@ const Toggle = () => {
             !jeonbuktoggle && setMap(jeonbuk.link);
           }}
         >
-          {jeonbuk.name}
+          <span style={jeonbuktoggle ? { color: 'white' } : { color: '#D85959' }}>{jeonbuk.name}</span>
         </label>
         <div>{jeonbuktoggle && jeonbuk_list}</div>
         <label
@@ -1112,7 +1112,7 @@ const Toggle = () => {
             !jeonnamtoggle && setMap(jeonnam.link);
           }}
         >
-          {jeonnam.name}
+          <span style={jeonnamtoggle ? { color: 'white' } : { color: '#D85959' }}>{jeonnam.name}</span>
         </label>
         <div>{jeonnamtoggle && jeonnam_list}</div>
         <label
@@ -1122,7 +1122,7 @@ const Toggle = () => {
             !gwangjutoggle && setMap(gwangju.link);
           }}
         >
-          {gwangju.name}
+          <span style={gwangjutoggle ? { color: 'white' } : { color: '#D85959' }}>{gwangju.name}</span>
         </label>
         <div>{gwangjutoggle && gwangju_list}</div>
         <label
@@ -1132,7 +1132,7 @@ const Toggle = () => {
             !gyeongbuktoggle && setMap(gyeongbuk.link);
           }}
         >
-          {gyeongbuk.name}
+          <span style={gyeongbuktoggle ? { color: 'white' } : { color: '#D85959' }}>{gyeongbuk.name}</span>
         </label>
         <div>{gyeongbuktoggle && gyeongbuk_list}</div>
         <label
@@ -1142,7 +1142,7 @@ const Toggle = () => {
             !gyeongnamtoggle && setMap(gyeongnam.link);
           }}
         >
-          {gyeongnam.name}
+          <span style={gyeongnamtoggle ? { color: 'white' } : { color: '#D85959' }}>{gyeongnam.name}</span>
         </label>
         <div>{gyeongnamtoggle && gyeongnam_list}</div>
         <label
@@ -1152,7 +1152,7 @@ const Toggle = () => {
             !daegutoggle && setMap(daegu.link);
           }}
         >
-          {daegu.name}
+          <span style={daegutoggle ? { color: 'white' } : { color: '#D85959' }}>{daegu.name}</span>
         </label>
         <div>{daegutoggle && daegu_list}</div>
         <label
@@ -1162,7 +1162,7 @@ const Toggle = () => {
             !ulsantoggle && setMap(ulsan.link);
           }}
         >
-          {ulsan.name}
+          <span style={ulsantoggle ? { color: 'white' } : { color: '#D85959' }}>{ulsan.name}</span>
         </label>
         <div>{ulsantoggle && ulsan_list}</div>
         <label
@@ -1172,7 +1172,7 @@ const Toggle = () => {
             !busantoggle && setMap(busan.link);
           }}
         >
-          {busan.name}
+          <span style={busantoggle ? { color: 'white' } : { color: '#D85959' }}>{busan.name}</span>
         </label>
         <div>{busantoggle && busan_list}</div>
       </div>
