@@ -20,9 +20,14 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
         `http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${arrange}&contentTypeId=${type}&mapX=${mapx}&mapY=${mapy}&radius=${distance}&listYN=Y&_type=json`,
       )
       .then((response) => {
-        try {
+        if (response.data.response.body.items === '') {
+          setData([]);
+        } else {
           setData(response.data.response.body.items.item);
-        } catch {}
+        }
+      })
+      .catch((error) => {
+        setData([]);
       });
   }, [datas]);
 
