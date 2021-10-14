@@ -1,7 +1,10 @@
 import Getapi from '@components/GetAPI/Getapi';
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import './Controller.css';
-
+interface Props {
+  mapx: any;
+  mapy: any;
+}
 const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) => {
   const [state, setSlide] = useState(defaultState);
   const handleChange = (e: any) => {
@@ -14,7 +17,7 @@ const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) =
   return [state, Slider, setSlide];
 };
 
-const Controller = () => {
+const Controller: FC<Props> = ({ children, mapx, mapy }) => {
   const [slideValue, Slider] = useSlider(1, 100000, 50000, 'Threshold', 'threshold');
   const [selectedArrange, setSelectedArrange] = useState('B'); //  정렬기준 *인기순 B / 거리순 E
   const [selectedType, setSelectedType] = useState(12);
@@ -37,7 +40,7 @@ const Controller = () => {
     <>
       <div className="controller">
         {/*슬라이더*/}
-        <div className="slider-parent" onChange={()=>setApigopen(false)}>
+        <div className="slider-parent" onChange={() => setApigopen(false)}>
           0
           <Slider />
           10 km
@@ -105,7 +108,9 @@ const Controller = () => {
         </button>
       </div>
       <div className="클래스명모하지">
-        {apiopen && <Getapi arrange={selectedArrange} distance={slideValue} type={selectedType} />}
+        {apiopen && (
+          <Getapi arrange={selectedArrange} distance={slideValue} type={selectedType} mapx={mapx} mapy={mapy} />
+        )}
       </div>
     </>
   );

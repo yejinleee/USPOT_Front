@@ -33,7 +33,8 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
   const [top5phone, setTop5phone] = useState([] as any);
   const [top5add, setTop5add] = useState([] as any);
   const [top5placeid, setTop5placeid] = useState([] as any);
-
+  const [mapx, setMapx] = useState([] as any);
+  const [mapy, setMapy] = useState([] as any);
   const [top5data, setTop5data] = useState([] as any);
   var dic: { [key: string]: number } = {
     가평군: 1,
@@ -144,6 +145,8 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
         setTop5phone((prev: any) => [...prev, response.data.data[i].phone]);
         setTop5add((prev: any) => [...prev, response.data.data[i].address]);
         setTop5placeid((prev: any) => [...prev, response.data.data[i].id]);
+        setMapx((prev: any) => [...prev, response.data.data[i].location_x]);
+        setMapy((prev: any) => [...prev, response.data.data[i].location_y]);
       }
 
       for (var i = 0; i < 5; i++) {
@@ -154,7 +157,10 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
           size: 5,
         };
         const { data } = await imageSearch(params);
+<<<<<<< HEAD
         console.log('img',data);
+=======
+>>>>>>> 1f3de6b2ccb9dc0e62b0edbb86403f6893b5d494
         if (i === 0) {
           setPic1(data.documents[0].image_url);
         } else if (i === 1) {
@@ -164,8 +170,12 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
         } else if (i === 3) {
           setPic4(data.documents[1].image_url);
         } else {
+<<<<<<< HEAD
           // setPic5(data.documents[0].image_url);
           setPic5(data.documents[1].image_url);
+=======
+          setPic5(data.documents[0].image_url);
+>>>>>>> 1f3de6b2ccb9dc0e62b0edbb86403f6893b5d494
         }
       }
 
@@ -289,7 +299,16 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
       </div>
 
       <button className="gotothirdbtn">
-        <Link to={`/${selectedcity}/${selectedcategory}/more`} style={{ textDecoration: 'none', color: '#000000' }}>
+        <Link
+          to={{
+            pathname: `/${selectedcity}/${selectedcategory}/more`,
+            state: {
+              mapx: mapx[btn_pic - 1],
+              mapy: mapy[btn_pic - 1],
+            },
+          }}
+          style={{ textDecoration: 'none', color: '#000000' }}
+        >
           주변장소 더 보기
         </Link>
       </button>

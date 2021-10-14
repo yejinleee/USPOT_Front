@@ -4,30 +4,33 @@ interface Props {
   arrange: string;
   type: number;
   distance: number;
+  mapx: any;
+  mapy: any;
 }
-const Getapi: FC<Props> = ({ children, arrange, type, distance }) => {
+const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) => {
   let api = process.env.REACT_APP_TOUR_API_KEY;
   let number = 5;
   let pnumber = 1;
-  let mapX = 127.5091156306887;
-  let mapY = 34.8867806675504;
   var datas;
-
   const [data, setData] = useState([] as any);
 
   useEffect(() => {
     axios
       .get(
-        `http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${arrange}&contentTypeId=${type}&mapX=${mapX}&mapY=${mapY}&radius=${distance}&listYN=Y&_type=json`,
+        `http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${arrange}&contentTypeId=${type}&mapX=${mapx}&mapY=${mapy}&radius=${distance}&listYN=Y&_type=json`,
       )
       .then((response) => {
-        try {
+        if (response.data.response.body.items === '') {
+          setData([]);
+        } else {
           setData(response.data.response.body.items.item);
-        } catch {}
+        }
+      })
+      .catch((error) => {
+        setData([]);
       });
   }, [datas]);
 
-  console.log(data);
   if (data.length !== 0) {
     if (data.length > 1) {
       datas = data.map((v: any) => {
