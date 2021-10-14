@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
+import './Tourapilist.css'
 interface Props {
   arrange: string;
   type: number;
@@ -22,7 +23,7 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
   const [address, setAddress] = useState([] as any);
   const [dist,setDistance] = useState([] as any);
   const [img,setImg] = useState([] as any);
-  var memberid = 0; //id 전역에서 받아올거!!!!!!!!!!
+  var memberid = 1; //id 전역에서 받아올거!!!!!!!!!!
 
   // 한광공api에서의 카테고리를 우리 카테고리(1,2,3)으로. 근데 카페는  ?  ? ? ?
   var ggcategory=1;
@@ -66,11 +67,10 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
       .catch((error) => {
         setData([]);
       });
-  }, [datas]);
-  console.log('데이터',data);
+  }, []);
+  // console.log('데이터',data);
 
   len=data.length;
-  console.log('길이:',len);
   const [like0, setLike0] = useState(0); //초기0 누르면1 눌렀다 빼면 2 //처음렌더링대 false라 else문들어갈까봐
   const [like1, setLike1] = useState(0);
   const [like2, setLike2] = useState(0);
@@ -79,17 +79,22 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
 
   function func_post(e: number) {
     console.log('즐겨찾기 할 id:', memberid, 'placeid', name[e]);
+    var n=name[e];
+    var c=category[e];
+    var x=locx[e];
+    var y = locy[e];
+    var a = address[e];
 
     // axios.post(
-    //     `/api/myplace/add/${memberid}/${top5placeid[e]}`,
-    //     { memberid, ethplaceid },
+    //     `/api/myplace/addfromapi/1/`,
+    //     // { name[e], category[e],locx[e],locy[e],memberid },
+    //     { n, c,x,y,a ,memberid },
     //     {withCredentials:true} //post에선 3번째자리에 설정
     //   )
     //   .then(() => {
-    //     console.log('넣을 id: ',memberid, 'placeid',ethplaceid);
+    //     console.log('넣을 id: ',memberid, 'placeid',name[e]);
     //   })
     //   .catch((error) => {
-    //     setLogInError(error.response?.data?.statusCode === 401);
     //   });
   }
   function func_delete(e: number) {

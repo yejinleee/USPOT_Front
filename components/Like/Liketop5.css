@@ -47,21 +47,21 @@ ul{
     /*background-color: #F08080;*/
 }
 
-.input_radio{
-    visibility: hidden;
-    display: none;
-}
+/*.input_radio{*/
+/*    visibility: hidden;*/
+/*    display: none;*/
+/*}*/
 
-.input_radio label {
-    display: inline-block;
-    background-color: white;
-    padding: 10px 20px;
-    font-family: sans-serif, Arial;
-    font-size: 16px;
-    border: 2px solid #F08080;
-    border-radius: 5px;
-    cursor: pointer;
-}
+/*.input_radio label {*/
+/*    display: inline-block;*/
+/*    background-color: white;*/
+/*    padding: 10px 20px;*/
+/*    font-family: sans-serif, Arial;*/
+/*    font-size: 16px;*/
+/*    border: 2px solid #F08080;*/
+/*    border-radius: 5px;*/
+/*    cursor: pointer;*/
+/*}*/
 
 .like{
     padding : .5em;
