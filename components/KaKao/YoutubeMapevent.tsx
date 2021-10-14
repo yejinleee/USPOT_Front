@@ -13,7 +13,7 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid }) => {
   const kakao = (window as any).kakao;
   const [place, setPlace] = useState([] as any);
   const [youtubemap, setYoutubemap] = useState();
-
+  const [markers, setMarkers] = useState([] as any);
   useEffect(() => {
     setPlace([]);
     axios.get(`/api/vlog/findplace/${videoid}`).then((response) => {
@@ -37,47 +37,53 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid }) => {
   }, []);
 
   const mapscript = () => {
-    kakao.maps.load(() => {
-      place.forEach((el: any) => {
-        latt.current += el.location_y;
-        long.current += el.location_x;
-      });
-      place.map((el: any) => {
-        var imageSize = new kakao.maps.Size(30, 30),
-          imageOption = { offset: new kakao.maps.Point(27, 69) };
-
-        const markerImage = new kakao.maps.MarkerImage(`/src/icon/${el.categoryid}.png`, imageSize, imageOption);
-        const marker = new kakao.maps.Marker({
-          //마커가 표시 될 위치
-          position: new kakao.maps.LatLng(el.location_y, el.location_x),
-          //이미지 마커 불러오기
-          image: markerImage,
-        });
-        marker.setMap(youtubemap);
-        // 마커에 표시할 인포윈도우를 생성합니다
-        var infowindow = new kakao.maps.InfoWindow({
-          content: el.name, // 인포윈도우에 표시할 내용
-        });
-        // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-        // 이벤트 리스너로는 클로저를 만들어 등록합니다
-        // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(youtubemap, marker, infowindow));
-        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-      });
-      // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
-      function makeOverListener(map: any, marker: any, infowindow: { open: (arg0: any, arg1: any) => void }) {
-        return function () {
-          infowindow.open(map, marker);
-        };
-      }
-      // 인포윈도우를 닫는 클로저를 만드는 함수입니다
-      function makeOutListener(infowindow: { close: () => void }) {
-        return function () {
-          infowindow.close();
-        };
-      }
+    place.forEach((el: any) => {
+      latt.current += el.location_y;
+      long.current += el.location_x;
     });
+    removeMarker();
+    for (var i = 0; i < place.length; i++) {
+      var placePosition = new kakao.maps.LatLng(place[i].location_y, place[i].location_x),
+        marker = addMarker(placePosition, i, place[i].categoryid);
+      var infowindow = new kakao.maps.InfoWindow({
+        content: place[i].name, // 인포윈도우에 표시할 내용
+      });
+      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(youtubemap, marker, infowindow));
+      kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+    }
   };
+  function addMarker(position: any, idx: any, id: any) {
+    var imageSrc = `/src/icon/${id}.png`, // 마커 이미지 url, 스프라이트 이미지를 씁니다
+      imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
+      markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize),
+      marker = new kakao.maps.Marker({
+        position: position, // 마커의 위치
+        image: markerImage,
+      });
+
+    marker.setMap(youtubemap); // 지도 위에 마커를 표출합니다
+    // 배열에 생성된 마커를 추가합니다
+    setMarkers((prev: any) => [...prev, marker]);
+    return marker;
+  }
+  function makeOverListener(map: any, marker: any, infowindow: { open: (arg0: any, arg1: any) => void }) {
+    return function () {
+      infowindow.open(map, marker);
+    };
+  }
+  // 인포윈도우를 닫는 클로저를 만드는 함수입니다
+  function makeOutListener(infowindow: { close: () => void }) {
+    return function () {
+      infowindow.close();
+    };
+  }
+  function removeMarker() {
+    console.log(markers);
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+    setMarkers([]);
+  }
   return (
     <div style={{ position: 'relative' }}>
       <div id="youtubemap" style={{ width: '50vw', height: '40vw', display: 'inline-block' }}></div>
