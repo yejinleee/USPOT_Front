@@ -84,10 +84,24 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
     var x=locx[e];
     var y = locy[e];
     var a = address[e];
-
+    const headers = {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    };
+    axios
+      .post(
+        `/api/myplace/addfromapi/${memberid}`,
+        JSON.stringify({ n,c,x,y,a }),
+        { headers })// 500에러
+      // { withCredentials:true }) //이건 415인데 위에 headers 저렇게써야하는거라구해서 header로 바꾸면 500..
+      .then((res) => {
+        console.log('넣을 id: ',memberid, 'placeid',name[e]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     // axios.post(
-    //     `/api/myplace/addfromapi/1/`,
-    //     // { name[e], category[e],locx[e],locy[e],memberid },
+    //     `/api/myplace/addfromapi/${memberid}`,
     //     { n, c,x,y,a ,memberid },
     //     {withCredentials:true} //post에선 3번째자리에 설정
     //   )
