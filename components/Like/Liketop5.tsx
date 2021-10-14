@@ -66,23 +66,22 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
         {withCredentials:true} //post에선 3번째자리에 설정
       )
       .then(() => {
-        console.log('넣을 id: ',memberid, 'placeid',ethplaceid);
+        console.log('넣어진 id: ',memberid, 'placeid',ethplaceid);
       })
       .catch((error) => {
       });
   }
   function func_delete(e: number) {
-    var ethplaceid = top5placeid[e];
-    console.log('즐겨찾기에서 지울 id: ', memberid, 'placeid', ethplaceid);
+    // var ethplaceid = top5placeid[e];
+    console.log('즐겨찾기에서 지울 id: ', memberid, 'placeid', top5placeid[e]);
 
-    // axios.delete(
-    //     `/api/myplace/deletebyplace/${memberid}/${top5placeid[e]}`)
-    //   .then(() => {
-    //     console.log('넣을 id: ',memberid, 'placeid',ethplaceid);
-    //   })
-    //   .catch((error) => {
-    //     setLogInError(error.response?.data?.statusCode === 401);
-    //   });
+    axios.delete(
+        `/api/myplace/deletebyplace/${memberid}/${top5placeid[e]}`)
+      .then(() => {
+        console.log('지워진 id: ',memberid, 'placeid',top5placeid[e]);
+      })
+      .catch((error) => {
+      });
   }
 
   function func(e: number) {
