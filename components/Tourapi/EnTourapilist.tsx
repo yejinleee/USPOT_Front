@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
+import './Tourapilist.css';
 interface Props {
   arrange: string;
   type: number;
@@ -8,69 +9,66 @@ interface Props {
   mapy: any;
 }
 
-const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) => {
+const EnTourapilist: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) => {
   let api = process.env.REACT_APP_TOUR_API_KEY;
   let number = 5;
   let pnumber = 1;
   var datas;
   const [data, setData] = useState([] as any);
-
-  const [name, setName] = useState([] as any);
-  const [category, setCategory] = useState([] as any);
+  const [names, setNames] = useState([] as any);
+  const [categories, setCategories] = useState([] as any);
   const [locx, setLocx] = useState([] as any);
   const [locy, setLocy] = useState([] as any);
-  const [address, setAddress] = useState([] as any);
-  const [dist,setDistance] = useState([] as any);
-  const [img,setImg] = useState([] as any);
-  var memberid = 0; //id 전역에서 받아올거!!!!!!!!!!
+  const [addr, setAddr] = useState([] as any);
+  const [dist, setDistance] = useState([] as any);
+  const [img, setImg] = useState([] as any);
 
-  // 한광공api에서의 카테고리를 우리 카테고리(1,2,3)으로. 근데 카페는  ?  ? ? ?
-  var ggcategory=1;
-  if (type===39){
-    ggcategory=2;//음식점
+  var local = localStorage.getItem('memberid');
+  try {
+    var memberid = Number(local.split('')[1]);
+  } catch {
+    var memberid = 0;
   }
-  else{
-    ggcategory=1;
+  if (memberid === 0) {
+    // console.log("예외");
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
   }
-  var len=0
+
+  var ggcategory = '관광명소';
+  if (type === 39) {
+    ggcategory = '음식점';
+  } else {
+    ggcategory = '관광명소';
+  }
+  var len = 0;
   useEffect(() => {
     axios
       .get(
-        `http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${arrange}&contentTypeId=${type}&mapX=${mapx}&mapY=${mapy}&radius=${distance}&listYN=Y&_type=json`,
+        `http://api.visitkorea.or.kr/openapi/service/rest/EngService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${arrange}&contentTypeId=${type}&mapX=${mapx}&mapY=${mapy}&radius=${distance}&listYN=Y&_type=json`,
       )
       .then((response) => {
         if (response.data.response.body.items === '') {
           setData([]);
         } else {
           setData(response.data.response.body.items.item);
-          for ( var i=0; i<response.data.response.body.items.item.length; i++){
-            setName((prev: any) => [...prev, response.data.response.body.items.item[i].title]);
-            setCategory((prev: any) => [...prev, ggcategory]);
+          for (var i = 0; i < response.data.response.body.items.item.length; i++) {
+            setNames((prev: any) => [...prev, response.data.response.body.items.item[i].title]);
+            setCategories((prev: any) => [...prev, ggcategory]);
             setLocx((prev: any) => [...prev, response.data.response.body.items.item[i].mapx]);
             setLocy((prev: any) => [...prev, response.data.response.body.items.item[i].mapy]);
-            setAddress((prev: any) => [...prev, response.data.response.body.items.item[i].addr1]);
+            setAddr((prev: any) => [...prev, response.data.response.body.items.item[i].addr1]);
             setDistance((prev: any) => [...prev, response.data.response.body.items.item[i].dist]);
             setImg((prev: any) => [...prev, response.data.response.body.items.item[i].firstimage]);
           }
         }
-        // for ( var i=0; i<response.data.response.body.items.item.length; i++){
-        //   setName((prev: any) => [...prev, response.data.response.body.items.item[i].title]);
-        //   setCategory((prev: any) => [...prev, ggcategory]);
-        //   setLocx((prev: any) => [...prev, response.data.response.body.items.item[i].mapx]);
-        //   setLocy((prev: any) => [...prev, response.data.response.body.items.item[i].mapy]);
-        //   setAddress((prev: any) => [...prev, response.data.response.body.items.item[i].addr1]);
-        //   setDistance((prev: any) => [...prev, response.data.response.body.items.item[i].dist]);
-        //   setImg((prev: any) => [...prev, response.data.response.body.items.item[i].firstimage]);
-        // }
       })
       .catch((error) => {
         setData([]);
       });
-  }, [datas]);
-  console.log('데이터',data);
+  }, []);
+  // console.log('데이터',data);
 
-  len=data.length;
-  console.log('길이:',len);
+  len = data.length;
   const [like0, setLike0] = useState(0); //초기0 누르면1 눌렀다 빼면 2 //처음렌더링대 false라 else문들어갈까봐
   const [like1, setLike1] = useState(0);
   const [like2, setLike2] = useState(0);
@@ -78,33 +76,44 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
   const [like4, setLike4] = useState(0);
 
   function func_post(e: number) {
-    console.log('즐겨찾기 할 id:', memberid, 'placeid', name[e]);
+    console.log('즐겨찾기 할 id:', memberid, 'placeid', names[e]);
 
-    // axios.post(
-    //     `/api/myplace/add/${memberid}/${top5placeid[e]}`,
-    //     { memberid, ethplaceid },
-    //     {withCredentials:true} //post에선 3번째자리에 설정
-    //   )
-    //   .then(() => {
-    //     console.log('넣을 id: ',memberid, 'placeid',ethplaceid);
-    //   })
-    //   .catch((error) => {
-    //     setLogInError(error.response?.data?.statusCode === 401);
-    //   });
+    var name = names[e];
+    var category = categories[e];
+    var location_x = locx[e];
+    var location_y = locy[e];
+    var address = addr[e];
+    const headers = {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    };
+    axios
+      .post(
+        `/api/myplace/addfromapi/${memberid}`,
+        JSON.stringify({ name, category, location_x, location_y, address }),
+        { headers },
+      ) // 500에러
+      // { withCredentials:true }) //이건 415인데 위에 headers 저렇게써야하는거라구해서 header로 바꾸면 500..
+      .then((res) => {
+        console.log('넣을 id: ', memberid, 'place명', names[e]);
+      })
+      .catch((error) => {
+        alert('로그인하세욥');
+        console.log(error);
+      });
   }
   function func_delete(e: number) {
-    console.log('즐겨찾기에서 지울 id:', memberid, 'placeid', name[e]);
+    console.log('즐겨찾기에서 지울 id:', memberid, 'place명', names[e]);
 
-    // axios.delete(
-    //     `/api/myplace/deletebyplace/${memberid}/${top5placeid[e]}`)
-    //   .then(() => {
-    //     console.log('넣을 id: ',memberid, 'placeid',ethplaceid);
-    //   })
-    //   .catch((error) => {
-    //     setLogInError(error.response?.data?.statusCode === 401);
-    //   });
+    axios
+      .delete(`/api/myplace/deletebymyplace/${memberid}/${names[e]}`)
+      .then(() => {
+        console.log('지워진 id: ', memberid, 'place명', names[e]);
+      })
+      .catch((error) => {});
   }
-  function func(e: number) {  //api에 post나 delete 하는 함수
+  function func(e: number) {
+    //api에 post나 delete 하는 함수
     if (e === 0) {
       if (like0 === 0 || like0 === 2) {
         //처음 onClick때 setlike 한게 func에 반영 안되서 이렇게 해야할듯
@@ -139,8 +148,8 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
     }
   } //func
 
-  function makelike0(){
-    return(
+  function makelike0() {
+    return (
       <>
         <li className="page3placelist">
           <input
@@ -155,17 +164,17 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
           {/*{func(0)}*/}
           <label className="custom" htmlFor="listidx0">
             <span className="like">{like0 === 1 ? '💛' : '🤍'}</span>
-            <div className = "likeplace">{name[0]}</div>
-            <div className = "likeaddr">{address[0]}</div>
+            <div className="likeplace">{names[0]}</div>
+            <div className="likeaddr">{addr[0]}</div>
             <div>{dist[0]}m</div>
-            <img src={img[0]} alt={name[0]} />
+            <img src={img[0]} alt={names[0]} />
           </label>
         </li>
       </>
-    )
+    );
   }
-  function makelike1(){
-    return(
+  function makelike1() {
+    return (
       <>
         <li className="page3placelist">
           <input
@@ -180,17 +189,17 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
           {/*{func(1)}*/}
           <label className="custom" htmlFor="listidx1">
             <span className="like">{like1 === 1 ? '💛' : '🤍'}</span>
-            <div className = "likeplace">{name[1]}</div>
-            <div className = "likeaddr">{address[1]}</div>
+            <div className="likeplace">{names[1]}</div>
+            <div className="likeaddr">{addr[1]}</div>
             <div>{dist[1]}m</div>
-            <img src={img[1]} alt={name[1]} />
+            <img src={img[1]} alt={names[1]} />
           </label>
         </li>
       </>
-    )
+    );
   }
-  function makelike2(){
-    return(
+  function makelike2() {
+    return (
       <>
         <li className="page3placelist">
           <input
@@ -205,17 +214,17 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
           {/*{func(2)}*/}
           <label className="custom" htmlFor="listidx2">
             <span className="like">{like2 === 1 ? '💛' : '🤍'}</span>
-            <div className = "likeplace">{name[2]}</div>
-            <div className = "likeaddr">{address[2]}</div>
+            <div className="likeplace">{names[2]}</div>
+            <div className="likeaddr">{addr[2]}</div>
             <div>{dist[2]}m</div>
-            <img src={img[2]} alt={name[2]} />
+            <img src={img[2]} alt={names[2]} />
           </label>
         </li>
       </>
-    )
+    );
   }
-  function makelike3(){
-    return(
+  function makelike3() {
+    return (
       <>
         <li className="page3placelist">
           <input
@@ -230,17 +239,17 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
           {/*{func(3)}*/}
           <label className="custom" htmlFor="listidx3">
             <span className="like">{like3 === 1 ? '💛' : '🤍'}</span>
-            <div className = "likeplace">{name[3]}</div>
-            <div className = "likeaddr">{address[3]}</div>
+            <div className="likeplace">{names[3]}</div>
+            <div className="likeaddr">{addr[3]}</div>
             <div>{dist[3]}m</div>
-            <img src={img[3]} alt={name[3]} />
+            <img src={img[3]} alt={names[3]} />
           </label>
         </li>
       </>
-    )
+    );
   }
-  function makelike4(){
-    return(
+  function makelike4() {
+    return (
       <>
         <li className="page3placelist">
           <input
@@ -255,52 +264,46 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
           {/*{func(4)}*/}
           <label className="custom" htmlFor="listidx4">
             <span className="like">{like4 === 1 ? '💛' : '🤍'}</span>
-            <div className = "likeplace">{name[4]}</div>
-            <div className = "likeaddr">{address[4]}</div>
+            <div className="likeplace">{names[4]}</div>
+            <div className="likeaddr">{addr[4]}</div>
             <div>{dist[4]}m</div>
-            <img src={img[4]} alt={name[4]} />
+            <img src={img[4]} alt={names[4]} />
           </label>
         </li>
       </>
-    )
+    );
   }
 
-  function make(){ //웹페이지에 표시할 태그들. return에서 호출
-    if (len===1){
-      return(
-        <>
-          {makelike0()}
-        </>
-      )
-    }
-    else if (len===2){
-      return(
+  function make() {
+    //웹페이지에 표시할 태그들. return에서 호출
+    if (len === 1) {
+      return <>{makelike0()}</>;
+    } else if (len === 2) {
+      return (
         <>
           {makelike0()}
           {makelike1()}
         </>
-      )    }
-    else if (len===3) {
-      return(
+      );
+    } else if (len === 3) {
+      return (
         <>
           {makelike0()}
           {makelike1()}
           {makelike2()}
         </>
-      )
-    }
-    else if (len===4) {
-      return(
+      );
+    } else if (len === 4) {
+      return (
         <>
           {makelike0()}
           {makelike1()}
           {makelike2()}
           {makelike3()}
         </>
-      )
-    }
-    else if (len===5) {
-      return(
+      );
+    } else if (len === 5) {
+      return (
         <>
           {makelike0()}
           {makelike1()}
@@ -308,22 +311,17 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
           {makelike3()}
           {makelike4()}
         </>
-      )
-    }
-    else if (len===0){
-      return(
+      );
+    } else if (len === 0) {
+      return (
         <>
           <p>not exist!</p>
         </>
-      )
+      );
     }
   }
 
-  return(
-    <>
-      {make()}
-    </>
-  )
+  return <>{make()}</>;
 };
 
-export default Getapi;
+export default EnTourapilist;

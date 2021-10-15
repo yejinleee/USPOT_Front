@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-import './Tourapilist.css'
+import './Tourapilist.css';
 interface Props {
   arrange: string;
   type: number;
@@ -21,30 +21,27 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
   const [locx, setLocx] = useState([] as any);
   const [locy, setLocy] = useState([] as any);
   const [addr, setAddr] = useState([] as any);
-  const [dist,setDistance] = useState([] as any);
-  const [img,setImg] = useState([] as any);
+  const [dist, setDistance] = useState([] as any);
+  const [img, setImg] = useState([] as any);
 
   var local = localStorage.getItem('memberid');
-  try{
-    var memberid = Number(local.split("")[1]);
+  try {
+    var memberid = Number(local.split('')[1]);
+  } catch {
+    var memberid = 0;
   }
-  catch{
-    var memberid=0;
-  }
-  if (memberid===0){
+  if (memberid === 0) {
     // console.log("예외");
     //////////////////////////////////////////////////////////////////////////////////////////////////////
   }
 
-  // 한광공api에서의 카테고리를 우리 카테고리(1,2,3)으로. 근데 카페는  ?  ? ? ?
-  var ggcategory='관광명소';
-  if (type===39){
-    ggcategory='음식점';//관광명소1음식점2
+  var ggcategory = '관광명소';
+  if (type === 39) {
+    ggcategory = '음식점';
+  } else {
+    ggcategory = '관광명소';
   }
-  else{
-    ggcategory='관광명소';
-  }
-  var len=0
+  var len = 0;
   useEffect(() => {
     axios
       .get(
@@ -55,7 +52,7 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
           setData([]);
         } else {
           setData(response.data.response.body.items.item);
-          for ( var i=0; i<response.data.response.body.items.item.length; i++){
+          for (var i = 0; i < response.data.response.body.items.item.length; i++) {
             setNames((prev: any) => [...prev, response.data.response.body.items.item[i].title]);
             setCategories((prev: any) => [...prev, ggcategory]);
             setLocx((prev: any) => [...prev, response.data.response.body.items.item[i].mapx]);
@@ -72,7 +69,7 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
   }, []);
   // console.log('데이터',data);
 
-  len=data.length;
+  len = data.length;
   const [like0, setLike0] = useState(0); //초기0 누르면1 눌렀다 빼면 2 //처음렌더링대 false라 else문들어갈까봐
   const [like1, setLike1] = useState(0);
   const [like2, setLike2] = useState(0);
@@ -82,23 +79,24 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
   function func_post(e: number) {
     console.log('즐겨찾기 할 id:', memberid, 'placeid', names[e]);
 
-    var name=names[e];
-    var category=categories[e];
-    var location_x=locx[e];
+    var name = names[e];
+    var category = categories[e];
+    var location_x = locx[e];
     var location_y = locy[e];
     var address = addr[e];
     const headers = {
-      "Accept" : "application/json",
-      "Content-Type" : "application/json"
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     };
     axios
       .post(
         `/api/myplace/addfromapi/${memberid}`,
-        JSON.stringify({ name,category,location_x,location_y,address }),
-        { headers })// 500에러
+        JSON.stringify({ name, category, location_x, location_y, address }),
+        { headers },
+      ) // 500에러
       // { withCredentials:true }) //이건 415인데 위에 headers 저렇게써야하는거라구해서 header로 바꾸면 500..
       .then((res) => {
-        console.log('넣을 id: ',memberid, 'place명',names[e]);
+        console.log('넣을 id: ', memberid, 'place명', names[e]);
       })
       .catch((error) => {
         alert('로그인하세욥');
@@ -108,15 +106,15 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
   function func_delete(e: number) {
     console.log('즐겨찾기에서 지울 id:', memberid, 'place명', names[e]);
 
-    axios.delete(
-      `/api/myplace/deletebymyplace/${memberid}/${names[e]}`)
+    axios
+      .delete(`/api/myplace/deletebymyplace/${memberid}/${names[e]}`)
       .then(() => {
-        console.log('지워진 id: ',memberid, 'place명',names[e]);
+        console.log('지워진 id: ', memberid, 'place명', names[e]);
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   }
-  function func(e: number) {  //api에 post나 delete 하는 함수
+  function func(e: number) {
+    //api에 post나 delete 하는 함수
     if (e === 0) {
       if (like0 === 0 || like0 === 2) {
         //처음 onClick때 setlike 한게 func에 반영 안되서 이렇게 해야할듯
@@ -151,8 +149,8 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
     }
   } //func
 
-  function makelike0(){
-    return(
+  function makelike0() {
+    return (
       <>
         <li className="page3placelist">
           <input
@@ -167,17 +165,17 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
           {/*{func(0)}*/}
           <label className="custom" htmlFor="listidx0">
             <span className="like">{like0 === 1 ? '💛' : '🤍'}</span>
-            <div className = "likeplace">{names[0]}</div>
-            <div className = "likeaddr">{addr[0]}</div>
+            <div className="likeplace">{names[0]}</div>
+            <div className="likeaddr">{addr[0]}</div>
             <div>{dist[0]}m</div>
             <img src={img[0]} alt={names[0]} />
           </label>
         </li>
       </>
-    )
+    );
   }
-  function makelike1(){
-    return(
+  function makelike1() {
+    return (
       <>
         <li className="page3placelist">
           <input
@@ -192,17 +190,17 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
           {/*{func(1)}*/}
           <label className="custom" htmlFor="listidx1">
             <span className="like">{like1 === 1 ? '💛' : '🤍'}</span>
-            <div className = "likeplace">{names[1]}</div>
-            <div className = "likeaddr">{addr[1]}</div>
+            <div className="likeplace">{names[1]}</div>
+            <div className="likeaddr">{addr[1]}</div>
             <div>{dist[1]}m</div>
             <img src={img[1]} alt={names[1]} />
           </label>
         </li>
       </>
-    )
+    );
   }
-  function makelike2(){
-    return(
+  function makelike2() {
+    return (
       <>
         <li className="page3placelist">
           <input
@@ -217,17 +215,17 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
           {/*{func(2)}*/}
           <label className="custom" htmlFor="listidx2">
             <span className="like">{like2 === 1 ? '💛' : '🤍'}</span>
-            <div className = "likeplace">{names[2]}</div>
-            <div className = "likeaddr">{addr[2]}</div>
+            <div className="likeplace">{names[2]}</div>
+            <div className="likeaddr">{addr[2]}</div>
             <div>{dist[2]}m</div>
             <img src={img[2]} alt={names[2]} />
           </label>
         </li>
       </>
-    )
+    );
   }
-  function makelike3(){
-    return(
+  function makelike3() {
+    return (
       <>
         <li className="page3placelist">
           <input
@@ -242,17 +240,17 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
           {/*{func(3)}*/}
           <label className="custom" htmlFor="listidx3">
             <span className="like">{like3 === 1 ? '💛' : '🤍'}</span>
-            <div className = "likeplace">{names[3]}</div>
-            <div className = "likeaddr">{addr[3]}</div>
+            <div className="likeplace">{names[3]}</div>
+            <div className="likeaddr">{addr[3]}</div>
             <div>{dist[3]}m</div>
             <img src={img[3]} alt={names[3]} />
           </label>
         </li>
       </>
-    )
+    );
   }
-  function makelike4(){
-    return(
+  function makelike4() {
+    return (
       <>
         <li className="page3placelist">
           <input
@@ -267,52 +265,46 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
           {/*{func(4)}*/}
           <label className="custom" htmlFor="listidx4">
             <span className="like">{like4 === 1 ? '💛' : '🤍'}</span>
-            <div className = "likeplace">{names[4]}</div>
-            <div className = "likeaddr">{addr[4]}</div>
+            <div className="likeplace">{names[4]}</div>
+            <div className="likeaddr">{addr[4]}</div>
             <div>{dist[4]}m</div>
             <img src={img[4]} alt={names[4]} />
           </label>
         </li>
       </>
-    )
+    );
   }
 
-  function make(){ //웹페이지에 표시할 태그들. return에서 호출
-    if (len===1){
-      return(
-        <>
-          {makelike0()}
-        </>
-      )
-    }
-    else if (len===2){
-      return(
+  function make() {
+    //웹페이지에 표시할 태그들. return에서 호출
+    if (len === 1) {
+      return <>{makelike0()}</>;
+    } else if (len === 2) {
+      return (
         <>
           {makelike0()}
           {makelike1()}
         </>
-      )    }
-    else if (len===3) {
-      return(
+      );
+    } else if (len === 3) {
+      return (
         <>
           {makelike0()}
           {makelike1()}
           {makelike2()}
         </>
-      )
-    }
-    else if (len===4) {
-      return(
+      );
+    } else if (len === 4) {
+      return (
         <>
           {makelike0()}
           {makelike1()}
           {makelike2()}
           {makelike3()}
         </>
-      )
-    }
-    else if (len===5) {
-      return(
+      );
+    } else if (len === 5) {
+      return (
         <>
           {makelike0()}
           {makelike1()}
@@ -320,22 +312,17 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
           {makelike3()}
           {makelike4()}
         </>
-      )
-    }
-    else if (len===0){
-      return(
+      );
+    } else if (len === 0) {
+      return (
         <>
           <p>not exist!</p>
         </>
-      )
+      );
     }
   }
 
-  return(
-    <>
-      {make()}
-    </>
-  )
+  return <>{make()}</>;
 };
 
 export default Getapi;

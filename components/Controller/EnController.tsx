@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import './Controller.css';
-import Tourapilist from '@components/Tourapi/Tourapilist';
+import EnTourapilist from '@components/Tourapi/EnTourapilist';
 interface Props {
   mapx: any;
   mapy: any;
@@ -17,7 +17,7 @@ const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) =
   return [state, Slider, setSlide];
 };
 
-const Controller: FC<Props> = ({ children, mapx, mapy }) => {
+const EnController: FC<Props> = ({ children, mapx, mapy }) => {
   const [slideValue, Slider] = useSlider(1, 20000, 5000, 'Threshold', 'threshold');
   const [selectedArrange, setSelectedArrange] = useState('B'); //  정렬기준 *인기순 B / 거리순 E
   const [selectedType, setSelectedType] = useState(12);
@@ -30,7 +30,7 @@ const Controller: FC<Props> = ({ children, mapx, mapy }) => {
   }
   function selectedalert() {
     if (selectedType === 0 || selectedArrange === '') {
-      return alert('검색 조건을 모두 선택하여 주세요');
+      return alert('Please select all the search terms.');
     } else {
       setApigopen(true);
     }
@@ -53,43 +53,43 @@ const Controller: FC<Props> = ({ children, mapx, mapy }) => {
             onClick={() => funcArrange('B')}
             className={selectedArrange === 'popularity' ? 'selected' : 'unselected'}
           >
-            인기순
+            Popularity
           </button>
           <button
             onClick={() => funcArrange('E')}
             className={selectedArrange === 'distance' ? 'selected' : 'unselected'}
           >
-            거리순
+            Distance
           </button>
         </div>
         {/*카테고리*/}
         <div className="category" onClick={() => setApigopen(false)}>
           <button onClick={() => funcType(12)} className={selectedType === 12 ? 'selected' : 'unselected'}>
-            관광지
+            Tourist attraction
           </button>
           <button onClick={() => funcType(14)} className={selectedType === 14 ? 'selected' : 'unselected'}>
-            문화시설
+            Cultural facilities
           </button>
           <button onClick={() => funcType(15)} className={selectedType === 15 ? 'selected' : 'unselected'}>
-            축제,공연,행사
+            Festivals, performances, events.
           </button>
           <button onClick={() => funcType(28)} className={selectedType === 28 ? 'selected' : 'unselected'}>
-            레포츠
+            Leports
           </button>
           <button onClick={() => funcType(32)} className={selectedType === 32 ? 'selected' : 'unselected'}>
-            숙박
+            Accommodation
           </button>
           <button onClick={() => funcType(38)} className={selectedType === 38 ? 'selected' : 'unselected'}>
-            쇼핑
+            Shopping
           </button>
           <button onClick={() => funcType(39)} className={selectedType === 39 ? 'selected' : 'unselected'}>
-            음식
+            Food
           </button>
         </div>
         <br />
         Arrange : {selectedArrange}
         <br />
-        거리 : {slideValue}
+        Distance : {slideValue}
         <br />
         Type : {selectedType}
         <br />
@@ -103,16 +103,16 @@ const Controller: FC<Props> = ({ children, mapx, mapy }) => {
             selectedalert();
           }}
         >
-          장소 더보기 GO
+          More locations GO
         </button>
       </div>
       <div className="클래스명모하지">
         {apiopen && (
-          <Tourapilist arrange={selectedArrange} distance={slideValue} type={selectedType} mapx={mapx} mapy={mapy} />
+          <EnTourapilist arrange={selectedArrange} distance={slideValue} type={selectedType} mapx={mapx} mapy={mapy} />
         )}
       </div>
     </>
   );
 };
 
-export default Controller;
+export default EnController;
