@@ -3,6 +3,10 @@ import { Link, Redirect } from 'react-router-dom';
 import './Style.css';
 
 const Header = () => {
+  if (!localStorage.getItem('language')) {
+    localStorage.setItem('language', JSON.stringify('KO'));
+  } // 혹시모를 기본값 설정
+
   const onClickKo = () => {
     localStorage.removeItem('language');
     localStorage.setItem('language', JSON.stringify('KO'));
