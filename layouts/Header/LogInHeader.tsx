@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import './Style.css';
 
-const Header = () => {
+const LogInHeader = () => {
   if (!localStorage.getItem('language')) {
     localStorage.setItem('language', JSON.stringify('KO'));
   } // 혹시모를 기본값 설정
@@ -42,15 +42,21 @@ const Header = () => {
             <li>
               <Link to="/login" style={{ textDecoration: 'none', color: '#000000' }}>
                 <img id="login" src="/src/icon/mypage.png" alt="login" width="30" height="30" />
-                로그인
+                LOGIN
               </Link>
             </li>
-            <li>
-              <button onClick={onClickKo}>KOR</button>
-            </li>
-            <li>
-              <button onClick={onClickEn}>ENG</button>
-            </li>
+            <div id="btn">
+              <li>
+                <button id="ko" onClick={onClickKo}>
+                  KOR
+                </button>
+              </li>
+              <li>
+                <button id="en" onClick={onClickEn}>
+                  ENG
+                </button>
+              </li>
+            </div>
           </ul>
         </nav>
       </div>
@@ -58,4 +64,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default LogInHeader;

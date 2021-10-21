@@ -1,15 +1,15 @@
 import axios from 'axios';
 import React, { FC, useState } from 'react';
-import { Redirect, RouteComponentProps } from 'react-router-dom';
-import './Liketop5.css';
 import { History, LocationState } from 'history';
+import './Liketop5.css';
 
 interface Props {
   top5name: any;
   top5placeid: any;
+  history: History<LocationState>;
 }
 
-const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
+const Liketop5: FC<Props> = (props: Props) => {
   var local = localStorage.getItem('memberid');
   try {
     var memberid = Number(local.split('')[1]);
@@ -24,40 +24,40 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
   const [like4, setLike4] = useState(0);
 
   function func_post(e: number) {
-    var ethplaceid = top5placeid[e];
+    var ethplaceid = props.top5placeid[e];
     console.log('즐겨찾기 할 id:', memberid, 'placeid', ethplaceid);
 
-    axios
-      .post(
-        `/api/myplace/add/${memberid}/${top5placeid[e]}`,
-        { memberid, ethplaceid },
-        { withCredentials: true }, //post에선 3번째자리에 설정
-      )
-      .then(() => {
-        if (memberid === 0) {
-          alert('로그인하세욥');
-          return <Redirect to="/login" />;
-        }
-        console.log('넣어진 id: ', memberid, 'placeid', ethplaceid);
-      })
-      .catch((error) => {});
+    if (memberid === 0) {
+      alert('로그인하세욥');
+      console.log(props.history);
+      return props.history.push('/login');
+    } else {
+      axios
+        .post(
+          `/api/myplace/add/${memberid}/${props.top5placeid[e]}`,
+          { memberid, ethplaceid },
+          { withCredentials: true }, //post에선 3번째자리에 설정
+        )
+        .then(() => {
+          console.log('넣어진 id: ', memberid, 'placeid', ethplaceid);
+        })
+        .catch((error) => {});
+    }
   }
   function func_delete(e: number) {
     // var ethplaceid = top5placeid[e];
-    console.log('즐겨찾기에서 지울 id: ', memberid, 'placeid', top5placeid[e]);
+    console.log('즐겨찾기에서 지울 id: ', memberid, 'placeid', props.top5placeid[e]);
 
     axios
-      .delete(`/api/myplace/deletebyplace/${memberid}/${top5placeid[e]}`)
+      .delete(`/api/myplace/deletebyplace/${memberid}/${props.top5placeid[e]}`)
       .then(() => {
-        console.log('지워진 id: ', memberid, 'placeid', top5placeid[e]);
+        console.log('지워진 id: ', memberid, 'placeid', props.top5placeid[e]);
       })
       .catch((error) => {});
   }
 
   function func(e: number) {
-    //onCLick이벤트 여러개이려면 함수여야해서
-    var ethplaceid = top5placeid[e];
-
+    var ethplaceid = props.top5placeid[e];
     if (e === 0) {
       if (like0 === 0 || like0 === 2) {
         //처음 onClick때 setlike 한게 func에 반영 안되서 이렇게 해야할듯
@@ -111,7 +111,7 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
               {/*{func(0)}*/}
               <label className="custom" htmlFor="listidx0">
                 <span className="like">{like0 === 1 ? '💛' : '🤍'}</span>
-                <span className="likeplace">{top5name[0]}</span>
+                <span className="likeplace">{props.top5name[0]}</span>
               </label>
             </li>
             <li className="icon_li custom-control">
@@ -128,7 +128,7 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
               {/*{func(1)}*/}
               <label className="custom" htmlFor="listidx1">
                 <span className="like">{like1 === 1 ? '💛' : '🤍'}</span>
-                <span className="likeplace"> {top5name[1]}</span>
+                <span className="likeplace"> {props.top5name[1]}</span>
               </label>
             </li>
             <li className="icon_li custom-control">
@@ -145,7 +145,7 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
               {/*{func(2)}*/}
               <label className="custom" htmlFor="listidx2">
                 <span className="like">{like2 === 1 ? '💛' : '🤍'}</span>
-                <span className="likeplace"> {top5name[2]}</span>
+                <span className="likeplace"> {props.top5name[2]}</span>
               </label>
             </li>
             <li className="icon_li custom-control">
@@ -162,7 +162,7 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
               {/*{func(3)}*/}
               <label className="custom" htmlFor="listidx3">
                 <span className="like">{like3 === 1 ? '💛' : '🤍'}</span>
-                <span className="likeplace"> {top5name[3]}</span>
+                <span className="likeplace"> {props.top5name[3]}</span>
               </label>
             </li>
             <li className="icon_li custom-control">
@@ -179,7 +179,7 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
               {/*{func(4)}*/}
               <label className="custom" htmlFor="listidx4">
                 <span className="like">{like4 === 1 ? '💛' : '🤍'}</span>
-                <span className="likeplace"> {top5name[4]}</span>
+                <span className="likeplace"> {props.top5name[4]}</span>
               </label>
             </li>
           </ul>

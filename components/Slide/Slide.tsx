@@ -1,17 +1,19 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, RouteChildrenProps } from 'react-router-dom';
 import './Slide.css';
 import Thumbnail from '@components/Thumbnail/Thumbnail';
 import axios from 'axios';
 import Top5Mapevent from '@components/KaKao/Top5Mapevent';
 import { imageSearch } from './image';
+import { History, LocationState } from 'history';
 
 interface Props {
   selectedcity: string;
   selectedcategory: string;
+  history: History<LocationState>;
 }
 
-const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
+const Slide: FC<Props> = (props: Props) => {
   const [pic1, setPic1] = useState('' as any);
   const [pic2, setPic2] = useState('' as any);
   const [pic3, setPic3] = useState('' as any);
@@ -136,41 +138,43 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
     음식점: 2,
     카페: 3,
   };
-  let imageSrc = `/src/icon/${dic_category[selectedcategory]}.png`;
+  let imageSrc = `/src/icon/${dic_category[props.selectedcategory]}.png`;
   useEffect(() => {
-    axios.get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`).then(async (response) => {
-      setTop5data(response.data.data);
-      for (var i = 0; i < 5; i++) {
-        setTop5name((prev: any) => [...prev, response.data.data[i].name]);
-        setTop5phone((prev: any) => [...prev, response.data.data[i].phone]);
-        setTop5add((prev: any) => [...prev, response.data.data[i].address]);
-        setTop5placeid((prev: any) => [...prev, response.data.data[i].id]);
-        setMapx((prev: any) => [...prev, response.data.data[i].location_x]);
-        setMapy((prev: any) => [...prev, response.data.data[i].location_y]);
-      }
-
-      for (var i = 0; i < 5; i++) {
-        const name = response.data.data[i].name;
-        const params = {
-          query: name,
-          sort: 'accuracy',
-          size: 5,
-        };
-        const { data } = await imageSearch(params);
-
-        if (i === 0) {
-          setPic1(data.documents[0].image_url);
-        } else if (i === 1) {
-          setPic2(data.documents[0].image_url);
-        } else if (i === 2) {
-          setPic3(data.documents[3].image_url);
-        } else if (i === 3) {
-          setPic4(data.documents[1].image_url);
-        } else {
-          setPic5(data.documents[0].image_url);
+    axios
+      .get(`/api/place/findtop5/${dic[props.selectedcity]}/${dic_category[props.selectedcategory]}`)
+      .then(async (response) => {
+        setTop5data(response.data.data);
+        for (var i = 0; i < 5; i++) {
+          setTop5name((prev: any) => [...prev, response.data.data[i].name]);
+          setTop5phone((prev: any) => [...prev, response.data.data[i].phone]);
+          setTop5add((prev: any) => [...prev, response.data.data[i].address]);
+          setTop5placeid((prev: any) => [...prev, response.data.data[i].id]);
+          setMapx((prev: any) => [...prev, response.data.data[i].location_x]);
+          setMapy((prev: any) => [...prev, response.data.data[i].location_y]);
         }
-      }
-    });
+
+        for (var i = 0; i < 5; i++) {
+          const name = response.data.data[i].name;
+          const params = {
+            query: name,
+            sort: 'accuracy',
+            size: 5,
+          };
+          const { data } = await imageSearch(params);
+
+          if (i === 0) {
+            setPic1(data.documents[0].image_url);
+          } else if (i === 1) {
+            setPic2(data.documents[0].image_url);
+          } else if (i === 2) {
+            setPic3(data.documents[3].image_url);
+          } else if (i === 3) {
+            setPic4(data.documents[1].image_url);
+          } else {
+            setPic5(data.documents[0].image_url);
+          }
+        }
+      });
   }, []);
 
   return (
@@ -300,7 +304,7 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
       <button className="gotothirdbtn">
         <Link
           to={{
-            pathname: `/${selectedcity}/${selectedcategory}/more`,
+            pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,
             state: {
               mapx: mapx[btn_pic - 1],
               mapy: mapy[btn_pic - 1],
@@ -312,8 +316,14 @@ const Slide: FC<Props> = ({ children, selectedcity, selectedcategory }) => {
         </Link>
       </button>
 
-      <Top5Mapevent top5data={top5data} imageSrc={imageSrc} top5name={top5name} top5placeid={top5placeid} />
-      <Thumbnail selectedcity={selectedcity} selectedcategory={selectedcategory} btn_pic={btn_pic} />
+      <Top5Mapevent
+        top5data={top5data}
+        imageSrc={imageSrc}
+        top5name={top5name}
+        top5placeid={top5placeid}
+        history={props.history}
+      />
+      <Thumbnail selectedcity={props.selectedcity} selectedcategory={props.selectedcategory} btn_pic={btn_pic} />
     </>
   );
 };
