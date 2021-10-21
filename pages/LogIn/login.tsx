@@ -5,7 +5,6 @@ import Layout from '@layouts/Layouts';
 import Logout from './Logout';
 
 const LogIn = () => {
-  console.log(localStorage.getItem('language'));
   const [logInError, setLogInError] = useState(false);
   const [username, onChangeUsername] = useInput('');
   const [password, onChangePassword] = useInput('');
@@ -18,12 +17,9 @@ const LogIn = () => {
       axios
         .post('/api/member/login', JSON.stringify({ password, username }), { headers })
         .then((res) => {
-          console.log(res);
           localStorage.setItem('memberid', JSON.stringify(res.data.memberid));
-          console.log(localStorage.getItem('memberid'));
         })
         .catch((error) => {
-          console.log(error);
           alert('아이디/비밀번호를 확인해주세요!');
         });
     },

@@ -4,7 +4,6 @@ import axios, { AxiosResponse } from 'axios';
 import Search from '@components/Search/Search';
 
 const Mypage = () => {
-  console.log(localStorage.getItem('language'));
   return (
     <Layout>
       <Search />
