@@ -1,10 +1,8 @@
 import axios from 'axios';
-import React, { FC, useCallback, useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
-import useSWR from 'swr';
-import useInput from '@pages/Signup/useinput';
-import fetcher from '@utils/fetcher';
+import React, { FC, useState } from 'react';
+import { Redirect, RouteComponentProps } from 'react-router-dom';
 import './Liketop5.css';
+import { History, LocationState } from 'history';
 
 interface Props {
   top5name: any;
@@ -12,17 +10,11 @@ interface Props {
 }
 
 const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
-
   var local = localStorage.getItem('memberid');
-  try{
-    var memberid = Number(local.split("")[1]);
-  }
-  catch{
-    var memberid=0;
-  }
-  if (memberid===0){
-    // console.log("예외");
-      //////////////////////////////////////////////////////////////////////////////////////////////////////
+  try {
+    var memberid = Number(local.split('')[1]);
+  } catch {
+    var memberid = 0;
   }
 
   const [like0, setLike0] = useState(0); //초기0 누르면1 눌렀다 빼면 2 //처음렌더링대 false라 else문들어갈까봐
@@ -35,29 +27,31 @@ const Liketop5: FC<Props> = ({ children, top5name, top5placeid }) => {
     var ethplaceid = top5placeid[e];
     console.log('즐겨찾기 할 id:', memberid, 'placeid', ethplaceid);
 
-    axios.post(
+    axios
+      .post(
         `/api/myplace/add/${memberid}/${top5placeid[e]}`,
         { memberid, ethplaceid },
-        {withCredentials:true} //post에선 3번째자리에 설정
+        { withCredentials: true }, //post에선 3번째자리에 설정
       )
       .then(() => {
-        console.log('넣어진 id: ',memberid, 'placeid',ethplaceid);
+        if (memberid === 0) {
+          alert('로그인하세욥');
+          return <Redirect to="/login" />;
+        }
+        console.log('넣어진 id: ', memberid, 'placeid', ethplaceid);
       })
-      .catch((error) => {
-        alert('로그인하세욥');
-      });
+      .catch((error) => {});
   }
   function func_delete(e: number) {
     // var ethplaceid = top5placeid[e];
     console.log('즐겨찾기에서 지울 id: ', memberid, 'placeid', top5placeid[e]);
 
-    axios.delete(
-        `/api/myplace/deletebyplace/${memberid}/${top5placeid[e]}`)
+    axios
+      .delete(`/api/myplace/deletebyplace/${memberid}/${top5placeid[e]}`)
       .then(() => {
-        console.log('지워진 id: ',memberid, 'placeid',top5placeid[e]);
+        console.log('지워진 id: ', memberid, 'placeid', top5placeid[e]);
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   }
 
   function func(e: number) {

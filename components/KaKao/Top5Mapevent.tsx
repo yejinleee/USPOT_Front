@@ -3,21 +3,19 @@ import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { markerdata } from './MarkerData';
 import './Top5Mapevent.css';
-import LikeTop5 from '@components/Like/Liketop5';
 import Liketop5 from '@components/Like/Liketop5';
 
 interface Props {
   top5data: any;
   top5name: any;
   imageSrc: any;
-  top5placeid:any;
+  top5placeid: any;
 }
 
-const Top5Mapevent: FC<Props> = ({ children, top5data, imageSrc , top5name,top5placeid}) => {
+const Top5Mapevent: FC<Props> = ({ children, top5data, imageSrc, top5name, top5placeid }) => {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
-  // console.log(top5data);
   useEffect(() => {
     top5data !== [] && mapscript();
   }, [top5data]);
@@ -78,18 +76,13 @@ const Top5Mapevent: FC<Props> = ({ children, top5data, imageSrc , top5name,top5p
     }
   };
 
-  top5data.map((v:any, i:number)=>{
-    // console.log('!',v.name);
-  })
-
   return (
     <>
       <div style={{ position: 'relative' }}>
         <div id="star"></div>
         <div id="top5map" style={{ width: '50vw', height: '40vw', display: 'inline-block' }}></div>
-
-        <span style={{ position: 'absolute'}}>
-          <Liketop5 top5name={top5name} top5placeid={top5placeid}/>
+        <span style={{ position: 'absolute' }}>
+          <Liketop5 top5name={top5name} top5placeid={top5placeid} />
         </span>
       </div>
     </>

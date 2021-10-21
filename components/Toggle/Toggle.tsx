@@ -5,7 +5,6 @@ import axios from 'axios';
 import './Toggle.css';
 import Category from '@components/Category/category';
 import Container from '@components/Container/Container';
-import { inspect } from 'util';
 
 const Toggle = () => {
   const [selectedcategory, setSelectedcategory] = useState('안');
@@ -141,7 +140,7 @@ const Toggle = () => {
   const gwangjuindex = useRef(0);
   const sejongindex = useRef(0);
   useEffect(() => {
-    axios.get('/api/province/findAll').then((response) => {
+    axios.get('/api/province/findall').then((response) => {
       for (var i = 0; i < response.data.data.length; i++) {
         setIndex(i);
         if (i === 0) {

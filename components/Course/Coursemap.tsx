@@ -1,6 +1,6 @@
 /*global kakao */
 import React, { useEffect, useRef } from 'react';
-import { markerdata } from './MarkerData';
+import { markerdata } from '../KaKao/MarkerData';
 
 export default function Coursemap() {
   const latt = useRef(0);

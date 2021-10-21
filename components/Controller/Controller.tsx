@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react';
 import './Controller.css';
 import Tourapilist from '@components/Tourapi/Tourapilist';
+import { History, LocationState } from 'history';
 interface Props {
   mapx: any;
   mapy: any;

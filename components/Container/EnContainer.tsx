@@ -3,7 +3,7 @@ import { useState } from 'react';
 import JSONDATA from './eninfo.json';
 import './Container.css';
 
-const Container = (props: any) => {
+const EnContainer = (props: any) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const selectCity = (value: any) => {
@@ -98,4 +98,4 @@ const Container = (props: any) => {
   );
 };
 
-export default Container;
+export default EnContainer;

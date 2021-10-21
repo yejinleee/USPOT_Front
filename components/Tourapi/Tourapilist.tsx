@@ -1,6 +1,9 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import './Tourapilist.css';
+import { History, LocationState } from 'history';
+import { Redirect } from 'react-router-dom';
+
 interface Props {
   arrange: string;
   type: number;
@@ -29,10 +32,6 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
     var memberid = Number(local.split('')[1]);
   } catch {
     var memberid = 0;
-  }
-  if (memberid === 0) {
-    // console.log("예외");
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
   }
 
   var ggcategory = '관광명소';
@@ -100,7 +99,7 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
       })
       .catch((error) => {
         alert('로그인하세욥');
-        console.log(error);
+        return <Redirect to="/login" />;
       });
   }
   function func_delete(e: number) {
