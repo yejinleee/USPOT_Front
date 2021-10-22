@@ -1,9 +1,12 @@
 import React, { FC, useState } from 'react';
 import './Controller.css';
 import EnTourapilist from '@components/Tourapi/EnTourapilist';
+import { History, LocationState } from 'history';
+
 interface Props {
   mapx: any;
   mapy: any;
+  history: History<LocationState>;
 }
 const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) => {
   const [state, setSlide] = useState(defaultState);
@@ -17,7 +20,7 @@ const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) =
   return [state, Slider, setSlide];
 };
 
-const EnController: FC<Props> = ({ children, mapx, mapy }) => {
+const EnController: FC<Props> = (props: Props) => {
   const [slideValue, Slider] = useSlider(1, 20000, 5000, 'Threshold', 'threshold');
   const [selectedArrange, setSelectedArrange] = useState('B'); //  정렬기준 *인기순 B / 거리순 E
   const [selectedType, setSelectedType] = useState(12);
@@ -108,7 +111,14 @@ const EnController: FC<Props> = ({ children, mapx, mapy }) => {
       </div>
       <div className="클래스명모하지">
         {apiopen && (
-          <EnTourapilist arrange={selectedArrange} distance={slideValue} type={selectedType} mapx={mapx} mapy={mapy} />
+          <EnTourapilist
+            arrange={selectedArrange}
+            distance={slideValue}
+            type={selectedType}
+            mapx={props.mapx}
+            mapy={props.mapy}
+            history={props.history}
+          />
         )}
       </div>
     </>

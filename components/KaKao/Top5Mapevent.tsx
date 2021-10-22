@@ -3,45 +3,45 @@ import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { markerdata } from './MarkerData';
 import './Top5Mapevent.css';
-import LikeTop5 from '@components/Like/Liketop5';
 import Liketop5 from '@components/Like/Liketop5';
+import { History, LocationState } from 'history';
 
 interface Props {
   top5data: any;
   top5name: any;
   imageSrc: any;
-  top5placeid:any;
+  top5placeid: any;
+  history: History<LocationState>;
 }
 
-const Top5Mapevent: FC<Props> = ({ children, top5data, imageSrc , top5name,top5placeid}) => {
+const Top5Mapevent: FC<Props> = (props: Props) => {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
-  // console.log(top5data);
   useEffect(() => {
-    top5data !== [] && mapscript();
-  }, [top5data]);
+    props.top5data !== [] && mapscript();
+  }, [props.top5data]);
 
   const mapscript = () => {
-    top5data.forEach((el: any) => {
+    props.top5data.forEach((el: any) => {
       latt.current += el.location_y;
       long.current += el.location_x;
     });
 
     let container = document.getElementById('top5map');
     let options = {
-      center: new kakao.maps.LatLng(latt.current / top5data.length, long.current / top5data.length),
+      center: new kakao.maps.LatLng(latt.current / props.top5data.length, long.current / props.top5data.length),
       level: 10,
     };
     //map
     const top5map = new kakao.maps.Map(container, options);
 
-    top5data.forEach((el: any) => {
+    props.top5data.forEach((el: any) => {
       // 마커를 생성합니다
       var imageSize = new kakao.maps.Size(30, 30),
         imageOption = { offset: new kakao.maps.Point(27, 69) };
 
-      const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+      const markerImage = new kakao.maps.MarkerImage(props.imageSrc, imageSize, imageOption);
       const marker = new kakao.maps.Marker({
         //마커가 표시 될 위치
         position: new kakao.maps.LatLng(el.location_y, el.location_x),
@@ -78,18 +78,13 @@ const Top5Mapevent: FC<Props> = ({ children, top5data, imageSrc , top5name,top5p
     }
   };
 
-  top5data.map((v:any, i:number)=>{
-    // console.log('!',v.name);
-  })
-
   return (
     <>
       <div style={{ position: 'relative' }}>
         <div id="star"></div>
         <div id="top5map" style={{ width: '50vw', height: '40vw', display: 'inline-block' }}></div>
-
-        <span style={{ position: 'absolute'}}>
-          <Liketop5 top5name={top5name} top5placeid={top5placeid}/>
+        <span style={{ position: 'absolute' }}>
+          <Liketop5 top5name={props.top5name} top5placeid={props.top5placeid} history={props.history} />
         </span>
       </div>
     </>

@@ -1,4 +1,3 @@
-import Coursemap from '@components/KaKao/Coursemap';
 import MakeCourse from '@components/MakeCoures/MakeCourse';
 import React, { FC, useEffect, useMemo, useState } from 'react';
 

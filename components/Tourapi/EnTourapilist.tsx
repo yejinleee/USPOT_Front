@@ -1,15 +1,18 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import './Tourapilist.css';
+import { History, LocationState } from 'history';
+
 interface Props {
   arrange: string;
   type: number;
   distance: number;
   mapx: any;
   mapy: any;
+  history: History<LocationState>;
 }
 
-const EnTourapilist: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) => {
+const EnTourapilist: FC<Props> = (props: Props) => {
   let api = process.env.REACT_APP_TOUR_API_KEY;
   let number = 5;
   let pnumber = 1;
@@ -35,7 +38,7 @@ const EnTourapilist: FC<Props> = ({ children, mapx, mapy, arrange, type, distanc
   }
 
   var ggcategory = '관광명소';
-  if (type === 39) {
+  if (props.type === 39) {
     ggcategory = '음식점';
   } else {
     ggcategory = '관광명소';
@@ -44,7 +47,7 @@ const EnTourapilist: FC<Props> = ({ children, mapx, mapy, arrange, type, distanc
   useEffect(() => {
     axios
       .get(
-        `http://api.visitkorea.or.kr/openapi/service/rest/EngService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${arrange}&contentTypeId=${type}&mapX=${mapx}&mapY=${mapy}&radius=${distance}&listYN=Y&_type=json`,
+        `http://api.visitkorea.or.kr/openapi/service/rest/EngService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${props.arrange}&contentTypeId=${props.type}&mapX=${props.mapx}&mapY=${props.mapy}&radius=${props.distance}&listYN=Y&_type=json`,
       )
       .then((response) => {
         if (response.data.response.body.items === '') {

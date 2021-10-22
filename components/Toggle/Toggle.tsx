@@ -5,7 +5,6 @@ import axios from 'axios';
 import './Toggle.css';
 import Category from '@components/Category/category';
 import Container from '@components/Container/Container';
-import { inspect } from 'util';
 
 const Toggle = () => {
   const [selectedcategory, setSelectedcategory] = useState('안');

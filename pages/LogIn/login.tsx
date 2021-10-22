@@ -3,8 +3,10 @@ import React, { useCallback, useEffect, useState } from 'react';
 import useInput from '@pages/Signup/useinput';
 import Layout from '@layouts/Layouts';
 import Logout from './Logout';
+import { RouteComponentProps } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
-const LogIn = () => {
+const LogIn = ({ history }: RouteComponentProps) => {
   const [logInError, setLogInError] = useState(false);
   const [username, onChangeUsername] = useInput('');
   const [password, onChangePassword] = useInput('');
@@ -18,6 +20,8 @@ const LogIn = () => {
         .post('/api/member/login', JSON.stringify({ password, username }), { headers })
         .then((res) => {
           localStorage.setItem('memberid', JSON.stringify(res.data.memberid));
+          alert('로그인 성공!');
+          history.goBack();
         })
         .catch((error) => {
           alert('아이디/비밀번호를 확인해주세요!');
@@ -52,4 +56,4 @@ const LogIn = () => {
     </>
   );
 };
-export default LogIn;
+export default withRouter(LogIn);

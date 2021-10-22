@@ -1,15 +1,19 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import './Tourapilist.css';
+import { Redirect } from 'react-router-dom';
+import { History, LocationState } from 'history';
+
 interface Props {
   arrange: string;
   type: number;
   distance: number;
   mapx: any;
   mapy: any;
+  history: History<LocationState>;
 }
 
-const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) => {
+const Getapi: FC<Props> = (props: Props) => {
   let api = process.env.REACT_APP_TOUR_API_KEY;
   let number = 5;
   let pnumber = 1;
@@ -30,13 +34,9 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
   } catch {
     var memberid = 0;
   }
-  if (memberid === 0) {
-    // console.log("예외");
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
-  }
 
   var ggcategory = '관광명소';
-  if (type === 39) {
+  if (props.type === 39) {
     ggcategory = '음식점';
   } else {
     ggcategory = '관광명소';
@@ -45,7 +45,7 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
   useEffect(() => {
     axios
       .get(
-        `http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${arrange}&contentTypeId=${type}&mapX=${mapx}&mapY=${mapy}&radius=${distance}&listYN=Y&_type=json`,
+        `http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${props.arrange}&contentTypeId=${props.type}&mapX=${props.mapx}&mapY=${props.mapy}&radius=${props.distance}&listYN=Y&_type=json`,
       )
       .then((response) => {
         if (response.data.response.body.items === '') {
@@ -88,20 +88,23 @@ const Getapi: FC<Props> = ({ children, mapx, mapy, arrange, type, distance }) =>
       Accept: 'application/json',
       'Content-Type': 'application/json',
     };
-    axios
-      .post(
-        `/api/myplace/addfromapi/${memberid}`,
-        JSON.stringify({ name, category, location_x, location_y, address }),
-        { headers },
-      ) // 500에러
-      // { withCredentials:true }) //이건 415인데 위에 headers 저렇게써야하는거라구해서 header로 바꾸면 500..
-      .then((res) => {
-        console.log('넣을 id: ', memberid, 'place명', names[e]);
-      })
-      .catch((error) => {
-        alert('로그인하세욥');
-        console.log(error);
-      });
+    if (memberid === 0) {
+      alert('로그인하세욥');
+      console.log(props.history);
+      return props.history.push('/login');
+    } else {
+      axios
+        .post(
+          `/api/myplace/addfromapi/${memberid}`,
+          JSON.stringify({ name, category, location_x, location_y, address }),
+          { headers },
+        ) // 500에러
+        // { withCredentials:true }) //이건 415인데 위에 headers 저렇게써야하는거라구해서 header로 바꾸면 500..
+        .then((res) => {
+          console.log('넣을 id: ', memberid, 'place명', names[e]);
+        })
+        .catch((error) => {});
+    }
   }
   function func_delete(e: number) {
     console.log('즐겨찾기에서 지울 id:', memberid, 'place명', names[e]);
