@@ -63,7 +63,7 @@ const Map: FC<Props> = ({ children, searchPlace }) => {
 
   return (
     <>
-      <div id="myMap" style={{ width: '30vw', height: '30vw' }}></div>
+      <div id="myMap" style={{ width: '30vw', height: '30vw',float: 'right', right: '30vw'}} />
       {open && <MakeCourse />}
     </>
   );

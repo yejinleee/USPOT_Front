@@ -12,14 +12,14 @@ interface Props {
 }
 
 
-const Likedlist =() =>{
+const Likedlist =() => {
 
-  const [namelist,setNamelist] = useState([] as any);
+  const [namelist, setNamelist] = useState([] as any);
   useEffect(() => {
     axios.get(`/api/myplace/findall/1`).then(async (response) => {
       // console.log(response.data.data);
-      for (var i=0; i< response.data.data.length; i++){
-        setNamelist((prev:any) => [...prev, response.data.data[i].name]);
+      for (var i = 0; i < response.data.data.length; i++) {
+        setNamelist((prev: any) => [...prev, response.data.data[i].name]);
       }
       // setTop5data(response.data.data);
       // for (var i = 0; i < 5; i++) {
@@ -38,7 +38,7 @@ const Likedlist =() =>{
   //   console.log(v);
   // ));
 
-  const likedlist:any = namelist.map((v:string, index:number) => (
+  const likedlist: any = namelist.map((v: string, index: number) => (
     <>
       <div id={v} key={index}>
         {namelist[index]}
@@ -49,7 +49,10 @@ const Likedlist =() =>{
 
   return (
     <>
-      {likedlist}
+      <div>[하트 누른 장소들 목록]</div>
+      <div className='likedlist' style={{ display: 'inline-block' }}>
+        {likedlist}
+      </div>
     </>
   );
 }
