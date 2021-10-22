@@ -2,16 +2,18 @@ import React, { FC, memo, useEffect, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 import './Thumbnail.css';
 import YoutubeMapevent from '@components/KaKao/YoutubeMapevent';
+import { History, LocationState } from 'history';
 
 interface Props {
   selectedcity: any;
   selectedcategory: string;
   btn_pic: number;
+  history: History<LocationState>;
 }
 
 // selcetedcity지역의 selectedcategory 카테고리에 해당되는 장소 top5 중 btn_pic번째 장소의 유튜브 보여주는것
 
-const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pic }) => {
+const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pic, history }) => {
   const [vloglist, setVloglist] = useState([] as any); //브이로그 id들 저장할 배열
   const [map, setMap] = useState(false);
   const [id, setId] = useState(null);
@@ -155,7 +157,7 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
             </div>
           ))}
       </div>
-      {map && <YoutubeMapevent videoid={id} />}
+      {map && <YoutubeMapevent videoid={id} history={history} />}
     </>
   );
 };

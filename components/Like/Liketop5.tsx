@@ -96,12 +96,12 @@ const Liketop5: FC<Props> = (props: Props) => {
     <>
       <div style={{ position: 'relative' }}>
         <span>
-          <ul>
-            <li className="icon_li custom-control">
+          <ul id="top5">
+            <li className="ticon_li custom-control">
               <input
                 type="checkbox"
                 className="cate"
-                id="listidx0"
+                id="tlistidx0"
                 onClick={() => {
                   func(0);
                   like0 === 1 ? setLike0(2) : setLike0(1);
@@ -109,16 +109,16 @@ const Liketop5: FC<Props> = (props: Props) => {
                 value="0"
               />
               {/*{func(0)}*/}
-              <label className="custom" htmlFor="listidx0">
-                <span className="like">{like0 === 1 ? '💛' : '🤍'}</span>
-                <span className="likeplace">{props.top5name[0]}</span>
+              <label className="tcustom" htmlFor="tlistidx0">
+                <span className="tlike">{like0 === 1 ? '💛' : '🤍'}</span>
+                <span className="tlikeplace">{props.top5name[0]}</span>
               </label>
             </li>
-            <li className="icon_li custom-control">
+            <li className="ticon_li custom-control">
               <input
                 type="checkbox"
-                className="cate"
-                id="listidx1"
+                className="tcate"
+                id="tlistidx1"
                 onClick={() => {
                   func(1);
                   like1 === 1 ? setLike1(2) : setLike1(1);
@@ -126,16 +126,16 @@ const Liketop5: FC<Props> = (props: Props) => {
                 value="1"
               />
               {/*{func(1)}*/}
-              <label className="custom" htmlFor="listidx1">
-                <span className="like">{like1 === 1 ? '💛' : '🤍'}</span>
-                <span className="likeplace"> {props.top5name[1]}</span>
+              <label className="tcustom" htmlFor="tlistidx1">
+                <span className="tlike">{like1 === 1 ? '💛' : '🤍'}</span>
+                <span className="tlikeplace"> {props.top5name[1]}</span>
               </label>
             </li>
-            <li className="icon_li custom-control">
+            <li className="ticon_li custom-control">
               <input
                 type="checkbox"
-                className="cate"
-                id="listidx2"
+                className="tcate"
+                id="tlistidx2"
                 onClick={() => {
                   func(2);
                   like2 === 1 ? setLike2(2) : setLike2(1);
@@ -143,16 +143,16 @@ const Liketop5: FC<Props> = (props: Props) => {
                 value="2"
               />
               {/*{func(2)}*/}
-              <label className="custom" htmlFor="listidx2">
-                <span className="like">{like2 === 1 ? '💛' : '🤍'}</span>
-                <span className="likeplace"> {props.top5name[2]}</span>
+              <label className="tcustom" htmlFor="tlistidx2">
+                <span className="tlike">{like2 === 1 ? '💛' : '🤍'}</span>
+                <span className="tlikeplace"> {props.top5name[2]}</span>
               </label>
             </li>
-            <li className="icon_li custom-control">
+            <li className="ticon_li custom-control">
               <input
                 type="checkbox"
-                className="cate"
-                id="listidx3"
+                className="tcate"
+                id="tlistidx3"
                 onClick={() => {
                   func(3);
                   like3 === 1 ? setLike3(2) : setLike3(1);
@@ -160,16 +160,16 @@ const Liketop5: FC<Props> = (props: Props) => {
                 value="3"
               />
               {/*{func(3)}*/}
-              <label className="custom" htmlFor="listidx3">
-                <span className="like">{like3 === 1 ? '💛' : '🤍'}</span>
-                <span className="likeplace"> {props.top5name[3]}</span>
+              <label className="tcustom" htmlFor="tlistidx3">
+                <span className="tlike">{like3 === 1 ? '💛' : '🤍'}</span>
+                <span className="tlikeplace"> {props.top5name[3]}</span>
               </label>
             </li>
-            <li className="icon_li custom-control">
+            <li className="ticon_li custom-control">
               <input
                 type="checkbox"
-                className="cate"
-                id="listidx4"
+                className="tcate"
+                id="tlistidx4"
                 onClick={() => {
                   func(4);
                   like4 === 1 ? setLike4(2) : setLike4(1);
@@ -177,9 +177,9 @@ const Liketop5: FC<Props> = (props: Props) => {
                 value="4"
               />
               {/*{func(4)}*/}
-              <label className="custom" htmlFor="listidx4">
-                <span className="like">{like4 === 1 ? '💛' : '🤍'}</span>
-                <span className="likeplace"> {props.top5name[4]}</span>
+              <label className="tcustom" htmlFor="tlistidx4">
+                <span className="tlike">{like4 === 1 ? '💛' : '🤍'}</span>
+                <span className="tlikeplace"> {props.top5name[4]}</span>
               </label>
             </li>
           </ul>

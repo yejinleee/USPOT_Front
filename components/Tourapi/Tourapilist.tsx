@@ -17,7 +17,6 @@ const Getapi: FC<Props> = (props: Props) => {
   let api = process.env.REACT_APP_TOUR_API_KEY;
   let number = 5;
   let pnumber = 1;
-  var datas;
   const [data, setData] = useState([] as any);
 
   const [names, setNames] = useState([] as any);

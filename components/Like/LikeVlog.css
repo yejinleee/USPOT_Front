@@ -8,25 +8,16 @@
   display: inline-block;
 }
 
-.ticon_li {
+.icon_li {
   margin: 0 0.69% 1%;
   overflow: hidden;
   width: max-content;
 }
-.tcate {
+.cate {
   display: none;
 }
-.tcustom {
-  padding: 0.65em 0;
-  display: block;
-  border-radius: inherit;
-  border: none;
-  border: 1px solid #e5e5e5;
-  border-radius: 0.7em;
-  color: rgb(92, 88, 88);
-}
 
-.tcate_1 {
+.cate_1 {
   line-height: 1.4em;
   font-weight: 400;
   /*margin-top: 1.5em;*/
@@ -39,13 +30,25 @@
   word-break: break-all;
   height: 2.7em;
 }
-.top5 {
+.vlog {
   list-style: none;
 }
 
-.tlike {
-  padding: 0.5em;
+.like {
+  padding: 0.4em !important;
+  font-size: 13px;
 }
-.tlikeplace {
-  padding-right: 1em;
+.likeplace {
+  padding-right: 0.5em;
+  font-size: 13px;
+}
+
+.custom {
+  padding: 0.45em 0 !important;
+  display: block;
+  border-radius: inherit;
+  border: none;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.7em;
+  color: #666;
 }

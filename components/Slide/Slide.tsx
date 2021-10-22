@@ -323,7 +323,12 @@ const Slide: FC<Props> = (props: Props) => {
         top5placeid={top5placeid}
         history={props.history}
       />
-      <Thumbnail selectedcity={props.selectedcity} selectedcategory={props.selectedcategory} btn_pic={btn_pic} />
+      <Thumbnail
+        selectedcity={props.selectedcity}
+        selectedcategory={props.selectedcategory}
+        btn_pic={btn_pic}
+        history={props.history}
+      />
     </>
   );
 };

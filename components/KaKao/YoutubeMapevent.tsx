@@ -1,24 +1,32 @@
 /*global kakao */
+import LikeVlog from '@components/Like/LikeVlog';
 import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import './Top5Mapevent.css';
+import { History, LocationState } from 'history';
 
 interface Props {
   videoid: any;
+  history: History<LocationState>;
 }
 
-const YoutubeMapevent: FC<Props> = ({ children, videoid }) => {
+const YoutubeMapevent: FC<Props> = ({ children, videoid, history }) => {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
   const [place, setPlace] = useState([] as any);
+  const [name, setName] = useState([] as any);
   const [youtubemap, setYoutubemap] = useState(null);
   const [markers, setMarkers] = useState([] as any);
 
   useEffect(() => {
     setPlace([]);
+    setName([]);
     axios.get(`/api/vlog/findplace/${videoid}`).then((response) => {
       setPlace(response.data.data);
+      for (var i = 0; i < response.data.data.length; i++) {
+        setName((prev: any) => [...prev, response.data.data[i].name]);
+      }
     });
   }, [videoid]);
 
@@ -84,6 +92,9 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid }) => {
   return (
     <div style={{ position: 'relative' }}>
       <div id="youtubemap" style={{ width: '50vw', height: '40vw', display: 'inline-block' }}></div>
+      <span style={{ position: 'absolute' }}>
+        <LikeVlog vlogname={name} vlogpid={videoid} history={history} />
+      </span>
     </div>
   );
 };
