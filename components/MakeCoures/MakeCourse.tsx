@@ -1,6 +1,6 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
 import Coursemap from '@components/Course/Coursemap';
-import Likedlist from '@components/Coursetest/Likedlist';
+import Likedlist from '@components/Likedlist/Likedlist';
 const MakeCourse = () => {
 
 

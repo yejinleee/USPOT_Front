@@ -90,15 +90,6 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
     </>
   );
 
-  //글자부분
-  // right: 400;
-  // position: absolute;
-  // top: 0;
-
-  // {markerdata.map((e:any,idx:any) => {
-  //   console.log(e.title);
-  //   <p key={idx}>{e.title}</p>
-  // })}
 };
 
 export default Top5Mapevent;

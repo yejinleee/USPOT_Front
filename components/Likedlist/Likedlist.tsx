@@ -1,25 +1,25 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
-// import { Link, Route } from 'react-router-dom';
-// import './Slide.css';
-// import Thumbnail from '@components/Thumbnail/Thumbnail';
 import axios from 'axios';
-// import Top5Mapevent from '@components/KaKao/Top5Mapevent';
-// import { imageSearch } from './image';
 
-interface Props {
-  selectedcity: string;
-  selectedcategory: string;
-}
-
+// interface Props {
+//   selectedcity: string;
+//   selectedcategory: string;
+// }
 
 const Likedlist =() => {
+  var local = localStorage.getItem('memberid');
+  try {
+    var memberid = Number(local.split('')[1]);
+  } catch {
+    var memberid = 0;
+  }
 
   const [namelist, setNamelist] = useState([] as any);
   const [placeidlist,setPlaceidlist] = useState([] as any);
 
   useEffect(() => {
-    axios.get(`/api/myplace/findall/1`).then(async (response) => {
-      console.log(response.data.data);
+      axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
+      console.log('likedlist 에서 GET', response.data.data);
       for (var i = 0; i < response.data.data.length; i++) {
         setNamelist((prev: any) => [...prev, response.data.data[i].name]);
         setPlaceidlist((prev:any) => [...prev, response.data.data[i].id])
@@ -36,7 +36,6 @@ const Likedlist =() => {
       </div>
     </>
   ));
-
 
   return (
     <>

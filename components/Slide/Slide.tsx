@@ -152,7 +152,7 @@ const Slide: FC<Props> = (props: Props) => {
           setMapx((prev: any) => [...prev, response.data.data[i].location_x]);
           setMapy((prev: any) => [...prev, response.data.data[i].location_y]);
         }
-
+        // console.log('탑data',response.data);
         for (var i = 0; i < 5; i++) {
           const name = response.data.data[i].name;
           const params = {
@@ -176,6 +176,8 @@ const Slide: FC<Props> = (props: Props) => {
         }
       });
   }, []);
+  // console.log('slide top5placeid',top5placeid); //2 1 3  4 5 3
+
   return (
     <>
       <div className="carousel">
@@ -308,6 +310,7 @@ const Slide: FC<Props> = (props: Props) => {
               selectedplace : top5name[btn_pic -1],
               mapx: mapx[btn_pic - 1],
               mapy: mapy[btn_pic - 1],
+              top5placeid : top5placeid[btn_pic -1],
             },
           }}
           style={{ textDecoration: 'none', color: '#000000' }}
@@ -315,7 +318,6 @@ const Slide: FC<Props> = (props: Props) => {
           주변장소 더 보기
         </Link>
       </button>
-
       <Top5Mapevent
         top5data={top5data}
         imageSrc={imageSrc}
