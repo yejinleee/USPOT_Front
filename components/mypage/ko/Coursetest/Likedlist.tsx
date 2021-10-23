@@ -6,7 +6,7 @@ import axios from 'axios';
 //   selectedcategory: string;
 // }
 
-const Likedlist =() => {
+const Likedlist = () => {
   var local = localStorage.getItem('memberid');
   try {
     var memberid = Number(local.split('')[1]);
@@ -18,7 +18,7 @@ const Likedlist =() => {
   const [placeidlist, setPlaceidlist] = useState([] as any);
 
   useEffect(() => {
-      axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
+    axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
       console.log('likedlist 에서 GET', response.data.data);
 
       for (var i = 0; i < response.data.data.length; i++) {
@@ -27,7 +27,6 @@ const Likedlist =() => {
       }
     });
   }, []);
-
 
   const likedlist: any = namelist.map((v: string, index: number) => (
     <>
