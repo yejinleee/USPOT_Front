@@ -11,22 +11,20 @@ interface Props {
   selectedcategory: string;
 }
 
-
-const Likedlist =() => {
-
+const Likedlist = () => {
   const [namelist, setNamelist] = useState([] as any);
-  const [placeidlist,setPlaceidlist] = useState([] as any);
+  const [placeidlist, setPlaceidlist] = useState([] as any);
 
   useEffect(() => {
     axios.get(`/api/myplace/findall/1`).then(async (response) => {
-      console.log(response.data.data);
+      // console.log(response.data.data);
       for (var i = 0; i < response.data.data.length; i++) {
         setNamelist((prev: any) => [...prev, response.data.data[i].name]);
-        setPlaceidlist((prev:any) => [...prev, response.data.data[i].id])
+        setPlaceidlist((prev: any) => [...prev, response.data.data[i].id]);
       }
     });
   }, []);
-  console.log('장소id', placeidlist)
+  // console.log('장소id', placeidlist)
   // console.log('이름만 저장 namelist', namelist);
 
   const likedlist: any = namelist.map((v: string, index: number) => (
@@ -37,17 +35,16 @@ const Likedlist =() => {
     </>
   ));
 
-
   return (
     <>
       <div className="Likedlist">
         <div>[하트 누른 장소들 목록]</div>
-        <div className='likedlist' style={{ display: 'inline-block' }}>
+        <div className="likedlist" style={{ display: 'inline-block' }}>
           {likedlist}
         </div>
       </div>
     </>
   );
-}
+};
 
 export default Likedlist;
