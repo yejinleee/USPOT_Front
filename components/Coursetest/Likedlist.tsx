@@ -40,9 +40,11 @@ const Likedlist =() => {
 
   return (
     <>
-      <div>[하트 누른 장소들 목록]</div>
-      <div className='likedlist' style={{ display: 'inline-block' }}>
-        {likedlist}
+      <div className="Likedlist">
+        <div>[하트 누른 장소들 목록]</div>
+        <div className='likedlist' style={{ display: 'inline-block' }}>
+          {likedlist}
+        </div>
       </div>
     </>
   );
