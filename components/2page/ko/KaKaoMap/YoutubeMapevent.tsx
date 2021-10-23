@@ -11,13 +11,24 @@ interface Props {
 }
 
 const YoutubeMapevent: FC<Props> = ({ children, videoid, history }) => {
-  const latt = useRef(0);
-  const long = useRef(0);
   const kakao = (window as any).kakao;
   const [place, setPlace] = useState([] as any);
   const [name, setName] = useState([] as any);
   const [youtubemap, setYoutubemap] = useState(null);
   const [markers, setMarkers] = useState([] as any);
+  const x = useRef(0);
+  const y = useRef(0);
+
+  useEffect(() => {
+    axios.get(`/api/vlog/findplace/${videoid}`).then((response) => {
+      let container = document.getElementById('youtubemap');
+      let options = {
+        center: new kakao.maps.LatLng(response.data.data[0].location_y, response.data.data[0].location_x),
+        level: 10,
+      };
+      setYoutubemap(new kakao.maps.Map(container, options));
+    });
+  }, []);
 
   useEffect(() => {
     setPlace([]);
@@ -36,17 +47,18 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history }) => {
     }
   }, [place]);
 
-  useEffect(() => {
-    let container = document.getElementById('youtubemap');
-    let options = {
-      center: new kakao.maps.LatLng(37.82465, 127.49651),
-      level: 10,
-    };
-    setYoutubemap(new kakao.maps.Map(container, options));
-  }, []);
-
   const mapscript = () => {
     removeMarker();
+    x.current = 0;
+    y.current = 0;
+    for (var i = 0; i < place.length; i++) {
+      x.current += place[i].location_x;
+      y.current += place[i].location_y;
+    }
+
+    var Position = new kakao.maps.LatLng(y.current / place.length, x.current / place.length);
+    youtubemap.setCenter(Position);
+
     for (var i = 0; i < place.length; i++) {
       var placePosition = new kakao.maps.LatLng(place[i].location_y, place[i].location_x),
         marker = addMarker(placePosition, i, place[i].categoryid);

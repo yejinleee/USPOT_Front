@@ -15,7 +15,7 @@ const Category = (props: any) => {
         className={clicked === 'tor' ? 'clicked' : 'button'}
       >
         <img src="src/icon/관광명소.png" style={{ width: '5%' }} />
-        <p style={{ display: 'inline' }}>관광명소</p>
+        <p style={{ display: 'inline' }}>Tourist attraction</p>
       </label>
       <label
         onClick={() => {
@@ -25,7 +25,7 @@ const Category = (props: any) => {
         className={clicked === 'res' ? 'clicked' : 'button'}
       >
         <img src="src/icon/식당.png" style={{ width: '5%' }} />
-        <p style={{ display: 'inline' }}>음식점</p>
+        <p style={{ display: 'inline' }}>Restaurant</p>
       </label>
       <label
         onClick={() => {
@@ -35,7 +35,7 @@ const Category = (props: any) => {
         className={clicked === 'caf' ? 'clicked' : 'button'}
       >
         <img src="src/icon/카페.png" style={{ width: '5%' }} />
-        <p style={{ display: 'inline' }}>카페</p>
+        <p style={{ display: 'inline' }}>Cafe</p>
       </label>
     </>
   );

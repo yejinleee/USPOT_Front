@@ -10,7 +10,6 @@ interface Props {
 }
 
 const LikeVlog: FC<Props> = (props: Props) => {
-  console.log(props.vlogname);
   var local = sessionStorage.getItem('memberid');
   try {
     var memberid = Number(local.split('')[1]);
@@ -46,7 +45,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
 
     if (memberid === 0) {
       alert('로그인하세욥');
-      console.log(props.history);
       return props.history.push('/login');
     } else {
       axios
