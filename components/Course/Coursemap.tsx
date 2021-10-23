@@ -1,13 +1,12 @@
 /*global kakao */
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
-import { markerdata } from '../KaKao/MarkerData';
 
 export default function Coursemap() {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
-  var local = localStorage.getItem('memberid');
+  var local = sessionStorage.getItem('memberid');
   try {
     var memberid = Number(local.split('')[1]);
   } catch {

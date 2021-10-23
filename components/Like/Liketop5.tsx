@@ -10,7 +10,7 @@ interface Props {
 }
 
 const Liketop5: FC<Props> = (props: Props) => {
-  var local = localStorage.getItem('memberid');
+  var local = sessionStorage.getItem('memberid');
   try {
     var memberid = Number(local.split('')[1]);
   } catch {
