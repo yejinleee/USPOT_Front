@@ -34,7 +34,14 @@ const LogInHeader = () => {
               </Link>
             </li>
             <li>
-              <Link to="/mypage" style={{ textDecoration: 'none', color: '#000000' }}>
+              <Link
+                to="/login"
+                style={{ textDecoration: 'none', color: '#000000' }}
+                onClick={() => {
+                  alert('로그인이 필요한 서비스입니다. 로그인을 해주세요');
+                  <Redirect to="/login" />;
+                }}
+              >
                 <img id="mypage" src="/src/icon/mypage.png" alt="mypage" width="30" height="30" />
                 MYPAGE
               </Link>

@@ -1,7 +1,6 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
-import Slide from '@components/Slide/Slide';
+import Slide from '@components/2page/ko/Slide/Slide';
 import Layout from '@layouts/Layouts';
-import Thumbnail from '@components/Thumbnail/Thumbnail';
 
 const Second = (props: any) => {
   const selectedcity = props.match.params.selectedcity;

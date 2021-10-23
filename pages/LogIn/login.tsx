@@ -51,7 +51,6 @@ const LogIn = ({ history }: RouteComponentProps) => {
             <button type="submit">로그인</button>
           </form>
         </div>
-        <Logout />
       </Layout>
     </>
   );

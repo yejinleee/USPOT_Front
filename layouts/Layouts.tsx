@@ -6,7 +6,7 @@ import LogInHeader from '@layouts/Header/LogInHeader';
 import LogoutHeader from './Header/LogoutHeader';
 
 const Layout = (props: { children: React.ReactNode }) => {
-  var local = localStorage.getItem('memberid');
+  var local = sessionStorage.getItem('memberid');
   try {
     var memberid = Number(local.split('')[1]);
   } catch {
