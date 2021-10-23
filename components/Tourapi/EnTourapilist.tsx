@@ -26,7 +26,7 @@ const EnTourapilist: FC<Props> = (props: Props) => {
   const [dist, setDistance] = useState([] as any);
   const [img, setImg] = useState([] as any);
 
-  var local = localStorage.getItem('memberid');
+  var local = sessionStorage.getItem('memberid');
   try {
     var memberid = Number(local.split('')[1]);
   } catch {

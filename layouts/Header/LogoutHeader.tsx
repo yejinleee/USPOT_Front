@@ -44,7 +44,7 @@ const LogoutHeader = () => {
                 id="logout"
                 onClick={() => {
                   alert('로그아웃 되셨습니다!');
-                  localStorage.removeItem('memberid');
+                  sessionStorage.removeItem('memberid');
                   location.reload();
                 }}
               >

@@ -19,7 +19,7 @@ const LogIn = ({ history }: RouteComponentProps) => {
       axios
         .post('/api/member/login', JSON.stringify({ password, username }), { headers })
         .then((res) => {
-          localStorage.setItem('memberid', JSON.stringify(res.data.memberid));
+          sessionStorage.setItem('memberid', JSON.stringify(res.data.memberid));
           alert('로그인 성공!');
           history.goBack();
         })

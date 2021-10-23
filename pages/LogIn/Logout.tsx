@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 const Logout = () => {
   const onClick = () => {
-    localStorage.removeItem('memberid');
+    sessionStorage.removeItem('memberid');
   };
 
   return (

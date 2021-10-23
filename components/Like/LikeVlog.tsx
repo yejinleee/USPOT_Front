@@ -12,7 +12,7 @@ interface Props {
 
 const LikeVlog: FC<Props> = (props: Props) => {
   console.log(props.vlogname);
-  var local = localStorage.getItem('memberid');
+  var local = sessionStorage.getItem('memberid');
   try {
     var memberid = Number(local.split('')[1]);
   } catch {
