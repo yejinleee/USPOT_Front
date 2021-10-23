@@ -7,6 +7,7 @@ interface Props {
   mapy: any;
   selectedplace: any;
   history: History<LocationState>;
+  top5placeid :any;
 }
 const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) => {
   const [state, setSlide] = useState(defaultState);
@@ -38,6 +39,7 @@ const Controller: FC<Props> = (props: Props) => {
       setApigopen(true);
     }
   }
+  console.log('top5placeid',props.top5placeid);
   return (
     <>
       <h2>{props.selectedplace}의 주변장소 찾아보기</h2>
