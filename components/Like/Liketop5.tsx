@@ -26,7 +26,9 @@ const Liketop5: FC<Props> = (props: Props) => {
   const [apiplaceid, setApilaceid] = useState([] as any);
 
   useEffect(() => { //DB에 저장된 즐찾목록의 id들만 가져와서 apilistid 배열에 저장
-    axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
+    axios.get(`/api/myplace/findall/1`).then(async (response) => {
+    // axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
+      /////////////////////////////////////이거 왜 memberid로 안될가요~???
       for (var i = 0; i < response.data.data.length; i++) {
         setApilaceid((prev: any) => [...prev, response.data.data[i].placeId]);
       }
