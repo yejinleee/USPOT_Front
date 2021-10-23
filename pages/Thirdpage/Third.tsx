@@ -10,8 +10,6 @@ interface Props {
 }
 
 const Third: FC<Props> = (props: Props) => {
-  // console.log('third top5placeid',props.location.state.top5placeid);  // Slide에서 2 1 4 5 3 중에 누른 숫자
-
   var local = localStorage.getItem('language');
   var language = local.split('"');
   return (

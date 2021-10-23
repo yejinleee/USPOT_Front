@@ -86,7 +86,7 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
         <span style={{ position: 'absolute' }}>
           <Liketop5 top5name={props.top5name} top5placeid={props.top5placeid} history={props.history} />
         </span>
-      </div>
+      </div>ㄴ
     </>
   );
 

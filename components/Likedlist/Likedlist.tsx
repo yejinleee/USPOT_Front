@@ -27,8 +27,7 @@ const Likedlist =() => {
       }
     });
   }, []);
-  // console.log('장소id', placeidlist)
-  // console.log('이름만 저장 namelist', namelist);
+
 
   const likedlist: any = namelist.map((v: string, index: number) => (
     <>

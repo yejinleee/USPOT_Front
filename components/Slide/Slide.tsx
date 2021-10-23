@@ -176,7 +176,6 @@ const Slide: FC<Props> = (props: Props) => {
         }
       });
   }, []);
-  // console.log('slide top5placeid',top5placeid); //2 1 3  4 5 3
 
   return (
     <>
