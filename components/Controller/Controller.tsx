@@ -5,6 +5,7 @@ import { History, LocationState } from 'history';
 interface Props {
   mapx: any;
   mapy: any;
+  selectedplace :any;
   history: History<LocationState>;
 }
 const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) => {
@@ -39,6 +40,7 @@ const Controller: FC<Props> = (props: Props) => {
   }
   return (
     <>
+      <h2>{props.selectedplace}의 주변장소 찾아보기</h2>
       <div className="controller">
         {/*슬라이더*/}
         <div className="slider-parent" onChange={() => setApigopen(false)}>

@@ -176,7 +176,6 @@ const Slide: FC<Props> = (props: Props) => {
         }
       });
   }, []);
-
   return (
     <>
       <div className="carousel">
@@ -306,6 +305,7 @@ const Slide: FC<Props> = (props: Props) => {
           to={{
             pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,
             state: {
+              selectedplace : top5name[btn_pic -1],
               mapx: mapx[btn_pic - 1],
               mapy: mapy[btn_pic - 1],
             },

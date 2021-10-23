@@ -13,7 +13,7 @@ const Third: FC<Props> = (props: Props) => {
   return (
     <Layout>
       {language[1] === 'KO' ? (
-        <Controller mapx={props.location.state.mapx} mapy={props.location.state.mapy} history={props.history} />
+        <Controller mapx={props.location.state.mapx} mapy={props.location.state.mapy} selectedplace={props.location.state.selectedplace} history={props.history} />
       ) : (
         <EnController mapx={props.location.state.mapx} mapy={props.location.state.mapy} history={props.history} />
       )}
