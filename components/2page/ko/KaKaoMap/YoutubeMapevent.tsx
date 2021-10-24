@@ -36,15 +36,13 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history ,vlogplaceid}) 
   useEffect(() => {
     setPlace([]);
     setName([]);
-    axios.get(`/api/vlog/findplace/${videoid}`).then((response) => {
-      console.log('vlg',response.data.data);
+    axios.get(`/api/vlog/findplace/${videoid}`).then((response) => { //이 비디오에서 등장한 장소들
       setPlace(response.data.data);
       for (var i = 0; i < response.data.data.length; i++) {
-        setName((prev: any) => [...prev, response.data.data[i].name]);
+        setName((prev: any) => [...prev, response.data.data[i].name]); /////////////////////////////////////////////////이거 굳이 필요한가 ? ? ? ?
       }
     });
   }, [videoid]);
-  // console.log('place',place);//vlog에서 다녀간 장소들의 categoryid, x ,y , 이름
 
   useEffect(() => {
     if (place.length !== 0) {

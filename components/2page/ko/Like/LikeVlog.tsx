@@ -4,10 +4,10 @@ import './LikeVlog.css';
 import { History, LocationState } from 'history';
 
 interface Props {
-  vlogplacename: any; //vlog에서 방문한 장소들 목록
+  vlogplacename: any; //vlog에서 방문한 장소명 목록
   vlogpid: any; //vlog 유튜브번호 CKvzYfkgTyc이런거
   history: History<LocationState>;
-  vlogplaceid:any;
+  vlogplaceid:any; //vlog에서 방문한 장소 placeid 목록
 }
 const LikeVlog: FC<Props> = (props: Props) => {
   var local = sessionStorage.getItem('memberid');
@@ -39,8 +39,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
   const [like18, setLike18] = useState(0);
   const [like19, setLike19] = useState(0);
 
-  console.log('vlogplaceid',props.vlogplaceid);
-
   const [dblikedlist, setDblikedlist] = useState([] as any);
   useEffect(() => { //DB에 저장된 즐찾목록의 id들만 가져와서 dblikedlist 배열에 저장
       axios.get(`/api/myplace/findall/1`).then(async (response) => {
@@ -52,16 +50,16 @@ const LikeVlog: FC<Props> = (props: Props) => {
   }, []);
 
   function func_post(e: number) {
+    var ethplaceid = props.vlogplaceid[e];
     console.log('즐겨찾기 할 id:', memberid, 'placeid', ethplaceid);
 
-    var ethplaceid = props.vlogplacename[e];
     if (memberid === 0) {
       alert('로그인하세욥');
       return props.history.push('/login');
     } else {
       axios
         .post(
-          `/api/myplace/add/${memberid}/${props.vlogplacename[e]}`,
+          `/api/myplace/add/${memberid}/${props.vlogplaceid[e]}`,
           { memberid, ethplaceid },
           { withCredentials: true }, //post에선 3번째자리에 설정
         )
@@ -69,25 +67,14 @@ const LikeVlog: FC<Props> = (props: Props) => {
           console.log('넣어진 id: ', memberid, 'placeid', ethplaceid);
         })
         .catch((error) => {});
-      // axios
-      //   .post(
-      //     `/api/myplace/add/${memberid}/${props.vlogpid[e]}`,
-      //     { memberid, ethplaceid },
-      //     { withCredentials: true }, //post에선 3번째자리에 설정
-      //   )
-      //   .then(() => {
-      //     console.log('넣어진 id: ', memberid, 'placeid', ethplaceid);
-      //   })
-      //   .catch((error) => {});
     }
   }
   function func_delete(e: number) {
-    console.log('즐겨찾기에서 지울 id:', memberid, 'place명', props.vlogplacename[e]);
-
+    console.log('즐겨찾기에서 지울 id:', memberid, 'placeid', props.vlogplaceid[e]);
     axios
-      .delete(`/api/myplace/deletebymyplace/${memberid}/${props.vlogplacename[e]}`)
+      .delete(`/api/myplace/deletebyplace/${memberid}/${props.vlogplaceid[e]}`)
       .then(() => {
-        console.log('지워진 id: ', memberid, 'place명', props.vlogplacename[e]);
+        console.log('지워진 id: ', memberid, 'placeid', props.vlogplaceid[e]);
       })
       .catch((error) => {});
   }

@@ -19,8 +19,7 @@ const Likedlist = () => {
 
   useEffect(() => {
     axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
-      console.log('likedlist 에서 GET', response.data.data);
-
+      // console.log('likedlist 에서 GET', response.data.data);
       for (var i = 0; i < response.data.data.length; i++) {
         setNamelist((prev: any) => [...prev, response.data.data[i].name]);
         setPlaceidlist((prev: any) => [...prev, response.data.data[i].id]);
