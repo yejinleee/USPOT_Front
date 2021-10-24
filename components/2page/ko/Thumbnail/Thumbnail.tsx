@@ -123,14 +123,14 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
   useEffect(() => {
     setVloglist([]);
     axios.get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`).then((response) => {
-      console.log('response',response.data.data)
+      // console.log('/findtop5/././ response.data.data : ',response.data.data)
       for (var j = 0; j < response.data.data[btn_pic - 1].vlog_list.length; j++) {
         setVlogplaceid((prev: any) => [...prev, response.data.data[j].id]);
         setVloglist((prev: any) => [...prev, response.data.data[btn_pic - 1].vlog_list[j].url]);
       }
     });
   }, [btn_pic]);
-  // console.log('vlog에서 방문한 장소들의 placeid',vlogplaceid);
+
   return (
     <>
       <div className="youtube_all">

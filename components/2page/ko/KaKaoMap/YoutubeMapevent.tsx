@@ -23,28 +23,25 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
   const y = useRef(0);
 
   useEffect(() => {
-    axios.get(`/api/vlog/findplace/${videoid}`).then((response) => {
-      let container = document.getElementById('youtubemap');
-      let options = {
-        center: new kakao.maps.LatLng(response.data.data[0].location_y, response.data.data[0].location_x),
-        level: 10,
-      };
-      setYoutubemap(new kakao.maps.Map(container, options));
-    });
+    let container = document.getElementById('youtubemap');
+    let options = {
+      center: new kakao.maps.LatLng(33.450701, 126.570667),
+      level: 10,
+    };
+    setYoutubemap(new kakao.maps.Map(container, options));
   }, []);
 
   useEffect(() => {
     setPlace([]);
     setName([]);
     axios.get(`/api/vlog/findplace/${videoid}`).then((response) => {
-      console.log('vlg', response.data.data);
+      //이 비디오에서 등장한 장소들
       setPlace(response.data.data);
       for (var i = 0; i < response.data.data.length; i++) {
         setName((prev: any) => [...prev, response.data.data[i].name]);
       }
     });
   }, [videoid]);
-  // console.log('place',place);//vlog에서 다녀간 장소들의 categoryid, x ,y , 이름
 
   useEffect(() => {
     if (place.length !== 0) {
