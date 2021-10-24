@@ -23,18 +23,15 @@ const Liketop5: FC<Props> = (props: Props) => {
   const [like3, setLike3] = useState(0);
   const [like4, setLike4] = useState(0);
 
-  const [apiplaceid, setApilaceid] = useState([] as any);
-
+  const [dblikedlist, setDblikedlist] = useState([] as any);
   useEffect(() => { //DB에 저장된 즐찾목록의 id들만 가져와서 apilistid 배열에 저장
-    axios.get(`/api/myplace/findall/1`).then(async (response) => {
-    // axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
-      /////////////////////////////////////이거 왜 memberid로 안될가요~???
+    axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
+    // axios.get(`/api/myplace/findall/1`).then(async (response) => {
       for (var i = 0; i < response.data.data.length; i++) {
-        setApilaceid((prev: any) => [...prev, response.data.data[i].placeId]);
+        setDblikedlist((prev: any) => [...prev, response.data.data[i].placeId]);
       }
     });
   }, []);
-  // console.log('apiplaceid',apiplaceid)
 
   function func_post(e: number) {
     var ethplaceid = props.top5placeid[e];
@@ -70,10 +67,9 @@ const Liketop5: FC<Props> = (props: Props) => {
   }
 
   function heart(i:number) {
-
     if (i===0 && like0===0){
       return(
-        <span className="tlike">{(apiplaceid.find((e: number) => e === props.top5placeid[i])) === props.top5placeid[i] ? '💛' : '🤍'}</span>
+        <span className="tlike">{(dblikedlist.find((e: number) => e === props.top5placeid[i])) === props.top5placeid[i] ? '💛' : '🤍'}</span>
       )
     }
     else if (i===0 && like0!==0){
@@ -82,9 +78,8 @@ const Liketop5: FC<Props> = (props: Props) => {
         )
     }
     else if (i===1 && like1===0){
-
       return(
-        <span className="tlike">{(apiplaceid.find((e: number) => e === props.top5placeid[i])) === props.top5placeid[i] ? '💛' : '🤍'}</span>
+        <span className="tlike">{(dblikedlist.find((e: number) => e === props.top5placeid[i])) === props.top5placeid[i] ? '💛' : '🤍'}</span>
       )
     }
     else if (i===1 && like1!==0){
@@ -94,7 +89,7 @@ const Liketop5: FC<Props> = (props: Props) => {
     }
     else if (i===2 && like2===0){
       return(
-        <span className="tlike">{(apiplaceid.find((e: number) => e === props.top5placeid[i])) === props.top5placeid[i] ? '💛' : '🤍'}</span>
+        <span className="tlike">{(dblikedlist.find((e: number) => e === props.top5placeid[i])) === props.top5placeid[i] ? '💛' : '🤍'}</span>
       )
     }
     else if (i===2 && like2!==0){
@@ -104,7 +99,7 @@ const Liketop5: FC<Props> = (props: Props) => {
     }
     else if (i===3 && like3===0){
       return(
-        <span className="tlike">{(apiplaceid.find((e: number) => e === props.top5placeid[i])) === props.top5placeid[i] ? '💛' : '🤍'}</span>
+        <span className="tlike">{(dblikedlist.find((e: number) => e === props.top5placeid[i])) === props.top5placeid[i] ? '💛' : '🤍'}</span>
       )
     }
     else if (i===3 && like3!==0){
@@ -114,7 +109,7 @@ const Liketop5: FC<Props> = (props: Props) => {
     }
     else if (i===4 && like4===0){
       return(
-        <span className="tlike">{(apiplaceid.find((e: number) => e === props.top5placeid[i])) === props.top5placeid[i] ? '💛' : '🤍'}</span>
+        <span className="tlike">{(dblikedlist.find((e: number) => e === props.top5placeid[i])) === props.top5placeid[i] ? '💛' : '🤍'}</span>
       )
     }
     else if (i===4 && like4!==0){
@@ -126,20 +121,17 @@ const Liketop5: FC<Props> = (props: Props) => {
   function func(e: number) {
     var el;
     var i;
-    var ethplaceid = props.top5placeid[e];
     if (e === 0) {
-      // console.log('DB목록에 그값 있다면 그 값',(apiplaceid.find((i: number) => i === props.top5placeid[e])));
+      // console.log('DB목록에 그값 있다면 그 값',(dblikedlist.find((i: number) => i === props.top5placeid[e])));
       // console.log('id',(props.top5placeid[e]));
-      // console.log('불리언',(apiplaceid.find((e: number) => e === props.top5placeid[e])) === props.top5placeid[e]);
+      // console.log('불리언',(dblikedlist.find((e: number) => e === props.top5placeid[e])) === props.top5placeid[e]);
       if (like0===0){ //0인상태인데 DB에 있는거면
-        if ((apiplaceid.find((i: number) => i === props.top5placeid[e])) === props.top5placeid[e]){
-          console.log('ㄷ여기들어가');
+        if ((dblikedlist.find((i: number) => i === props.top5placeid[e])) === props.top5placeid[e]){
           setLike0(2);
           func_delete(e);
-          setApilaceid(apiplaceid.filter((el:number) => el !==props.top5placeid[e]));
+          setDblikedlist(dblikedlist.filter((el:number) => el !==props.top5placeid[e]));
         }
         else{
-          console.log('아님여기냐ㅑㅑㅑ');
           setLike0(1);
           func_post(e);
         }
@@ -154,10 +146,10 @@ const Liketop5: FC<Props> = (props: Props) => {
       }
     } else if (e === 1) {
       if (like1===0){
-        if ((apiplaceid.find((i:number) => i === props.top5placeid[e])) === props.top5placeid[e]){
+        if ((dblikedlist.find((i:number) => i === props.top5placeid[e])) === props.top5placeid[e]){
           setLike1(2);
           func_delete(e);
-          setApilaceid(apiplaceid.filter((el:number) => el !==props.top5placeid[e]));
+          setDblikedlist(dblikedlist.filter((el:number) => el !==props.top5placeid[e]));
         }
         else{
           setLike1(1);
@@ -174,10 +166,10 @@ const Liketop5: FC<Props> = (props: Props) => {
       }
     } else if (e === 2) {
       if (like2===0){
-        if ((apiplaceid.find((i: number) => i === props.top5placeid[e])) === props.top5placeid[e]){
+        if ((dblikedlist.find((i: number) => i === props.top5placeid[e])) === props.top5placeid[e]){
           setLike2(2);
           func_delete(e);
-          setApilaceid(apiplaceid.filter((el:number) => el !==props.top5placeid[e]));
+          setDblikedlist(dblikedlist.filter((el:number) => el !==props.top5placeid[e]));
         }
         else{
           setLike2(1);
@@ -194,10 +186,10 @@ const Liketop5: FC<Props> = (props: Props) => {
       }
     } else if (e === 3) {
       if (like3===0){
-        if ((apiplaceid.find((i: number) => i === props.top5placeid[e])) === props.top5placeid[e]){
+        if ((dblikedlist.find((i: number) => i === props.top5placeid[e])) === props.top5placeid[e]){
           setLike3(2);
           func_delete(e);
-          setApilaceid(apiplaceid.filter((el:number) => el !==props.top5placeid[e]));
+          setDblikedlist(dblikedlist.filter((el:number) => el !==props.top5placeid[e]));
         }
         else{
           setLike3(1);
@@ -214,10 +206,10 @@ const Liketop5: FC<Props> = (props: Props) => {
       }
     } else if (e === 4) {
       if (like4===0){
-        if ((apiplaceid.find((i: number) => i === props.top5placeid[e])) === props.top5placeid[e]){
+        if ((dblikedlist.find((i: number) => i === props.top5placeid[e])) === props.top5placeid[e]){
           setLike4(2);
           func_delete(e);
-          setApilaceid(apiplaceid.filter((el:number) => el !==props.top5placeid[e]));
+          setDblikedlist(dblikedlist.filter((el:number) => el !==props.top5placeid[e]));
         }
         else{
           setLike4(1);

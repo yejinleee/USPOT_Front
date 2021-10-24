@@ -19,6 +19,7 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
   const [id, setId] = useState(null);
   const [x, setX] = useState();
   const [y, setY] = useState();
+  const [vlogplaceid,setVlogplaceid] = useState([] as any);
   var dic: { [key: string]: number } = {
     가평군: 1,
     광명시: 2,
@@ -119,16 +120,17 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
     음식점: 2,
     카페: 3,
   };
-
   useEffect(() => {
     setVloglist([]);
     axios.get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`).then((response) => {
+      console.log('response',response.data.data)
       for (var j = 0; j < response.data.data[btn_pic - 1].vlog_list.length; j++) {
+        setVlogplaceid((prev: any) => [...prev, response.data.data[j].id]);
         setVloglist((prev: any) => [...prev, response.data.data[btn_pic - 1].vlog_list[j].url]);
       }
     });
   }, [btn_pic]);
-
+  // console.log('vlog에서 방문한 장소들의 placeid',vlogplaceid);
   return (
     <>
       <div className="youtube_all">
@@ -157,7 +159,7 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
             </div>
           ))}
       </div>
-      {map && <YoutubeMapevent videoid={id} history={history} />}
+      {map && <YoutubeMapevent videoid={id} history={history} vlogplaceid={vlogplaceid}/>}
     </>
   );
 };

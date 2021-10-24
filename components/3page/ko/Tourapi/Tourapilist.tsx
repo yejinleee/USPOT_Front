@@ -65,7 +65,7 @@ const Getapi: FC<Props> = (props: Props) => {
         setData([]);
       });
   }, []);
-  // console.log('데이터',data);
+  console.log('데이터',data);
 
   len = data.length;
   const [like0, setLike0] = useState(0); //초기0 누르면1 눌렀다 빼면 2 //처음렌더링대 false라 else문들어갈까봐

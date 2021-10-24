@@ -8,9 +8,10 @@ import { History, LocationState } from 'history';
 interface Props {
   videoid: any;
   history: History<LocationState>;
+  vlogplaceid : any;
 }
 
-const YoutubeMapevent: FC<Props> = ({ children, videoid, history }) => {
+const YoutubeMapevent: FC<Props> = ({ children, videoid, history ,vlogplaceid}) => {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
@@ -23,12 +24,14 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history }) => {
     setPlace([]);
     setName([]);
     axios.get(`/api/vlog/findplace/${videoid}`).then((response) => {
+      console.log('vlg',response.data.data);
       setPlace(response.data.data);
       for (var i = 0; i < response.data.data.length; i++) {
         setName((prev: any) => [...prev, response.data.data[i].name]);
       }
     });
   }, [videoid]);
+  // console.log('place',place);//vlog에서 다녀간 장소들의 categoryid, x ,y , 이름
 
   useEffect(() => {
     if (place.length !== 0) {
@@ -89,11 +92,12 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history }) => {
     }
     setMarkers([]);
   }
+
   return (
     <div style={{ position: 'relative' }}>
       <div id="youtubemap" style={{ width: '50vw', height: '40vw', display: 'inline-block' }}></div>
       <span style={{ position: 'absolute' }}>
-        <LikeVlog vlogname={name} vlogpid={videoid} history={history} />
+        <LikeVlog vlogplacename={name} vlogpid={videoid} history={history} vlogplaceid={vlogplaceid} />
       </span>
     </div>
   );
