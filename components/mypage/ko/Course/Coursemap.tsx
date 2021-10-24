@@ -15,9 +15,12 @@ export default function Coursemap() {
   const [myplace, setMyplace] = useState([] as any);
 
   useEffect(() => {
-    axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
-      setMyplace(response.data.data);
-    });
+    axios
+      .get(`/api/myplace/findall/${memberid}`)
+      .then(async (response) => {
+        setMyplace(response.data.data);
+      })
+      .catch((error) => {});
   }, []);
 
   useEffect(() => {

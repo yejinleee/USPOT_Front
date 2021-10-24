@@ -8,10 +8,10 @@ import { History, LocationState } from 'history';
 interface Props {
   videoid: any;
   history: History<LocationState>;
-  vlogplaceid : any;
+  vlogplaceid: any;
 }
 
-const YoutubeMapevent: FC<Props> = ({ children, videoid, history ,vlogplaceid}) => {
+const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid }) => {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
@@ -37,7 +37,7 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history ,vlogplaceid}) 
     setPlace([]);
     setName([]);
     axios.get(`/api/vlog/findplace/${videoid}`).then((response) => {
-      console.log('vlg',response.data.data);
+      console.log('vlg', response.data.data);
       setPlace(response.data.data);
       for (var i = 0; i < response.data.data.length; i++) {
         setName((prev: any) => [...prev, response.data.data[i].name]);
@@ -54,6 +54,7 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history ,vlogplaceid}) 
 
   const mapscript = () => {
     removeMarker();
+
     x.current = 0;
     y.current = 0;
     for (var i = 0; i < place.length; i++) {
@@ -66,11 +67,12 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history ,vlogplaceid}) 
 
     for (var i = 0; i < place.length; i++) {
       var placePosition = new kakao.maps.LatLng(place[i].location_y, place[i].location_x),
-        marker = addMarker(placePosition, i, place[i].categoryid);
+        marker = addMarker(placePosition, i, place[i].categoryId);
       var infowindow = new kakao.maps.InfoWindow({
         content: `<span class="info-title">${place[i].name}</span>`, // 인포윈도우에 표시할 내용
       });
       infowindow.open(youtubemap, marker);
+
       kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(youtubemap, marker, infowindow));
       kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
 
@@ -86,12 +88,14 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history ,vlogplaceid}) 
         e.parentElement.parentElement.style.border = '0px';
         e.parentElement.parentElement.style.background = 'unset';
       });
+      infowindow.close();
       kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(youtubemap, marker, infowindow));
       kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
     }
   };
 
   function addMarker(position: any, idx: any, id: any) {
+    console.log(id);
     var imageSrc = `/src/icon/${id}.png`, // 마커 이미지 url, 스프라이트 이미지를 씁니다
       imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
       markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize),

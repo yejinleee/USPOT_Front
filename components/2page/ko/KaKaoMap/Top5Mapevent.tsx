@@ -54,9 +54,6 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
         content: `<span class="info-title">${el.name}</span>`, // 인포윈도우에 표시할 내용
       });
       infowindow.open(top5map, marker);
-      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(top5map, marker, infowindow));
-      kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-
       var infoTitle = document.querySelectorAll('.info-title');
       infoTitle.forEach(function (e: any) {
         var w = e.offsetWidth + 10;
@@ -69,6 +66,9 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
         e.parentElement.parentElement.style.border = '0px';
         e.parentElement.parentElement.style.background = 'unset';
       });
+      infowindow.close();
+      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(top5map, marker, infowindow));
+      kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
     });
 
     // 인포윈도우를 표시하는 클로저를 만드는 함수입니다

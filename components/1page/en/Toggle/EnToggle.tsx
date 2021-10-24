@@ -3,10 +3,10 @@ import { Link, Route } from 'react-router-dom';
 import axios from 'axios';
 
 import '@components/1page/Toggle.css';
-import Category from '@components/1page/ko/Category/category';
-import Container from '@components/1page/ko/Container/Container';
+import EnCategory from '@components/1page/en/Category/Encategory';
+import EnContainer from '@components/1page/en/Container/EnContainer';
 
-const Toggle = () => {
+const EnToggle = () => {
   const [selectedcategory, setSelectedcategory] = useState('안');
   const [selectedcity, setSelectedcity] = useState('없음'); //선택된도시 props로 넘겨주려고
 
@@ -981,11 +981,11 @@ const Toggle = () => {
 
   return (
     <>
-      <Category setSelectedcategory={setSelectedcategory} />
+      <EnCategory setSelectedcategory={setSelectedcategory} />
 
       <img src={map} className="map" alt="map" />
 
-      <Container
+      <EnContainer
         setGyeongitoggle={setGyeongitoggle}
         setGangwontoggle={setGangwontoggle}
         setChungnamtoggle={setChungnamtoggle}
@@ -1177,4 +1177,4 @@ const Toggle = () => {
   );
 };
 
-export default Toggle;
+export default EnToggle;

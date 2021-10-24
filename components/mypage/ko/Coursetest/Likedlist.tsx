@@ -1,13 +1,8 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 
-// interface Props {
-//   selectedcity: string;
-//   selectedcategory: string;
-// }
-
 const Likedlist = () => {
-  var local = localStorage.getItem('memberid');
+  var local = sessionStorage.getItem('memberid');
   try {
     var memberid = Number(local.split('')[1]);
   } catch {
@@ -16,16 +11,19 @@ const Likedlist = () => {
 
   const [namelist, setNamelist] = useState([] as any);
   const [placeidlist, setPlaceidlist] = useState([] as any);
-
+  console.log(memberid);
   useEffect(() => {
-    axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
-      console.log('likedlist 에서 GET', response.data.data);
+    axios
+      .get(`/api/myplace/findall/${memberid}`)
+      .then(async (response) => {
+        console.log('likedlist 에서 GET', response.data.data);
 
-      for (var i = 0; i < response.data.data.length; i++) {
-        setNamelist((prev: any) => [...prev, response.data.data[i].name]);
-        setPlaceidlist((prev: any) => [...prev, response.data.data[i].id]);
-      }
-    });
+        for (var i = 0; i < response.data.data.length; i++) {
+          setNamelist((prev: any) => [...prev, response.data.data[i].name]);
+          setPlaceidlist((prev: any) => [...prev, response.data.data[i].id]);
+        }
+      })
+      .catch((error) => {});
   }, []);
 
   const likedlist: any = namelist.map((v: string, index: number) => (

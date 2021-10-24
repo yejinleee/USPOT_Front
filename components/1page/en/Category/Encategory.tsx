@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '@components/1page/category.css';
 
-const Category = (props: any) => {
+const EnCategory = (props: any) => {
   const [clicked, setClicked] = useState('');
 
   return (
@@ -41,4 +41,4 @@ const Category = (props: any) => {
   );
 };
 
-export default Category;
+export default EnCategory;
