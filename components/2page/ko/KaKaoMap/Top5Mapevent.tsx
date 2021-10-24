@@ -39,7 +39,6 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
       // 마커를 생성합니다
       var imageSize = new kakao.maps.Size(30, 30),
         imageOption = { offset: new kakao.maps.Point(27, 69) };
-
       const markerImage = new kakao.maps.MarkerImage(props.imageSrc, imageSize, imageOption);
       const marker = new kakao.maps.Marker({
         //마커가 표시 될 위치
@@ -52,14 +51,24 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
       marker.setMap(top5map);
       // 마커에 표시할 인포윈도우를 생성합니다
       var infowindow = new kakao.maps.InfoWindow({
-        content: el.name, // 인포윈도우에 표시할 내용
+        content: `<span class="info-title">${el.name}</span>`, // 인포윈도우에 표시할 내용
       });
-
-      // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-      // 이벤트 리스너로는 클로저를 만들어 등록합니다
-      // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+      infowindow.open(top5map, marker);
       kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(top5map, marker, infowindow));
       kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+
+      var infoTitle = document.querySelectorAll('.info-title');
+      infoTitle.forEach(function (e: any) {
+        var w = e.offsetWidth + 10;
+        var ml = w / 2;
+        e.parentElement.style.top = '82px';
+        e.parentElement.style.left = '50%';
+        e.parentElement.style.marginLeft = -ml + 'px';
+        e.parentElement.style.width = w + 'px';
+        e.parentElement.previousSibling.style.display = 'none';
+        e.parentElement.parentElement.style.border = '0px';
+        e.parentElement.parentElement.style.background = 'unset';
+      });
     });
 
     // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
@@ -88,7 +97,6 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
       </div>
     </>
   );
-
 };
 
 export default Top5Mapevent;

@@ -309,7 +309,7 @@ const Slide: FC<Props> = (props: Props) => {
               selectedplace: top5name[btn_pic - 1],
               mapx: mapx[btn_pic - 1],
               mapy: mapy[btn_pic - 1],
-              top5placeid : top5placeid[btn_pic -1],
+              top5placeid: top5placeid[btn_pic - 1],
             },
           }}
           style={{ textDecoration: 'none', color: '#000000' }}

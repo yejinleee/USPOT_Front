@@ -19,6 +19,19 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history ,vlogplaceid}) 
   const [name, setName] = useState([] as any);
   const [youtubemap, setYoutubemap] = useState(null);
   const [markers, setMarkers] = useState([] as any);
+  const x = useRef(0);
+  const y = useRef(0);
+
+  useEffect(() => {
+    axios.get(`/api/vlog/findplace/${videoid}`).then((response) => {
+      let container = document.getElementById('youtubemap');
+      let options = {
+        center: new kakao.maps.LatLng(response.data.data[0].location_y, response.data.data[0].location_x),
+        level: 10,
+      };
+      setYoutubemap(new kakao.maps.Map(container, options));
+    });
+  }, []);
 
   useEffect(() => {
     setPlace([]);
@@ -39,22 +52,39 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history ,vlogplaceid}) 
     }
   }, [place]);
 
-  useEffect(() => {
-    let container = document.getElementById('youtubemap');
-    let options = {
-      center: new kakao.maps.LatLng(37.82465, 127.49651),
-      level: 10,
-    };
-    setYoutubemap(new kakao.maps.Map(container, options));
-  }, []);
-
   const mapscript = () => {
     removeMarker();
+    x.current = 0;
+    y.current = 0;
+    for (var i = 0; i < place.length; i++) {
+      x.current += place[i].location_x;
+      y.current += place[i].location_y;
+    }
+
+    var Position = new kakao.maps.LatLng(y.current / place.length, x.current / place.length);
+    youtubemap.setCenter(Position);
+
     for (var i = 0; i < place.length; i++) {
       var placePosition = new kakao.maps.LatLng(place[i].location_y, place[i].location_x),
         marker = addMarker(placePosition, i, place[i].categoryid);
       var infowindow = new kakao.maps.InfoWindow({
-        content: place[i].name, // 인포윈도우에 표시할 내용
+        content: `<span class="info-title">${place[i].name}</span>`, // 인포윈도우에 표시할 내용
+      });
+      infowindow.open(youtubemap, marker);
+      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(youtubemap, marker, infowindow));
+      kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+
+      var infoTitle = document.querySelectorAll('.info-title');
+      infoTitle.forEach(function (e: any) {
+        var w = e.offsetWidth + 10;
+        var ml = w / 2;
+        e.parentElement.style.top = '82px';
+        e.parentElement.style.left = '50%';
+        e.parentElement.style.marginLeft = -ml + 'px';
+        e.parentElement.style.width = w + 'px';
+        e.parentElement.previousSibling.style.display = 'none';
+        e.parentElement.parentElement.style.border = '0px';
+        e.parentElement.parentElement.style.background = 'unset';
       });
       kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(youtubemap, marker, infowindow));
       kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));

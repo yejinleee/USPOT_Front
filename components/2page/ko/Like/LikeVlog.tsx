@@ -10,8 +10,6 @@ interface Props {
   vlogplaceid:any;
 }
 const LikeVlog: FC<Props> = (props: Props) => {
-  console.log('vlogplacename',props.vlogplacename);
-
   var local = sessionStorage.getItem('memberid');
   try {
     var memberid = Number(local.split('')[1]);
