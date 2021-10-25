@@ -1,8 +1,9 @@
 .App {
   /*display: inline-flex;*/
-
   flex-direction: column;
   margin-bottom: 20px;
+  margin-top : 20px;
+  padding-left : 15vw;
 }
 
 .App input {
@@ -27,4 +28,45 @@ p {
   height: 13%;
   overflow: scroll;
   padding-left: 2%;
+}
+
+.gotosecondbtn{
+  height: 30px;
+  border-radius: 10px;
+  background:#f08080;
+  border:none;
+  /*position:relative;*/
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+
+  position: fixed;
+  left: 42vw;
+  color: white;
+  margin-top:1%;
+}
+.gotosecondbtn:hover{
+  background:#fff;
+  color:#f08080;
+}
+.gotosecondbtn:before,.gotosecondbtn:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #f08080;
+  transition:400ms ease all;
+}
+.gotosecondbtn:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.gotosecondbtn:hover:before,.gotosecondbtn:hover:after{
+  width:100%;
+  transition:800ms ease all;
 }
