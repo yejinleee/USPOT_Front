@@ -70,7 +70,7 @@ const EnController: FC<Props> = (props: Props) => {
         {/*카테고리*/}
         <div className="category" onClick={() => setApigopen(false)}>
           <button onClick={() => funcType(12)} className={selectedType === 12 ? 'selected' : 'unselected'}>
-            Tourist attraction
+            Attraction
           </button>
           <button onClick={() => funcType(14)} className={selectedType === 14 ? 'selected' : 'unselected'}>
             Cultural facilities

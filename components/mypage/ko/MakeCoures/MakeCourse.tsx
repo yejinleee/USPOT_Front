@@ -14,7 +14,6 @@ const MakeCourse = () => {
     axios
       .get(`/api/myplace/findall/${memberid}`)
       .then(async (response) => {
-        console.log(response.data.data.length);
         if (response.data.data.length !== 0) {
           setExsist(true);
         }

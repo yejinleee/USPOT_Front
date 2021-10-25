@@ -15,7 +15,7 @@ const EnCategory = (props: any) => {
         className={clicked === 'tor' ? 'clicked' : 'button'}
       >
         <img src="src/icon/관광명소.png" style={{ width: '5%' }} />
-        <p style={{ display: 'inline' }}>Tourist attraction</p>
+        <p style={{ display: 'inline' }}>Attraction</p>
       </label>
       <label
         onClick={() => {

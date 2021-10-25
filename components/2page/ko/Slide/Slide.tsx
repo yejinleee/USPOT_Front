@@ -163,7 +163,7 @@ const Slide: FC<Props> = (props: Props) => {
           const { data } = await imageSearch(params);
 
           if (i === 0) {
-            setPic1(data.documents[0].image_url);
+            setPic1('https://storep-phinf.pstatic.net/ogq_5a0024180a88a/original_6.png?type=p100_100');
           } else if (i === 1) {
             setPic2(data.documents[0].image_url);
           } else if (i === 2) {
