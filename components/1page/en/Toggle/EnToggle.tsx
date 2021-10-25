@@ -1032,21 +1032,21 @@ const Toggle = () => {
         setMap={setMap}
         setSelectedcity={setSelectedcity}
       />
-      <span>
+
+      <div className="district_toggle">
+        <span style={{position:'absolute'}}>
         {selectedcity !== '없음' && selectedcategory !== '안' ? (
           <button className="gotosecondbtn" onClick={selectedalert}>
             <Link to={`/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>
-              보러가기!!
+              NEXT !!
             </Link>
           </button>
         ) : (
           <button className="gotosecondbtn" onClick={selectedalert}>
-            {selectedcity}의 추천 {selectedcategory}보기
+            NEXT
           </button>
         )}
-      </span>
-
-      <div className="district_toggle">
+        </span>
         <label
           className="district"
           onClick={() => {
@@ -1070,17 +1070,17 @@ const Toggle = () => {
           <span style={gangwontoggle ? { color: 'white' } : { color: '#D85959' }}>{gangwon.name}</span>
         </label>
         <div>{gangwontoggle && gangwon_list}</div>
-        <label
-          className="district"
-          onClick={() => {
-            setIncheontoggle(!incheontoggle);
-            !incheontoggle && setMap(incheon.link);
-          }}
-          style={incheontoggle ? { background: '#F08080' } : { background: '' }}
-        >
-          <span style={incheontoggle ? { color: 'white' } : { color: '#D85959' }}>{incheon.name}</span>
-        </label>
-        <div>{incheontoggle && incheon_list}</div>
+        {/*<label*/}
+        {/*  className="district"*/}
+        {/*  onClick={() => {*/}
+        {/*    setIncheontoggle(!incheontoggle);*/}
+        {/*    !incheontoggle && setMap(incheon.link);*/}
+        {/*  }}*/}
+        {/*  style={incheontoggle ? { background: '#F08080' } : { background: '' }}*/}
+        {/*>*/}
+        {/*  <span style={incheontoggle ? { color: 'white' } : { color: '#D85959' }}>{incheon.name}</span>*/}
+        {/*</label>*/}
+        {/*<div>{incheontoggle && incheon_list}</div>*/}
         <label
           className="district"
           onClick={() => {
@@ -1103,28 +1103,28 @@ const Toggle = () => {
           <span style={chungnamtoggle ? { color: 'white' } : { color: '#D85959' }}>{chungnam.name}</span>
         </label>
         <div>{chungnamtoggle && chungnam_list}</div>
-        <label
-          className="district"
-          onClick={() => {
-            setDaejeontoggle(!daejeontoggle);
-            !daejeontoggle && setMap(daejeon.link);
-          }}
-          style={daejeontoggle ? { background: '#F08080' } : { background: '' }}
-        >
-          <span style={daejeontoggle ? { color: 'white' } : { color: '#D85959' }}>{daejeon.name}</span>
-        </label>
-        <div>{daejeontoggle && daejeon_list}</div>
-        <label
-          className="district"
-          onClick={() => {
-            setSejongtoggle(!sejongtoggle);
-            !sejongtoggle && setMap(sejong.link);
-          }}
-          style={sejongtoggle ? { background: '#F08080' } : { background: '' }}
-        >
-          <span style={sejongtoggle ? { color: 'white' } : { color: '#D85959' }}>{sejong.name}</span>
-        </label>
-        <div>{sejongtoggle && sejong_list}</div>
+        {/*<label*/}
+        {/*  className="district"*/}
+        {/*  onClick={() => {*/}
+        {/*    setDaejeontoggle(!daejeontoggle);*/}
+        {/*    !daejeontoggle && setMap(daejeon.link);*/}
+        {/*  }}*/}
+        {/*  style={daejeontoggle ? { background: '#F08080' } : { background: '' }}*/}
+        {/*>*/}
+        {/*  <span style={daejeontoggle ? { color: 'white' } : { color: '#D85959' }}>{daejeon.name}</span>*/}
+        {/*</label>*/}
+        {/*<div>{daejeontoggle && daejeon_list}</div>*/}
+        {/*<label*/}
+        {/*  className="district"*/}
+        {/*  onClick={() => {*/}
+        {/*    setSejongtoggle(!sejongtoggle);*/}
+        {/*    !sejongtoggle && setMap(sejong.link);*/}
+        {/*  }}*/}
+        {/*  style={sejongtoggle ? { background: '#F08080' } : { background: '' }}*/}
+        {/*>*/}
+        {/*  <span style={sejongtoggle ? { color: 'white' } : { color: '#D85959' }}>{sejong.name}</span>*/}
+        {/*</label>*/}
+        {/*<div>{sejongtoggle && sejong_list}</div>*/}
         <label
           className="district"
           onClick={() => {
@@ -1147,17 +1147,17 @@ const Toggle = () => {
           <span style={jeonnamtoggle ? { color: 'white' } : { color: '#D85959' }}>{jeonnam.name}</span>
         </label>
         <div>{jeonnamtoggle && jeonnam_list}</div>
-        <label
-          className="district"
-          onClick={() => {
-            setGwangjutoggle(!gwangjutoggle);
-            !gwangjutoggle && setMap(gwangju.link);
-          }}
-          style={gwangjutoggle ? { background: '#F08080' } : { background: '' }}
-        >
-          <span style={gwangjutoggle ? { color: 'white' } : { color: '#D85959' }}>{gwangju.name}</span>
-        </label>
-        <div>{gwangjutoggle && gwangju_list}</div>
+        {/*<label*/}
+        {/*  className="district"*/}
+        {/*  onClick={() => {*/}
+        {/*    setGwangjutoggle(!gwangjutoggle);*/}
+        {/*    !gwangjutoggle && setMap(gwangju.link);*/}
+        {/*  }}*/}
+        {/*  style={gwangjutoggle ? { background: '#F08080' } : { background: '' }}*/}
+        {/*>*/}
+        {/*  <span style={gwangjutoggle ? { color: 'white' } : { color: '#D85959' }}>{gwangju.name}</span>*/}
+        {/*</label>*/}
+        {/*<div>{gwangjutoggle && gwangju_list}</div>*/}
         <label
           className="district"
           onClick={() => {
@@ -1191,17 +1191,17 @@ const Toggle = () => {
           <span style={daegutoggle ? { color: 'white' } : { color: '#D85959' }}>{daegu.name}</span>
         </label>
         <div>{daegutoggle && daegu_list}</div>
-        <label
-          className="district"
-          onClick={() => {
-            setUlsantoggle(!ulsantoggle);
-            !ulsantoggle && setMap(ulsan.link);
-          }}
-          style={ulsantoggle ? { background: '#F08080' } : { background: '' }}
-        >
-          <span style={ulsantoggle ? { color: 'white' } : { color: '#D85959' }}>{ulsan.name}</span>
-        </label>
-        <div>{ulsantoggle && ulsan_list}</div>
+        {/*<label*/}
+        {/*  className="district"*/}
+        {/*  onClick={() => {*/}
+        {/*    setUlsantoggle(!ulsantoggle);*/}
+        {/*    !ulsantoggle && setMap(ulsan.link);*/}
+        {/*  }}*/}
+        {/*  style={ulsantoggle ? { background: '#F08080' } : { background: '' }}*/}
+        {/*>*/}
+        {/*  <span style={ulsantoggle ? { color: 'white' } : { color: '#D85959' }}>{ulsan.name}</span>*/}
+        {/*</label>*/}
+        {/*<div>{ulsantoggle && ulsan_list}</div>*/}
         <label
           className="district"
           onClick={() => {

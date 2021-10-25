@@ -8,6 +8,7 @@ interface Props {
   vlogpid: any; //vlog 유튜브번호 CKvzYfkgTyc이런거
   history: History<LocationState>;
   vlogplaceid:any; //vlog에서 방문한 장소 placeid 목록
+  placeurl:any;
 }
 const LikeVlog: FC<Props> = (props: Props) => {
   var local = sessionStorage.getItem('memberid');
@@ -689,6 +690,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
     }
   } //func
 
+  function tokakaomap(e:number){
+    window.open(`${props.placeurl[e]}`, '_blank')
+  }
   function makelike0() {
     return (
       <>
@@ -703,7 +707,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom" htmlFor="listidx0">
             {heart(0)}
-            <span className="likeplace">{props.vlogplacename[0]}</span>
+            <span className="likeplace" onClick={()=>tokakaomap(0)}> {props.vlogplacename[0]}</span>
           </label>
         </li>
       </>
@@ -723,7 +727,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom" htmlFor="listidx1">
             {heart(1)}
-            <span className="likeplace">{props.vlogplacename[1]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[0]}`, '_blank')}>{props.vlogplacename[1]}</span>
           </label>
         </li>
       </>
@@ -743,7 +747,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom" htmlFor="listidx2">
             {heart(2)}
-            <span className="likeplace">{props.vlogplacename[2]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[2]}`, '_blank')}>{props.vlogplacename[2]}</span>
           </label>
         </li>
       </>
@@ -764,7 +768,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom" htmlFor="listidx3">
             {heart(3)}
-            <span className="likeplace">{props.vlogplacename[3]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[3]}`, '_blank')}>{props.vlogplacename[3]}</span>
           </label>
         </li>
       </>
@@ -785,7 +789,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom" htmlFor="listidx4">
             {heart(4)}
-            <span className="likeplace">{props.vlogplacename[4]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[4]}`, '_blank')}>{props.vlogplacename[4]}</span>
           </label>
         </li>
       </>
@@ -806,7 +810,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom" htmlFor="listidx5">
             {heart(5)}
-            <span className="likeplace">{props.vlogplacename[5]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[5]}`, '_blank')}>{props.vlogplacename[5]}</span>
           </label>
         </li>
       </>
@@ -827,7 +831,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom" htmlFor="listidx6">
             {heart(6)}
-            <span className="likeplace">{props.vlogplacename[6]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[6]}`, '_blank')}>{props.vlogplacename[6]}</span>
           </label>
         </li>
       </>
@@ -848,7 +852,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom" htmlFor="listidx7">
             {heart(7)}
-            <span className="likeplace">{props.vlogplacename[7]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[7]}`, '_blank')}>{props.vlogplacename[7]}</span>
           </label>
         </li>
       </>
@@ -869,7 +873,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom" htmlFor="listidx8">
             {heart(8)}
-            <span className="likeplace">{props.vlogplacename[8]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[8]}`, '_blank')}>{props.vlogplacename[8]}</span>
           </label>
         </li>
       </>
@@ -890,7 +894,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom" htmlFor="listidx9">
             {heart(9)}
-            <span className="likeplace">{props.vlogplacename[9]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[9]}`, '_blank')}>{props.vlogplacename[9]}</span>
           </label>
         </li>
       </>

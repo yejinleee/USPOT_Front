@@ -2,10 +2,12 @@ import axios from 'axios';
 import React, { FC, useEffect, useState } from 'react';
 import { History, LocationState } from 'history';
 import './Liketop5.css';
+import { Link } from 'react-router-dom';
 
 interface Props {
   top5name: any;
   top5placeid: any;
+  placeurl: any;
   history: History<LocationState>;
 }
 
@@ -244,7 +246,7 @@ const Liketop5: FC<Props> = (props: Props) => {
               />
               <label className="tcustom" htmlFor="tlistidx0">
                 {heart(0)}
-                <span className="tlikeplace">{props.top5name[0]}</span>
+                <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[0]}`, '_blank')}> {props.top5name[0]}</span>
               </label>
             </li>
             <li className="ticon_li custom-control">
@@ -259,7 +261,7 @@ const Liketop5: FC<Props> = (props: Props) => {
               />
               <label className="tcustom" htmlFor="tlistidx1">
                 {heart(1)}
-                <span className="tlikeplace"> {props.top5name[1]}</span>
+                <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[1]}`, '_blank')}> {props.top5name[1]}</span>
               </label>
             </li>
             <li className="ticon_li custom-control">
@@ -274,7 +276,7 @@ const Liketop5: FC<Props> = (props: Props) => {
               />
               <label className="tcustom" htmlFor="tlistidx2">
                 {heart(2)}
-                <span className="tlikeplace"> {props.top5name[2]}</span>
+                <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[2]}`, '_blank')}> {props.top5name[2]}</span>
               </label>
             </li>
             <li className="ticon_li custom-control">
@@ -289,7 +291,7 @@ const Liketop5: FC<Props> = (props: Props) => {
               />
               <label className="tcustom" htmlFor="tlistidx3">
                 {heart(3)}
-                <span className="tlikeplace"> {props.top5name[3]}</span>
+                <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[3]}`, '_blank')}> {props.top5name[3]}</span>
               </label>
             </li>
             <li className="ticon_li custom-control">
@@ -304,7 +306,7 @@ const Liketop5: FC<Props> = (props: Props) => {
               />
               <label className="tcustom" htmlFor="tlistidx4">
                 {heart(4)}
-                <span className="tlikeplace"> {props.top5name[4]}</span>
+                <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[4]}`, '_blank')}> {props.top5name[4]}</span>
               </label>
             </li>
           </ul>

@@ -25,7 +25,7 @@
   /*position: absolute;*/
   vertical-align: middle;
   /*display: inline;*/
-  padding-left: 15vw;
+  padding-left: 13vw;
 }
 label {
   vertical-align: middle;
@@ -39,7 +39,7 @@ label {
   text-align: center;
   border: 2px solid #f08080;
   border-radius: 30px;
-  width: 8em;
+  width: 15em;
   margin: 0.3em;
   margin-left: 10%;
 }

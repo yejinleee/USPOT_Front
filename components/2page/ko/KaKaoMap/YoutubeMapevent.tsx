@@ -19,6 +19,8 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
   const [name, setName] = useState([] as any);
   const [youtubemap, setYoutubemap] = useState(null);
   const [markers, setMarkers] = useState([] as any);
+  const [placeurl, setPlaceurl] = useState([] as any);
+
   const x = useRef(0);
   const y = useRef(0);
 
@@ -39,10 +41,18 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
       setPlace(response.data.data);
       for (var i = 0; i < response.data.data.length; i++) {
         setName((prev: any) => [...prev, response.data.data[i].name]);
+        setPlaceurl((prev:any) => [...prev, response.data.data[i].placeUrl]);
+
+        //////////////////////////////////////////////////////////////////////////////url에 널있는경우
+        // if (response.data.data[i].placeUrl ===null){
+        //   setPlaceurl((prev:any) => [...prev, 0]);
+        // }
+        // else{
+        //   setPlaceurl((prev:any) => [...prev, response.data.data[i].placeUrl]);
+        // }
       }
     });
   }, [videoid]);
-
   useEffect(() => {
     if (place.length !== 0) {
       mapscript();
@@ -92,7 +102,7 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
   };
 
   function addMarker(position: any, idx: any, id: any) {
-    console.log(id);
+    // console.log(id);
     var imageSrc = `/src/icon/${id}.png`, // 마커 이미지 url, 스프라이트 이미지를 씁니다
       imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
       markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize),
@@ -128,7 +138,7 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
     <div style={{ position: 'relative' }}>
       <div id="youtubemap" style={{ width: '50vw', height: '40vw', display: 'inline-block' }}></div>
       <span style={{ position: 'absolute' }}>
-        <LikeVlog vlogplacename={name} vlogpid={videoid} history={history} vlogplaceid={vlogplaceid} />
+        <LikeVlog vlogplacename={name} vlogpid={videoid} history={history} vlogplaceid={vlogplaceid} placeurl={placeurl}/>
       </span>
     </div>
   );

@@ -10,6 +10,7 @@ interface Props {
   top5name: any;
   imageSrc: any;
   top5placeid: any;
+  placeurl:any;
   history: History<LocationState>;
 }
 
@@ -92,7 +93,7 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
         <div id="star"></div>
         <div id="top5map" style={{ width: '50vw', height: '40vw', display: 'inline-block' }}></div>
         <span style={{ position: 'absolute' }}>
-          <Liketop5 top5name={props.top5name} top5placeid={props.top5placeid} history={props.history} />
+          <Liketop5 top5name={props.top5name} top5placeid={props.top5placeid} history={props.history} placeurl={props.placeurl} />
         </span>
       </div>
     </>

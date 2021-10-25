@@ -38,6 +38,8 @@ const Slide: FC<Props> = (props: Props) => {
   const [mapx, setMapx] = useState([] as any);
   const [mapy, setMapy] = useState([] as any);
   const [top5data, setTop5data] = useState([] as any);
+  const [placeurl,setPlaceurl] = useState( [] as any);
+
   var dic: { [key: string]: number } = {
     가평군: 1,
     광명시: 2,
@@ -151,6 +153,7 @@ const Slide: FC<Props> = (props: Props) => {
           setTop5placeid((prev: any) => [...prev, response.data.data[i].id]);
           setMapx((prev: any) => [...prev, response.data.data[i].location_x]);
           setMapy((prev: any) => [...prev, response.data.data[i].location_y]);
+          setPlaceurl( (prev:any) => [...prev, response.data.data[i].placeUrl]);
         }
         // console.log('탑data',response.data);
         for (var i = 0; i < 5; i++) {
@@ -323,6 +326,7 @@ const Slide: FC<Props> = (props: Props) => {
         imageSrc={imageSrc}
         top5name={top5name}
         top5placeid={top5placeid}
+        placeurl={placeurl}
         history={props.history}
       />
       <Thumbnail
