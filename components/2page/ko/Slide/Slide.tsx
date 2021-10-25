@@ -174,7 +174,8 @@ const Slide: FC<Props> = (props: Props) => {
             setPic5(data.documents[0].image_url);
           }
         }
-      });
+      })
+      .catch((error) => {});
   }, []);
 
   return (

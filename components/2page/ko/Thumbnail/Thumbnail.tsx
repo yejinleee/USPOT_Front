@@ -125,10 +125,12 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
     axios.get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`).then((response) => {
       // console.log('/findtop5/././ response.data.data : ',response.data.data)
       for (var j = 0; j < response.data.data[btn_pic - 1].vlog_list.length; j++) {
+        console.log(response.data.data[j].id);
         setVlogplaceid((prev: any) => [...prev, response.data.data[j].id]);
         setVloglist((prev: any) => [...prev, response.data.data[btn_pic - 1].vlog_list[j].url]);
       }
-    });
+    })
+    .catch((error) => {});
   }, [btn_pic]);
 
   return (

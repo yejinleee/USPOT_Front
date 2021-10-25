@@ -87,7 +87,6 @@ const Container = (props: any) => {
   }
   return (
     <div className="App">
-
       <input
         type="text"
         placeholder="Search..."

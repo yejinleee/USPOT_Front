@@ -9,12 +9,12 @@
 .App input {
   border: 2px solid #f08080;
   margin-top: 1%;
-  width: 26%;
+  width: 20vw;
   height: 5%;
   font-size: 15px;
   border-radius: 15px;
   padding-left: 2%;
-  margin-left: 1%;
+  margin-left: 3vw;
 }
 
 p {
@@ -24,10 +24,12 @@ p {
 
 .container {
   margin-top: 1%;
-  width: 25%;
+  width: 20vw;
   height: 13%;
   overflow: scroll;
   padding-left: 2%;
+  margin-left: 3vw;
+  cursor: pointer;
 }
 
 .gotosecondbtn{

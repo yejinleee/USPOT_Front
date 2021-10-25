@@ -6,6 +6,7 @@
   height: 80px;
   background-color: #ffffff;
   border-bottom: #f4f4f4 solid 3px;
+  z-index: 10;
 }
 .logo {
   width: 20px;
