@@ -1,9 +1,3 @@
-.star {
-  /*width:2vw;*/
-  width: 15px;
-  /*글자크기랑 똑같이 너비하는게 좋을 듯*/
-}
-
 .place_info {
   display: inline-block;
 }
@@ -65,46 +59,6 @@ ul {
 /*    background-color:#F08080;*/
 /*    color:white*/
 /*}*/
-
-#star-five {
-  margin: 50px 0;
-  position: relative;
-  display: block;
-  color: pink;
-  width: 0px;
-  height: 0px;
-  border-right: 100px solid transparent;
-  border-bottom: 70px solid pink;
-  border-left: 100px solid transparent;
-  transform: rotate(35deg);
-}
-#star-five:before {
-  border-bottom: 80px solid pink;
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  position: absolute;
-  height: 0;
-  width: 0;
-  top: -45px;
-  left: -65px;
-  display: block;
-  content: '';
-  transform: rotate(-35deg);
-}
-#star-five:after {
-  position: absolute;
-  display: block;
-  color: pink;
-  top: 3px;
-  left: -105px;
-  width: 0px;
-  height: 0px;
-  border-right: 100px solid transparent;
-  border-bottom: 70px solid pink;
-  border-left: 100px solid transparent;
-  transform: rotate(-70deg);
-  content: '';
-}
 
 .info-title {
   display: block;

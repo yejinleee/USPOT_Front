@@ -1,9 +1,9 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
 import { Link, Route, RouteChildrenProps } from 'react-router-dom';
-import '../../Slide.css';
-import Thumbnail from '@components/2page/ko/Thumbnail/Thumbnail';
+import '@components/2page/Slide.css';
 import axios from 'axios';
-import Top5Mapevent from '@components/2page/ko/KaKaoMap/Top5Mapevent';
+import EnThumbnail from '@components/2page/en/Thumbnail/EnThumbnail';
+import EnTop5Mapevent from '@components/2page/en/KaKaoMap/EnTop5Mapevent';
 import { imageSearch } from './image';
 import { History, LocationState } from 'history';
 
@@ -13,7 +13,7 @@ interface Props {
   history: History<LocationState>;
 }
 
-const Slide: FC<Props> = (props: Props) => {
+const EnSlide: FC<Props> = (props: Props) => {
   const [pic1, setPic1] = useState('' as any);
   const [pic2, setPic2] = useState('' as any);
   const [pic3, setPic3] = useState('' as any);
@@ -143,7 +143,7 @@ const Slide: FC<Props> = (props: Props) => {
   let imageSrc = `/src/icon/${dic_category[props.selectedcategory]}.png`;
   useEffect(() => {
     axios
-      .get(`/api/place/findtop5/${dic[props.selectedcity]}/${dic_category[props.selectedcategory]}`)
+      .get(`/api/en/place/findtop5/${dic[props.selectedcity]}/${dic_category[props.selectedcategory]}`)
       .then(async (response) => {
         setTop5data(response.data.data);
         for (var i = 0; i < 5; i++) {
@@ -320,10 +320,10 @@ const Slide: FC<Props> = (props: Props) => {
           }}
           style={{ textDecoration: 'none', color: '#000000' }}
         >
-          주변장소 더 보기
+          View More !
         </Link>
       </button>
-      <Top5Mapevent
+      <EnTop5Mapevent
         top5data={top5data}
         imageSrc={imageSrc}
         top5name={top5name}
@@ -331,7 +331,7 @@ const Slide: FC<Props> = (props: Props) => {
         placeurl={placeurl}
         history={props.history}
       />
-      <Thumbnail
+      <EnThumbnail
         selectedcity={props.selectedcity}
         selectedcategory={props.selectedcategory}
         btn_pic={btn_pic}
@@ -341,4 +341,4 @@ const Slide: FC<Props> = (props: Props) => {
     </>
   );
 };
-export default Slide;
+export default EnSlide;

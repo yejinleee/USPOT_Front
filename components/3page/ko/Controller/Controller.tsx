@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import '@components/3page/Controller.css';
-import Tourapilist from '@components/3page/ko/Tourapi/Tourapilist';
+import Tourapilist from '@components/3page/ko/LikeTourapi/LikeTourapi';
 import { History, LocationState } from 'history';
 interface Props {
   mapx: any;

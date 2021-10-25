@@ -1,7 +1,6 @@
 import React, { FC, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, Route } from 'react-router-dom';
 import axios from 'axios';
-
 import '@components/1page/Toggle.css';
 import Category from '@components/1page/ko/Category/category';
 import Container from '@components/1page/ko/Container/Container';
@@ -1034,19 +1033,6 @@ const Toggle = () => {
         setMap={setMap}
         setSelectedcity={setSelectedcity}
       />
-      {/*<span>*/}
-      {/*  {selectedcity !== '없음' && selectedcategory !== '안' ? (*/}
-      {/*    <button className="gotosecondbtn" onClick={selectedalert}>*/}
-      {/*      <Link to={`/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>*/}
-      {/*        보러가기!!*/}
-      {/*      </Link>*/}
-      {/*    </button>*/}
-      {/*  ) : (*/}
-      {/*    <button className="gotosecondbtn" onClick={selectedalert}>*/}
-      {/*      {selectedcity}의 추천 {selectedcategory}보기*/}
-      {/*    </button>*/}
-      {/*  )}*/}
-      {/*</span>*/}
 
       <div className="district_toggle">
         <span style={{position:'absolute'}}>
@@ -1059,7 +1045,6 @@ const Toggle = () => {
         ) : (
           <button className="gotosecondbtn" onClick={selectedalert}>
             보러가기
-            {/*{props.selectedcity}의 추천 {props.selectedcategory}보기*/}
           </button>
         )}
         </span>

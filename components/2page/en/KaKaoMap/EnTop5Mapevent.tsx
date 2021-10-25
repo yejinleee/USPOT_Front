@@ -2,8 +2,8 @@
 import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import '../../Top5Mapevent.css';
-import Liketop5 from '@components/2page/ko/Like/Liketop5';
 import { History, LocationState } from 'history';
+import EnLiketop5 from '@components/2page/en/Like/EnLiketop5';
 
 interface Props {
   top5data: any;
@@ -14,7 +14,7 @@ interface Props {
   history: History<LocationState>;
 }
 
-const Top5Mapevent: FC<Props> = (props: Props) => {
+const EnTop5Mapevent: FC<Props> = (props: Props) => {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
@@ -93,11 +93,11 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
         <div id="star"></div>
         <div id="top5map" style={{ width: '50%', height: '50%', display: 'inline-block' }}></div>
         <span style={{ position: 'absolute', width:'40%' }}>
-          <Liketop5 top5name={props.top5name} top5placeid={props.top5placeid} history={props.history} placeurl={props.placeurl} />
+          <EnLiketop5 top5name={props.top5name} top5placeid={props.top5placeid} history={props.history} placeurl={props.placeurl} />
         </span>
       </div>
     </>
   );
 };
 
-export default Top5Mapevent;
+export default EnTop5Mapevent;
