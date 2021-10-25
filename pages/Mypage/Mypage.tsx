@@ -1,7 +1,7 @@
 import Layout from '@layouts/Layouts';
 import React from 'react';
-import Search from '@components/mypage/ko/Search/Search';
 import LogIn from '@pages/LogIn/LogIn';
+import Button from '@components/mypage/ko/Button/Button';
 
 const Mypage = () => {
   var local = sessionStorage.getItem('memberid');
@@ -13,7 +13,7 @@ const Mypage = () => {
 
   return (
     <>
-      <Layout>{memberid === 0 ? <LogIn /> : <Search />}</Layout>
+      <Layout>{memberid === 0 ? <LogIn /> : <Button />}</Layout>
     </>
   );
 };

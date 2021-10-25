@@ -64,7 +64,7 @@ const Map: FC<Props> = ({ children, searchPlace }) => {
   return (
     <>
       <div id="myMap" style={{ width: '30vw', height: '30vw' }} />
-      {open && <MakeCourse />}
+      {open && <MakeCourse start={select} />}
     </>
   );
 };

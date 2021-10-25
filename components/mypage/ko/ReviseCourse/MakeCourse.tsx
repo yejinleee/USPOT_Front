@@ -1,10 +1,9 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
-import Likedlist from '@components/mypage/ko/MakeCoures/Likedlist';
-import Coursemap from '@components/mypage/ko/Course/Coursemap';
 import axios from 'axios';
-interface Props {
-  start: any;
-}
+import Main from './Main';
+import None from './None';
+
+interface Props {}
 
 const MakeCourse: FC<Props> = (props: Props) => {
   var local = sessionStorage.getItem('memberid');
@@ -16,7 +15,7 @@ const MakeCourse: FC<Props> = (props: Props) => {
   const [exist, setExsist] = useState(false);
   useEffect(() => {
     axios
-      .get(`/api/myplace/findall/${memberid}`)
+      .get(`/api/course/findall/${memberid}`)
       .then(async (response) => {
         if (response.data.data.length !== 0) {
           setExsist(true);
@@ -25,16 +24,7 @@ const MakeCourse: FC<Props> = (props: Props) => {
       .catch((error) => {});
   }, []);
 
-  return (
-    <>
-      {exist && (
-        <>
-          <Likedlist start={props.start} />
-          <Coursemap />
-        </>
-      )}
-    </>
-  );
+  return <>{exist ? <Main /> : <None />}</>;
 };
 
 export default MakeCourse;

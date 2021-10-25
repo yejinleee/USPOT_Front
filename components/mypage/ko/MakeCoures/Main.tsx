@@ -2,19 +2,14 @@ import React, { FC } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import TodoTemplate from './TodoTemplate';
 interface Props {
-  todos: any;
+  start: any;
 }
 
-const Test = () => {
+const Main: FC<Props> = (props: Props) => {
   return (
     <>
-      <TodoTemplate />
+      <TodoTemplate start={props.start} />
     </>
   );
 };
-export default Test;
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: #425364
-  }
-`;
+export default Main;
