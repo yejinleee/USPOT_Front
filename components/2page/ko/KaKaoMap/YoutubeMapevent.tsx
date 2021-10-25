@@ -25,7 +25,7 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
   useEffect(() => {
     let container = document.getElementById('youtubemap');
     let options = {
-      center: new kakao.maps.LatLng(33.450701, 126.570667),
+      center: new kakao.maps.LatLng(37.55699327194725, 126.97267350572926),
       level: 10,
     };
     setYoutubemap(new kakao.maps.Map(container, options));
