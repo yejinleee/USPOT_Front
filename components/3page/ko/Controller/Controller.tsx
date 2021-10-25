@@ -105,7 +105,6 @@ const Controller: FC<Props> = (props: Props) => {
         <button
           className="go"
           onClick={() => {
-            // setApigopen(true);
             selectedalert();
           }}
         >

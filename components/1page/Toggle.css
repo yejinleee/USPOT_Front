@@ -7,11 +7,25 @@
 * {
   font-family: 'InfinitySans-RegularA1' !important;
 }
+.map {
+  /* position: absolute; */
+  position: -webkit-sticky;
+  position: fixed;
+  float: right;
+  width: 25%;
+  /* height: 50%; */
+  top: 13%;
+  right: 15vw;
+  /* left: 100px; */
+}
+
 .district_toggle {
+  position: relative;
   width: 40%;
   /*position: absolute;*/
   vertical-align: middle;
   /*display: inline;*/
+  padding-left: 15vw;
 }
 label {
   vertical-align: middle;
@@ -30,22 +44,9 @@ label {
   margin-left: 10%;
 }
 
-.map {
-  /* position: absolute; */
-  position: -webkit-sticky;
-  position: fixed;
-  float: right;
-  width: 25%;
-  /* height: 50%; */
-  top: 13%;
-  right: 15vw;
-  /* left: 100px; */
-}
-
 .citylist:hover {
   background: #ffc0ba;
 }
-
 .citylist {
   cursor: pointer;
   margin-left: 16%;
@@ -58,13 +59,3 @@ label {
   /*list-style: circle;*/
 }
 
-.gotosecondbtn {
-  /*이거 어떻게할지 생각해야할듯 ㅠㅠ*/
-  position: fixed;
-  float: right;
-  right: 20vw;
-  background: #f08080;
-  color: white;
-  border: none;
-  top: 48vw;
-}

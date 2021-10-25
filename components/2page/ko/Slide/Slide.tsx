@@ -152,6 +152,7 @@ const Slide: FC<Props> = (props: Props) => {
           setMapx((prev: any) => [...prev, response.data.data[i].location_x]);
           setMapy((prev: any) => [...prev, response.data.data[i].location_y]);
         }
+        // console.log('탑data',response.data);
         for (var i = 0; i < 5; i++) {
           const name = response.data.data[i].name;
           const params = {

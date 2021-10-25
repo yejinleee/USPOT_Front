@@ -34,7 +34,6 @@ const Toggle = () => {
     link: '',
     city: [],
   } as any);
-
   const [gangwon, setGangwon] = useState({
     id: '',
     name: '',
@@ -139,6 +138,7 @@ const Toggle = () => {
   const ulsanindex = useRef(0);
   const gwangjuindex = useRef(0);
   const sejongindex = useRef(0);
+
   useEffect(() => {
     axios.get('/api/province/findall').then((response) => {
       for (var i = 0; i < response.data.data.length; i++) {
@@ -1014,6 +1014,8 @@ const Toggle = () => {
       <img src={map} className="map" alt="map" />
 
       <Container
+        selectedcategory={selectedcategory}
+        selectedcity={selectedcity}
         setGyeongitoggle={setGyeongitoggle}
         setGangwontoggle={setGangwontoggle}
         setChungnamtoggle={setChungnamtoggle}
@@ -1032,7 +1034,22 @@ const Toggle = () => {
         setMap={setMap}
         setSelectedcity={setSelectedcity}
       />
-      <span>
+      {/*<span>*/}
+      {/*  {selectedcity !== '없음' && selectedcategory !== '안' ? (*/}
+      {/*    <button className="gotosecondbtn" onClick={selectedalert}>*/}
+      {/*      <Link to={`/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>*/}
+      {/*        보러가기!!*/}
+      {/*      </Link>*/}
+      {/*    </button>*/}
+      {/*  ) : (*/}
+      {/*    <button className="gotosecondbtn" onClick={selectedalert}>*/}
+      {/*      {selectedcity}의 추천 {selectedcategory}보기*/}
+      {/*    </button>*/}
+      {/*  )}*/}
+      {/*</span>*/}
+
+      <div className="district_toggle">
+        <span style={{position:'absolute'}}>
         {selectedcity !== '없음' && selectedcategory !== '안' ? (
           <button className="gotosecondbtn" onClick={selectedalert}>
             <Link to={`/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>
@@ -1041,12 +1058,11 @@ const Toggle = () => {
           </button>
         ) : (
           <button className="gotosecondbtn" onClick={selectedalert}>
-            {selectedcity}의 추천 {selectedcategory}보기
+            보러가기
+            {/*{props.selectedcity}의 추천 {props.selectedcategory}보기*/}
           </button>
         )}
-      </span>
-
-      <div className="district_toggle">
+        </span>
         <label
           className="district"
           onClick={() => {
@@ -1057,7 +1073,6 @@ const Toggle = () => {
         >
           <span style={gyeongitoggle ? { color: 'white' } : { color: '#D85959' }}>{gyeongi.name}</span>
         </label>
-        {/*경기*/}
         <div>{gyeongitoggle && gyeongi_list}</div>
         <label
           className="district"
