@@ -1,7 +1,6 @@
 import React, { FC, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, Route } from 'react-router-dom';
 import axios from 'axios';
-
 import '@components/1page/Toggle.css';
 import Category from '@components/1page/ko/Category/category';
 import Container from '@components/1page/ko/Container/Container';

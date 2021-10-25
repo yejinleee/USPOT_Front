@@ -57,6 +57,7 @@ label {
   padding-bottom: 0.3em;
 }
 .station_ul {
+  margin :0;
   /*list-style: circle;*/
 }
 

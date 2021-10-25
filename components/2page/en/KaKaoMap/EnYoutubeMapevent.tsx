@@ -1,8 +1,7 @@
 /*global kakao */
-import LikeVlog from '@components/2page/ko/Like/LikeVlog';
+import EnLikeVlog from '@components/2page/en/Like/EnLikeVlog';
 import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
-import '../../Top5Mapevent.css';
 import { History, LocationState } from 'history';
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
   vlogplaceid: any;
 }
 
-const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid }) => {
+const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid }) => {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
@@ -36,7 +35,7 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
   useEffect(() => {
     setPlace([]);
     setName([]);
-    axios.get(`/api/vlog/findplace/${videoid}`).then((response) => {
+    axios.get(`/api/en/vlog/findplace/${videoid}`).then((response) => {
       //이 비디오에서 등장한 장소들
       setPlace(response.data.data);
       for (var i = 0; i < response.data.data.length; i++) {
@@ -138,10 +137,10 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
     <div style={{ position: 'relative' }}>
       <div id="youtubemap" style={{ width: '50%', height: '40%', display: 'inline-block' }}></div>
       <span style={{ position: 'absolute' }}>
-        <LikeVlog vlogplacename={name} vlogpid={videoid} history={history} vlogplaceid={vlogplaceid} placeurl={placeurl}/>
+        <EnLikeVlog vlogplacename={name} vlogpid={videoid} history={history} vlogplaceid={vlogplaceid} placeurl={placeurl}/>
       </span>
     </div>
   );
 };
 
-export default YoutubeMapevent;
+export default EnYoutubeMapevent;

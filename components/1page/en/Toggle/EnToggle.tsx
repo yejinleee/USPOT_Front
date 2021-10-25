@@ -995,14 +995,14 @@ const Toggle = () => {
   function selectedalert() {
     if (selectedcity === '없음') {
       if (selectedcategory === '안') {
-        return alert('지역과 카테고리 모두 선택하여 주십시오');
+        return alert('Choose the DISTRICT and the CATEGORY');
       } else {
-        return alert('지역을 선택하여 주십시오');
+        return alert('Choose the DISTRICT');
       }
     }
     if (selectedcategory === '안') {
       if (selectedcity !== '없음') {
-        return alert('카테고리를 선택하여 주십시오');
+        return alert('Choose the CATEGORY');
       }
     }
   }

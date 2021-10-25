@@ -11,7 +11,7 @@ interface Props {
   history: History<LocationState>;
 }
 
-const Liketop5: FC<Props> = (props: Props) => {
+const EnLiketop5: FC<Props> = (props: Props) => {
   var local = sessionStorage.getItem('memberid');
   try {
     var memberid = Number(local.split('')[1]);
@@ -27,7 +27,7 @@ const Liketop5: FC<Props> = (props: Props) => {
 
   const [dblikedlist, setDblikedlist] = useState([] as any);
   useEffect(() => { //DB에 저장된 즐찾목록의 id들만 가져와서 apilistid 배열에 저장
-    axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
+    axios.get(`/api/en/myplace/findall/${memberid}`).then(async (response) => {
     // axios.get(`/api/myplace/findall/1`).then(async (response) => {
       for (var i = 0; i < response.data.data.length; i++) {
         setDblikedlist((prev: any) => [...prev, response.data.data[i].placeId]);
@@ -46,7 +46,7 @@ const Liketop5: FC<Props> = (props: Props) => {
     } else {
       axios
         .post(
-          `/api/myplace/add/${memberid}/${props.top5placeid[e]}`,
+          `/api/en/myplace/add/${memberid}/${props.top5placeid[e]}`,
           { memberid, ethplaceid },
           { withCredentials: true }, //post에선 3번째자리에 설정
         )
@@ -61,7 +61,7 @@ const Liketop5: FC<Props> = (props: Props) => {
     console.log('즐겨찾기에서 지울 id: ', memberid, 'placeid', props.top5placeid[e]);
 
     axios
-      .delete(`/api/myplace/deletebyplace/${memberid}/${props.top5placeid[e]}`)
+      .delete(`/api/en/myplace/deletebyplace/${memberid}/${props.top5placeid[e]}`)
       .then(() => {
         console.log('지워진 id: ', memberid, 'placeid', props.top5placeid[e]);
       })
@@ -316,4 +316,4 @@ const Liketop5: FC<Props> = (props: Props) => {
   );
 };
 
-export default Liketop5;
+export default EnLiketop5;

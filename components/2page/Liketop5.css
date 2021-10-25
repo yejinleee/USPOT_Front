@@ -5,8 +5,7 @@
 .ticon_li {
   margin: 0 0.69% 1%;
   overflow: hidden;
-  /*width: max-content;*/
-  width:15em;
+  width:100%;
 }
 .tcate {
   display: none;
