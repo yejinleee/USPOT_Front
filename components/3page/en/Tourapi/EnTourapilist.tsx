@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-import '@components/3page/Tourapilist.css';
+import '@components/3page/LikeTourapi.css';
 import { History, LocationState } from 'history';
 
 interface Props {

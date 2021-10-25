@@ -6,7 +6,8 @@ img{
     border: 1px solid #cdd0d2;
     border-radius: 8px;
     margin: 10px;
-    padding: 1em;
+    /*padding: 1em;*/
+    /*//*/
     cursor: pointer;
 }
 

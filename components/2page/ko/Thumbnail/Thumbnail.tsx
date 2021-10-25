@@ -125,7 +125,7 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
     axios.get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`).then((response) => {
       // console.log('/findtop5/././ response.data.data : ',response.data.data)
       for (var j = 0; j < response.data.data[btn_pic - 1].vlog_list.length; j++) {
-        console.log('카카오맵검색 id:',response.data.data[j].id); //있어야 id 에러안나
+        console.log('카카오맵검색 id:(이거없으면에러나서,,)',response.data.data[j].id); //있어야 id 에러안나
         setVlogplaceid((prev: any) => [...prev, response.data.data[j].id]);
         setVloglist((prev: any) => [...prev, response.data.data[btn_pic - 1].vlog_list[j].url]);
       }

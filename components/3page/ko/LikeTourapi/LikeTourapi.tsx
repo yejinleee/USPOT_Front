@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-import '@components/3page/Tourapilist.css';
+import '@components/3page/LikeTourapi.css';
 import { History, LocationState } from 'history';
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
   history: History<LocationState>;
 }
 
-const Getapi: FC<Props> = (props: Props) => {
+const LikeTourapi: FC<Props> = (props: Props) => {
   let api = process.env.REACT_APP_TOUR_API_KEY;
   let number = 5;
   let pnumber = 1;
@@ -46,6 +46,7 @@ const Getapi: FC<Props> = (props: Props) => {
         `http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${props.arrange}&contentTypeId=${props.type}&mapX=${props.mapx}&mapY=${props.mapy}&radius=${props.distance}&listYN=Y&_type=json`,
       )
       .then((response) => {
+        console.log('touapi에서 : ',response.data.response.body.items.item);
         if (response.data.response.body.items === '') {
           setData([]);
         } else {
@@ -164,12 +165,12 @@ const Getapi: FC<Props> = (props: Props) => {
             }}
           />
           {/*{func(0)}*/}
-          <label className="custom" htmlFor="listidx0">
-            <span className="like">{like0 === 1 ? '💛' : '🤍'}</span>
-            <div className="likeplace">{names[0]}</div>
-            <div className="likeaddr">{addr[0]}</div>
+          <label className="p3custom" htmlFor="listidx0">
+            <span className="p3like">{like0 === 1 ? '💛' : '🤍'}</span>
+            <div className="p3likeplace">{names[0]}</div>
+            <div className="p3likeaddr">{addr[0]}</div>
             <div>{dist[0]}m</div>
-            <img src={img[0]} alt={names[0]} />
+            <img className="p3img" src={img[0]} alt={names[0]} />
           </label>
         </li>
       </>
@@ -188,13 +189,12 @@ const Getapi: FC<Props> = (props: Props) => {
               like1 === 1 ? setLike1(2) : setLike1(1);
             }}
           />
-          {/*{func(1)}*/}
-          <label className="custom" htmlFor="listidx1">
-            <span className="like">{like1 === 1 ? '💛' : '🤍'}</span>
-            <div className="likeplace">{names[1]}</div>
-            <div className="likeaddr">{addr[1]}</div>
+          <label className="p3custom" htmlFor="listidx1">
+            <span className="p3like">{like1 === 1 ? '💛' : '🤍'}</span>
+            <div className="p3likeplace">{names[1]}</div>
+            <div className="p3likeaddr">{addr[1]}</div>
             <div>{dist[1]}m</div>
-            <img src={img[1]} alt={names[1]} />
+            <img className="p3img" src={img[1]} alt={names[1]} />
           </label>
         </li>
       </>
@@ -213,13 +213,12 @@ const Getapi: FC<Props> = (props: Props) => {
               like2 === 1 ? setLike2(2) : setLike2(1);
             }}
           />
-          {/*{func(2)}*/}
-          <label className="custom" htmlFor="listidx2">
-            <span className="like">{like2 === 1 ? '💛' : '🤍'}</span>
-            <div className="likeplace">{names[2]}</div>
-            <div className="likeaddr">{addr[2]}</div>
+          <label className="p3custom" htmlFor="listidx2">
+            <span className="p3like">{like2 === 1 ? '💛' : '🤍'}</span>
+            <div className="p3likeplace">{names[2]}</div>
+            <div className="p3likeaddr">{addr[2]}</div>
             <div>{dist[2]}m</div>
-            <img src={img[2]} alt={names[2]} />
+            <img className="p3img" src={img[2]} alt={names[2]} />
           </label>
         </li>
       </>
@@ -238,13 +237,12 @@ const Getapi: FC<Props> = (props: Props) => {
               like3 === 1 ? setLike3(2) : setLike3(1);
             }}
           />
-          {/*{func(3)}*/}
-          <label className="custom" htmlFor="listidx3">
-            <span className="like">{like3 === 1 ? '💛' : '🤍'}</span>
-            <div className="likeplace">{names[3]}</div>
-            <div className="likeaddr">{addr[3]}</div>
+          <label className="p3custom" htmlFor="listidx3">
+            <span className="p3like">{like3 === 1 ? '💛' : '🤍'}</span>
+            <div className="p3likeplace">{names[3]}</div>
+            <div className="p3likeaddr">{addr[3]}</div>
             <div>{dist[3]}m</div>
-            <img src={img[3]} alt={names[3]} />
+            <img className="p3img" src={img[3]} alt={names[3]} />
           </label>
         </li>
       </>
@@ -263,13 +261,12 @@ const Getapi: FC<Props> = (props: Props) => {
               like4 === 1 ? setLike4(2) : setLike4(1);
             }}
           />
-          {/*{func(4)}*/}
-          <label className="custom" htmlFor="listidx4">
-            <span className="like">{like4 === 1 ? '💛' : '🤍'}</span>
-            <div className="likeplace">{names[4]}</div>
-            <div className="likeaddr">{addr[4]}</div>
+          <label className="p3custom" htmlFor="listidx4">
+            <span className="p3like">{like4 === 1 ? '💛' : '🤍'}</span>
+            <div className="p3likeplace">{names[4]}</div>
+            <div className="p3likeaddr">{addr[4]}</div>
             <div>{dist[4]}m</div>
-            <img src={img[4]} alt={names[4]} />
+            <img className="p3img" src={img[4]} alt={names[4]} />
           </label>
         </li>
       </>
@@ -323,7 +320,13 @@ const Getapi: FC<Props> = (props: Props) => {
     }
   }
 
-  return <>{make()}</>;
+  return (
+    <>
+      <ul className="p3tourapilist">
+        {make()}
+      </ul>
+    </>
+    )
 };
 
-export default Getapi;
+export default LikeTourapi;
