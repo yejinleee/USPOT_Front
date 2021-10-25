@@ -1007,6 +1007,19 @@ const Toggle = () => {
     }
   }
 
+  var city_engtokor: { [key: string]: string } = {
+    Suwon:'수원시',
+    Gangneung:'강릉시',
+    Danyang:'단양군',
+    Cheonan:'천안시',
+    Jeonju:'전주시',
+    Guncheon:'순천시',
+    Gyeonju:'경주시',
+    Andong:'안동시',
+    Hadong:'하동군',
+    Daegu:'대구',
+    Busan:'부산',
+  };
   return (
     <>
       <EnCategory setSelectedcategory={setSelectedcategory} />
@@ -1037,7 +1050,7 @@ const Toggle = () => {
         <span style={{position:'absolute'}}>
         {selectedcity !== '없음' && selectedcategory !== '안' ? (
           <button className="gotosecondbtn" onClick={selectedalert}>
-            <Link to={`/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>
+            <Link to={`/${city_engtokor[selectedcity]}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#000000' }}>
               NEXT !!
             </Link>
           </button>
@@ -1047,6 +1060,7 @@ const Toggle = () => {
           </button>
         )}
         </span>
+
         <label
           className="district"
           onClick={() => {

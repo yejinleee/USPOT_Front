@@ -9,6 +9,7 @@ const Second = (props: any) => {
   const selectedcity = props.match.params.selectedcity;
   const selectedcategory = props.match.params.selectedcategory;
   const history = props.history;
+
   return (
     <Layout>
         {language[1]==='KO' ?
