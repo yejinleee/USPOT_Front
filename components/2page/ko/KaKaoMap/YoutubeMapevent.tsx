@@ -36,22 +36,17 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
   useEffect(() => {
     setPlace([]);
     setName([]);
-    axios.get(`/api/vlog/findplace/${videoid}`).then((response) => {
-      //이 비디오에서 등장한 장소들
-      setPlace(response.data.data);
-      for (var i = 0; i < response.data.data.length; i++) {
-        setName((prev: any) => [...prev, response.data.data[i].name]);
-        setPlaceurl((prev:any) => [...prev, response.data.data[i].placeUrl]);
-
-        //////////////////////////////////////////////////////////////////////////////url에 널있는경우
-        // if (response.data.data[i].placeUrl ===null){
-        //   setPlaceurl((prev:any) => [...prev, 0]);
-        // }
-        // else{
-        //   setPlaceurl((prev:any) => [...prev, response.data.data[i].placeUrl]);
-        // }
-      }
-    });
+    axios
+      .get(`/api/vlog/findplace/${videoid}`)
+      .then((response) => {
+        //이 비디오에서 등장한 장소들
+        setPlace(response.data.data);
+        for (var i = 0; i < response.data.data.length; i++) {
+          setName((prev: any) => [...prev, response.data.data[i].name]);
+          setPlaceurl((prev: any) => [...prev, response.data.data[i].placeUrl]);
+        }
+      })
+      .catch((error) => {});
   }, [videoid]);
   useEffect(() => {
     if (place.length !== 0) {
@@ -138,7 +133,13 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
     <div style={{ position: 'relative' }}>
       <div id="youtubemap" style={{ width: '50%', height: '40%', display: 'inline-block' }}></div>
       <span style={{ position: 'absolute' }}>
-        <LikeVlog vlogplacename={name} vlogpid={videoid} history={history} vlogplaceid={vlogplaceid} placeurl={placeurl}/>
+        <LikeVlog
+          vlogplacename={name}
+          vlogpid={videoid}
+          history={history}
+          vlogplaceid={vlogplaceid}
+          placeurl={placeurl}
+        />
       </span>
     </div>
   );

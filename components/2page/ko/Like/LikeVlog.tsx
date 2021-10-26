@@ -7,8 +7,8 @@ interface Props {
   vlogplacename: any; //vlog에서 방문한 장소명 목록
   vlogpid: any; //vlog 유튜브번호 CKvzYfkgTyc이런거
   history: History<LocationState>;
-  vlogplaceid:any; //vlog에서 방문한 장소 placeid 목록
-  placeurl:any;
+  vlogplaceid: any; //vlog에서 방문한 장소 placeid 목록
+  placeurl: any;
 }
 const LikeVlog: FC<Props> = (props: Props) => {
   var local = sessionStorage.getItem('memberid');
@@ -41,14 +41,19 @@ const LikeVlog: FC<Props> = (props: Props) => {
   const [like19, setLike19] = useState(0);
 
   const [dblikedlist, setDblikedlist] = useState([] as any);
-  useEffect(() => { //DB에 저장된 즐찾목록의 id들만 가져와서 dblikedlist 배열에 저장
-      axios.get(`/api/myplace/findall/1`).then(async (response) => {
-    // axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
-      for (var i = 0; i < response.data.data.length; i++) {
-        setDblikedlist((prev: any) => [...prev, response.data.data[i].placeId]);
-      }
-    })
-      .catch((error) => {});
+  useEffect(() => {
+    //DB에 저장된 즐찾목록의 id들만 가져와서 dblikedlist 배열에 저장
+    if (memberid !== 0) {
+      axios
+        .get(`/api/myplace/findall/${memberid}`)
+        .then(async (response) => {
+          // axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
+          for (var i = 0; i < response.data.data.length; i++) {
+            setDblikedlist((prev: any) => [...prev, response.data.data[i].placeId]);
+          }
+        })
+        .catch((error) => {});
+    }
   }, []);
 
   function func_post(e: number) {
@@ -80,7 +85,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
       })
       .catch((error) => {});
   }
-
   function heart(i:number){
     if (i===0 && like0===0){
       return(
@@ -283,416 +287,356 @@ const LikeVlog: FC<Props> = (props: Props) => {
         <label htmlFor="listidx19" className="like">{like19 === 1 ? '💛' : '🤍'}</label>
       )
     }
-  }//heart
+  } //heart
 
   function func(e: number) {
     var el;
     var i;
     if (e === 0) {
-      if (like0===0){
-        if ((dblikedlist.find((i: number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like0 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike0(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike0(1);
           func_post(e);
         }
-      }
-      else if (like0===1){
+      } else if (like0 === 1) {
         setLike0(2);
         func_delete(e);
-      }
-      else if (like0===2){
+      } else if (like0 === 2) {
         setLike0(1);
         func_post(e);
       }
     } else if (e === 1) {
-      if (like1===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like1 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike1(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike1(1);
           func_post(e);
         }
-      }
-      else if (like1===1){
+      } else if (like1 === 1) {
         setLike1(2);
         func_delete(e);
-      }
-      else if (like1===2){
+      } else if (like1 === 2) {
         setLike1(1);
         func_post(e);
       }
     } else if (e === 2) {
-      if (like2===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like2 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike2(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike2(1);
           func_post(e);
         }
-      }
-      else if (like2===1){
+      } else if (like2 === 1) {
         setLike2(2);
         func_delete(e);
-      }
-      else if (like2===2){
+      } else if (like2 === 2) {
         setLike2(1);
         func_post(e);
       }
     } else if (e === 3) {
-      if (like3===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like3 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike3(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike3(1);
           func_post(e);
         }
-      }
-      else if (like3===1){
+      } else if (like3 === 1) {
         setLike3(2);
         func_delete(e);
-      }
-      else if (like3===2){
+      } else if (like3 === 2) {
         setLike3(1);
         func_post(e);
       }
     } else if (e === 4) {
-      if (like4===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like4 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike4(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike4(1);
           func_post(e);
         }
-      }
-      else if (like4===1){
+      } else if (like4 === 1) {
         setLike4(2);
         func_delete(e);
-      }
-      else if (like4===2){
+      } else if (like4 === 2) {
         setLike4(1);
         func_post(e);
       }
     } else if (e === 5) {
-      if (like5===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like5 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike5(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike5(1);
           func_post(e);
         }
-      }
-      else if (like5===1){
+      } else if (like5 === 1) {
         setLike5(2);
         func_delete(e);
-      }
-      else if (like5===2){
+      } else if (like5 === 2) {
         setLike5(1);
         func_post(e);
       }
     } else if (e === 6) {
-      if (like6===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like6 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike6(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike6(1);
           func_post(e);
         }
-      }
-      else if (like6===1){
+      } else if (like6 === 1) {
         setLike6(2);
         func_delete(e);
-      }
-      else if (like6===2){
+      } else if (like6 === 2) {
         setLike6(1);
         func_post(e);
       }
     } else if (e === 7) {
-      if (like7===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like7 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike7(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike7(1);
           func_post(e);
         }
-      }
-      else if (like7===1){
+      } else if (like7 === 1) {
         setLike7(2);
         func_delete(e);
-      }
-      else if (like7===2){
+      } else if (like7 === 2) {
         setLike7(1);
         func_post(e);
       }
     } else if (e === 8) {
-      if (like8===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like8 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike8(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike8(1);
           func_post(e);
         }
-      }
-      else if (like8===1){
+      } else if (like8 === 1) {
         setLike8(2);
         func_delete(e);
-      }
-      else if (like8===2){
+      } else if (like8 === 2) {
         setLike8(1);
         func_post(e);
       }
     } else if (e === 9) {
-      if (like9===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like9 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike9(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike9(1);
           func_post(e);
         }
-      }
-      else if (like9===1){
+      } else if (like9 === 1) {
         setLike9(2);
         func_delete(e);
-      }
-      else if (like9===2){
+      } else if (like9 === 2) {
         setLike9(1);
         func_post(e);
       }
     } else if (e === 10) {
-      if (like10===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like10 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike10(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike10(1);
           func_post(e);
         }
-      }
-      else if (like10===1){
+      } else if (like10 === 1) {
         setLike10(2);
         func_delete(e);
-      }
-      else if (like10===2){
+      } else if (like10 === 2) {
         setLike10(1);
         func_post(e);
       }
     } else if (e === 11) {
-      if (like11===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like11 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike11(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike11(1);
           func_post(e);
         }
-      }
-      else if (like11===1){
+      } else if (like11 === 1) {
         setLike11(2);
         func_delete(e);
-      }
-      else if (like11===2){
+      } else if (like11 === 2) {
         setLike11(1);
         func_post(e);
       }
     } else if (e === 12) {
-      if (like12===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like12 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike12(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike12(1);
           func_post(e);
         }
-      }
-      else if (like12===1){
+      } else if (like12 === 1) {
         setLike12(2);
         func_delete(e);
-      }
-      else if (like12===2){
+      } else if (like12 === 2) {
         setLike12(1);
         func_post(e);
       }
     } else if (e === 13) {
-      if (like13===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like13 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike13(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike13(1);
           func_post(e);
         }
-      }
-      else if (like13===1){
+      } else if (like13 === 1) {
         setLike13(2);
         func_delete(e);
-      }
-      else if (like13===2){
+      } else if (like13 === 2) {
         setLike13(1);
         func_post(e);
       }
     } else if (e === 14) {
-      if (like14===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like14 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike14(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike14(1);
           func_post(e);
         }
-      }
-      else if (like14===1){
+      } else if (like14 === 1) {
         setLike14(2);
         func_delete(e);
-      }
-      else if (like14===2){
+      } else if (like14 === 2) {
         setLike14(1);
         func_post(e);
       }
     } else if (e === 15) {
-      if (like15===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like15 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike15(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike15(1);
           func_post(e);
         }
-      }
-      else if (like15===1){
+      } else if (like15 === 1) {
         setLike15(2);
         func_delete(e);
-      }
-      else if (like15===2){
+      } else if (like15 === 2) {
         setLike15(1);
         func_post(e);
       }
     } else if (e === 16) {
-      if (like16===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like16 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike16(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike16(1);
           func_post(e);
         }
-      }
-      else if (like16===1){
+      } else if (like16 === 1) {
         setLike16(2);
         func_delete(e);
-      }
-      else if (like16===2){
+      } else if (like16 === 2) {
         setLike16(1);
         func_post(e);
       }
     } else if (e === 17) {
-      if (like17===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like17 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike17(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike17(1);
           func_post(e);
         }
-      }
-      else if (like17===1){
+      } else if (like17 === 1) {
         setLike17(2);
         func_delete(e);
-      }
-      else if (like17===2){
+      } else if (like17 === 2) {
         setLike17(1);
         func_post(e);
       }
     } else if (e === 18) {
-      if (like18===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like18 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike18(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike18(1);
           func_post(e);
         }
-      }
-      else if (like18===1){
+      } else if (like18 === 1) {
         setLike18(2);
         func_delete(e);
-      }
-      else if (like18===2){
+      } else if (like18 === 2) {
         setLike18(1);
         func_post(e);
       }
     } else {
-      if (like19===0){
-        if ((dblikedlist.find((i:number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
+      if (like19 === 0) {
+        if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
           setLike19(2);
           func_delete(e);
-          setDblikedlist(dblikedlist.filter((el:number) => el !==props.vlogplaceid[e]));
-        }
-        else{
+          setDblikedlist(dblikedlist.filter((el: number) => el !== props.vlogplaceid[e]));
+        } else {
           setLike19(1);
           func_post(e);
         }
-      }
-      else if (like19===1){
+      } else if (like19 === 1) {
         setLike19(2);
         func_delete(e);
-      }
-      else if (like19===2){
+      } else if (like19 === 2) {
         setLike19(1);
         func_post(e);
       }
     }
   } //func
 
-  function tokakaomap(e:number){
-    window.open(`${props.placeurl[e]}`, '_blank')
+  function tokakaomap(e: number) {
+    window.open(`${props.placeurl[e]}`, '_blank');
   }
   function makelike0() {
     return (
@@ -708,7 +652,10 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom" >
             {heart(0)}
-            <span className="likeplace" onClick={()=>tokakaomap(0)}> {props.vlogplacename[0]}</span>
+            <span className="likeplace" onClick={() => tokakaomap(0)}>
+              {' '}
+              {props.vlogplacename[0]}
+            </span>
           </label>
         </li>
       </>
@@ -728,7 +675,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(1)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[0]}`, '_blank')}>{props.vlogplacename[1]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[0]}`, '_blank')}>
+              {props.vlogplacename[1]}
+            </span>
           </label>
         </li>
       </>
@@ -748,7 +697,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(2)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[2]}`, '_blank')}>{props.vlogplacename[2]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[2]}`, '_blank')}>
+              {props.vlogplacename[2]}
+            </span>
           </label>
         </li>
       </>
@@ -769,7 +720,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(3)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[3]}`, '_blank')}>{props.vlogplacename[3]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[3]}`, '_blank')}>
+              {props.vlogplacename[3]}
+            </span>
           </label>
         </li>
       </>
@@ -790,7 +743,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(4)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[4]}`, '_blank')}>{props.vlogplacename[4]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[4]}`, '_blank')}>
+              {props.vlogplacename[4]}
+            </span>
           </label>
         </li>
       </>
@@ -811,7 +766,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(5)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[5]}`, '_blank')}>{props.vlogplacename[5]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[5]}`, '_blank')}>
+              {props.vlogplacename[5]}
+            </span>
           </label>
         </li>
       </>
@@ -832,7 +789,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(6)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[6]}`, '_blank')}>{props.vlogplacename[6]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[6]}`, '_blank')}>
+              {props.vlogplacename[6]}
+            </span>
           </label>
         </li>
       </>
@@ -853,7 +812,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(7)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[7]}`, '_blank')}>{props.vlogplacename[7]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[7]}`, '_blank')}>
+              {props.vlogplacename[7]}
+            </span>
           </label>
         </li>
       </>
@@ -874,7 +835,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(8)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[8]}`, '_blank')}>{props.vlogplacename[8]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[8]}`, '_blank')}>
+              {props.vlogplacename[8]}
+            </span>
           </label>
         </li>
       </>
@@ -895,7 +858,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(9)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[9]}`, '_blank')}>{props.vlogplacename[9]}</span>
+            <span className="likeplace" onClick={() => window.open(`${props.placeurl[9]}`, '_blank')}>
+              {props.vlogplacename[9]}
+            </span>
           </label>
         </li>
       </>
