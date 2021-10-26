@@ -1,7 +1,7 @@
-.top5_carousel_container{
-    position: relative;
-    /*transform: translate(-0vw);*/
-    height: 30vw;
+.top5_carousel_container {
+  position: relative;
+  /*transform: translate(-0vw);*/
+  height: 30vw;
 }
 .carousel_card_item {
   /*width : 100vw;*/
@@ -21,7 +21,6 @@
 }
 .carousel-btn {
   display: inline-block;
-  width: 0.875rem;
   /*height: .875rem;*/
   border-radius: 30%;
   margin: 0 0.25rem;
@@ -39,13 +38,13 @@ button#btn_now {
 }
 .carousel-card-pager-zoomable {
   position: relative;
-  padding: 2rem 0;
   text-align: center;
   line-height: 0;
   /*width: -webkit-fit-content;*/
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
+  padding-top: 5rem;
 }
 .carousel-card-mask {
   text-align: center;
