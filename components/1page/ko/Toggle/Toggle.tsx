@@ -519,7 +519,8 @@ const Toggle = () => {
           setFlag(false);
         }
       }
-    });
+    })
+      .catch((error)=>{});
   }, []);
 
   if (index === 0) {
@@ -669,13 +670,15 @@ const Toggle = () => {
           setSelectedcity(gyeongi.city[index].city_name);
         }}
       >
-        <li className="city_li" style={{ color: '#F08080' }}>
+        <li className="city_li"
+            style={map === gyeongi.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
+        >
           {gyeongi.city[index].city_name}
         </li>
         {map === gyeongi.city[index].city_link && (
           <ul className="station_ul">
             {gyeongi.city[index].station.map((li: any) => (
-              <li style={{ color: '#F08080' }}>{li}</li>
+              <li style={{ color: '#CB000E' }}>{li}</li>
             ))}
           </ul>
         )}
@@ -692,13 +695,15 @@ const Toggle = () => {
         setSelectedcity(gangwon.city[index].city_name);
       }}
     >
-      <li className="city_li" style={{ color: '#F08080' }}>
+      <li className="city_li"
+        style={map === gangwon.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
+      >
         {gangwon.city[index].city_name}
       </li>
       {map === gangwon.city[index].city_link && (
         <ul className="station_ul">
           {gangwon.city[index].station.map((li: any) => (
-            <li style={{ color: '#F08080' }}>{li}</li>
+            <li style={{ color: '#CB000E' }}>{li}</li>
           ))}
         </ul>
       )}
@@ -714,13 +719,15 @@ const Toggle = () => {
         setSelectedcity(chungnam.city[index].city_name);
       }}
     >
-      <li className="city_li" style={{ color: '#F08080' }}>
+      <li className="city_li"
+        style={map === chungnam.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
+      >
         {chungnam.city[index].city_name}
       </li>
       {map === chungnam.city[index].city_link && (
         <ul className="station_ul">
           {chungnam.city[index].station.map((li: any) => (
-            <li style={{ color: '#F08080' }}>{li}</li>
+            <li style={{ color: '#CB000E' }}>{li}</li>
           ))}
         </ul>
       )}
@@ -736,13 +743,15 @@ const Toggle = () => {
         setSelectedcity(chungbuk.city[index].city_name);
       }}
     >
-      <li className="city_li" style={{ color: '#F08080' }}>
+      <li className="city_li"
+        style={map === chungbuk.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
+      >
         {chungbuk.city[index].city_name}
       </li>
       {map === chungbuk.city[index].city_link && (
         <ul className="station_ul">
           {chungbuk.city[index].station.map((li: any) => (
-            <li style={{ color: '#F08080' }}>{li}</li>
+            <li style={{ color: '#CB000E' }}>{li}</li>
           ))}
         </ul>
       )}
@@ -758,13 +767,15 @@ const Toggle = () => {
         setSelectedcity(jeonnam.city[index].city_name);
       }}
     >
-      <li className="city_li" style={{ color: '#F08080' }}>
+      <li className="city_li"
+        style={map === jeonnam.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
+      >
         {jeonnam.city[index].city_name}
       </li>
       {map === jeonnam.city[index].city_link && (
         <ul className="station_ul">
           {jeonnam.city[index].station.map((li: any) => (
-            <li style={{ color: '#F08080' }}>{li}</li>
+            <li style={{ color: '#CB000E' }}>{li}</li>
           ))}
         </ul>
       )}
@@ -780,13 +791,15 @@ const Toggle = () => {
         setSelectedcity(jeonbuk.city[index].city_name);
       }}
     >
-      <li className="city_li" style={{ color: '#F08080' }}>
+      <li className="city_li"
+        style={map === jeonbuk.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
+      >
         {jeonbuk.city[index].city_name}
       </li>
       {map === jeonbuk.city[index].city_link && (
         <ul className="station_ul">
           {jeonbuk.city[index].station.map((li: any) => (
-            <li style={{ color: '#F08080' }}>{li}</li>
+            <li style={{ color: '#CB000E' }}>{li}</li>
           ))}
         </ul>
       )}
@@ -802,13 +815,15 @@ const Toggle = () => {
         setSelectedcity(gyeongnam.city[index].city_name);
       }}
     >
-      <li className="city_li" style={{ color: '#F08080' }}>
+      <li className="city_li"
+        style={map === gyeongnam.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
+      >
         {gyeongnam.city[index].city_name}
       </li>
       {map === gyeongnam.city[index].city_link && (
         <ul className="station_ul">
           {gyeongnam.city[index].station.map((li: any) => (
-            <li style={{ color: '#F08080' }}>{li}</li>
+            <li style={{ color: '#CB000E' }}>{li}</li>
           ))}
         </ul>
       )}
@@ -824,13 +839,15 @@ const Toggle = () => {
         setSelectedcity(gyeongbuk.city[index].city_name);
       }}
     >
-      <li className="city_li" style={{ color: '#F08080' }}>
+      <li className="city_li"
+        style={map === gyeongbuk.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
+      >
         {gyeongbuk.city[index].city_name}
       </li>
       {map === gyeongbuk.city[index].city_link && (
         <ul className="station_ul">
           {gyeongbuk.city[index].station.map((li: any) => (
-            <li style={{ color: '#F08080' }}>{li}</li>
+            <li style={{ color: '#CB000E' }}>{li}</li>
           ))}
         </ul>
       )}
@@ -846,13 +863,15 @@ const Toggle = () => {
         setSelectedcity(incheon.city[index].city_name);
       }}
     >
-      <li className="city_li" style={{ color: '#F08080' }}>
+      <li className="city_li"
+        style={map === incheon.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
+      >
         {incheon.city[index].city_name}
       </li>
       {map === incheon.city[index].city_link && (
         <ul className="station_ul">
           {incheon.city[index].station.map((li: any) => (
-            <li style={{ color: '#F08080' }}>{li}</li>
+            <li style={{ color: '#CB000E' }}>{li}</li>
           ))}
         </ul>
       )}
@@ -868,13 +887,15 @@ const Toggle = () => {
         setSelectedcity(daejeon.city[index].city_name);
       }}
     >
-      <li className="city_li" style={{ color: '#F08080' }}>
+      <li className="city_li"
+        style={map === daejeon.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
+      >
         {daejeon.city[index].city_name}
       </li>
       {map === daejeon.city[index].city_link && (
         <ul className="station_ul">
           {daejeon.city[index].station.map((li: any) => (
-            <li style={{ color: '#F08080' }}>{li}</li>
+            <li style={{ color: '#CB000E' }}>{li}</li>
           ))}
         </ul>
       )}
@@ -890,13 +911,15 @@ const Toggle = () => {
         setSelectedcity(daegu.city[index].city_name);
       }}
     >
-      <li className="city_li" style={{ color: '#F08080' }}>
+      <li className="city_li"
+        style={map === daegu.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
+      >
         {daegu.city[index].city_name}
       </li>
       {map === daegu.city[index].city_link && (
         <ul className="station_ul">
           {daegu.city[index].station.map((li: any) => (
-            <li style={{ color: '#F08080' }}>{li}</li>
+            <li style={{ color: '#CB000E' }}>{li}</li>
           ))}
         </ul>
       )}
@@ -912,13 +935,15 @@ const Toggle = () => {
         setSelectedcity(busan.city[index].city_name);
       }}
     >
-      <li className="city_li" style={{ color: '#F08080' }}>
+      <li className="city_li"
+        style={map === busan.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
+      >
         {busan.city[index].city_name}
       </li>
       {map === busan.city[index].city_link && (
         <ul className="station_ul">
           {busan.city[index].station.map((li: any) => (
-            <li style={{ color: '#F08080' }}>{li}</li>
+            <li style={{ color: '#CB000E' }}>{li}</li>
           ))}
         </ul>
       )}
@@ -934,7 +959,9 @@ const Toggle = () => {
         setSelectedcity(ulsan.city[index].city_name);
       }}
     >
-      <li className="city_li" style={{ color: '#F08080' }}>
+      <li className="city_li"
+          style={map === ulsan.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
+      >
         {ulsan.city[index].city_name}
       </li>
       {map === ulsan.city[index].city_link && (
@@ -956,7 +983,9 @@ const Toggle = () => {
         setSelectedcity(gwangju.city[index].city_name);
       }}
     >
-      <li className="city_li" style={{ color: '#F08080' }}>
+      <li className="city_li"
+          style={map === gwangju.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
+      >
         {gwangju.city[index].city_name}
       </li>
       {map === gwangju.city[index].city_link && (
@@ -978,7 +1007,9 @@ const Toggle = () => {
         setSelectedcity(sejong.city[index].city_name);
       }}
     >
-      <li className="city_li" style={{ color: '#F08080' }}>
+      <li className="city_li"
+          style={map === sejong.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
+      >
         {sejong.city[index].city_name}
       </li>
       {map === sejong.city[index].city_link && (

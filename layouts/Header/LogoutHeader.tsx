@@ -19,23 +19,26 @@ const LogoutHeader = () => {
     console.log(localStorage.getItem('language'));
     location.reload();
   };
+  var local = localStorage.getItem('language');
+  var language = local.split('"');
+
   return (
     <header className="Header">
       <div className="Contents">
         <Link to="/" style={{ textDecoration: 'none', color: '#000000' }}>
-          <img id="logo" src="/src/icon/USPOT로고.png" alt="USPOT" width="120" height="90" />
+          <img className="logo" src="/src/icon/USPOT로고.png" alt="USPOT" width="120" height="90" />
         </Link>
         <nav className="Navigation">
           <ul>
             <li>
               <Link to="/" style={{ textDecoration: 'none', color: '#000000' }}>
-                <img id="home" src="/src/icon/home.png" alt="home" width="30" height="30" />
+                <img className="header_category" src="/src/icon/home.png" alt="home" width="30" height="30" />
                 HOME
               </Link>
             </li>
             <li>
               <Link to="/mypage" style={{ textDecoration: 'none', color: '#000000' }}>
-                <img id="mypage" src="/src/icon/mypage.png" alt="mypage" width="30" height="30" />
+                <img className="header_category" src="/src/icon/mypage.png" alt="mypage" width="30" height="30" />
                 MYPAGE
               </Link>
             </li>
@@ -48,18 +51,18 @@ const LogoutHeader = () => {
                   location.reload();
                 }}
               >
-                <img id="logoutimage" src="/src/icon/mypage.png" alt="logout" width="30" height="30" />
+                <img className="header_category" src="/src/icon/mypage.png" alt="logout" width="30" height="30" />
                 LOGOUT
               </button>
             </li>
             <div id="btn">
               <li>
-                <button id="ko" onClick={onClickKo}>
+                <button className="language" onClick={onClickKo} id={language[1]==='KO'? "selectedlanguage" : "notselectedlanguage"}>
                   KOR
                 </button>
               </li>
               <li>
-                <button id="en" onClick={onClickEn}>
+                <button className="language" onClick={onClickEn} id={language[1]==='EN'? "selectedlanguage" : "notselectedlanguage"}>
                   ENG
                 </button>
               </li>

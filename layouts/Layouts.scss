@@ -7,3 +7,11 @@
   padding-left: 15vw;
   padding-right: 15vw;
 }
+
+//600이하부부터 koreng 가려지기 시작
+
+@media screen and (max-width: 600px){
+  .Layout {
+    padding-top: 150px;
+  }
+}

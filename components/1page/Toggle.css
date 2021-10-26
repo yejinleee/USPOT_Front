@@ -14,9 +14,66 @@
   float: right;
   width: 25%;
   /* height: 50%; */
-  top: 13%;
+  /*top: 23%;*/
   right: 15vw;
   /* left: 100px; */
+}
+.gotosecondbtn{
+  height: 30px;
+  border-radius: 10px;
+  background:#f08080;
+  border:none;
+  /*position:relative;*/
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+
+  position: fixed;
+  left: 45vw;
+  color: white;
+  margin-top:1%;
+}
+.gotosecondbtn:hover{
+  background:#fff;
+  color:#f08080;
+}
+.gotosecondbtn:before,.gotosecondbtn:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #f08080;
+  transition:400ms ease all;
+}
+.gotosecondbtn:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.gotosecondbtn:hover:before,.gotosecondbtn:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+@media screen and (max-width: 813px) {
+  .map {
+    top:23%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .map {
+    display: none;
+  }
+  .gotosecondbtn{
+    left: 70vw;
+    font-size: 12px;
+    margin: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
 }
 
 .district_toggle {
@@ -46,16 +103,21 @@ label {
 }
 
 .citylist:hover {
-  background: #ffc0ba;
+  /*background: #ffc0ba;*/
 }
 .citylist {
   cursor: pointer;
   margin-left: 16%;
+  width: 10em;
 }
 .city_li {
   list-style: circle;
   padding-bottom: 0.3em;
 }
+.city_li:hover{
+  color:#CB000E;
+  font-size: 1.2em;
+  transition:300ms ease all;  }
 .station_ul {
   margin :0;
   /*list-style: circle;*/

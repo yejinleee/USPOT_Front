@@ -10,7 +10,7 @@
 .App input {
   border: 2px solid #f08080;
   margin-top: 1%;
-  width: 20vw;
+  width: 15em;
   height: 5%;
   font-size: 15px;
   border-radius: 15px;
@@ -25,51 +25,23 @@ p {
 
 .container {
   margin-top: 1%;
-  width: 20vw;
+  /*width: 20vw;*/
+  width: 14em;
   height: 13%;
   overflow: scroll;
   padding-left: 2%;
   margin-left: 3vw;
   cursor: pointer;
 }
-
-.gotosecondbtn{
-  height: 30px;
-  border-radius: 10px;
-  background:#f08080;
-  border:none;
-  /*position:relative;*/
-  padding:0 2em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
-
-  position: fixed;
-  left: 45vw;
-  color: white;
-  margin-top:1%;
+.contry {
+  padding-bottom: 0.6em;
+  padding-bottom: 0.6em;
 }
-.gotosecondbtn:hover{
-  background:#fff;
-  color:#f08080;
-}
-.gotosecondbtn:before,.gotosecondbtn:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: #f08080;
-  transition:400ms ease all;
-}
-.gotosecondbtn:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-.gotosecondbtn:hover:before,.gotosecondbtn:hover:after{
-  width:100%;
-  transition:800ms ease all;
+@media screen and (max-width: 600px) {
+  .App input {
+    width: 15em;
+  }
+  .container{
+    width: 14em;
+  }
 }
