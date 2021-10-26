@@ -70,56 +70,47 @@ const EnLiketop5: FC<Props> = (props: Props) => {
       .catch((error) => {});
   }
 
-  function heart(i:number) {
-    if (i===0 && like0===0){
-      return(
-        <span className="tlike">{(dblikedlist.find((e: number) => e === props.top5placeid[i])) === props.top5placeid[i] ? '💛' : '🤍'}</span>
-      )
-    }
-    else if (i===0 && like0!==0){
-      return(
-          <span className="tlike">{like0 === 1 ? '💛' : '🤍'}</span>
-        )
-    }
-    else if (i===1 && like1===0){
-      return(
-        <span className="tlike">{(dblikedlist.find((e: number) => e === props.top5placeid[i])) === props.top5placeid[i] ? '💛' : '🤍'}</span>
-      )
-    }
-    else if (i===1 && like1!==0){
-      return(
-        <span className="tlike">{like1 === 1 ? '💛' : '🤍'}</span>
-      )
-    }
-    else if (i===2 && like2===0){
-      return(
-        <span className="tlike">{(dblikedlist.find((e: number) => e === props.top5placeid[i])) === props.top5placeid[i] ? '💛' : '🤍'}</span>
-      )
-    }
-    else if (i===2 && like2!==0){
-      return(
-        <span className="tlike">{like2 === 1 ? '💛' : '🤍'}</span>
-      )
-    }
-    else if (i===3 && like3===0){
-      return(
-        <span className="tlike">{(dblikedlist.find((e: number) => e === props.top5placeid[i])) === props.top5placeid[i] ? '💛' : '🤍'}</span>
-      )
-    }
-    else if (i===3 && like3!==0){
-      return(
-        <span className="tlike">{like3 === 1 ? '💛' : '🤍'}</span>
-      )
-    }
-    else if (i===4 && like4===0){
-      return(
-        <span className="tlike">{(dblikedlist.find((e: number) => e === props.top5placeid[i])) === props.top5placeid[i] ? '💛' : '🤍'}</span>
-      )
-    }
-    else if (i===4 && like4!==0){
-      return(
-        <span className="tlike">{like4 === 1 ? '💛' : '🤍'}</span>
-      )
+  function heart(i: number) {
+    if (i === 0 && like0 === 0) {
+      return (
+        <label htmlFor="tlistidx0" className="tlike">
+          {dblikedlist.find((e: number) => e === props.top5placeid[i]) === props.top5placeid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 0 && like0 !== 0) {
+      return <label htmlFor="tlistidx0" className="tlike">{like0 === 1 ? '💛' : '🤍'}</label>;
+    } else if (i === 1 && like1 === 0) {
+      return (
+        <label htmlFor="tlistidx1" className="tlike">
+          {dblikedlist.find((e: number) => e === props.top5placeid[i]) === props.top5placeid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 1 && like1 !== 0) {
+      return <label htmlFor="tlistidx1" className="tlike">{like1 === 1 ? '💛' : '🤍'}</label>;
+    } else if (i === 2 && like2 === 0) {
+      return (
+        <label htmlFor="tlistidx2" className="tlike">
+          {dblikedlist.find((e: number) => e === props.top5placeid[i]) === props.top5placeid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 2 && like2 !== 0) {
+      return <label htmlFor="tlistidx2" className="tlike">{like2 === 1 ? '💛' : '🤍'}</label>;
+    } else if (i === 3 && like3 === 0) {
+      return (
+        <label htmlFor="tlistidx3" className="tlike">
+          {dblikedlist.find((e: number) => e === props.top5placeid[i]) === props.top5placeid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 3 && like3 !== 0) {
+      return <label htmlFor="tlistidx3" className="tlike">{like3 === 1 ? '💛' : '🤍'}</label>;
+    } else if (i === 4 && like4 === 0) {
+      return (
+        <label htmlFor="tlistidx4" className="tlike">
+          {dblikedlist.find((e: number) => e === props.top5placeid[i]) === props.top5placeid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 4 && like4 !== 0) {
+      return <label htmlFor="tlistidx4" className="tlike">{like4 === 1 ? '💛' : '🤍'}</label>;
     }
   } //heart
   function func(e: number) {

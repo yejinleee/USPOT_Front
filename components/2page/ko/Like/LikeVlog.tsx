@@ -106,7 +106,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
         <label htmlFor="listidx1" className="like">{like1 === 1 ? '💛' : '🤍'}</label>
       )
     }
-
     else if (i===2 && like2===0){
       return(
         <label htmlFor="listidx2" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
