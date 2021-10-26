@@ -519,7 +519,8 @@ const Toggle = () => {
           setFlag(false);
         }
       }
-    });
+    })
+      .catch((error)=>{});
   }, []);
 
   if (index === 0) {

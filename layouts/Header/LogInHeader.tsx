@@ -19,6 +19,9 @@ const LogInHeader = () => {
     console.log(localStorage.getItem('language'));
     location.reload();
   };
+  var local = localStorage.getItem('language');
+  var language = local.split('"');
+
   return (
     <header className="Header">
       <div className="Contents">
@@ -54,12 +57,12 @@ const LogInHeader = () => {
             </li>
             <div id="btn">
               <li>
-                <button id="ko" onClick={onClickKo}>
+                <button id="ko" onClick={onClickKo} className={language[1]==='KO'? "selectedlanguage" : "notselectedlanguage"}>
                   KOR
                 </button>
               </li>
               <li>
-                <button id="en" onClick={onClickEn}>
+                <button id="en" onClick={onClickEn} className={language[1]==='EN'? "selectedlanguage" : "notselectedlanguage"}>
                   ENG
                 </button>
               </li>

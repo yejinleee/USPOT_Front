@@ -47,23 +47,19 @@ button#logout {
   border: none;
   font-size: 15px;
 }
-#ko {
+.language{
   background-color: transparent;
   border: 2px solid #f8ad9d;
   outline: 0;
   border-radius: 5px;
+  cursor:pointer
 }
-#ko:hover {
+.language:hover{
   color: white;
   background-color: #f8ad9d;
   border-radius: 5px;
 }
-#en {
-  background-color: transparent;
-  border: 2px solid #f8ad9d;
-  border-radius: 5px;
-}
-#en:hover {
+#selectedlanguage{
   color: white;
   background-color: #f8ad9d;
   border-radius: 5px;
