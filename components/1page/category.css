@@ -10,6 +10,18 @@ img{
     cursor: pointer;
 }
 
+@media screen and (max-width: 600px) {
+    .button{
+        margin: .2em;
+        padding: .25em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+    .category_box{
+        text-align: center;
+    }
+}
+
 .clicked{
     background-color: #F08080;
     border: 1px solid #cdd0d2;
@@ -17,7 +29,3 @@ img{
     margin: 10px;
     padding: 1em;
 }
-/*label{*/
-/*    border: 1px solid #F08080;*/
-/*    border-radius: 8px;*/
-/*}*/

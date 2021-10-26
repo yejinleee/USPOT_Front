@@ -8,7 +8,7 @@ const Category = (props: any) => {
     <>
       <br />
       {/*, paddingLeft:'15vw',*/}
-      <div style={{display:'inline-block' }}>
+      <div className="category_box" style={{display:'inline-block', marginLeft:'1em' }}>
         <label
           onClick={() => {
             props.setSelectedcategory('관광명소');
