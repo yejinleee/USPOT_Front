@@ -33,6 +33,10 @@ p {
   margin-left: 3vw;
   cursor: pointer;
 }
+.contry {
+  padding-bottom: 0.6em;
+  padding-bottom: 0.6em;
+}
 @media screen and (max-width: 600px) {
   .App input {
     width: 15em;

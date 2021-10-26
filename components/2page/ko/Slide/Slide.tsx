@@ -187,10 +187,8 @@ const Slide: FC<Props> = (props: Props) => {
     <>
       <div className="carousel">
         <div className="carousel_card">
-          {/*<div className="top5_carousel_container" style={ top5slide()}>*/}
           <div className="top5_carousel_container">
             <div className={imgloc[start]}>
-              {/*여기에 style={btn_pic ===각번호 ? view_pic3 : view_pic5} 머이런식으로*/}
               <div className="carousel-card-mask">
                 <img src={pic1} alt="pic" className="carousel-img" />
                 <span>
@@ -303,26 +301,54 @@ const Slide: FC<Props> = (props: Props) => {
                 5
               </button>
             </span>
+            <div className="button-4">
+              <div className="eff-4"></div>
+              {/*<button className="gotothirdbtn">*/}
+              <Link
+                className="gotothirdbtn"
+                to={{
+                  pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,
+                  state: {
+                    selectedplace: top5name[btn_pic - 1],
+                    mapx: mapx[btn_pic - 1],
+                    mapy: mapy[btn_pic - 1],
+                    top5placeid: top5placeid[btn_pic - 1],
+                  },
+                }}
+                style={{ textDecoration: 'none', color: '#000000' }}
+              >
+                주변장소 더 보기
+              </Link>
+              {/*</button>*/}
+            </div>
           </div>
         </div>
       </div>
+      {/*<div className="button-4">*/}
+      {/*  <div className="eff-4"></div>*/}
+      {/*  <a href="#"> Touch me </a>*/}
+      {/*</div>*/}
 
-      <button className="gotothirdbtn">
-        <Link
-          to={{
-            pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,
-            state: {
-              selectedplace: top5name[btn_pic - 1],
-              mapx: mapx[btn_pic - 1],
-              mapy: mapy[btn_pic - 1],
-              top5placeid: top5placeid[btn_pic - 1],
-            },
-          }}
-          style={{ textDecoration: 'none', color: '#000000' }}
-        >
-          주변장소 더 보기
-        </Link>
-      </button>
+      {/*원래이거*/}
+      {/*<div className="Test">*/}
+      {/*  <button className="gotothirdbtn">*/}
+      {/*    <Link*/}
+      {/*      to={{*/}
+      {/*        pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,*/}
+      {/*        state: {*/}
+      {/*          selectedplace: top5name[btn_pic - 1],*/}
+      {/*          mapx: mapx[btn_pic - 1],*/}
+      {/*          mapy: mapy[btn_pic - 1],*/}
+      {/*          top5placeid: top5placeid[btn_pic - 1],*/}
+      {/*        },*/}
+      {/*      }}*/}
+      {/*      style={{ textDecoration: 'none', color: '#000000' }}*/}
+      {/*    >*/}
+      {/*      주변장소 더 보기*/}
+      {/*    </Link>*/}
+      {/*  </button>*/}
+      {/*</div>*/}
+
       <Top5Mapevent
         top5data={top5data}
         imageSrc={imageSrc}
