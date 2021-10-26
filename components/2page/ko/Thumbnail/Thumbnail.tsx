@@ -9,18 +9,16 @@ interface Props {
   selectedcategory: string;
   btn_pic: number;
   history: History<LocationState>;
-  selectedplace:any;
+  selectedplace: any;
 }
 
 // selcetedcity지역의 selectedcategory 카테고리에 해당되는 장소 top5 중 btn_pic번째 장소의 유튜브 보여주는것
 
-const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pic, history,selectedplace }) => {
+const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pic, history, selectedplace }) => {
   const [vloglist, setVloglist] = useState([] as any); //브이로그 id들 저장할 배열
   const [map, setMap] = useState(false);
   const [id, setId] = useState(null);
-  const [x, setX] = useState();
-  const [y, setY] = useState();
-  const [vlogplaceid,setVlogplaceid] = useState([] as any);
+  const [vlogplaceid, setVlogplaceid] = useState([] as any);
   var dic: { [key: string]: number } = {
     가평군: 1,
     광명시: 2,
@@ -123,20 +121,25 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
   };
   useEffect(() => {
     setVloglist([]);
-    axios.get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`).then((response) => {
-      // console.log('/findtop5/././ response.data.data : ',response.data.data)
-      for (var j = 0; j < response.data.data[btn_pic - 1].vlog_list.length; j++) {
-        console.log('카카오맵검색 id:(이거없으면에러나서,,)',response.data.data[j].id); //있어야 id 에러안나
-        setVlogplaceid((prev: any) => [...prev, response.data.data[j].id]);
-        setVloglist((prev: any) => [...prev, response.data.data[btn_pic - 1].vlog_list[j].url]);
-      }
-    })
-    .catch((error) => {});
+    axios
+      .get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`)
+      .then((response) => {
+        if (response.data.data[btn_pic - 1].vlog_list.length >= 5) {
+          var number = 5;
+        } else {
+          number = response.data.data[btn_pic - 1].vlog_list.length;
+        }
+        for (var j = 0; j < number; j++) {
+          setVlogplaceid((prev: any) => [...prev, response.data.data[j].id]);
+          setVloglist((prev: any) => [...prev, response.data.data[btn_pic - 1].vlog_list[j].url]);
+        }
+      })
+      .catch((error) => {});
   }, [btn_pic]);
   return (
     <>
-      <div className="youtube_all" style={{overflowY:'hidden'}}>
-        <br/>
+      <div className="youtube_all" style={{ overflowY: 'hidden' }}>
+        <br />
         {selectedplace}에 방문한 유튜브 vlog 보기 !
         <br />
         {vloglist !== [] &&
@@ -163,8 +166,8 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
             </div>
           ))}
       </div>
-      <br/>
-      {map && <YoutubeMapevent videoid={id} history={history} vlogplaceid={vlogplaceid}/>}
+      <br />
+      {map && <YoutubeMapevent videoid={id} history={history} vlogplaceid={vlogplaceid} />}
     </>
   );
 };
