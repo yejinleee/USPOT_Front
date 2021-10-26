@@ -25,6 +25,7 @@ const LikeTourapi: FC<Props> = (props: Props) => {
   const [addr, setAddr] = useState([] as any);
   const [dist, setDistance] = useState([] as any);
   const [img, setImg] = useState([] as any);
+  const [id, setId] = useState([] as any);
 
   var local = sessionStorage.getItem('memberid');
   try {
@@ -46,7 +47,7 @@ const LikeTourapi: FC<Props> = (props: Props) => {
         `http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${props.arrange}&contentTypeId=${props.type}&mapX=${props.mapx}&mapY=${props.mapy}&radius=${props.distance}&listYN=Y&_type=json`,
       )
       .then((response) => {
-        console.log('touapi에서 : ',response.data.response.body.items.item);
+        console.log('touapi에서 : ', response.data.response.body.items.item);
         if (response.data.response.body.items === '') {
           setData([]);
         } else {
@@ -59,6 +60,7 @@ const LikeTourapi: FC<Props> = (props: Props) => {
             setAddr((prev: any) => [...prev, response.data.response.body.items.item[i].addr1]);
             setDistance((prev: any) => [...prev, response.data.response.body.items.item[i].dist]);
             setImg((prev: any) => [...prev, response.data.response.body.items.item[i].firstimage]);
+            setId((prev: any) => [...prev, response.data.response.body.items.item[i].contentid]);
           }
         }
       })
@@ -66,7 +68,6 @@ const LikeTourapi: FC<Props> = (props: Props) => {
         setData([]);
       });
   }, []);
-  // console.log('데이터',data);
 
   len = data.length;
   const [like0, setLike0] = useState(0); //초기0 누르면1 눌렀다 빼면 2 //처음렌더링대 false라 else문들어갈까봐
@@ -77,7 +78,7 @@ const LikeTourapi: FC<Props> = (props: Props) => {
 
   function func_post(e: number) {
     console.log('즐겨찾기 할 id:', memberid, 'placeid', names[e]);
-
+    var placeId = id[e];
     var name = names[e];
     var category = categories[e];
     var location_x = locx[e];
@@ -95,12 +96,11 @@ const LikeTourapi: FC<Props> = (props: Props) => {
       axios
         .post(
           `/api/myplace/addfromapi/${memberid}`,
-          JSON.stringify({ name, category, location_x, location_y, address }),
+          JSON.stringify({ name, category, location_x, location_y, address, placeId }),
           { headers },
-        ) // 500에러
-        // { withCredentials:true }) //이건 415인데 위에 headers 저렇게써야하는거라구해서 header로 바꾸면 500..
+        )
         .then((res) => {
-          console.log('넣을 id: ', memberid, 'place명', names[e]);
+          console.log(res.data);
         })
         .catch((error) => {});
     }
@@ -322,11 +322,9 @@ const LikeTourapi: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <ul className="p3tourapilist">
-        {make()}
-      </ul>
+      <ul className="p3tourapilist">{make()}</ul>
     </>
-    )
+  );
 };
 
 export default LikeTourapi;

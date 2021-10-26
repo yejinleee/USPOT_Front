@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { FC, useState } from 'react';
-import styled from 'styled-components';
 import TodoItem from './TodoItem';
 interface Props {
   todos: any;
   onRemove: any;
+  placeid: any;
 }
 
 const TodoItemList: FC<Props> = (props: Props) => {
@@ -29,10 +29,12 @@ const TodoItemList: FC<Props> = (props: Props) => {
 
     axios
       .post(`/api/course/add/${memberid}`, JSON.stringify({ name, myplaceList }), { headers })
-      .then(() => {
-        console.log(props.todos);
-      })
+      .then(() => {})
       .catch((error) => {});
+
+    alert('코스가 저장되었습니다!');
+
+    location.reload();
   };
 
   return (

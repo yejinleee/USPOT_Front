@@ -121,11 +121,7 @@ const Liketop5: FC<Props> = (props: Props) => {
     var el;
     var i;
     if (e === 0) {
-      // console.log('DB목록에 그값 있다면 그 값',(dblikedlist.find((i: number) => i === props.top5placeid[e])));
-      // console.log('id',(props.top5placeid[e]));
-      // console.log('불리언',(dblikedlist.find((e: number) => e === props.top5placeid[e])) === props.top5placeid[e]);
       if (like0 === 0) {
-        //0인상태인데 DB에 있는거면
         if (dblikedlist.find((i: number) => i === props.top5placeid[e]) === props.top5placeid[e]) {
           setLike0(2);
           func_delete(e);

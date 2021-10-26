@@ -59,8 +59,6 @@ const Map: FC<Props> = ({ children, searchPlace }) => {
     }
   }, [searchPlace]);
 
-  console.log(select);
-
   return (
     <>
       <div id="myMap" style={{ width: '30vw', height: '30vw' }} />
