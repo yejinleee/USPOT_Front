@@ -41,9 +41,6 @@ const Liketop5: FC<Props> = (props: Props) => {
     }
   }, []);
 
-  function alertfunc(){
-
-  }
   function func_post(e: number) {
     var ethplaceid = props.top5placeid[e];
     console.log('즐겨찾기 할 id:', memberid, 'placeid', ethplaceid);

@@ -289,8 +289,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
   } //heart
 
   function func(e: number) {
-    var el;
-    var i;
     if (e === 0) {
       if (like0 === 0) {
         if (dblikedlist.find((i: number) => i === props.vlogplaceid[e]) === props.vlogplaceid[e]) {
@@ -634,7 +632,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
     }
   } //func
 
-  function tokakaomap(e: number) {
+  function openkakaomap(e: number) {
     window.open(`${props.placeurl[e]}`, '_blank');
   }
   function makelike0() {
@@ -651,8 +649,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom" >
             {heart(0)}
-            <span className="likeplace" onClick={() => tokakaomap(0)}>
-              {' '}
+            <span className="likeplace" onClick={() => openkakaomap(0)}>
               {props.vlogplacename[0]}
             </span>
           </label>
@@ -674,7 +671,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(1)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[0]}`, '_blank')}>
+            <span className="likeplace" onClick={() => openkakaomap(1)}>
               {props.vlogplacename[1]}
             </span>
           </label>
@@ -696,7 +693,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(2)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[2]}`, '_blank')}>
+            <span className="likeplace" onClick={() => openkakaomap(2)}>
               {props.vlogplacename[2]}
             </span>
           </label>
@@ -719,7 +716,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(3)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[3]}`, '_blank')}>
+            <span className="likeplace" onClick={() => openkakaomap(3)}>
               {props.vlogplacename[3]}
             </span>
           </label>
@@ -742,7 +739,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(4)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[4]}`, '_blank')}>
+            <span className="likeplace" onClick={() => openkakaomap(4)}>
               {props.vlogplacename[4]}
             </span>
           </label>
@@ -765,7 +762,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(5)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[5]}`, '_blank')}>
+            <span className="likeplace" onClick={() => openkakaomap(5)}>
               {props.vlogplacename[5]}
             </span>
           </label>
@@ -788,7 +785,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(6)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[6]}`, '_blank')}>
+            <span className="likeplace" onClick={() => openkakaomap(6)}>
               {props.vlogplacename[6]}
             </span>
           </label>
@@ -811,7 +808,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(7)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[7]}`, '_blank')}>
+            <span className="likeplace" onClick={() => openkakaomap(7)}>
               {props.vlogplacename[7]}
             </span>
           </label>
@@ -834,7 +831,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(8)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[8]}`, '_blank')}>
+            <span className="likeplace" onClick={() => openkakaomap(8)}>
               {props.vlogplacename[8]}
             </span>
           </label>
@@ -857,7 +854,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(9)}
-            <span className="likeplace" onClick={() => window.open(`${props.placeurl[9]}`, '_blank')}>
+            <span className="likeplace" onClick={() => openkakaomap(9)}>
               {props.vlogplacename[9]}
             </span>
           </label>
@@ -880,7 +877,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(10)}
-            <span className="likeplace">{props.vlogplacename[10]}</span>
+            <span className="likeplace" onClick={() => openkakaomap(10)}>
+              {props.vlogplacename[10]}
+            </span>
           </label>
         </li>
       </>
@@ -901,7 +900,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(11)}
-            <span className="likeplace">{props.vlogplacename[11]}</span>
+            <span className="likeplace" onClick={() => openkakaomap(11)}>
+              {props.vlogplacename[11]}
+            </span>
           </label>
         </li>
       </>
@@ -922,7 +923,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(12)}
-            <span className="likeplace">{props.vlogplacename[12]}</span>
+            <span className="likeplace" onClick={() => openkakaomap(12)}>
+              {props.vlogplacename[12]}
+            </span>
           </label>
         </li>
       </>
@@ -943,7 +946,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(13)}
-            <span className="likeplace">{props.vlogplacename[13]}</span>
+            <span className="likeplace" onClick={() => openkakaomap(13)}>
+              {props.vlogplacename[13]}
+            </span>
           </label>
         </li>
       </>
@@ -964,7 +969,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(14)}
-            <span className="likeplace">{props.vlogplacename[14]}</span>
+            <span className="likeplace" onClick={() => openkakaomap(14)}>
+              {props.vlogplacename[14]}
+            </span>
           </label>
         </li>
       </>
@@ -985,7 +992,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(15)}
-            <span className="likeplace">{props.vlogplacename[15]}</span>
+            <span className="likeplace" onClick={() => openkakaomap(15)}>
+              {props.vlogplacename[15]}
+            </span>
           </label>
         </li>
       </>
@@ -1006,7 +1015,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(16)}
-            <span className="likeplace">{props.vlogplacename[16]}</span>
+            <span className="likeplace" onClick={() => openkakaomap(16)}>
+              {props.vlogplacename[16]}
+            </span>
           </label>
         </li>
       </>
@@ -1027,7 +1038,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(17)}
-            <span className="likeplace">{props.vlogplacename[17]}</span>
+            <span className="likeplace" onClick={() => openkakaomap(17)}>
+              {props.vlogplacename[17]}
+            </span>
           </label>
         </li>
       </>
@@ -1048,7 +1061,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(18)}
-            <span className="likeplace">{props.vlogplacename[18]}</span>
+            <span className="likeplace" onClick={() => openkakaomap(18)}>
+              {props.vlogplacename[18]}
+            </span>
           </label>
         </li>
       </>
@@ -1069,7 +1084,9 @@ const LikeVlog: FC<Props> = (props: Props) => {
           />
           <label className="custom">
             {heart(19)}
-            <span className="likeplace">{props.vlogplacename[19]}</span>
+            <span className="likeplace" onClick={() => openkakaomap(19)}>
+              {props.vlogplacename[19]}
+            </span>
           </label>
         </li>
       </>
@@ -1140,7 +1157,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
                 {makelike2()}
                 {makelike3()}
                 {makelike4()}
-                {makelike5()}
               </ul>
             </span>
           </div>
@@ -1158,7 +1174,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
                 {makelike3()}
                 {makelike4()}
                 {makelike5()}
-                {makelike6()}
               </ul>
             </span>
           </div>
@@ -1177,7 +1192,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
                 {makelike4()}
                 {makelike5()}
                 {makelike6()}
-                {makelike7()}
               </ul>
             </span>
           </div>
@@ -1197,7 +1211,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
                 {makelike5()}
                 {makelike6()}
                 {makelike7()}
-                {makelike8()}
               </ul>
             </span>
           </div>
@@ -1218,7 +1231,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
                 {makelike6()}
                 {makelike7()}
                 {makelike8()}
-                {makelike9()}
               </ul>
             </span>
           </div>
@@ -1240,7 +1252,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
                 {makelike7()}
                 {makelike8()}
                 {makelike9()}
-                {makelike10()}
               </ul>
             </span>
           </div>
@@ -1263,7 +1274,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
                 {makelike8()}
                 {makelike9()}
                 {makelike10()}
-                {makelike11()}
               </ul>
             </span>
           </div>
@@ -1287,7 +1297,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
                 {makelike9()}
                 {makelike10()}
                 {makelike11()}
-                {makelike12()}
               </ul>
             </span>
           </div>
@@ -1312,7 +1321,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
                 {makelike10()}
                 {makelike11()}
                 {makelike12()}
-                {makelike13()}
               </ul>
             </span>
           </div>
@@ -1338,7 +1346,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
                 {makelike11()}
                 {makelike12()}
                 {makelike13()}
-                {makelike14()}
               </ul>
             </span>
           </div>
@@ -1365,7 +1372,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
                 {makelike12()}
                 {makelike13()}
                 {makelike14()}
-                {makelike15()}
               </ul>
             </span>
           </div>
@@ -1393,7 +1399,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
                 {makelike13()}
                 {makelike14()}
                 {makelike15()}
-                {makelike16()}
               </ul>
             </span>
           </div>
@@ -1422,7 +1427,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
                 {makelike14()}
                 {makelike15()}
                 {makelike16()}
-                {makelike17()}
               </ul>
             </span>
           </div>
@@ -1452,7 +1456,6 @@ const LikeVlog: FC<Props> = (props: Props) => {
                 {makelike15()}
                 {makelike16()}
                 {makelike17()}
-                {makelike18()}
               </ul>
             </span>
           </div>
@@ -1483,13 +1486,44 @@ const LikeVlog: FC<Props> = (props: Props) => {
                 {makelike16()}
                 {makelike17()}
                 {makelike18()}
+              </ul>
+            </span>
+          </div>
+        </>
+      );
+    }else if (len ===20) {
+      return (
+        <>
+          <div style={{ position: 'relative' }}>
+            <span>
+              <ul id="vlog">
+                {makelike0()}
+                {makelike1()}
+                {makelike2()}
+                {makelike3()}
+                {makelike4()}
+                {makelike5()}
+                {makelike6()}
+                {makelike7()}
+                {makelike8()}
+                {makelike9()}
+                {makelike10()}
+                {makelike11()}
+                {makelike12()}
+                {makelike13()}
+                {makelike14()}
+                {makelike15()}
+                {makelike16()}
+                {makelike17()}
+                {makelike18()}
                 {makelike19()}
               </ul>
             </span>
           </div>
         </>
       );
-    } else {
+    }
+    else {
       return <></>;
     }
   }
