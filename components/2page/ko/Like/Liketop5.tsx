@@ -32,9 +32,13 @@ const Liketop5: FC<Props> = (props: Props) => {
       for (var i = 0; i < response.data.data.length; i++) {
         setDblikedlist((prev: any) => [...prev, response.data.data[i].placeId]);
       }
-    });
+    })
+      .catch((error) => {});
   }, []);
 
+  function alertfunc(){
+
+  }
   function func_post(e: number) {
     var ethplaceid = props.top5placeid[e];
     console.log('즐겨찾기 할 id:', memberid, 'placeid', ethplaceid);
@@ -244,8 +248,10 @@ const Liketop5: FC<Props> = (props: Props) => {
                 }}
                 value="0"
               />
-              <label className="tcustom" htmlFor="tlistidx0">
-                {heart(0)}
+              <label className="tcustom">
+                <label htmlFor="tlistidx0">
+                  {heart(0)}
+                </label>
                 <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[0]}`, '_blank')}> {props.top5name[0]}</span>
               </label>
             </li>
@@ -259,8 +265,10 @@ const Liketop5: FC<Props> = (props: Props) => {
                 }}
                 value="1"
               />
-              <label className="tcustom" htmlFor="tlistidx1">
-                {heart(1)}
+              <label className="tcustom">
+                <label htmlFor="tlistidx1">
+                  {heart(1)}
+                </label>
                 <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[1]}`, '_blank')}> {props.top5name[1]}</span>
               </label>
             </li>
@@ -274,8 +282,10 @@ const Liketop5: FC<Props> = (props: Props) => {
                 }}
                 value="2"
               />
-              <label className="tcustom" htmlFor="tlistidx2">
-                {heart(2)}
+              <label className="tcustom">
+                <label htmlFor="tlistidx2">
+                  {heart(2)}
+                </label>
                 <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[2]}`, '_blank')}> {props.top5name[2]}</span>
               </label>
             </li>
@@ -289,8 +299,10 @@ const Liketop5: FC<Props> = (props: Props) => {
                 }}
                 value="3"
               />
-              <label className="tcustom" htmlFor="tlistidx3">
-                {heart(3)}
+              <label className="tcustom">
+                <label htmlFor="tlistidx3">
+                  {heart(3)}
+                </label>
                 <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[3]}`, '_blank')}> {props.top5name[3]}</span>
               </label>
             </li>
@@ -304,8 +316,10 @@ const Liketop5: FC<Props> = (props: Props) => {
                 }}
                 value="4"
               />
-              <label className="tcustom" htmlFor="tlistidx4">
-                {heart(4)}
+              <label className="tcustom">
+                <label htmlFor="tlistidx4">
+                  {heart(4)}
+                </label>
                 <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[4]}`, '_blank')}> {props.top5name[4]}</span>
               </label>
             </li>
