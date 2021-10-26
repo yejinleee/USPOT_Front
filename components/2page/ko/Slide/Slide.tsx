@@ -38,7 +38,7 @@ const Slide: FC<Props> = (props: Props) => {
   const [mapx, setMapx] = useState([] as any);
   const [mapy, setMapy] = useState([] as any);
   const [top5data, setTop5data] = useState([] as any);
-  const [placeurl,setPlaceurl] = useState( [] as any);
+  const [placeurl, setPlaceurl] = useState([] as any);
 
   var dic: { [key: string]: number } = {
     가평군: 1,
@@ -153,9 +153,8 @@ const Slide: FC<Props> = (props: Props) => {
           setTop5placeid((prev: any) => [...prev, response.data.data[i].id]);
           setMapx((prev: any) => [...prev, response.data.data[i].location_x]);
           setMapy((prev: any) => [...prev, response.data.data[i].location_y]);
-          setPlaceurl( (prev:any) => [...prev, response.data.data[i].placeUrl]);
+          setPlaceurl((prev: any) => [...prev, response.data.data[i].placeUrl]);
         }
-        // console.log('탑data',response.data);
         for (var i = 0; i < 5; i++) {
           const name = response.data.data[i].name;
           const params = {
@@ -166,22 +165,23 @@ const Slide: FC<Props> = (props: Props) => {
           const { data } = await imageSearch(params);
 
           if (i === 0) {
-            setPic1('https://storep-phinf.pstatic.net/ogq_5a0024180a88a/original_6.png?type=p100_100');
+            setPic1(data.documents[1].image_url);
           } else if (i === 1) {
-            setPic2(data.documents[0].image_url);
+            setPic2(data.documents[2].image_url);
           } else if (i === 2) {
             setPic3(data.documents[3].image_url);
           } else if (i === 3) {
-            setPic4(data.documents[1].image_url);
+            setPic4(data.documents[2].image_url);
           } else {
-            setPic5(data.documents[0].image_url);
+            setPic5(data.documents[2].image_url);
           }
         }
       })
       .catch((error) => {});
   }, []);
+
   var selectedplace;
-  selectedplace = top5name[btn_pic-1];
+  selectedplace = top5name[btn_pic - 1];
 
   return (
     <>
