@@ -281,20 +281,6 @@ const Container = (props: any) => {
     }
   };
 
-  function selectedalert() {
-    if (props.selectedcity === '없음') {
-      if (props.selectedcategory === '안') {
-        return alert('지역과 카테고리 모두 선택하여 주십시오');
-      } else {
-        return alert('지역을 선택하여 주십시오');
-      }
-    }
-    if (props.selectedcategory === '안') {
-      if (props.selectedcity !== '없음') {
-        return alert('카테고리를 선택하여 주십시오');
-      }
-    }
-  }
   return (
     <div className="App">
       <input
