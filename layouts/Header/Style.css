@@ -8,10 +8,6 @@
   border-bottom: #f4f4f4 solid 3px;
   z-index: 10;
 }
-.logo {
-  width: 20px;
-  height: 20px;
-}
 
 .Contents {
   display: flex;
@@ -40,6 +36,47 @@
 .Navigation img {
   display: block;
   margin: auto;
+}
+.header_category{
+  /*width: 100px;*/
+  /*height: 90px;*/
+}
+@media screen and (max-width: 600px) {
+  .logo{
+    display: block;
+    position: relative;
+    left: 50%;
+    top: -30;
+  }
+  .Header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 150px;
+    background-color: #ffffff;
+    border-bottom: #f4f4f4 solid 3px;
+    z-index: 10;
+  }
+  .Navigation{
+    display: block;
+    position: relative;
+    left: -120px;
+    top : 45px;
+  }
+  .Navigation ul{
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Navigation li{
+    margin-left :0px;
+    margin-right: 15px;
+  }
+  .header_category{
+    /*width:20%;*/
+  }
 }
 
 button#logout {
