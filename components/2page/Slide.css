@@ -85,7 +85,7 @@ button#btn_now {
   transition: 0.5s;
 }
 .center {
-  transform: translateX(50%) scale(1);
+  transform: translateX(17vw) scale(1);
   transition: 0.5s;
   z-index: -1;
 }
@@ -206,6 +206,45 @@ button#btn_now {
     margin: auto;
     display: block;
   }
+
+  .carousel_card_item{
+    display: inline-block;
+  }
+  .leftback {
+    transform: translateX(0%) translateY(-2vh) scale(0.73);
+    opacity: 0.2;
+    z-index: -3;
+    transition: 0.5s;
+  }
+  .rightback {
+    transform: translateX(100%) translateY(-2vh) scale(0.73);
+    opacity: 0.2;
+    z-index: -3;
+    transition: 0.5s;
+  }
+  .center {
+    transform: translateX(50%) scale(1);
+    transition: 0.5s;
+    z-index: -1;
+  }
+  .left {
+    transform: translateX(20%) scale(0.83);
+    opacity: 0.75;
+    z-index: -2;
+    transition: 0.5s;
+  }
+  .right {
+    transform: translateX(80%) scale(0.83);
+    opacity: 0.75;
+    z-index: -2;
+    transition: 0.5s;
+  }
+
+
+
+
+
+
 }
 
 
