@@ -119,7 +119,6 @@ const Liketop5: FC<Props> = (props: Props) => {
   function func(e: number) {
     if (e === 0) {
       if (like0 === 0) {
-        //0인상태인데 DB에 있는거면
         if (dblikedlist.find((i: number) => i === props.top5placeid[e]) === props.top5placeid[e]) {
           setLike0(2);
           func_delete(e);

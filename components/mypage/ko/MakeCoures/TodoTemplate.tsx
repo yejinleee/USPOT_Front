@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
-import TodoItemList from './TodoItemlist';
-import TodoTitle from './TodoTitle';
+import List from './List';
 interface Props {
   start: any;
 }
@@ -13,28 +12,52 @@ const TodoTemplate: FC<Props> = (props: Props) => {
   } catch {
     var memberid = 0;
   }
-  const [namelist, setNamelist] = useState([] as any);
   const [placelist, setPlacelist] = useState([] as any);
   const [index, setIndex] = useState([] as any);
   const [todos, setTodos] = useState([] as any);
+  const [id, setId] = useState();
+
+  useEffect(() => {
+    const headers = {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    };
+    var name = props.start.place_name;
+    var location_x = props.start.x;
+    var location_y = props.start.y;
+    var address = props.start.address_name;
+    var category = '출발지';
+    var placeId = props.start.id;
+
+    setTodos([]);
+    setIndex([]);
+
+    axios
+      .post(
+        `/api/myplace/addfromstart/${memberid}`,
+        JSON.stringify({ name, category, location_x, location_y, address, placeId }),
+        { headers },
+      )
+      .then((res) => {
+        setTodos((prev: any) => [...prev, res.data.data]);
+        setIndex((prev: any) => [...prev, res.data.data.id]);
+        setId(res.data.data.id);
+      })
+      .catch((error) => {});
+  }, [props.start]);
 
   useEffect(() => {
     axios
       .get(`/api/myplace/findall/${memberid}`)
       .then(async (response) => {
         setPlacelist(response.data.data);
-        for (var i = 0; i < response.data.data.length; i++) {
-          setNamelist((prev: any) => [...prev, response.data.data[i].name]);
-        }
       })
       .catch((error) => {});
-  }, []);
+  }, [props.start]);
 
   const onClick = (list: any) => {
-    console.log('start', props.start);
-    if (todos.length === 0) {
-      setTodos((prev: any) => [...prev, list]);
-      setIndex((prev: any) => [...prev, list.id]);
+    if (todos.length >= 10) {
+      alert('코스는 10개를 넘을 수 없습니다!');
     } else {
       if (index.indexOf(list.id) === -1) {
         setTodos((prev: any) => [...prev, list]);
@@ -43,17 +66,15 @@ const TodoTemplate: FC<Props> = (props: Props) => {
     }
   };
 
-  const likedlist: any = namelist.map((v: string, index: number) => (
-    <>
-      <button id={v} key={index} onClick={() => onClick(placelist[index])}>
-        {namelist[index]}
-      </button>
-    </>
-  ));
+  const ondeleteClick = (list: any) => {
+    var myplaceid = list.id;
+    setPlacelist(placelist.filter((place: any) => place.id !== myplaceid));
+    setTodos(todos.filter((place: any) => place.id !== myplaceid));
+    axios.delete(`/api/myplace/deletebymyplace/${memberid}/${myplaceid}`).catch((error) => {});
+  };
 
   const onRemove = (id: number) => {
     setTodos(todos.filter((place: any) => place.id !== id));
-    console.log(index.indexOf(id));
     var idx = index.indexOf(id);
     index[idx] = 0;
   };
@@ -61,10 +82,15 @@ const TodoTemplate: FC<Props> = (props: Props) => {
   return (
     <>
       <div className="likedlist" style={{ display: 'inline-block' }}>
-        {likedlist}
+        <List
+          placelist={placelist}
+          todos={todos}
+          onClick={onClick}
+          ondeleteClick={ondeleteClick}
+          onRemove={onRemove}
+          start={id}
+        />
       </div>
-      <TodoTitle>코스를 만들어 보아요!</TodoTitle>
-      <TodoItemList todos={todos} onRemove={onRemove} />
     </>
   );
 };

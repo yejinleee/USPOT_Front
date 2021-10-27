@@ -36,7 +36,6 @@ const TodoTemplate: FC<Props> = (props: Props) => {
     axios
       .get(`/api/myplacecourse/findall/${props.courseid}`)
       .then(async (response) => {
-        console.log(response.data.data.length);
         for (var i = 0; i < response.data.data.length; i++) {
           setTodos((prev: any) => [...prev, response.data.data[i].myplaceDto]);
         }

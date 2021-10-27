@@ -7,26 +7,15 @@ interface Props {
 }
 
 const MakeCourse: FC<Props> = (props: Props) => {
-  var local = sessionStorage.getItem('memberid');
-  try {
-    var memberid = Number(local.split('')[1]);
-  } catch {
-    var memberid = 0;
-  }
   const [exist, setExsist] = useState(false);
-  useEffect(() => {
-    axios
-      .get(`/api/myplace/findall/${memberid}`)
-      .then(async (response) => {
-        if (response.data.data.length !== 0) {
-          setExsist(true);
-        }
-      })
-      .catch((error) => {});
-  }, []);
+
+  const onClick = () => {
+    setExsist(true);
+  };
 
   return (
     <>
+      <button onClick={onClick}>출발지 설정하기!</button>
       {exist && (
         <>
           <Likedlist start={props.start} />

@@ -165,7 +165,9 @@ const Slide: FC<Props> = (props: Props) => {
           const { data } = await imageSearch(params);
 
           if (i === 0) {
-            setPic1(data.documents[1].image_url);
+            setPic1(
+              'https://postfiles.pstatic.net/MjAxOTA3MjRfMTE5/MDAxNTYzOTYxNDQyNDg4.SG12qyvO9IPouAihVITyfN70wDR0mVB7_mxTSOaMZRAg.-e3p72yPLKfvWsg43bhmZW_GWj1ZQxsmSZXsCbuPgEIg.JPEG.kmt6101/1111.jpg',
+            );
           } else if (i === 1) {
             setPic2(data.documents[2].image_url);
           } else if (i === 2) {
@@ -185,9 +187,6 @@ const Slide: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <h2 style={{borderColor:'black', border:'1px solid',}}>
-        {selectedcity}의 {selectedcategory} 추천장소 TOP5{' '}
-      </h2>
       <div className="carousel">
         <div className="carousel_card">
           <div className="top5_carousel_container">

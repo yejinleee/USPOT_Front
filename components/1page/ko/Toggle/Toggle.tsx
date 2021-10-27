@@ -139,388 +139,390 @@ const Toggle = () => {
   const sejongindex = useRef(0);
 
   useEffect(() => {
-    axios.get('/api/province/findall').then((response) => {
-      for (var i = 0; i < response.data.data.length; i++) {
-        setIndex(i);
-        if (i === 0) {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
-            setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+    axios
+      .get('/api/province/findall')
+      .then((response) => {
+        for (var i = 0; i < response.data.data.length; i++) {
+          setIndex(i);
+          if (i === 0) {
+            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+              setStationlist([]);
+              setFlag(false);
+              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+              }
+              setGyeongi((prev: any) => ({
+                ...prev,
+                id: i + 1,
+                name: response.data.data[i].name,
+                link: response.data.data[i].provinceLink,
+                city: [
+                  ...prev.city,
+                  {
+                    city_id: response.data.data[i].cityList[j].cityid,
+                    city_name: response.data.data[i].cityList[j].name,
+                    city_link: response.data.data[i].cityList[j].cityLink,
+                    station: [],
+                  },
+                ],
+              }));
+              setFlag(true);
             }
-            setGyeongi((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
-          }
-          setFlag(false);
-        } else if (i === 1) {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
             setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+          } else if (i === 1) {
+            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+              setStationlist([]);
+              setFlag(false);
+              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+              }
+              setGangwon((prev: any) => ({
+                ...prev,
+                id: i + 1,
+                name: response.data.data[i].name,
+                link: response.data.data[i].provinceLink,
+                city: [
+                  ...prev.city,
+                  {
+                    city_id: response.data.data[i].cityList[j].cityid,
+                    city_name: response.data.data[i].cityList[j].name,
+                    city_link: response.data.data[i].cityList[j].cityLink,
+                    station: [],
+                  },
+                ],
+              }));
+              setFlag(true);
             }
-            setGangwon((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
-          }
-          setFlag(false);
-        } else if (i === 2) {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
             setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+          } else if (i === 2) {
+            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+              setStationlist([]);
+              setFlag(false);
+              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+              }
+              setChungnam((prev: any) => ({
+                ...prev,
+                id: i + 1,
+                name: response.data.data[i].name,
+                link: response.data.data[i].provinceLink,
+                city: [
+                  ...prev.city,
+                  {
+                    city_id: response.data.data[i].cityList[j].cityid,
+                    city_name: response.data.data[i].cityList[j].name,
+                    city_link: response.data.data[i].cityList[j].cityLink,
+                    station: [],
+                  },
+                ],
+              }));
+              setFlag(true);
             }
-            setChungnam((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
-          }
-          setFlag(false);
-        } else if (i === 3) {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
             setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+          } else if (i === 3) {
+            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+              setStationlist([]);
+              setFlag(false);
+              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+              }
+              setChungbuk((prev: any) => ({
+                ...prev,
+                id: i + 1,
+                name: response.data.data[i].name,
+                link: response.data.data[i].provinceLink,
+                city: [
+                  ...prev.city,
+                  {
+                    city_id: response.data.data[i].cityList[j].cityid,
+                    city_name: response.data.data[i].cityList[j].name,
+                    city_link: response.data.data[i].cityList[j].cityLink,
+                    station: [],
+                  },
+                ],
+              }));
+              setFlag(true);
             }
-            setChungbuk((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
-          }
-          setFlag(false);
-        } else if (i === 4) {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
             setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+          } else if (i === 4) {
+            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+              setStationlist([]);
+              setFlag(false);
+              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+              }
+              setJeonnam((prev: any) => ({
+                ...prev,
+                id: i + 1,
+                name: response.data.data[i].name,
+                link: response.data.data[i].provinceLink,
+                city: [
+                  ...prev.city,
+                  {
+                    city_id: response.data.data[i].cityList[j].cityid,
+                    city_name: response.data.data[i].cityList[j].name,
+                    city_link: response.data.data[i].cityList[j].cityLink,
+                    station: [],
+                  },
+                ],
+              }));
+              setFlag(true);
             }
-            setJeonnam((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
-          }
-          setFlag(false);
-        } else if (i === 5) {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
             setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+          } else if (i === 5) {
+            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+              setStationlist([]);
+              setFlag(false);
+              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+              }
+              setJeonbuk((prev: any) => ({
+                ...prev,
+                id: i + 1,
+                name: response.data.data[i].name,
+                link: response.data.data[i].provinceLink,
+                city: [
+                  ...prev.city,
+                  {
+                    city_id: response.data.data[i].cityList[j].cityid,
+                    city_name: response.data.data[i].cityList[j].name,
+                    city_link: response.data.data[i].cityList[j].cityLink,
+                    station: [],
+                  },
+                ],
+              }));
+              setFlag(true);
             }
-            setJeonbuk((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
-          }
-          setFlag(false);
-        } else if (i === 6) {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
             setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+          } else if (i === 6) {
+            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+              setStationlist([]);
+              setFlag(false);
+              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+              }
+              setGyeongnam((prev: any) => ({
+                ...prev,
+                id: i + 1,
+                name: response.data.data[i].name,
+                link: response.data.data[i].provinceLink,
+                city: [
+                  ...prev.city,
+                  {
+                    city_id: response.data.data[i].cityList[j].cityid,
+                    city_name: response.data.data[i].cityList[j].name,
+                    city_link: response.data.data[i].cityList[j].cityLink,
+                    station: [],
+                  },
+                ],
+              }));
+              setFlag(true);
             }
-            setGyeongnam((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
-          }
-          setFlag(false);
-        } else if (i === 7) {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
             setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+          } else if (i === 7) {
+            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+              setStationlist([]);
+              setFlag(false);
+              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+              }
+              setGyeongbuk((prev: any) => ({
+                ...prev,
+                id: i + 1,
+                name: response.data.data[i].name,
+                link: response.data.data[i].provinceLink,
+                city: [
+                  ...prev.city,
+                  {
+                    city_id: response.data.data[i].cityList[j].cityid,
+                    city_name: response.data.data[i].cityList[j].name,
+                    city_link: response.data.data[i].cityList[j].cityLink,
+                    station: [],
+                  },
+                ],
+              }));
+              setFlag(true);
             }
-            setGyeongbuk((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
-          }
-          setFlag(false);
-        } else if (i === 8) {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
             setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+          } else if (i === 8) {
+            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+              setStationlist([]);
+              setFlag(false);
+              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+              }
+              setIncheon((prev: any) => ({
+                ...prev,
+                id: i + 1,
+                name: response.data.data[i].name,
+                link: response.data.data[i].provinceLink,
+                city: [
+                  ...prev.city,
+                  {
+                    city_id: response.data.data[i].cityList[j].cityid,
+                    city_name: response.data.data[i].cityList[j].name,
+                    city_link: response.data.data[i].cityList[j].cityLink,
+                    station: [],
+                  },
+                ],
+              }));
+              setFlag(true);
             }
-            setIncheon((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
-          }
-          setFlag(false);
-        } else if (i === 9) {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
             setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+          } else if (i === 9) {
+            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+              setStationlist([]);
+              setFlag(false);
+              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+              }
+              setDajeon((prev: any) => ({
+                ...prev,
+                id: i + 1,
+                name: response.data.data[i].name,
+                link: response.data.data[i].provinceLink,
+                city: [
+                  ...prev.city,
+                  {
+                    city_id: response.data.data[i].cityList[j].cityid,
+                    city_name: response.data.data[i].cityList[j].name,
+                    city_link: response.data.data[i].cityList[j].cityLink,
+                    station: [],
+                  },
+                ],
+              }));
+              setFlag(true);
             }
-            setDajeon((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
-          }
-          setFlag(false);
-        } else if (i === 10) {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
             setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+          } else if (i === 10) {
+            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+              setStationlist([]);
+              setFlag(false);
+              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+              }
+              setDaegu((prev: any) => ({
+                ...prev,
+                id: i + 1,
+                name: response.data.data[i].name,
+                link: response.data.data[i].provinceLink,
+                city: [
+                  ...prev.city,
+                  {
+                    city_id: response.data.data[i].cityList[j].cityid,
+                    city_name: response.data.data[i].cityList[j].name,
+                    city_link: response.data.data[i].cityList[j].cityLink,
+                    station: [],
+                  },
+                ],
+              }));
+              setFlag(true);
             }
-            setDaegu((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
-          }
-          setFlag(false);
-        } else if (i === 11) {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
             setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+          } else if (i === 11) {
+            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+              setStationlist([]);
+              setFlag(false);
+              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+              }
+              setBusan((prev: any) => ({
+                ...prev,
+                id: i + 1,
+                name: response.data.data[i].name,
+                link: response.data.data[i].provinceLink,
+                city: [
+                  ...prev.city,
+                  {
+                    city_id: response.data.data[i].cityList[j].cityid,
+                    city_name: response.data.data[i].cityList[j].name,
+                    city_link: response.data.data[i].cityList[j].cityLink,
+                    station: [],
+                  },
+                ],
+              }));
+              setFlag(true);
             }
-            setBusan((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
-          }
-          setFlag(false);
-        } else if (i === 12) {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
             setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+          } else if (i === 12) {
+            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+              setStationlist([]);
+              setFlag(false);
+              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+              }
+              setUlsan((prev: any) => ({
+                ...prev,
+                id: i + 1,
+                name: response.data.data[i].name,
+                link: response.data.data[i].provinceLink,
+                city: [
+                  ...prev.city,
+                  {
+                    city_id: response.data.data[i].cityList[j].cityid,
+                    city_name: response.data.data[i].cityList[j].name,
+                    city_link: response.data.data[i].cityList[j].cityLink,
+                    station: [],
+                  },
+                ],
+              }));
+              setFlag(true);
             }
-            setUlsan((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
-          }
-          setFlag(false);
-        } else if (i === 13) {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
             setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+          } else if (i === 13) {
+            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+              setStationlist([]);
+              setFlag(false);
+              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+              }
+              setGwangju((prev: any) => ({
+                ...prev,
+                id: i + 1,
+                name: response.data.data[i].name,
+                link: response.data.data[i].provinceLink,
+                city: [
+                  ...prev.city,
+                  {
+                    city_id: response.data.data[i].cityList[j].cityid,
+                    city_name: response.data.data[i].cityList[j].name,
+                    city_link: response.data.data[i].cityList[j].cityLink,
+                    station: [],
+                  },
+                ],
+              }));
+              setFlag(true);
             }
-            setGwangju((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
-          }
-          setFlag(false);
-        } else {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
             setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+          } else {
+            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+              setStationlist([]);
+              setFlag(false);
+              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+              }
+              setSejong((prev: any) => ({
+                ...prev,
+                id: i + 1,
+                name: response.data.data[i].name,
+                link: response.data.data[i].provinceLink,
+                city: [
+                  ...prev.city,
+                  {
+                    city_id: response.data.data[i].cityList[j].cityid,
+                    city_name: response.data.data[i].cityList[j].name,
+                    city_link: response.data.data[i].cityList[j].cityLink,
+                    station: [],
+                  },
+                ],
+              }));
+              setFlag(true);
             }
-            setSejong((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
+            setFlag(false);
           }
-          setFlag(false);
         }
-      }
-    })
-      .catch((error)=>{});
+      })
+      .catch((error) => {});
   }, []);
 
   if (index === 0) {
@@ -1054,6 +1056,20 @@ const Toggle = () => {
           className="district"
           onClick={() => {
             setGyeongitoggle(!gyeongitoggle);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
+            setSejongtoggle(false);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
+            setBusantoggle(false);
             !gyeongitoggle && setMap(gyeongi.link);
           }}
           id={gyeongitoggle ? 'selecteddistrict' : 'notselecteddistrict'}
@@ -1064,7 +1080,21 @@ const Toggle = () => {
         <label
           className="district"
           onClick={() => {
+            setGyeongitoggle(false);
             setGangwontoggle(!gangwontoggle);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
+            setSejongtoggle(false);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
+            setBusantoggle(false);
             !gangwontoggle && setMap(gangwon.link);
           }}
           id={gangwontoggle ? 'selecteddistrict' : 'notselecteddistrict'}
@@ -1075,7 +1105,21 @@ const Toggle = () => {
         <label
           className="district"
           onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
             setIncheontoggle(!incheontoggle);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
+            setSejongtoggle(false);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
+            setBusantoggle(false);
             !incheontoggle && setMap(incheon.link);
           }}
           id={incheontoggle ? 'selecteddistrict' : 'notselecteddistrict'}
@@ -1086,7 +1130,21 @@ const Toggle = () => {
         <label
           className="district"
           onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
             setChungbuktoggle(!chungbuktoggle);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
+            setSejongtoggle(false);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
+            setBusantoggle(false);
             !chungbuktoggle && setMap(chungbuk.link);
           }}
           id={chungbuktoggle ? 'selecteddistrict' : 'notselecteddistrict'}
@@ -1097,7 +1155,21 @@ const Toggle = () => {
         <label
           className="district"
           onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
             setChungnamtoggle(!chungnamtoggle);
+            setDaejeontoggle(false);
+            setSejongtoggle(false);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
+            setBusantoggle(false);
             !chungnamtoggle && setMap(chungnam.link);
           }}
           id={chungnamtoggle ? 'selecteddistrict' : 'notselecteddistrict'}
@@ -1108,7 +1180,21 @@ const Toggle = () => {
         <label
           className="district"
           onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
             setDaejeontoggle(!daejeontoggle);
+            setSejongtoggle(false);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
+            setBusantoggle(false);
             !daejeontoggle && setMap(daejeon.link);
           }}
           id={daejeontoggle ? 'selecteddistrict' : 'notselecteddistrict'}
@@ -1119,7 +1205,21 @@ const Toggle = () => {
         <label
           className="district"
           onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
             setSejongtoggle(!sejongtoggle);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
+            setBusantoggle(false);
             !sejongtoggle && setMap(sejong.link);
           }}
           id={sejongtoggle ? 'selecteddistrict' : 'notselecteddistrict'}
@@ -1130,7 +1230,21 @@ const Toggle = () => {
         <label
           className="district"
           onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
+            setSejongtoggle(false);
             setJeonbuktoggle(!jeonbuktoggle);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
+            setBusantoggle(false);
             !jeonbuktoggle && setMap(jeonbuk.link);
           }}
           id={jeonbuktoggle ? 'selecteddistrict' : 'notselecteddistrict'}
@@ -1141,7 +1255,21 @@ const Toggle = () => {
         <label
           className="district"
           onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
+            setSejongtoggle(false);
+            setJeonbuktoggle(false);
             setJeonnamtoggle(!jeonnamtoggle);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
+            setBusantoggle(false);
             !jeonnamtoggle && setMap(jeonnam.link);
           }}
           id={jeonnamtoggle ? 'selecteddistrict' : 'notselecteddistrict'}
@@ -1152,7 +1280,21 @@ const Toggle = () => {
         <label
           className="district"
           onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
+            setSejongtoggle(false);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
             setGwangjutoggle(!gwangjutoggle);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
+            setBusantoggle(false);
             !gwangjutoggle && setMap(gwangju.link);
           }}
           id={gwangjutoggle ? 'selecteddistrict' : 'notselecteddistrict'}
@@ -1163,7 +1305,21 @@ const Toggle = () => {
         <label
           className="district"
           onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
+            setSejongtoggle(false);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
             setGyeonbuktoggle(!gyeongbuktoggle);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
+            setBusantoggle(false);
             !gyeongbuktoggle && setMap(gyeongbuk.link);
           }}
           id={gyeongbuktoggle ? 'selecteddistrict' : 'notselecteddistrict'}
@@ -1174,7 +1330,21 @@ const Toggle = () => {
         <label
           className="district"
           onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
+            setSejongtoggle(false);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
             setGyeonnamtoggle(!gyeongnamtoggle);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
+            setBusantoggle(false);
             !gyeongnamtoggle && setMap(gyeongnam.link);
           }}
           id={gyeongnamtoggle ? 'selecteddistrict' : 'notselecteddistrict'}
@@ -1185,7 +1355,21 @@ const Toggle = () => {
         <label
           className="district"
           onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
+            setSejongtoggle(false);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
             setDaegutoggle(!daegutoggle);
+            setUlsantoggle(false);
+            setBusantoggle(false);
             !daegutoggle && setMap(daegu.link);
           }}
           id={daegutoggle ? 'selecteddistrict' : 'notselecteddistrict'}
@@ -1196,7 +1380,21 @@ const Toggle = () => {
         <label
           className="district"
           onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
+            setSejongtoggle(false);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
             setUlsantoggle(!ulsantoggle);
+            setBusantoggle(false);
             !ulsantoggle && setMap(ulsan.link);
           }}
           id={ulsantoggle ? 'selecteddistrict' : 'notselecteddistrict'}
@@ -1207,6 +1405,20 @@ const Toggle = () => {
         <label
           className="district"
           onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
+            setSejongtoggle(false);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
             setBusantoggle(!busantoggle);
             !busantoggle && setMap(busan.link);
           }}

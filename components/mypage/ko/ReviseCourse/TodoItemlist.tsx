@@ -34,12 +34,10 @@ const TodoItemList: FC<Props> = (props: Props) => {
   const onClick = () => {
     var name = text;
     var myplaceList = props.todos;
-    console.log(myplaceList);
     axios
       .put(`/api/course/update/${memberid}/${props.courseid}`, JSON.stringify({ name, myplaceList }), { headers })
       .then(() => {})
       .catch((error) => {});
-    console.log('여기서 DB로 보내면됨');
   };
 
   return (
