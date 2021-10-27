@@ -21,22 +21,30 @@
 .gotosecondbtn{
   height: 30px;
   border-radius: 10px;
-  background:#f08080;
+  /*background:#f08080;*/
   border:none;
   /*position:relative;*/
-  padding:0 2em;
+  padding:0 1em;
   cursor:pointer;
   transition:800ms ease all;
   outline:none;
 
+
   position: fixed;
   left: 45vw;
-  color: white;
+  /*color: white;*/
   margin-top:1%;
+
+  background-color: white;
+  color:#F08080;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
 }
 .gotosecondbtn:hover{
   background:#fff;
   color:#f08080;
+  border-top:0;
+  border-bottom: 0;
 }
 .gotosecondbtn:before,.gotosecondbtn:after{
   content:'';
@@ -119,8 +127,8 @@ label {
   width: 10em;
 }
 .city_li {
-  /*list-style: circle;*/
-  list-style-image: url('../../src/icon/3.png');
+  list-style: none;
+  /*list-style-image: url('1.png');*/
   padding-bottom: 0.3em;
   color:#3A3945;
 }
