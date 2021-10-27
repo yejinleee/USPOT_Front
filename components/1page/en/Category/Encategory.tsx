@@ -16,7 +16,7 @@ const EnCategory = (props: any) => {
           className={clicked === 'tor' ? 'clicked' : 'button'}
         >
           <img src="src/icon/관광명소.png" style={{ width: '5%' }} />
-          <p style={{ display: 'inline' }}>Attraction</p>
+          <p style={{ display: 'inline' }}>ATTRACTION</p>
         </label>
         <label
           onClick={() => {
@@ -26,7 +26,7 @@ const EnCategory = (props: any) => {
           className={clicked === 'res' ? 'clicked' : 'button'}
         >
           <img src="src/icon/식당.png" style={{ width: '5%' }} />
-          <p style={{ display: 'inline' }}>Restaurant</p>
+          <p style={{ display: 'inline' }}>RESTAURANT</p>
         </label>
         <label
           onClick={() => {
@@ -36,7 +36,7 @@ const EnCategory = (props: any) => {
           className={clicked === 'caf' ? 'clicked' : 'button'}
         >
           <img src="src/icon/카페.png" style={{ width: '5%' }} />
-          <p style={{ display: 'inline' }}>Cafe</p>
+          <p style={{ display: 'inline' }}>CAFE</p>
         </label>
       </div>
     </>

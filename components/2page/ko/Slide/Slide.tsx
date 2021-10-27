@@ -189,7 +189,7 @@ const Slide: FC<Props> = (props: Props) => {
     <>
       <div className="title">
         <h2>
-          {props.selectedcity}의 {props.selectedcategory} 추천장소 TOPxx5{' '}
+          {props.selectedcity}의 {props.selectedcategory} 추천장소 TOP5{' '}
         </h2>
       </div>
       <div className="carousel">

@@ -1,8 +1,9 @@
 .title{
-  border-color: black;
-  border:1px solid;
+  border-color: #3A3945;
+  /*border:1px solid;*/
   margin-top:2em;
   margin-bottom: 2em;
+  text-align: center;
 }
 .carousel {
   margin-bottom: 2em;
@@ -20,15 +21,15 @@
   position: absolute;
   background-color: white;
   border: 2px solid #D7D7D7;
-
 }
+
 
 .carousel_card_item img {
   width: 100%;
   transition: 0.2s;
 }
 .carousel-img {
-  height: 30vw;
+  height: 25vw;
 }
 .carousel-btn {
   display: inline-block;
@@ -56,8 +57,13 @@ button#btn_now {
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
-  padding-top: 6.5rem;
+  padding-top: 3.3rem;
   padding-bottom: 0.5rem;
+}
+@media screen and (max-width: 450px) {
+  .carousel-card-pager-zoomable{
+    padding-top:6.3em;
+  }
 }
 .carousel-card-mask {
   text-align: center;
