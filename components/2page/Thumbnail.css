@@ -1,8 +1,15 @@
 .youtube_each {
-    display: table-cell;
-    padding: 10px;
+  display: table-cell;
+  padding: 10px;
 }
-.youtube_all{
-    overflow: scroll;
-    transform: matrix3d(10);
+.youtube_all {
+  overflow: scroll;
+  transform: matrix3d(10);
+}
+.youtube_each {
+  margin: auto;
+}
+.gomap {
+  display: block;
+  margin: auto;
 }

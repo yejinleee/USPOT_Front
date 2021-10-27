@@ -3,6 +3,7 @@
   /*transform: translate(-0vw);*/
   height: 30vw;
 }
+
 .carousel_card_item {
   /*width : 100vw;*/
   width: 50%;
@@ -10,17 +11,18 @@
   display: inline-table;
   position: absolute;
   background-color: white;
-  border: 2px solid #D7D7D7;
-
+  border: 2px solid #d7d7d7;
 }
 
 .carousel_card_item img {
   width: 100%;
   transition: 0.2s;
 }
+
 .carousel-img {
   height: 30vw;
 }
+
 .carousel-btn {
   display: inline-block;
   /*height: .875rem;*/
@@ -30,15 +32,17 @@
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   cursor: pointer;
-  background-color: #EBF0F3;
-  width:1.3em;
+  background-color: #ebf0f3;
+  width: 1.3em;
 }
+
 button#btn_now {
-  box-shadow: 0 0 5px 0 #B7B7B7;
+  box-shadow: 0 0 5px 0 #b7b7b7;
   width: 2.5rem;
   border-radius: 8px;
-  background: #F4978E;
+  background: #f4978e;
 }
+
 .carousel-card-pager-zoomable {
   position: relative;
   text-align: center;
@@ -50,6 +54,7 @@ button#btn_now {
   padding-top: 6.5rem;
   padding-bottom: 0.5rem;
 }
+
 .carousel-card-mask {
   text-align: center;
   /*background-color: #F08080;*/
@@ -103,77 +108,126 @@ button#btn_now {
   margin-bottom: 8px;
 }
 
-
-
-.intro{
-  width:100%;
-  height:30px;
+.intro {
+  width: 100%;
+  height: 30px;
 }
-.intro h1{
-  font-family:'Oswald', sans-serif;
-  letter-spacing:2px;
-  font-weight:normal;
-  font-size:14px;
-  color:#222;
-  text-align:center;
-  margin-top:10px;
+.intro h1 {
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 2px;
+  font-weight: normal;
+  font-size: 14px;
+  color: #222;
+  text-align: center;
+  margin-top: 10px;
 }
-.intro a{
-  color:#e74c3c;
-  font-weight:bold;
-  letter-spacing:0;
+.intro a {
+  color: #e74c3c;
+  font-weight: bold;
+  letter-spacing: 0;
 }
-.intro img{
-  width:20px;
-  heght:20px;
-  margin-left:5px;
-  margin-right:5px;
-  position:relative;
-  top:5px;
+.intro img {
+  width: 20px;
+  heght: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  position: relative;
+  top: 5px;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
-
-
-
-.button-4{
-  width:140px;
-  height:50px;
-  border:2px solid #F4978E;
-  float:left;
-  text-align:center;
-  cursor:pointer;
-  position:relative;
-  box-sizing:border-box;
-  overflow:hidden;
-  margin:0 0 40px 50px;
-}
-.button-4 a{
-  font-family:arial;
-  font-size:16px;
-  color:#F4978E;
-  text-decoration:none;
-  line-height:50px;
-  transition:all .5s ease;
-  z-index:2;
-  position:relative;
-}
-.eff-4{
-  width:140px;
-  height:50px;
-  left:-140px;
-  background:#F4978E;
-  position:absolute;
-  transition:all .5s ease;
-  z-index:1;
-}
-.button-4:hover .eff-4{
-  left:0;
-}
-.button-4:hover a{
-  color:#fff;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
+.button-4 {
+  width: 140px;
+  height: 50px;
+  border: 2px solid #f4978e;
+  float: left;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0 0 40px 50px;
+}
+.button-4 a {
+  font-family: arial;
+  font-size: 16px;
+  color: #f4978e;
+  text-decoration: none;
+  line-height: 50px;
+  transition: all 0.5s ease;
+  z-index: 2;
+  position: relative;
+}
+.eff-4 {
+  width: 140px;
+  height: 50px;
+  left: -140px;
+  background: #f4978e;
+  position: absolute;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+.button-4:hover .eff-4 {
+  left: 0;
+}
+.button-4:hover a {
+  color: #fff;
+}
+
+.Test {
+  margin: 0 auto;
+  margin-top: 1px;
+  margin-bottom: 10px;
+}
+
+.gotothirdbtn,
+.gotothirdbtn::after {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.gotothirdbtn {
+  background: none;
+  border: 1px solid #222;
+  border-radius: 5px;
+  color: #000000;
+  display: block;
+  font-weight: bold;
+  margin: auto;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.gotothirdbtn::before,
+.gotothirdbtn::after {
+  background: #f4978e;
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+.gotothirdbtn:hover {
+  color: #000000;
+}
+.gotothirdbtn::after {
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 0;
+}
+
+.gotothirdbtn:hover:after {
+  width: 100%;
+}
 
 /*이거 없어도되지않나아..?*/
 /*h1{*/

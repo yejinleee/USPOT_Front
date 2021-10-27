@@ -161,7 +161,7 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
                   setId(datas);
                 }}
               >
-                이영상에나온 장소들 지도에서 보기
+                <div className="gomap">이영상에나온 장소들 지도에서 보기</div>
               </button>
             </div>
           ))}
