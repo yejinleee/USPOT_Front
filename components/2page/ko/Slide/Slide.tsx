@@ -185,6 +185,9 @@ const Slide: FC<Props> = (props: Props) => {
 
   return (
     <>
+      <h2 style={{borderColor:'black', border:'1px solid',}}>
+        {selectedcity}의 {selectedcategory} 추천장소 TOP5{' '}
+      </h2>
       <div className="carousel">
         <div className="carousel_card">
           <div className="top5_carousel_container">
