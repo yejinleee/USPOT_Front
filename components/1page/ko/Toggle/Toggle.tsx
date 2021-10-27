@@ -670,15 +670,13 @@ const Toggle = () => {
           setSelectedcity(gyeongi.city[index].city_name);
         }}
       >
-        <li className="city_li"
-            style={map === gyeongi.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
-        >
+        <li className="city_li" style={map === gyeongi.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
           {gyeongi.city[index].city_name}
         </li>
         {map === gyeongi.city[index].city_link && (
           <ul className="station_ul">
             {gyeongi.city[index].station.map((li: any) => (
-              <li style={{ color: '#CB000E' }}>{li}</li>
+              <li className="station_li">{li}</li>
             ))}
           </ul>
         )}
@@ -695,15 +693,13 @@ const Toggle = () => {
         setSelectedcity(gangwon.city[index].city_name);
       }}
     >
-      <li className="city_li"
-        style={map === gangwon.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
-      >
+      <li className="city_li" style={map === gangwon.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
         {gangwon.city[index].city_name}
       </li>
       {map === gangwon.city[index].city_link && (
         <ul className="station_ul">
           {gangwon.city[index].station.map((li: any) => (
-            <li style={{ color: '#CB000E' }}>{li}</li>
+            <li className="station_li">{li}</li>
           ))}
         </ul>
       )}
@@ -719,15 +715,13 @@ const Toggle = () => {
         setSelectedcity(chungnam.city[index].city_name);
       }}
     >
-      <li className="city_li"
-        style={map === chungnam.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
-      >
+      <li className="city_li" style={map === chungnam.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
         {chungnam.city[index].city_name}
       </li>
       {map === chungnam.city[index].city_link && (
         <ul className="station_ul">
           {chungnam.city[index].station.map((li: any) => (
-            <li style={{ color: '#CB000E' }}>{li}</li>
+            <li className="station_li">{li}</li>
           ))}
         </ul>
       )}
@@ -743,15 +737,13 @@ const Toggle = () => {
         setSelectedcity(chungbuk.city[index].city_name);
       }}
     >
-      <li className="city_li"
-        style={map === chungbuk.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
-      >
+      <li className="city_li" style={map === chungbuk.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
         {chungbuk.city[index].city_name}
       </li>
       {map === chungbuk.city[index].city_link && (
         <ul className="station_ul">
           {chungbuk.city[index].station.map((li: any) => (
-            <li style={{ color: '#CB000E' }}>{li}</li>
+            <li className="station_li">{li}</li>
           ))}
         </ul>
       )}
@@ -767,15 +759,13 @@ const Toggle = () => {
         setSelectedcity(jeonnam.city[index].city_name);
       }}
     >
-      <li className="city_li"
-        style={map === jeonnam.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
-      >
+      <li className="city_li" style={map === jeonnam.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
         {jeonnam.city[index].city_name}
       </li>
       {map === jeonnam.city[index].city_link && (
         <ul className="station_ul">
           {jeonnam.city[index].station.map((li: any) => (
-            <li style={{ color: '#CB000E' }}>{li}</li>
+            <li className="station_li">{li}</li>
           ))}
         </ul>
       )}
@@ -791,15 +781,13 @@ const Toggle = () => {
         setSelectedcity(jeonbuk.city[index].city_name);
       }}
     >
-      <li className="city_li"
-        style={map === jeonbuk.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
-      >
+      <li className="city_li" style={map === jeonbuk.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
         {jeonbuk.city[index].city_name}
       </li>
       {map === jeonbuk.city[index].city_link && (
         <ul className="station_ul">
           {jeonbuk.city[index].station.map((li: any) => (
-            <li style={{ color: '#CB000E' }}>{li}</li>
+            <li className="station_li">{li}</li>
           ))}
         </ul>
       )}
@@ -815,15 +803,13 @@ const Toggle = () => {
         setSelectedcity(gyeongnam.city[index].city_name);
       }}
     >
-      <li className="city_li"
-        style={map === gyeongnam.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
-      >
+      <li className="city_li" style={map === gyeongnam.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
         {gyeongnam.city[index].city_name}
       </li>
       {map === gyeongnam.city[index].city_link && (
         <ul className="station_ul">
           {gyeongnam.city[index].station.map((li: any) => (
-            <li style={{ color: '#CB000E' }}>{li}</li>
+            <li className="station_li">{li}</li>
           ))}
         </ul>
       )}
@@ -839,15 +825,13 @@ const Toggle = () => {
         setSelectedcity(gyeongbuk.city[index].city_name);
       }}
     >
-      <li className="city_li"
-        style={map === gyeongbuk.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
-      >
+      <li className="city_li" style={map === gyeongbuk.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
         {gyeongbuk.city[index].city_name}
       </li>
       {map === gyeongbuk.city[index].city_link && (
         <ul className="station_ul">
           {gyeongbuk.city[index].station.map((li: any) => (
-            <li style={{ color: '#CB000E' }}>{li}</li>
+            <li className="station_li">{li}</li>
           ))}
         </ul>
       )}
@@ -863,15 +847,13 @@ const Toggle = () => {
         setSelectedcity(incheon.city[index].city_name);
       }}
     >
-      <li className="city_li"
-        style={map === incheon.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
-      >
+      <li className="city_li" style={map === incheon.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
         {incheon.city[index].city_name}
       </li>
       {map === incheon.city[index].city_link && (
         <ul className="station_ul">
           {incheon.city[index].station.map((li: any) => (
-            <li style={{ color: '#CB000E' }}>{li}</li>
+            <li className="station_li">{li}</li>
           ))}
         </ul>
       )}
@@ -887,15 +869,13 @@ const Toggle = () => {
         setSelectedcity(daejeon.city[index].city_name);
       }}
     >
-      <li className="city_li"
-        style={map === daejeon.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
-      >
+      <li className="city_li" style={map === daejeon.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
         {daejeon.city[index].city_name}
       </li>
       {map === daejeon.city[index].city_link && (
         <ul className="station_ul">
           {daejeon.city[index].station.map((li: any) => (
-            <li style={{ color: '#CB000E' }}>{li}</li>
+            <li className="station_li">{li}</li>
           ))}
         </ul>
       )}
@@ -911,15 +891,13 @@ const Toggle = () => {
         setSelectedcity(daegu.city[index].city_name);
       }}
     >
-      <li className="city_li"
-        style={map === daegu.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
-      >
+      <li className="city_li" style={map === daegu.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
         {daegu.city[index].city_name}
       </li>
       {map === daegu.city[index].city_link && (
         <ul className="station_ul">
           {daegu.city[index].station.map((li: any) => (
-            <li style={{ color: '#CB000E' }}>{li}</li>
+            <li className="station_li">{li}</li>
           ))}
         </ul>
       )}
@@ -935,15 +913,13 @@ const Toggle = () => {
         setSelectedcity(busan.city[index].city_name);
       }}
     >
-      <li className="city_li"
-        style={map === busan.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
-      >
+      <li className="city_li" style={map === busan.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
         {busan.city[index].city_name}
       </li>
       {map === busan.city[index].city_link && (
         <ul className="station_ul">
           {busan.city[index].station.map((li: any) => (
-            <li style={{ color: '#CB000E' }}>{li}</li>
+            <li className="station_li">{li}</li>
           ))}
         </ul>
       )}
@@ -959,15 +935,13 @@ const Toggle = () => {
         setSelectedcity(ulsan.city[index].city_name);
       }}
     >
-      <li className="city_li"
-          style={map === ulsan.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
-      >
+      <li className="city_li" style={map === ulsan.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
         {ulsan.city[index].city_name}
       </li>
       {map === ulsan.city[index].city_link && (
         <ul className="station_ul">
           {ulsan.city[index].station.map((li: any) => (
-            <li style={{ color: '#F08080' }}>{li}</li>
+            <li className="station_li">{li}</li>
           ))}
         </ul>
       )}
@@ -983,15 +957,13 @@ const Toggle = () => {
         setSelectedcity(gwangju.city[index].city_name);
       }}
     >
-      <li className="city_li"
-          style={map === gwangju.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
-      >
+      <li className="city_li" style={map === gwangju.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
         {gwangju.city[index].city_name}
       </li>
       {map === gwangju.city[index].city_link && (
         <ul className="station_ul">
           {gwangju.city[index].station.map((li: any) => (
-            <li style={{ color: '#F08080' }}>{li}</li>
+            <li className="station_li">{li}</li>
           ))}
         </ul>
       )}
@@ -1007,15 +979,13 @@ const Toggle = () => {
         setSelectedcity(sejong.city[index].city_name);
       }}
     >
-      <li className="city_li"
-          style={map === sejong.city[index].city_link ? {color:'CB000E', fontSize:'1.2em',} : { color: '#F08080' }}
-      >
+      <li className="city_li" style={map === sejong.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
         {sejong.city[index].city_name}
       </li>
       {map === sejong.city[index].city_link && (
         <ul className="station_ul">
           {sejong.city[index].station.map((li: any) => (
-            <li style={{ color: '#F08080' }}>{li}</li>
+            <li className="station_li">{li}</li>
           ))}
         </ul>
       )}
@@ -1079,15 +1049,16 @@ const Toggle = () => {
           </button>
         )}
         </span>
+
         <label
           className="district"
           onClick={() => {
             setGyeongitoggle(!gyeongitoggle);
             !gyeongitoggle && setMap(gyeongi.link);
           }}
-          style={gyeongitoggle ? { background: '#F08080' } : { background: '' }}
+          id={gyeongitoggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={gyeongitoggle ? { color: 'white' } : { color: '#D85959' }}>{gyeongi.name}</span>
+          <span style={gyeongitoggle ? { color: '#3A3945' } : { color: '#3A3945' }}>{gyeongi.name}</span>
         </label>
         <div>{gyeongitoggle && gyeongi_list}</div>
         <label
@@ -1096,9 +1067,9 @@ const Toggle = () => {
             setGangwontoggle(!gangwontoggle);
             !gangwontoggle && setMap(gangwon.link);
           }}
-          style={gangwontoggle ? { background: '#F08080' } : { background: '' }}
+          id={gangwontoggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={gangwontoggle ? { color: 'white' } : { color: '#D85959' }}>{gangwon.name}</span>
+          <span className="district_name">{gangwon.name}</span>
         </label>
         <div>{gangwontoggle && gangwon_list}</div>
         <label
@@ -1107,9 +1078,9 @@ const Toggle = () => {
             setIncheontoggle(!incheontoggle);
             !incheontoggle && setMap(incheon.link);
           }}
-          style={incheontoggle ? { background: '#F08080' } : { background: '' }}
+          id={incheontoggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={incheontoggle ? { color: 'white' } : { color: '#D85959' }}>{incheon.name}</span>
+          <span className="district_name">{incheon.name}</span>
         </label>
         <div>{incheontoggle && incheon_list}</div>
         <label
@@ -1118,9 +1089,9 @@ const Toggle = () => {
             setChungbuktoggle(!chungbuktoggle);
             !chungbuktoggle && setMap(chungbuk.link);
           }}
-          style={chungbuktoggle ? { background: '#F08080' } : { background: '' }}
+          id={chungbuktoggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={chungbuktoggle ? { color: 'white' } : { color: '#D85959' }}>{chungbuk.name}</span>
+          <span className="district_name">{chungbuk.name}</span>
         </label>
         <div>{chungbuktoggle && chungbuk_list}</div>
         <label
@@ -1129,9 +1100,9 @@ const Toggle = () => {
             setChungnamtoggle(!chungnamtoggle);
             !chungnamtoggle && setMap(chungnam.link);
           }}
-          style={chungnamtoggle ? { background: '#F08080' } : { background: '' }}
+          id={chungnamtoggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={chungnamtoggle ? { color: 'white' } : { color: '#D85959' }}>{chungnam.name}</span>
+          <span className="district_name">{chungnam.name}</span>
         </label>
         <div>{chungnamtoggle && chungnam_list}</div>
         <label
@@ -1140,9 +1111,9 @@ const Toggle = () => {
             setDaejeontoggle(!daejeontoggle);
             !daejeontoggle && setMap(daejeon.link);
           }}
-          style={daejeontoggle ? { background: '#F08080' } : { background: '' }}
+          id={daejeontoggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={daejeontoggle ? { color: 'white' } : { color: '#D85959' }}>{daejeon.name}</span>
+          <span className="district_name">{daejeon.name}</span>
         </label>
         <div>{daejeontoggle && daejeon_list}</div>
         <label
@@ -1151,9 +1122,9 @@ const Toggle = () => {
             setSejongtoggle(!sejongtoggle);
             !sejongtoggle && setMap(sejong.link);
           }}
-          style={sejongtoggle ? { background: '#F08080' } : { background: '' }}
+          id={sejongtoggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={sejongtoggle ? { color: 'white' } : { color: '#D85959' }}>{sejong.name}</span>
+          <span className="district_name">{sejong.name}</span>
         </label>
         <div>{sejongtoggle && sejong_list}</div>
         <label
@@ -1162,9 +1133,9 @@ const Toggle = () => {
             setJeonbuktoggle(!jeonbuktoggle);
             !jeonbuktoggle && setMap(jeonbuk.link);
           }}
-          style={jeonbuktoggle ? { background: '#F08080' } : { background: '' }}
+          id={jeonbuktoggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={jeonbuktoggle ? { color: 'white' } : { color: '#D85959' }}>{jeonbuk.name}</span>
+          <span className="district_name">{jeonbuk.name}</span>
         </label>
         <div>{jeonbuktoggle && jeonbuk_list}</div>
         <label
@@ -1173,9 +1144,9 @@ const Toggle = () => {
             setJeonnamtoggle(!jeonnamtoggle);
             !jeonnamtoggle && setMap(jeonnam.link);
           }}
-          style={jeonnamtoggle ? { background: '#F08080' } : { background: '' }}
+          id={jeonnamtoggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={jeonnamtoggle ? { color: 'white' } : { color: '#D85959' }}>{jeonnam.name}</span>
+          <span className="district_name">{jeonnam.name}</span>
         </label>
         <div>{jeonnamtoggle && jeonnam_list}</div>
         <label
@@ -1184,9 +1155,9 @@ const Toggle = () => {
             setGwangjutoggle(!gwangjutoggle);
             !gwangjutoggle && setMap(gwangju.link);
           }}
-          style={gwangjutoggle ? { background: '#F08080' } : { background: '' }}
+          id={gwangjutoggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={gwangjutoggle ? { color: 'white' } : { color: '#D85959' }}>{gwangju.name}</span>
+          <span className="district_name">{gwangju.name}</span>
         </label>
         <div>{gwangjutoggle && gwangju_list}</div>
         <label
@@ -1195,9 +1166,9 @@ const Toggle = () => {
             setGyeonbuktoggle(!gyeongbuktoggle);
             !gyeongbuktoggle && setMap(gyeongbuk.link);
           }}
-          style={gyeongbuktoggle ? { background: '#F08080' } : { background: '' }}
+          id={gyeongbuktoggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={gyeongbuktoggle ? { color: 'white' } : { color: '#D85959' }}>{gyeongbuk.name}</span>
+          <span className="district_name">{gyeongbuk.name}</span>
         </label>
         <div>{gyeongbuktoggle && gyeongbuk_list}</div>
         <label
@@ -1206,9 +1177,9 @@ const Toggle = () => {
             setGyeonnamtoggle(!gyeongnamtoggle);
             !gyeongnamtoggle && setMap(gyeongnam.link);
           }}
-          style={gyeongnamtoggle ? { background: '#F08080' } : { background: '' }}
+          id={gyeongnamtoggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={gyeongnamtoggle ? { color: 'white' } : { color: '#D85959' }}>{gyeongnam.name}</span>
+          <span className="district_name">{gyeongnam.name}</span>
         </label>
         <div>{gyeongnamtoggle && gyeongnam_list}</div>
         <label
@@ -1217,9 +1188,9 @@ const Toggle = () => {
             setDaegutoggle(!daegutoggle);
             !daegutoggle && setMap(daegu.link);
           }}
-          style={daegutoggle ? { background: '#F08080' } : { background: '' }}
+          id={daegutoggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={daegutoggle ? { color: 'white' } : { color: '#D85959' }}>{daegu.name}</span>
+          <span className="district_name">{daegu.name}</span>
         </label>
         <div>{daegutoggle && daegu_list}</div>
         <label
@@ -1228,9 +1199,9 @@ const Toggle = () => {
             setUlsantoggle(!ulsantoggle);
             !ulsantoggle && setMap(ulsan.link);
           }}
-          style={ulsantoggle ? { background: '#F08080' } : { background: '' }}
+          id={ulsantoggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={ulsantoggle ? { color: 'white' } : { color: '#D85959' }}>{ulsan.name}</span>
+          <span className="district_name">{ulsan.name}</span>
         </label>
         <div>{ulsantoggle && ulsan_list}</div>
         <label
@@ -1239,9 +1210,9 @@ const Toggle = () => {
             setBusantoggle(!busantoggle);
             !busantoggle && setMap(busan.link);
           }}
-          style={busantoggle ? { background: '#F08080' } : { background: '' }}
+          id={busantoggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={busantoggle ? { color: 'white' } : { color: '#D85959' }}>{busan.name}</span>
+          <span className="district_name">{busan.name}</span>
         </label>
         <div>{busantoggle && busan_list}</div>
       </div>

@@ -57,12 +57,12 @@ const LogInHeader = () => {
             </li>
             <div id="btn">
               <li>
-                <button id="ko" onClick={onClickKo} className={language[1]==='KO'? "selectedlanguage" : "notselectedlanguage"}>
+                <button className="language" onClick={onClickKo} id={language[1]==='KO'? "selectedlanguage" : "notselectedlanguage"}>
                   KOR
                 </button>
               </li>
               <li>
-                <button id="en" onClick={onClickEn} className={language[1]==='EN'? "selectedlanguage" : "notselectedlanguage"}>
+                <button className="language" onClick={onClickEn} id={language[1]==='EN'? "selectedlanguage" : "notselectedlanguage"}>
                   ENG
                 </button>
               </li>

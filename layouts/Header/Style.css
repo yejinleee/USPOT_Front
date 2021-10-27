@@ -89,7 +89,8 @@ button#logout {
   border: 2px solid #f8ad9d;
   outline: 0;
   border-radius: 5px;
-  cursor:pointer
+  cursor:pointer;
+  padding: 0.3em;
 }
 .language:hover{
   color: white;

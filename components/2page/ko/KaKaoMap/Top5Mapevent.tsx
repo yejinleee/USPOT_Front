@@ -90,8 +90,7 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
   return (
     <>
       <div style={{ position: 'relative' }}>
-        <div id="star"></div>
-        <div id="top5map" style={{ width: '50%', height: '50%', display: 'inline-block' }}></div>
+        <div id="top5map" style={{ width: '320px', height: '50%', display: 'inline-block' }}></div>
         <span style={{ position: 'absolute', width: '40%' }}>
           <Liketop5
             top5name={props.top5name}

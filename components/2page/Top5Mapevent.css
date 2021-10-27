@@ -71,3 +71,9 @@ ul {
   border-radius: 4px;
   padding: 0px 10px;
 }
+
+#top5map{
+  width: 50%;
+  height: 50%;
+  display: inline-block;
+}
