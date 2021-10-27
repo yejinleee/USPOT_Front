@@ -2,19 +2,21 @@
 import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import '../../Top5Mapevent.css';
-import Liketop5 from '@components/2page/ko/Like/Liketop5';
 import { History, LocationState } from 'history';
+import EnLiketop5 from '@components/2page/en/Like/EnLiketop5';
+import Liketop5 from '@components/2page/ko/Like/Liketop5';
+import EnContainer from '@components/1page/en/Container/EnContainer';
 
 interface Props {
   top5data: any;
   top5name: any;
   imageSrc: any;
   top5placeid: any;
-  placeurl: any;
+  placeurl:any;
   history: History<LocationState>;
 }
 
-const Top5Mapevent: FC<Props> = (props: Props) => {
+const EnTop5MapeventRsp: FC<Props> = (props: Props) => {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
@@ -28,7 +30,7 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
       long.current += el.location_x;
     });
 
-    let container = document.getElementById('top5map');
+    let container = document.getElementById('top5map_rsp');
     let options = {
       center: new kakao.maps.LatLng(latt.current / props.top5data.length, long.current / props.top5data.length),
       level: 10,
@@ -89,30 +91,17 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
 
   return (
     <>
-      {/*<div style={{ position: 'relative' }}>*/}
-        <div id="top5map" style={{ width: '50%', height: '50%'}}></div>
-        {/*<div id="top5map_responsive" style={{ width: '100%', height: '50%' }}></div>*/}
-
-        <span className="liketop5_span" style={{ position: 'absolute', width: '40%' }}>
-          <Liketop5
-            top5name={props.top5name}
-            top5placeid={props.top5placeid}
-            history={props.history}
-            placeurl={props.placeurl}
-          />
-        </span>
-
-      {/*</div>*/}
-      {/*<div className="liketop5_div">*/}
-      {/*  <Liketop5*/}
-      {/*    top5name={props.top5name}*/}
-      {/*    top5placeid={props.top5placeid}*/}
-      {/*    history={props.history}*/}
-      {/*    placeurl={props.placeurl}*/}
-      {/*  />*/}
-      {/*</div>*/}
+      <div id="top5map_rsp" style={{ width: '100%', height: '50%' }}></div>
+      <div className="liketop5_div">
+        <EnLiketop5
+          top5name={props.top5name}
+          top5placeid={props.top5placeid}
+          history={props.history}
+          placeurl={props.placeurl}
+        />
+      </div>
     </>
   );
 };
 
-export default Top5Mapevent;
+export default EnTop5MapeventRsp;

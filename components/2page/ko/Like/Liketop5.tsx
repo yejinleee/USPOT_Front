@@ -207,7 +207,7 @@ const Liketop5: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div style={{ position: 'relative' }}>
+      <div className="liketop5_div">
         <span>
           <ul id="top5">
             <li className="ticon_li custom-control">

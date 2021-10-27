@@ -60,7 +60,7 @@ button#btn_now {
   padding-top: 3.3rem;
   padding-bottom: 0.5rem;
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 834px) {
   .carousel-card-pager-zoomable{
     padding-top:6.3em;
   }
@@ -73,13 +73,13 @@ button#btn_now {
 }
 
 .leftback {
-  transform: translateX(0%) translateY(-2vh) scale(0.73);
+  transform: translateX(-4vw) translateY(1vh) scale(0.73);
   opacity: 0.2;
   z-index: -3;
   transition: 0.5s;
 }
 .rightback {
-  transform: translateX(100%) translateY(-2vh) scale(0.73);
+  transform: translateX(39vw) translateY(1vh) scale(0.73);
   opacity: 0.2;
   z-index: -3;
   transition: 0.5s;
@@ -90,13 +90,13 @@ button#btn_now {
   z-index: -1;
 }
 .left {
-  transform: translateX(20%) scale(0.83);
+  transform: translateX(5vw) scale(0.83);
   opacity: 0.75;
   z-index: -2;
   transition: 0.5s;
 }
 .right {
-  transform: translateX(80%) scale(0.83);
+  transform: translateX(30vw) scale(0.83);
   opacity: 0.75;
   z-index: -2;
   transition: 0.5s;
@@ -114,8 +114,8 @@ button#btn_now {
   /*background-color: #d9dfe4;*/
 }
 .carousel-card-mask p {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 
@@ -188,6 +188,32 @@ button#btn_now {
 .button-4:hover a{
   color:#fff;
 }
+.top5mapevent{
+  margin: auto;
+  display: block;
+}
+.top5mapevent_responsive{
+  display: none;
+}
+@media screen and (max-width: 675px) {
+  .top5mapevent{
+    display: none;
+  }
+  .top5mapevent_responsive{
+    position: relative;
+    width: 90%;
+    height: 70vh;
+    margin: auto;
+    display: block;
+  }
+  /*#top5map_responsive{*/
+  /*  display: inline-block;*/
+  /*}*/
+  /*#top5map{*/
+  /*  display: none;*/
+  /*}*/
+}
+
 
 
 /*이거 없어도되지않나아..?*/

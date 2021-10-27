@@ -4,6 +4,7 @@ import '../../Slide.css';
 import Thumbnail from '@components/2page/ko/Thumbnail/Thumbnail';
 import axios from 'axios';
 import Top5Mapevent from '@components/2page/ko/KaKaoMap/Top5Mapevent';
+import Top5MapeventResponsive from '@components/2page/ko/KaKaoMap/Top5MapeventResponsive';
 import { imageSearch } from './image';
 import { History, LocationState } from 'history';
 
@@ -199,9 +200,9 @@ const Slide: FC<Props> = (props: Props) => {
               <div className="carousel-card-mask">
                 <img src={pic1} alt="pic" className="carousel-img" />
                 <span>
-                  <p>{top5name[0]}</p>
-                  <p>{top5phone[0]}</p>
-                  <p>{top5add[0]}</p>
+                  <p className="top5name_p">{top5name[0]}</p>
+                  <p className="top5phone_p">{top5phone[0]}</p>
+                  <p className="top5add_p">{top5add[0]}</p>
                 </span>
               </div>
             </div>
@@ -209,9 +210,9 @@ const Slide: FC<Props> = (props: Props) => {
               <div className="carousel-card-mask">
                 <img src={pic2} alt="pic" className="carousel-img" />
                 <span>
-                  <p>{top5name[1]}</p>
-                  <p>{top5phone[1]}</p>
-                  <p>{top5add[1]}</p>
+                  <p className="top5name_p">{top5name[1]}</p>
+                  <p className="top5phone_p">{top5phone[1]}</p>
+                  <p className="top5add_p">{top5add[1]}</p>
                 </span>
               </div>
             </div>
@@ -219,9 +220,9 @@ const Slide: FC<Props> = (props: Props) => {
               <div className="carousel-card-mask">
                 <img src={pic3} alt="pic" className="carousel-img" />
                 <span>
-                  <p>{top5name[2]}</p>
-                  <p>{top5phone[2]}</p>
-                  <p>{top5add[2]}</p>
+                  <p className="top5name_p">{top5name[2]}</p>
+                  <p className="top5phone_p">{top5phone[2]}</p>
+                  <p className="top5add_p">{top5add[2]}</p>
                 </span>
               </div>
             </div>
@@ -229,9 +230,9 @@ const Slide: FC<Props> = (props: Props) => {
               <div className="carousel-card-mask">
                 <img src={pic4} alt="pic" className="carousel-img" />
                 <span>
-                  <p>{top5name[3]}</p>
-                  <p>{top5phone[3]}</p>
-                  <p>{top5add[3]}</p>
+                  <p className="top5name_p">{top5name[3]}</p>
+                  <p className="top5phone_p">{top5phone[3]}</p>
+                  <p className="top5add_p">{top5add[3]}</p>
                 </span>
               </div>
             </div>
@@ -239,9 +240,9 @@ const Slide: FC<Props> = (props: Props) => {
               <div className="carousel-card-mask">
                 <img src={pic5} alt="pic" className="carousel-img" />
                 <span>
-                  <p>{top5name[4]}</p>
-                  <p>{top5phone[4]}</p>
-                  <p>{top5add[4]}</p>
+                  <p className="top5name_p">{top5name[4]}</p>
+                  <p className="top5phone_p">{top5phone[4]}</p>
+                  <p className="top5add_p">{top5add[4]}</p>
                 </span>
               </div>
             </div>
@@ -358,14 +359,34 @@ const Slide: FC<Props> = (props: Props) => {
       {/*  /!*</button>*!/*/}
       {/*</div>*/}
 
-      <Top5Mapevent
-        top5data={top5data}
-        imageSrc={imageSrc}
-        top5name={top5name}
-        top5placeid={top5placeid}
-        placeurl={placeurl}
-        history={props.history}
-      />
+      <div className="top5mapevent" style={{ position: 'relative', width:'100%' }}>
+        <Top5Mapevent
+            top5data={top5data}
+            imageSrc={imageSrc}
+            top5name={top5name}
+            top5placeid={top5placeid}
+            placeurl={placeurl}
+            history={props.history}
+          />
+      </div>
+      <div className="top5mapevent_responsive" style={{ position: 'relative' , width:'100%'}}>
+        <Top5MapeventResponsive
+          top5data={top5data}
+          imageSrc={imageSrc}
+          top5name={top5name}
+          top5placeid={top5placeid}
+          placeurl={placeurl}
+          history={props.history}
+        />
+      </div>
+      {/*<Top5Mapevent*/}
+      {/*  top5data={top5data}*/}
+      {/*  imageSrc={imageSrc}*/}
+      {/*  top5name={top5name}*/}
+      {/*  top5placeid={top5placeid}*/}
+      {/*  placeurl={placeurl}*/}
+      {/*  history={props.history}*/}
+      {/*/>*/}
       <Thumbnail
         selectedcity={props.selectedcity}
         selectedcategory={props.selectedcategory}

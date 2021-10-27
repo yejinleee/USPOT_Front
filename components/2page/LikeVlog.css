@@ -37,6 +37,7 @@
   padding-right: 0.5em;
   font-size: 13px;
   cursor:pointer;
+  padding-left: 20;
 }
 .likeplace:hover{
   color:black;
