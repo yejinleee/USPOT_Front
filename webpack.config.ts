@@ -79,12 +79,12 @@ const config: webpack.Configuration = {
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: 'app.js',
     publicPath: '/dist/',
   },
   devServer: {
     historyApiFallback: true, // react router
-    port: 8090,
+    port: 80,
     publicPath: '/dist/',
     proxy: {
       '/api/': {
