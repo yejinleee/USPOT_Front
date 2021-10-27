@@ -33,13 +33,13 @@ const LogoutHeader = () => {
             <li>
               <Link to="/" style={{ textDecoration: 'none', color: '#000000' }}>
                 <img className="header_category" src="/src/icon/home.png" alt="home" width="30" height="30" />
-                HOME
+                <div className="header_text">HOME</div>
               </Link>
             </li>
             <li>
               <Link to="/mypage" style={{ textDecoration: 'none', color: '#000000' }}>
                 <img className="header_category" src="/src/icon/mypage.png" alt="mypage" width="30" height="30" />
-                MYPAGE
+                <div className="header_text">MYPAGE</div>
               </Link>
             </li>
             <li>
@@ -52,17 +52,25 @@ const LogoutHeader = () => {
                 }}
               >
                 <img className="header_category" src="/src/icon/mypage.png" alt="logout" width="30" height="30" />
-                LOGOUT
+                <div className="header_text">LOGOUT</div>
               </button>
             </li>
             <div id="btn">
               <li>
-                <button className="language" onClick={onClickKo} id={language[1]==='KO'? "selectedlanguage" : "notselectedlanguage"}>
+                <button
+                  className="language"
+                  onClick={onClickKo}
+                  id={language[1] === 'KO' ? 'selectedlanguage' : 'notselectedlanguage'}
+                >
                   KOR
                 </button>
               </li>
               <li>
-                <button className="language" onClick={onClickEn} id={language[1]==='EN'? "selectedlanguage" : "notselectedlanguage"}>
+                <button
+                  className="language"
+                  onClick={onClickEn}
+                  id={language[1] === 'EN' ? 'selectedlanguage' : 'notselectedlanguage'}
+                >
                   ENG
                 </button>
               </li>

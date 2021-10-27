@@ -1,6 +1,7 @@
 p {
   font-size: 15px;
   line-height: 100%;
+  padding: 2px;
 }
 
 .Searchinput input {
@@ -22,7 +23,7 @@ p {
   }
 }
 
-.contry {
+.Searchinput input::click .contry {
   padding-bottom: 0.6em;
 }
 
