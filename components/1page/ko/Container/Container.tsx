@@ -289,7 +289,6 @@ const Container = (props: any) => {
           setSearchTerm(event.target.value);
         }}
       />
-      {/* <img className="simg" src="src/icon/search.png" /> */}
       <div className="container">
         {JSONDATA.filter((val: any) => {
           if (searchTerm == '') {

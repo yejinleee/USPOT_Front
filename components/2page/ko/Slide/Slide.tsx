@@ -187,6 +187,11 @@ const Slide: FC<Props> = (props: Props) => {
 
   return (
     <>
+      <div className="title">
+        <h2>
+          {props.selectedcity}의 {props.selectedcategory} 추천장소 TOPxx5{' '}
+        </h2>
+      </div>
       <div className="carousel">
         <div className="carousel_card">
           <div className="top5_carousel_container">

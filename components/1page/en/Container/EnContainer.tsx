@@ -281,7 +281,7 @@ const EnContainer = (props: any) => {
   };
 
   return (
-    <div className="App">
+    <div className="Searchinput">
       <input
         type="text"
         placeholder="Search..."
