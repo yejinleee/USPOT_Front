@@ -1,12 +1,26 @@
 @font-face {
-  font-family: 'InfinitySans-RegularA1';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff') format('woff');
-  font-weight: normal;
+  font-family: 'Godo';
   font-style: normal;
+  font-weight: 300;
+  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff2') format('woff2'),
+    url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff') format('woff');
 }
 * {
-  font-family: 'InfinitySans-RegularA1' !important;
+  font-family: 'Godo' !important;
+  letter-spacing: 1px !important;
 }
+/* @font-face {
+  font-family: 'NanumBarunGothic';
+  font-style: normal;
+  font-weight: 700;
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'),
+    url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'),
+    url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+}
+.nanumbarungothic * {
+  font-family: 'NanumBarunGothic', sans-serif;
+} */
 .map {
   /* position: absolute; */
   position: -webkit-sticky;
@@ -18,83 +32,84 @@
   right: 15vw;
   /* left: 100px; */
 }
-.gotosecondbtn{
+.gotosecondbtn {
   height: 30px;
   /*border-radius: 10px;*/
-  border:none;
+  border: none;
   /*position:relative;*/
-  padding:0 1em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
-
+  padding: 0 1em;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: none;
 
   position: fixed;
   left: 45vw;
   /*color: white;*/
-  margin-top:1%;
+  margin-top: 1%;
 
   background-color: white;
-  color:#F08080;
+  color: #f08080;
   border-top: 1px solid;
   border-bottom: 1px solid;
 }
-.gotosecondbtn:hover{
-  background:#fff;
-  color:#f08080;
-  border-top:0;
+.gotosecondbtn:hover {
+  background: #fff;
+  color: #f08080;
+  border-top: 0;
   border-bottom: 0;
 }
-.gotosecondbtn:before,.gotosecondbtn:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
+.gotosecondbtn:before,
+.gotosecondbtn:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
   background: #f08080;
-  transition:400ms ease all;
+  transition: 400ms ease all;
 }
-.gotosecondbtn:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
+.gotosecondbtn:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
 }
-.gotosecondbtn:hover:before,.gotosecondbtn:hover:after{
-  width:100%;
-  transition:800ms ease all;
+.gotosecondbtn:hover:before,
+.gotosecondbtn:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
 }
-#citycatedone{
+#citycatedone {
   height: 30px;
   /*border-radius: 10px;*/
-  border:none;
+  border: none;
   /*position:relative;*/
-  padding:0 1em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
+  padding: 0 1em;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: none;
 
   position: fixed;
   left: 45vw;
   /*color: white;*/
-  margin-top:1%;
+  margin-top: 1%;
 
   background-color: white;
-  color:#F08080;
+  color: #f08080;
   border-bottom: 2px solid;
-  border-top:2px solid;
+  border-top: 2px solid;
 }
 @media screen and (max-width: 813px) {
   .map {
-    top:23%;
+    top: 23%;
   }
 }
 @media screen and (max-width: 600px) {
   .map {
     display: none;
   }
-  .gotosecondbtn{
+  .gotosecondbtn {
     left: 70vw;
     font-size: 12px;
     margin: 0;
@@ -122,20 +137,20 @@ label {
   display: block;
   /* background: #eee; */
   text-align: center;
-  border: 1px solid #D9D9D9;
+  border: 1px solid #d9d9d9;
   border-radius: 13px;
   width: 15em;
   margin: 0.3em;
   margin-left: 10%;
 }
-#selecteddistrict{
+#selecteddistrict {
   font-weight: bold;
   /*border: 2px solid #7974DB;*/
   /*border: 2px solid #CC655E;*/
-  border: 2px solid #F08080;
+  border: 2px solid #f08080;
 }
-.district_name{
-  color: #3A3945;
+.district_name {
+  color: #3a3945;
 }
 .citylist:hover {
   /*background: #ffc0ba;*/
@@ -149,18 +164,19 @@ label {
   list-style: none;
   /*list-style-image: url('1.png');*/
   padding-bottom: 0.3em;
-  color:#3A3945;
+  color: #3a3945;
 }
-.city_li:hover{
-  color:#3A3945;
+.city_li:hover {
+  color: #3a3945;
   font-size: 1.2em;
-  transition:300ms ease all;  }
+  transition: 300ms ease all;
+}
 .station_ul {
   margin-bottom: 0.8em;
   margin-left: 2em;
   /*list-style: circle;*/
 }
-.station_li{
-  color:#3A3945;
+.station_li {
+  color: #3a3945;
 }
 /*fontWeight: 'bold' , border:'2px solid #7974DB'*/

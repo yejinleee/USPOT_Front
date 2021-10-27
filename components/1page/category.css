@@ -1,31 +1,36 @@
-img{
-    vertical-align: middle;
+img {
+  vertical-align: middle;
 }
 
-.button{
-    border: 1px solid #cdd0d2;
-    border-radius: 8px;
-    margin: 10px;
-    padding: 1em;
-    cursor: pointer;
+.button {
+  border-radius: 20px;
+  box-shadow: 1px 4px 0 rgb(0, 0, 0, 0.5);
+  margin: 10px;
+  padding: 1em;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.button:hover {
+  background-color: #ffa9a9;
 }
 
 @media screen and (max-width: 600px) {
-    .button{
-        margin: .2em;
-        padding: .25em;
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
-    }
-    .category_box{
-        text-align: center;
-    }
+  .button {
+    margin: 0.2em;
+    padding: 0.25em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+  .category_box {
+    text-align: center;
+  }
 }
 
-.clicked{
-    background-color: #F08080;
-    border: 1px solid #cdd0d2;
-    border-radius: 8px;
-    margin: 10px;
-    padding: 1em;
+.clicked {
+  border-radius: 20px;
+  box-shadow: 1px 4px 0 rgb(0, 0, 0, 0.5);
+  margin: 10px;
+  padding: 1em;
+  background-color: #ffa9a9;
 }

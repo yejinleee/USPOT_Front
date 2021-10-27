@@ -37,18 +37,18 @@
   display: block;
   margin: auto;
 }
-.header_category{
+.header_category {
   /*width: 100px;*/
   /*height: 90px;*/
 }
 @media screen and (max-width: 600px) {
-  .logo{
+  .logo {
     display: block;
     position: relative;
     left: 50%;
     top: -30;
   }
-  .Header{
+  .Header {
     position: fixed;
     left: 0;
     top: 0;
@@ -58,23 +58,23 @@
     border-bottom: #f4f4f4 solid 3px;
     z-index: 10;
   }
-  .Navigation{
+  .Navigation {
     display: block;
     position: relative;
     left: -120px;
-    top : 45px;
+    top: 45px;
   }
-  .Navigation ul{
+  .Navigation ul {
     padding-left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .Navigation li{
-    margin-left :0px;
+  .Navigation li {
+    margin-left: 0px;
     margin-right: 15px;
   }
-  .header_category{
+  .header_category {
     /*width:20%;*/
   }
 }
@@ -84,21 +84,25 @@ button#logout {
   border: none;
   font-size: 15px;
 }
-.language{
+.language {
   background-color: transparent;
   border: 2px solid #f8ad9d;
   outline: 0;
   border-radius: 5px;
-  cursor:pointer;
+  cursor: pointer;
   padding: 0.3em;
 }
-.language:hover{
+.language:hover {
   color: white;
   background-color: #f8ad9d;
   border-radius: 5px;
 }
-#selectedlanguage{
+#selectedlanguage {
   color: white;
   background-color: #f8ad9d;
   border-radius: 5px;
+}
+
+.header_text {
+  padding-top: 3px;
 }
