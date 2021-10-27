@@ -20,8 +20,7 @@
 }
 .gotosecondbtn{
   height: 30px;
-  border-radius: 10px;
-  /*background:#f08080;*/
+  /*border-radius: 10px;*/
   border:none;
   /*position:relative;*/
   padding:0 1em;
@@ -65,6 +64,26 @@
 .gotosecondbtn:hover:before,.gotosecondbtn:hover:after{
   width:100%;
   transition:800ms ease all;
+}
+#citycatedone{
+  height: 30px;
+  /*border-radius: 10px;*/
+  border:none;
+  /*position:relative;*/
+  padding:0 1em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+
+  position: fixed;
+  left: 45vw;
+  /*color: white;*/
+  margin-top:1%;
+
+  background-color: white;
+  color:#F08080;
+  border-bottom: 2px solid;
+  border-top:2px solid;
 }
 @media screen and (max-width: 813px) {
   .map {
