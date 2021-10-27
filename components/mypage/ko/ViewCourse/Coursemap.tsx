@@ -85,7 +85,7 @@ const Coursemap: FC<Props> = (props: Props) => {
     console.log(idx);
     var number = String(idx + 1) + String(idx + 1);
     console.log(number);
-    var imageSrc = `/src/icon/${number}.png`, // 마커 이미지 url, 스프라이트 이미지를 씁니다
+    var imageSrc = `/src/icon/ㅇ.png`, // 마커 이미지 url, 스프라이트 이미지를 씁니다
       imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
       markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize),
       marker = new kakao.maps.Marker({

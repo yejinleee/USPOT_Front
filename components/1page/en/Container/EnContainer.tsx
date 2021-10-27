@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import JSONDATA from './eninfo.json';
-import '@components/1page/Container.css';
+import '@components/1page/Container.scss';
 
 const EnContainer = (props: any) => {
   const [searchTerm, setSearchTerm] = useState('');

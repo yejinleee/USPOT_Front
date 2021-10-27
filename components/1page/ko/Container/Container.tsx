@@ -1,8 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import JSONDATA from './info.json';
-import '@components/1page/Container.css';
-import { Link } from 'react-router-dom';
+import '@components/1page/Container.scss';
 
 const Container = (props: any) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -282,7 +281,7 @@ const Container = (props: any) => {
   };
 
   return (
-    <div className="App">
+    <div className="Searchinput">
       <input
         type="text"
         placeholder="Search..."
@@ -290,6 +289,7 @@ const Container = (props: any) => {
           setSearchTerm(event.target.value);
         }}
       />
+      {/* <img className="simg" src="src/icon/search.png" /> */}
       <div className="container">
         {JSONDATA.filter((val: any) => {
           if (searchTerm == '') {
