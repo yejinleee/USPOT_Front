@@ -379,14 +379,7 @@ const Slide: FC<Props> = (props: Props) => {
           history={props.history}
         />
       </div>
-      {/*<Top5Mapevent*/}
-      {/*  top5data={top5data}*/}
-      {/*  imageSrc={imageSrc}*/}
-      {/*  top5name={top5name}*/}
-      {/*  top5placeid={top5placeid}*/}
-      {/*  placeurl={placeurl}*/}
-      {/*  history={props.history}*/}
-      {/*/>*/}
+
       <Thumbnail
         selectedcity={props.selectedcity}
         selectedcategory={props.selectedcategory}

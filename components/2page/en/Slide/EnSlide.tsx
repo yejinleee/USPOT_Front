@@ -349,6 +349,7 @@ const EnSlide: FC<Props> = (props: Props) => {
           history={props.history}
         />
       </div>
+
       <EnThumbnail
         selectedcity={props.selectedcity}
         selectedcategory={props.selectedcategory}

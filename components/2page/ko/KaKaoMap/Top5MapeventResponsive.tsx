@@ -28,7 +28,7 @@ const Top5MapeventResponsive: FC<Props> = (props: Props) => {
       long.current += el.location_x;
     });
 
-    let container = document.getElementById('top5map_responsive');
+    let container = document.getElementById('maprspId');
     let options = {
       center: new kakao.maps.LatLng(latt.current / props.top5data.length, long.current / props.top5data.length),
       level: 10,
@@ -89,7 +89,7 @@ const Top5MapeventResponsive: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div id="top5map_responsive" style={{ width: '100%', height: '50%'}}></div>
+      <div id="maprspId" style={{ width: '100%', height: '50%'}}></div>
       <div className="liketop5_div">
         <Liketop5
           top5name={props.top5name}

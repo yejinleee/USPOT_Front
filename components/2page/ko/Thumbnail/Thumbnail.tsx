@@ -2,6 +2,7 @@ import React, { FC, memo, useEffect, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 import '@components/2page/Thumbnail.css';
 import YoutubeMapevent from '@components/2page/ko/KaKaoMap/YoutubeMapevent';
+import YoutubeMapRsp from '@components/2page/ko/KaKaoMap/YoutubeMapRsp';
 import { History, LocationState } from 'history';
 
 interface Props {
@@ -153,7 +154,7 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-              ></iframe>
+             />
               <button
                 className="youtubebutton"
                 onClick={() => {
@@ -167,7 +168,14 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
           ))}
       </div>
       <br />
-      {map && <YoutubeMapevent videoid={id} history={history} vlogplaceid={vlogplaceid} />}
+      {map && <>
+        <div className="youtubemapevent" style={{ position: 'relative', width:'100%' }}>
+          <YoutubeMapevent videoid={id} history={history} vlogplaceid={vlogplaceid} />
+        </div>
+        <div className="youtubemapevent_response" style={{ position: 'relative', width:'100%' }}>
+          <YoutubeMapRsp videoid={id} history={history} vlogplaceid={vlogplaceid} />
+        </div>
+        </>}
     </>
   );
 };

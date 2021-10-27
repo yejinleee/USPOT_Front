@@ -132,7 +132,7 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
   return (
     <div style={{ position: 'relative' }}>
       <div id="youtubemap" style={{ width: '50%', height: '40%', display: 'inline-block' }}></div>
-      <span style={{ position: 'absolute' }}>
+      <span className="likevlog_span" style={{ position: 'absolute', width:'40%' }}>
         <LikeVlog
           vlogplacename={name}
           vlogpid={videoid}
@@ -144,5 +144,6 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
     </div>
   );
 };
+
 
 export default YoutubeMapevent;

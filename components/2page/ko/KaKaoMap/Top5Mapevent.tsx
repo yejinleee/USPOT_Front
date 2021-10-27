@@ -28,7 +28,7 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
       long.current += el.location_x;
     });
 
-    let container = document.getElementById('top5map');
+    let container = document.getElementById('mapId');
     let options = {
       center: new kakao.maps.LatLng(latt.current / props.top5data.length, long.current / props.top5data.length),
       level: 10,
@@ -89,28 +89,15 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
 
   return (
     <>
-      {/*<div style={{ position: 'relative' }}>*/}
-        <div id="top5map" style={{ width: '50%', height: '50%'}}></div>
-        {/*<div id="top5map_responsive" style={{ width: '100%', height: '50%' }}></div>*/}
-
-        <span className="liketop5_span" style={{ position: 'absolute', width: '40%' }}>
-          <Liketop5
-            top5name={props.top5name}
-            top5placeid={props.top5placeid}
-            history={props.history}
-            placeurl={props.placeurl}
-          />
-        </span>
-
-      {/*</div>*/}
-      {/*<div className="liketop5_div">*/}
-      {/*  <Liketop5*/}
-      {/*    top5name={props.top5name}*/}
-      {/*    top5placeid={props.top5placeid}*/}
-      {/*    history={props.history}*/}
-      {/*    placeurl={props.placeurl}*/}
-      {/*  />*/}
-      {/*</div>*/}
+      <div id="mapId" style={{ width: '50%', height: '50%'}}></div>
+      <span className="liketop5_span" style={{ position: 'absolute', width: '40%' }}>
+        <Liketop5
+          top5name={props.top5name}
+          top5placeid={props.top5placeid}
+          history={props.history}
+          placeurl={props.placeurl}
+        />
+      </span>
     </>
   );
 };

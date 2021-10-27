@@ -6,3 +6,23 @@
     overflow: scroll;
     transform: matrix3d(10);
 }
+
+.youtubemapevent{
+    margin: auto;
+    display: block;
+}
+.youtubemapevent_response{
+    display: none;
+}
+@media screen and (max-width: 675px) {
+    .youtubemapevent{
+        display: none;
+    }
+    .youtubemapevent_response{
+        position: relative;
+        width: 90%;
+        height: 70vh;
+        margin: auto;
+        display: block;
+    }
+}
