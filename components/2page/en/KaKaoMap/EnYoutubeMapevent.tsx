@@ -136,7 +136,7 @@ const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid 
   return (
     <div style={{ position: 'relative' }}>
       <div id="youtubemap" style={{ width: '50%', height: '40%', display: 'inline-block' }}></div>
-      <span className="likevlog_span" style={{ position: 'absolute', width:'40%' }}>
+      <span className="likevlog_span" style={{ position: 'absolute', width:'50%' }}>
         <EnLikeVlog vlogplacename={name} vlogpid={videoid} history={history} vlogplaceid={vlogplaceid} placeurl={placeurl}/>
       </span>
     </div>

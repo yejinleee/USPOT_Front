@@ -1,6 +1,6 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
 import { Link, Route, RouteChildrenProps } from 'react-router-dom';
-import '@components/2page/Slide.css';
+import '@components/2page/Slide.scss';
 import axios from 'axios';
 import EnThumbnail from '@components/2page/en/Thumbnail/EnThumbnail';
 import EnTop5Mapevent from '@components/2page/en/KaKaoMap/EnTop5Mapevent';
@@ -310,22 +310,28 @@ const EnSlide: FC<Props> = (props: Props) => {
         </div>
       </div>
 
-      <div className="Test">
-        <button className="gotothirdbtn">
-          <Link
-            to={{
-              pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,
-              state: {
-                selectedplace: top5name[btn_pic - 1],
-                mapx: mapx[btn_pic - 1],
-                mapy: mapy[btn_pic - 1],
-                top5placeid: top5placeid[btn_pic - 1],
-              },
-            }}
-            style={{ textDecoration: 'none', color: '#000000' }}
-          >
+      <div id="gotothird_div">
+        <button className="gotothirdbutton">
+          <span className="circle" aria-hidden="true">
+            <span className="icon arrow"></span>
+          </span>
+          <span className="button-text">
+            <Link
+              to={{
+                pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,
+                state: {
+                  selectedplace: top5name[btn_pic - 1],
+                  mapx: mapx[btn_pic - 1],
+                  mapy: mapy[btn_pic - 1],
+                  top5placeid: top5placeid[btn_pic - 1],
+                },
+              }}
+              style={{ textDecoration: 'none', color: 'rgb(92, 88, 88)' }}
+              id="gotothird_link"
+            >
             View More !
           </Link>
+          </span>
         </button>
       </div>
 

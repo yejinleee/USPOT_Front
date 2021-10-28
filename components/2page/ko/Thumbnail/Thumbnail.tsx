@@ -1,6 +1,6 @@
 import React, { FC, memo, useEffect, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
-import '@components/2page/Thumbnail.css';
+import '@components/2page/Thumbnail.scss';
 import YoutubeMapevent from '@components/2page/ko/KaKaoMap/YoutubeMapevent';
 import YoutubeMapRsp from '@components/2page/ko/KaKaoMap/YoutubeMapRsp';
 import { History, LocationState } from 'history';
@@ -137,6 +137,9 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
       })
       .catch((error) => {});
   }, [btn_pic]);
+
+  const [clickedvlog, setClickedvlog] = useState(-1);
+
   return (
     <>
       <div className="youtube_all" style={{ overflowY: 'hidden' }}>
@@ -156,13 +159,16 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
                 allowFullScreen
              />
               <button
-                className="youtubebutton"
+                className="underline-hover-btn"
                 onClick={() => {
                   setMap(true);
                   setId(datas);
+                  setClickedvlog(i);
                 }}
               >
-                <div className="gomap">이영상에나온 장소들 지도에서 보기</div>
+                <div className="gomap"
+                     id={clickedvlog===i ? "clickedvlog":"notclickedvlog"}
+                >영상 속 장소 더보기</div>
               </button>
             </div>
           ))}

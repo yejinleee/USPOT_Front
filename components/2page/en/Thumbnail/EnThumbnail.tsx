@@ -1,6 +1,6 @@
 import React, { FC, memo, useEffect, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
-import '@components/2page/Thumbnail.css';
+import '@components/2page/Thumbnail.scss';
 import EnYoutubeMapevent from '@components/2page/en/KaKaoMap/EnYoutubeMapevent';
 import EnYoutubeMapRsp from '@components/2page/en/KaKaoMap/EnYoutubeMapRsp';
 import { History, LocationState } from 'history';
@@ -137,12 +137,15 @@ const EnThumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_
     })
     .catch((error) => {});
   }, [btn_pic]);
+
+  const [clickedvlog, setClickedvlog] = useState(-1);
+
   return (
     <>
       <div className="youtube_all" style={{overflowY:'hidden'}}>
-        <br/>
+        <div className="thumbnail_text">
         View more vlogs in {selectedplace}!
-        <br />
+        </div>
         {vloglist !== [] &&
           vloglist.map((datas: any, i: any) => (
             <div key={i} className="youtube_each">
@@ -156,13 +159,16 @@ const EnThumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_
                 allowFullScreen
               />
               <button
-                className="youtubebutton"
+                className="underline-hover-btn"
                 onClick={() => {
                   setMap(true);
                   setId(datas);
+                  setClickedvlog(i);
                 }}
               >
-                More places in this video
+                <div className="gomap"
+                     id={clickedvlog===i ? "clickedvlog":"notclickedvlog"}
+                >More places in this video</div>
               </button>
             </div>
           ))}

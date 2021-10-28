@@ -52,15 +52,6 @@
 * {box-sizing: border-box;}
 *:before, *:after {box-sizing: border-box;}
 
-/*body {*/
-/*    height: 100vh;*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    flex-flow: wrap;*/
-/*    font-size: 15px;*/
-/*    font-family: 'Titillium Web', sans-serif;*/
-/*}*/
 .btn {
     position: relative;
     margin: 0 auto;

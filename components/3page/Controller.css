@@ -4,7 +4,7 @@
     /*padding-left: 5px !important;*/
     /*padding-right: 48px !important;*/
     padding : 10px;
-    margin: 10px;
+    margin: auto;
     width: fit-content;
     /*height: fit-content !important;*/
     overflow: auto !important;
@@ -23,6 +23,7 @@
     /*border-color: lightseagreen;*/
     /*background-color: #F08080;*/
     /*margin: 10px;*/
+    text-align: center;
 }
 .buble{
     position:absolute;

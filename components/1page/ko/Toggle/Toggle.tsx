@@ -669,13 +669,13 @@ const Toggle = () => {
         key={index}
         className="citylist"
         onClick={() => {
-          setMap(require(gyeongi.city[index].city_link));
+          setMap(gyeongi.city[index].city_link);
           setSelectedcity(gyeongi.city[index].city_name);
         }}
       >
         <li
           className="city_li"
-          style={map === gyeongi.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}
+          style={map === gyeongi.city[index].city_link ? { fontSize: '1.2em', fontWeight:'bolder' } : { fontSize: '' }}
         >
           {gyeongi.city[index].city_name}
         </li>

@@ -1,6 +1,6 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
 import { Link, Route, RouteChildrenProps } from 'react-router-dom';
-import '../../Slide.css';
+import '../../Slide.scss';
 import Thumbnail from '@components/2page/ko/Thumbnail/Thumbnail';
 import axios from 'axios';
 import Top5Mapevent from '@components/2page/ko/KaKaoMap/Top5Mapevent';
@@ -312,52 +312,31 @@ const Slide: FC<Props> = (props: Props) => {
           </div>
         </div>
       </div>
-      {/*<div className="button-4">*/}
-      {/*  <div className="eff-4"></div>*/}
-      {/*  <a href="#"> Touch me </a>*/}
-      {/*</div>*/}
 
-      {/*원래이거*/}
-      <div className="Test">
-        <button className="gotothirdbtn">
-          <Link
-            to={{
-              pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,
-              state: {
-                selectedplace: top5name[btn_pic - 1],
-                mapx: mapx[btn_pic - 1],
-                mapy: mapy[btn_pic - 1],
-                top5placeid: top5placeid[btn_pic - 1],
-              },
-            }}
-            style={{ textDecoration: 'none', color: '#000000' }}
-          >
-            주변장소더보기
+      <div id="gotothird_div">
+        <button className="gotothirdbutton">
+          <span className="circle" aria-hidden="true">
+            <span className="icon arrow"></span>
+          </span>
+          <span className="button-text">
+            <Link
+              to={{
+                pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,
+                state: {
+                  selectedplace: top5name[btn_pic - 1],
+                  mapx: mapx[btn_pic - 1],
+                  mapy: mapy[btn_pic - 1],
+                  top5placeid: top5placeid[btn_pic - 1],
+                },
+              }}
+              style={{ textDecoration: 'none', color: 'rgb(92, 88, 88)' }}
+              id="gotothird_link"
+            >
+            주변장소 더보기
           </Link>
+          </span>
         </button>
       </div>
-
-      {/*이건 스르륵 효과 */}
-      {/*<div className="button-4">*/}
-      {/*  <div className="eff-4"></div>*/}
-      {/*  /!*<button className="gotothirdbtn">*!/*/}
-      {/*  <Link*/}
-      {/*    className="gotothirdbtn"*/}
-      {/*    to={{*/}
-      {/*      pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,*/}
-      {/*      state: {*/}
-      {/*        selectedplace: top5name[btn_pic - 1],*/}
-      {/*        mapx: mapx[btn_pic - 1],*/}
-      {/*        mapy: mapy[btn_pic - 1],*/}
-      {/*        top5placeid: top5placeid[btn_pic - 1],*/}
-      {/*      },*/}
-      {/*    }}*/}
-      {/*    style={{ textDecoration: 'none', color: '#000000' }}*/}
-      {/*  >*/}
-      {/*    주변장소 더 보기*/}
-      {/*  </Link>*/}
-      {/*  /!*</button>*!/*/}
-      {/*</div>*/}
 
       <div className="top5mapevent" style={{ position: 'relative', width:'100%' }}>
         <Top5Mapevent

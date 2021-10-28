@@ -9,18 +9,7 @@
   font-family: 'Godo' !important;
   letter-spacing: 1px !important;
 }
-/* @font-face {
-  font-family: 'NanumBarunGothic';
-  font-style: normal;
-  font-weight: 700;
-  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
-  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'),
-    url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'),
-    url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
-}
-.nanumbarungothic * {
-  font-family: 'NanumBarunGothic', sans-serif;
-} */
+
 .map {
   /* position: absolute; */
   position: -webkit-sticky;
@@ -174,8 +163,7 @@ label {
 }
 .station_ul {
   margin-bottom: 0.8em;
-  margin-left: 2em;
-  /*list-style: circle;*/
+  margin-top: 0.3em;
 }
 .station_li {
   list-style : none;
