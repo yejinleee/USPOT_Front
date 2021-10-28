@@ -16,7 +16,7 @@ const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) =
   };
 
   const Slider = () => (
-    <input type="range" id={id} min={min} max={max} step={0.5} defaultValue={state} onMouseUp={handleChange} />
+    <input type="range" id={id} min={min} max={max} step={1} defaultValue={state} onMouseUp={handleChange} />
   );
   return [state, Slider, setSlide];
 };
@@ -24,7 +24,7 @@ const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) =
 const EnController: FC<Props> = (props: Props) => {
   const [slideValue, Slider] = useSlider(1, 20000, 5000, 'Threshold', 'threshold');
   const [selectedArrange, setSelectedArrange] = useState('B'); //  정렬기준 *인기순 B / 거리순 E
-  const [selectedType, setSelectedType] = useState(12);
+  const [selectedType, setSelectedType] = useState(76);
   const [apiopen, setApigopen] = useState(false);
   function funcType(selected: number) {
     setSelectedType(selected);
@@ -70,32 +70,25 @@ const EnController: FC<Props> = (props: Props) => {
         {/*카테고리*/}
         <div className="wrapper">
           <div className="category" onClick={() => setApigopen(false)}>
-            <span onClick={() => funcType(12)}
-                  className="category_button" id={selectedType === 12 ? 'selected' : 'unselected'}>
+            <span onClick={() => funcType(76)} className="category_button" id={selectedType === 76 ? 'selected' : 'unselected'}>
               Attraction
             </span>
-            <span onClick={() => funcType(14)}
-                  className="category_button" id={selectedType === 14 ? 'selected' : 'unselected'}>
+            <span onClick={() => funcType(78)} className="category_button" id={selectedType === 78 ? 'selected' : 'unselected'}>
               Cultural facilities
             </span>
-            <span onClick={() => funcType(38)}
-                  className="category_button" id={selectedType === 38 ? 'selected' : 'unselected'}>
+            <span onClick={() => funcType(79)} className="category_button" id={selectedType === 79 ? 'selected' : 'unselected'}>
               Shopping
             </span>
-            <span onClick={() => funcType(39)}
-                  className="category_button" id={selectedType === 39 ? 'selected' : 'unselected'}>
+            <span onClick={() => funcType(82)} className="category_button" id={selectedType === 82 ? 'selected' : 'unselected'}>
               Food
             </span>
-            <span onClick={() => funcType(15)}
-                  className="category_button" id={selectedType === 15 ? 'selected' : 'unselected'}>
+            <span onClick={() => funcType(85)} className="category_button" id={selectedType === 85 ? 'selected' : 'unselected'}>
               Festivals, performances, events
             </span>
-            <span onClick={() => funcType(28)}
-                  className="category_button" id={selectedType === 28 ? 'selected' : 'unselected'}>
+            <span onClick={() => funcType(75)} className="category_button" id={selectedType === 75 ? 'selected' : 'unselected'}>
               Leports
             </span>
-            <span onClick={() => funcType(32)}
-                  className="category_button" id={selectedType === 32 ? 'selected' : 'unselected'}>
+            <span onClick={() => funcType(80)} className="category_button" id={selectedType === 80 ? 'selected' : 'unselected'}>
               Accommodation
             </span>
           </div>

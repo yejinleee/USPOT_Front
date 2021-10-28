@@ -26,6 +26,7 @@ const LikeTourapi: FC<Props> = (props: Props) => {
   const [dist, setDistance] = useState([] as any);
   const [img, setImg] = useState([] as any);
   const [id, setId] = useState([] as any);
+  const [placeid, setPlaceid] = useState([0, 0, 0, 0, 0] as any);
 
   var local = sessionStorage.getItem('memberid');
   try {
@@ -47,7 +48,6 @@ const LikeTourapi: FC<Props> = (props: Props) => {
         `http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${props.arrange}&contentTypeId=${props.type}&mapX=${props.mapx}&mapY=${props.mapy}&radius=${props.distance}&listYN=Y&_type=json`,
       )
       .then((response) => {
-        console.log('touapi에서 : ', response.data.response.body.items.item);
         if (response.data.response.body.items === '') {
           setData([]);
         } else {
@@ -59,7 +59,12 @@ const LikeTourapi: FC<Props> = (props: Props) => {
             setLocy((prev: any) => [...prev, response.data.response.body.items.item[i].mapy]);
             setAddr((prev: any) => [...prev, response.data.response.body.items.item[i].addr1]);
             setDistance((prev: any) => [...prev, response.data.response.body.items.item[i].dist]);
-            setImg((prev: any) => [...prev, response.data.response.body.items.item[i].firstimage]);
+            if (typeof response.data.response.body.items.item[i].firstimage === 'undefined') {
+              var altimg = '/src/icon/nosearch.jpg';
+              setImg((prev: any) => [...prev, altimg]);
+            } else {
+              setImg((prev: any) => [...prev, response.data.response.body.items.item[i].firstimage]);
+            }
             setId((prev: any) => [...prev, response.data.response.body.items.item[i].contentid]);
           }
         }
@@ -77,7 +82,6 @@ const LikeTourapi: FC<Props> = (props: Props) => {
   const [like4, setLike4] = useState(0);
 
   function func_post(e: number) {
-    console.log('즐겨찾기 할 id:', memberid, 'placeid', names[e]);
     var placeId = id[e];
     var name = names[e];
     var category = categories[e];
@@ -90,7 +94,6 @@ const LikeTourapi: FC<Props> = (props: Props) => {
     };
     if (memberid === 0) {
       alert('로그인하세욥');
-      console.log(props.history);
       return props.history.push('/login');
     } else {
       axios
@@ -100,19 +103,16 @@ const LikeTourapi: FC<Props> = (props: Props) => {
           { headers },
         )
         .then((res) => {
-          console.log(res.data);
+          placeid[e] = res.data.myplaceid;
         })
         .catch((error) => {});
     }
   }
-  function func_delete(e: number) {
-    console.log('즐겨찾기에서 지울 id:', memberid, 'place명', names[e]);
 
+  function func_delete(e: number) {
     axios
-      .delete(`/api/myplace/deletebymyplace/${memberid}/${names[e]}`)
-      .then(() => {
-        console.log('지워진 id: ', memberid, 'place명', names[e]);
-      })
+      .delete(`/api/myplace/deletebymyplace/${memberid}/${placeid[e]}`)
+      .then(() => {})
       .catch((error) => {});
   }
   function func(e: number) {

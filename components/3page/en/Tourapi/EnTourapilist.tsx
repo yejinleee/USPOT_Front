@@ -16,15 +16,16 @@ const EnTourapilist: FC<Props> = (props: Props) => {
   let api = process.env.REACT_APP_TOUR_API_KEY;
   let number = 5;
   let pnumber = 1;
-  var datas;
   const [data, setData] = useState([] as any);
   const [names, setNames] = useState([] as any);
   const [categories, setCategories] = useState([] as any);
   const [locx, setLocx] = useState([] as any);
   const [locy, setLocy] = useState([] as any);
   const [addr, setAddr] = useState([] as any);
-  const [dist, setDistance] = useState([] as any);
+  const [dist, setDist] = useState([] as any);
   const [img, setImg] = useState([] as any);
+  const [id, setId] = useState([] as any);
+  const [placeid, setPlaceid] = useState([0, 0, 0, 0, 0] as any);
 
   var local = sessionStorage.getItem('memberid');
   try {
@@ -43,29 +44,37 @@ const EnTourapilist: FC<Props> = (props: Props) => {
   useEffect(() => {
     axios
       .get(
-        `http://api.visitkorea.or.kr/openapi/service/rest/EngService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&arrange=${props.arrange}&contentTypeId=${props.type}&mapX=${props.mapx}&mapY=${props.mapy}&radius=${props.distance}&listYN=Y&_type=json`,
+        `http://api.visitkorea.or.kr/openapi/service/rest/EngService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&listYN=Y&arrange=${props.arrange}&contentTypeId=${props.type}&mapX=${props.mapx}&mapY=${props.mapy}&radius=${props.distance}&_type=json`,
       )
       .then((response) => {
+        console.log(response.data.response.body);
         if (response.data.response.body.items === '') {
           setData([]);
         } else {
           setData(response.data.response.body.items.item);
           for (var i = 0; i < response.data.response.body.items.item.length; i++) {
+            console.log(response.data.response.body);
             setNames((prev: any) => [...prev, response.data.response.body.items.item[i].title]);
             setCategories((prev: any) => [...prev, ggcategory]);
             setLocx((prev: any) => [...prev, response.data.response.body.items.item[i].mapx]);
             setLocy((prev: any) => [...prev, response.data.response.body.items.item[i].mapy]);
             setAddr((prev: any) => [...prev, response.data.response.body.items.item[i].addr1]);
-            setDistance((prev: any) => [...prev, response.data.response.body.items.item[i].dist]);
-            setImg((prev: any) => [...prev, response.data.response.body.items.item[i].firstimage]);
+            setDist((prev: any) => [...prev, response.data.response.body.items.item[i].dist]);
+            if (typeof response.data.response.body.items.item[i].firstimage === 'undefined') {
+              var altimg = '/src/icon/nosearch.jpg';
+              setImg((prev: any) => [...prev, altimg]);
+            } else {
+              setImg((prev: any) => [...prev, response.data.response.body.items.item[i].firstimage]);
+            }
+            setId((prev: any) => [...prev, response.data.response.body.items.item[i].contentid]);
           }
         }
       })
       .catch((error) => {
         setData([]);
+        console.log(error);
       });
   }, []);
-  // console.log('데이터',data);
 
   len = data.length;
   const [like0, setLike0] = useState(0); //초기0 누르면1 눌렀다 빼면 2 //처음렌더링대 false라 else문들어갈까봐
@@ -75,8 +84,7 @@ const EnTourapilist: FC<Props> = (props: Props) => {
   const [like4, setLike4] = useState(0);
 
   function func_post(e: number) {
-    console.log('즐겨찾기 할 id:', memberid, 'placeid', names[e]);
-
+    var placeId = id[e];
     var name = names[e];
     var category = categories[e];
     var location_x = locx[e];
@@ -93,25 +101,22 @@ const EnTourapilist: FC<Props> = (props: Props) => {
     } else {
       axios
         .post(
-          `/api/myplace/addfromapi/${memberid}`,
-          JSON.stringify({ name, category, location_x, location_y, address }),
+          `/api/en/myplace/addfromapi/${memberid}`,
+          JSON.stringify({ name, category, location_x, location_y, address, placeId }),
           { headers },
         ) // 500에러
         // { withCredentials:true }) //이건 415인데 위에 headers 저렇게써야하는거라구해서 header로 바꾸면 500..
         .then((res) => {
-          console.log('넣을 id: ', memberid, 'place명', names[e]);
+          placeid[e] = res.data.myplaceid;
+          console.log(res.data);
         })
         .catch((error) => {});
     }
   }
   function func_delete(e: number) {
-    console.log('즐겨찾기에서 지울 id:', memberid, 'place명', names[e]);
-
     axios
-      .delete(`/api/myplace/deletebymyplace/${memberid}/${names[e]}`)
-      .then(() => {
-        console.log('지워진 id: ', memberid, 'place명', names[e]);
-      })
+      .delete(`/api/en/myplace/deletebymyplace/${memberid}/${placeid[e]}`)
+      .then(() => {})
       .catch((error) => {});
   }
   function func(e: number) {

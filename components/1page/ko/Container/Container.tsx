@@ -284,7 +284,7 @@ const Container = (props: any) => {
     <div className="Searchinput">
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="어디로 떠나실건가요?"
         onChange={(event) => {
           setSearchTerm(event.target.value);
         }}

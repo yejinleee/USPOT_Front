@@ -13,30 +13,36 @@ const Category = (props: any) => {
             props.setSelectedcategory('관광명소');
             setClicked('tor');
           }}
-          className={clicked === 'tor' ? 'clicked' : 'button'}
+          className={clicked === 'tor' ? 'clicked' : 'cbutton'}
         >
-          <img src="src/icon/관광명소.png" style={{ width: '5%'}} />
-          <p className="category_p" style={{ display: 'inline' }}>관광명소</p>
+          <img src="src/icon/관광명소.png" style={{ width: '5%' }} />
+          <p className="category_p" style={{ display: 'inline' }}>
+            관광명소
+          </p>
         </label>
         <label
           onClick={() => {
             props.setSelectedcategory('음식점');
             setClicked('res');
           }}
-          className={clicked === 'res' ? 'clicked' : 'button'}
+          className={clicked === 'res' ? 'clicked' : 'cbutton'}
         >
           <img src="src/icon/식당.png" style={{ width: '5%' }} />
-          <p className="category_p" style={{ display: 'inline' }}>음식점</p>
+          <p className="category_p" style={{ display: 'inline' }}>
+            음식점
+          </p>
         </label>
         <label
           onClick={() => {
             props.setSelectedcategory('카페');
             setClicked('caf');
           }}
-          className={clicked === 'caf' ? 'clicked' : 'button'}
+          className={clicked === 'caf' ? 'clicked' : 'cbutton'}
         >
           <img src="src/icon/카페.png" style={{ width: '5%' }} />
-          <p className="category_p" style={{ display: 'inline' }}>카페</p>
+          <p className="category_p" style={{ display: 'inline' }}>
+            카페
+          </p>
         </label>
       </div>
     </>
