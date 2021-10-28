@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import None from '../MakeCoures/None';
 import Map from './Map';
+import MapRsp from '@components/mypage/ko/Search/MapRsp';
 import '@components/mypage/Search.scss';
 
 const LandingPage = () => {
@@ -48,7 +49,14 @@ const LandingPage = () => {
               </button>
             </form>
           </div>
-          <Map searchPlace={Place} />
+          <div className="map_div">
+            <div className="searchplace" style={{position:'relative'}}>
+              <Map searchPlace={Place} />
+            </div>
+          </div>
+          <div className="searchplace_responsive" style={{position:'relative'}}>
+            <MapRsp searchPlace={Place} />
+          </div>
         </>
       ) : (
         <None />

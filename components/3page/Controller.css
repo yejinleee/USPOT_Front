@@ -5,11 +5,14 @@
     /*padding-right: 48px !important;*/
     padding : 10px;
     margin: auto;
+    margin-bottom: 1em;
     width: fit-content;
     /*height: fit-content !important;*/
     overflow: auto !important;
-    border-style: dashed;
-    border-color: lightseagreen;
+    text-align: center;
+    border-style: outset;
+    border-color: #dedede;
+    border-radius: 15px;
 }
 .클래스명모하지 {
     display: flex;
@@ -18,23 +21,138 @@
 }
 .slider-parent{
     padding : 10px;
-    /*border: 10px;*/
-    /*position:relative;*/
-    /*border-color: lightseagreen;*/
-    /*background-color: #F08080;*/
-    /*margin: 10px;*/
     text-align: center;
+    border: 1px solid #cdd0d2;
+    border-radius: 7px;
+    margin-bottom: 0.7em;
+}
+#threshold{
+    cursor:pointer;
+    width: 50%;
 }
 .buble{
-    position:absolute;
+    /*position:absolute;*/
 }
+
+
+
 
 .order {
     /*display: inline-block;*/
     border: 1px solid #cdd0d2;
     border-radius: 8px;
     /*height: 28px;*/
-    padding: 10px;
+    padding: 6px;
+}
+.order_button{
+    padding: 0.3em 0.8em;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+
+.wrapper {
+    /*margin: 150px auto;*/
+    /*text-align: center;*/
+    /*width: 100%;*/
+    position: relative;
+}
+
+.order_button{
+    /*padding: 15px 100px;*/
+    margin:3px 3px;
+    color: rgb(92, 88, 88);
+    font-family: sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    text-decoration: none;
+    display:inline-block;
+    border: 1px solid;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.order_button::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /*background-color: rgb(92, 88, 88);*/
+    -webkit-transform: scaleY(.3);
+    transform: scaleY(.3);
+    opacity: 0;
+    transition: all .3s;
+}
+.order_button:hover{
+    color:white;
+
+}
+.order_button:hover::before{
+    opacity: 1;
+    background-color: #f8ad9d;
+    border: 1px solid;
+    border-radius: 10px;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    transition: -webkit-transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity .4s;
+    transition: transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity
+}
+
+/*//*/
+.category_button{
+    /*padding: 15px 100px;*/
+    margin:3px 3px;
+    color: rgb(92, 88, 88);
+    font-family: sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    text-decoration: none;
+    display:inline-block;
+    border: 1px solid;
+    border-radius: 10px;
+}
+.category_button::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /*background-color: rgb(92, 88, 88);*/
+    -webkit-transform: scaleY(.3);
+    transform: scaleY(.3);
+    opacity: 0;
+    transition: all .3s;
+}
+.category_button:hover{
+    color:white;
+
+}
+.category_button:hover::before{
+    opacity: 1;
+    background-color: #f8ad9d;
+    border: 1px solid;
+    border-radius: 10px;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    transition: -webkit-transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity .4s;
+    transition: transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity
+}
+
+#selected{
+    color:white;
+    opacity: 1;
+    background-color: #f8ad9d;
+    border: 1px solid;
+    border-radius: 10px;
 }
 
 .category{
@@ -42,9 +160,38 @@
     border: 1px solid #cdd0d2;
     border-radius: 8px;
     /*height: 28px;*/
-    padding: 10px;
+    padding: 6px;
+    margin-top:0.7em
+}
+.category_button{
+    padding: 0.3em 0.8em;
+    color: rgb(92, 88, 88);
+    font-family: sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.selected{
+#selected{
     background: #F08080;
+}
+
+@media screen and (max-width: 600px) {
+    .controller{
+        font-size: 2vw;
+    }
+    .order{
+        padding:3px;
+    }
+    .category{
+        padding:3px;
+    }
+    #threshold{
+        width: 70%;
+    }
 }
