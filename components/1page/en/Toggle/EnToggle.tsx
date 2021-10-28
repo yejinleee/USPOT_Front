@@ -1013,7 +1013,7 @@ const Toggle = () => {
     Danyang: '단양군',
     Cheonan: '천안시',
     Jeonju: '전주시',
-    Guncheon: '순천시',
+    Suncheon: '순천시',
     Gyeonju: '경주시',
     Andong: '안동시',
     Hadong: '하동군',
