@@ -27,8 +27,6 @@ p {
   padding-bottom: 0.6em;
 }
 
-
-
 .container {
   width: 14em;
   height: 5.5em;
@@ -59,10 +57,11 @@ p {
   flex-direction: column;
   margin-bottom: 1%;
   margin-top: 2%;
-  margin-left: 1.0em;
+  margin-left: 1em;
 }
+
 @media screen and (max-width: 600px) {
-  .Searchinput{
+  .Searchinput {
     margin-left: 1em;
   }
   .Searchinput input {
