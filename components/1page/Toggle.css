@@ -178,6 +178,7 @@ label {
   /*list-style: circle;*/
 }
 .station_li {
+  list-style : none;
   color: #3a3945;
 }
 /*fontWeight: 'bold' , border:'2px solid #7974DB'*/

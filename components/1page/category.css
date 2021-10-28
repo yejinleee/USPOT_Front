@@ -39,6 +39,11 @@ img {
   font-size: 15px !important;
 }
 
+#login_button{
+  background-color: transparent;
+  border: none;
+}
+
 /*////////////////*/
 /*En*/
 

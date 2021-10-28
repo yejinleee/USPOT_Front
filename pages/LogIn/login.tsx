@@ -8,7 +8,6 @@ import { withRouter } from 'react-router';
 import './login.css'
 
 const LogIn = ({ history }: RouteComponentProps) => {
-  const [logInError, setLogInError] = useState(false);
   const [username, onChangeUsername] = useInput('');
   const [password, onChangePassword] = useInput('');
   const onSubmit = useCallback(
@@ -43,14 +42,16 @@ const LogIn = ({ history }: RouteComponentProps) => {
             </div>
             <div className="input-box">
               <input className="loginput" type="password" id="password" name="password" placeholder="PASSWORD"
-                     value={username} onChange={onChangeUsername} />
+                     value={password} onChange={onChangePassword} />
               <label className="login_label" htmlFor="password">PASSWORD</label>
             </div>
             {/*<button type="submit">로그인</button>*/}
-            <div className="btn">
-              <span>LOG IN</span>
-              <div className="dot"></div>
-            </div>
+            <button type="submit" id="login_button">
+              <div className="btn">
+                <span>LOG IN</span>
+                <div className="dot"></div>
+              </div>
+            </button>
           </form>
         </div>
       </Layout>
@@ -58,3 +59,7 @@ const LogIn = ({ history }: RouteComponentProps) => {
   );
 };
 export default withRouter(LogIn);
+
+// -webkit-appearance: none !important;
+// -moz-appearance: none !important;
+// appearance: none !important;
