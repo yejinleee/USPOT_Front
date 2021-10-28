@@ -31,6 +31,7 @@
   /*top: 23%;*/
   right: 15vw;
   /* left: 100px; */
+  z-index: -11;
 }
 .gotosecondbtn {
   height: 30px;
@@ -100,12 +101,12 @@
   border-bottom: 2px solid;
   border-top: 2px solid;
 }
-@media screen and (max-width: 813px) {
+@media screen and (max-width: 1230px) {
   .map {
     top: 23%;
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .map {
     display: none;
   }

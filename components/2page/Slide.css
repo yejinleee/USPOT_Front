@@ -240,13 +240,16 @@ button#btn_now {
     transition: 0.5s;
   }
 
-
-
-
-
-
 }
-
+.category_box{
+  display: inline-block;
+  margin-left: 1em;
+}
+@media screen and (max-width: 350px) {
+  .category_box{
+    margin:0;
+  }
+}
 
 
 /*이거 없어도되지않나아..?*/
