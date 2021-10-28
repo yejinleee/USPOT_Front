@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react';
 import '@components/3page/Controller.css';
 import Tourapilist from '@components/3page/ko/LikeTourapi/LikeTourapi';
 import { History, LocationState } from 'history';
+import { Link } from 'react-router-dom';
 interface Props {
   mapx: any;
   mapy: any;
@@ -103,16 +104,19 @@ const Controller: FC<Props> = (props: Props) => {
         </div>
       </div>
 
-      <div className="gobtn">
-        <button
-          className="go"
-          onClick={() => {
-            selectedalert();
-          }}
-        >
-          장소 더보기 GO
-        </button>
+      <div className="gobtn_outerdiv">
+        <div className="gobtn">
+          <button
+            className="go"
+            onClick={() => {
+              selectedalert();
+            }}
+          >
+            장소 더보기 GO
+          </button>
+        </div>
       </div>
+
       <div className="클래스명모하지">
         {apiopen && (
           <Tourapilist

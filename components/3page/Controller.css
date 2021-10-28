@@ -195,3 +195,78 @@
         width: 70%;
     }
 }
+
+
+
+/*장소더보기GO 버튼 ----------------------*/
+.go {
+    height: 30px;
+    /*border-radius: 10px;*/
+    border: none;
+    /*position:relative;*/
+    padding: 0 1em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+
+    left: 45vw;
+    /*color: white;*/
+    margin-top: 1%;
+
+    background-color: white;
+    color: #f08080;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+.go:hover {
+    background: #fff;
+    color: #f08080;
+    border-top: 0;
+    border-bottom: 0;
+}
+.go:before,
+.go:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #f08080;
+    transition: 400ms ease all;
+}
+.go:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+.go:hover:before,
+.go:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+
+@media screen and (max-width: 700px) {
+    .gotosecondbtn {
+        left: 70vw;
+        font-size: 12px;
+        margin: 0;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+}
+.gobtn_outerdiv{
+    text-align: center;
+    margin-bottom: 1em;
+}
+.gobtn {
+    position: relative;
+    width: 40%;
+    vertical-align: middle;
+    display: inline;
+    text-align: center;
+    margin: auto;
+    padding-top:0.2em;
+    padding-bottom: 0.2em;
+}
