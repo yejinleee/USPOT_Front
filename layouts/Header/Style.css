@@ -13,10 +13,9 @@
   display: flex;
   width: 96%;
   /*max-width: 1100px;*/
-  max-width: 70vw;
+  max-width: 50%;
   height: 100%;
   margin: 0 auto;
-  align-items: center;
   justify-content: space-between;
 }
 
@@ -42,11 +41,13 @@
   /*height: 90px;*/
 }
 @media screen and (max-width: 600px) {
-  .logo {
+  .uspotlogo {
     display: block;
     position: relative;
     left: 50%;
     top: -30;
+    width: 6.5em;
+    height: 4em;
   }
   .Header {
     position: fixed;
@@ -72,7 +73,7 @@
   }
   .Navigation li {
     margin-left: 0px;
-    margin-right: 15px;
+    margin-right: 3%;
   }
   .header_category {
     /*width:20%;*/
