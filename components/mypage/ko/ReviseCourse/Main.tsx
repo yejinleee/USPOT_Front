@@ -22,18 +22,25 @@ const Main = () => {
       .get(`/api/course/findall/${memberid}`)
       .then(async (response) => {
         setCourese(response.data.data);
+        console.log(response.data.data);
       })
       .catch((error) => {});
-  }, []);
+  }, [name]);
 
-  const onClick = (id: number, name: string) => {
+  const onClick = (id: number, coursename: string) => {
     setState(id);
-    setName(name);
+    setName(coursename);
   };
 
   const courselist: any = course.map((v: string, index: number) => (
     <>
-      <button id={v} key={index} onClick={() => onClick(course[index].courseid, course[index].name)}>
+      <button
+        id={v}
+        key={index}
+        onClick={() => {
+          onClick(course[index].courseid, course[index].name);
+        }}
+      >
         {course[index].name}
       </button>
     </>
@@ -45,7 +52,7 @@ const Main = () => {
       </div>
       {state !== 0 && (
         <>
-          <TodoTemplate courseid={state} coursename={name} />
+          <TodoTemplate courseid={state} coursename={name} setName={setName} />
           <Coursemap />
         </>
       )}

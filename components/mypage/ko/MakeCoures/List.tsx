@@ -1,6 +1,8 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import TodoItemList from './TodoItemlist';
 import TodoTitle from './TodoTitle';
+import '@components/mypage/List.scss';
+
 interface Props {
   placelist: any;
   todos: any;
@@ -13,10 +15,14 @@ interface Props {
 const List: FC<Props> = (props: Props) => {
   function Likelist({ list, name, onClick, ondeleteClick }: any) {
     return (
-      <div>
-        <button onClick={() => onClick(list)}>코스에 추가</button>
+      <div className="mypagelist">
+        <button className="listbtn" onClick={() => onClick(list)}>
+          <img className="add" src="/src/icon/more.png" />
+        </button>
         {name}
-        <button onClick={() => ondeleteClick(list)}>마이플레이스 삭제</button>
+        <button className="listbtn" onClick={() => ondeleteClick(list)}>
+          <img className="trash" src="/src/icon/trash.png" />
+        </button>
       </div>
     );
   }

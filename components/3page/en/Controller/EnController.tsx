@@ -16,7 +16,7 @@ const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) =
   };
 
   const Slider = () => (
-    <input type="range" id={id} min={min} max={max} step={0.5} defaultValue={state} onMouseUp={handleChange} />
+    <input type="range" id={id} min={min} max={max} step={1} defaultValue={state} onMouseUp={handleChange} />
   );
   return [state, Slider, setSlide];
 };
@@ -24,7 +24,7 @@ const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) =
 const EnController: FC<Props> = (props: Props) => {
   const [slideValue, Slider] = useSlider(1, 20000, 5000, 'Threshold', 'threshold');
   const [selectedArrange, setSelectedArrange] = useState('B'); //  정렬기준 *인기순 B / 거리순 E
-  const [selectedType, setSelectedType] = useState(12);
+  const [selectedType, setSelectedType] = useState(76);
   const [apiopen, setApigopen] = useState(false);
   function funcType(selected: number) {
     setSelectedType(selected);
@@ -69,25 +69,25 @@ const EnController: FC<Props> = (props: Props) => {
         </div>
         {/*카테고리*/}
         <div className="category" onClick={() => setApigopen(false)}>
-          <button onClick={() => funcType(12)} className={selectedType === 12 ? 'selected' : 'unselected'}>
+          <button onClick={() => funcType(76)} className={selectedType === 76 ? 'selected' : 'unselected'}>
             Attraction
           </button>
-          <button onClick={() => funcType(14)} className={selectedType === 14 ? 'selected' : 'unselected'}>
+          <button onClick={() => funcType(78)} className={selectedType === 78 ? 'selected' : 'unselected'}>
             Cultural facilities
           </button>
-          <button onClick={() => funcType(15)} className={selectedType === 15 ? 'selected' : 'unselected'}>
+          <button onClick={() => funcType(85)} className={selectedType === 85 ? 'selected' : 'unselected'}>
             Festivals, performances, events.
           </button>
-          <button onClick={() => funcType(28)} className={selectedType === 28 ? 'selected' : 'unselected'}>
+          <button onClick={() => funcType(75)} className={selectedType === 75 ? 'selected' : 'unselected'}>
             Leports
           </button>
-          <button onClick={() => funcType(32)} className={selectedType === 32 ? 'selected' : 'unselected'}>
+          <button onClick={() => funcType(80)} className={selectedType === 80 ? 'selected' : 'unselected'}>
             Accommodation
           </button>
-          <button onClick={() => funcType(38)} className={selectedType === 38 ? 'selected' : 'unselected'}>
+          <button onClick={() => funcType(79)} className={selectedType === 79 ? 'selected' : 'unselected'}>
             Shopping
           </button>
-          <button onClick={() => funcType(39)} className={selectedType === 39 ? 'selected' : 'unselected'}>
+          <button onClick={() => funcType(82)} className={selectedType === 82 ? 'selected' : 'unselected'}>
             Food
           </button>
         </div>

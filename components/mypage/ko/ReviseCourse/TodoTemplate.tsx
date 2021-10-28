@@ -5,6 +5,7 @@ import TodoTitle from './TodoTitle';
 interface Props {
   courseid: number;
   coursename: string;
+  setName: any;
 }
 
 const TodoTemplate: FC<Props> = (props: Props) => {
@@ -33,11 +34,13 @@ const TodoTemplate: FC<Props> = (props: Props) => {
 
   useEffect(() => {
     setTodos([]);
+    setIndex([]);
     axios
       .get(`/api/myplacecourse/findall/${props.courseid}`)
       .then(async (response) => {
         for (var i = 0; i < response.data.data.length; i++) {
           setTodos((prev: any) => [...prev, response.data.data[i].myplaceDto]);
+          setIndex((prev: any) => [...prev, response.data.data[i].myplaceDto.placeId]);
         }
       })
       .catch((error) => {});
@@ -46,11 +49,11 @@ const TodoTemplate: FC<Props> = (props: Props) => {
   const onClick = (list: any) => {
     if (todos.length === 0) {
       setTodos((prev: any) => [...prev, list]);
-      setIndex((prev: any) => [...prev, list.id]);
+      setIndex((prev: any) => [...prev, list.placeId]);
     } else {
-      if (index.indexOf(list.id) === -1) {
+      if (index.indexOf(list.placeId) === -1) {
         setTodos((prev: any) => [...prev, list]);
-        setIndex((prev: any) => [...prev, list.id]);
+        setIndex((prev: any) => [...prev, list.placeId]);
       }
     }
   };
@@ -65,7 +68,6 @@ const TodoTemplate: FC<Props> = (props: Props) => {
 
   const onRemove = (id: number) => {
     setTodos(todos.filter((place: any) => place.id !== id));
-    console.log(index.indexOf(id));
     var idx = index.indexOf(id);
     index[idx] = 0;
   };
@@ -76,7 +78,13 @@ const TodoTemplate: FC<Props> = (props: Props) => {
         {likedlist}
       </div>
       <TodoTitle>코스를 수정해 보아요!</TodoTitle>
-      <TodoItemList todos={todos} onRemove={onRemove} courseid={props.courseid} coursename={props.coursename} />
+      <TodoItemList
+        todos={todos}
+        onRemove={onRemove}
+        courseid={props.courseid}
+        coursename={props.coursename}
+        setName={props.setName}
+      />
     </>
   );
 };

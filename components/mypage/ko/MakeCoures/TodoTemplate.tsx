@@ -43,7 +43,9 @@ const TodoTemplate: FC<Props> = (props: Props) => {
         setIndex((prev: any) => [...prev, res.data.data.id]);
         setId(res.data.data.id);
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(placelist);
+      });
   }, [props.start]);
 
   useEffect(() => {
@@ -81,7 +83,7 @@ const TodoTemplate: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="likedlist" style={{ display: 'inline-block' }}>
+      <div className="namelist" style={{ display: 'inline-block' }}>
         <List
           placelist={placelist}
           todos={todos}

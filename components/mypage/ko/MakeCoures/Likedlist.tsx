@@ -8,7 +8,7 @@ const Likedlist: FC<Props> = (props: Props) => {
   return (
     <>
       <div className="Likedlist">
-        <div>[하트 누른 장소들 목록]</div>
+        <div className="Likelistname">[하트 누른 장소들 목록]</div>
         <Main start={props.start} />
       </div>
     </>

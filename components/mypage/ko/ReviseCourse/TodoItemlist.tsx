@@ -7,6 +7,7 @@ interface Props {
   onRemove: any;
   courseid: any;
   coursename: any;
+  setName: any;
 }
 
 const TodoItemList: FC<Props> = (props: Props) => {
@@ -34,6 +35,7 @@ const TodoItemList: FC<Props> = (props: Props) => {
   const onClick = () => {
     var name = text;
     var myplaceList = props.todos;
+    props.setName(name);
     axios
       .put(`/api/course/update/${memberid}/${props.courseid}`, JSON.stringify({ name, myplaceList }), { headers })
       .then(() => {})
