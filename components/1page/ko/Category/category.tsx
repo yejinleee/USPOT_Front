@@ -8,7 +8,7 @@ const Category = (props: any) => {
     <>
       <br />
       {/*, paddingLeft:'15vw',*/}
-      <div className="category_box" style={{display:'inline-block', marginLeft:'1em' }}>
+      <div className="category_box">
         <label
           onClick={() => {
             props.setSelectedcategory('관광명소');
@@ -17,7 +17,7 @@ const Category = (props: any) => {
           className={clicked === 'tor' ? 'clicked' : 'button'}
         >
           <img src="src/icon/관광명소.png" style={{ width: '5%'}} />
-          <p style={{ display: 'inline' }}>관광명소</p>
+          <p className="category_p" style={{ display: 'inline' }}>관광명소</p>
         </label>
         <label
           onClick={() => {
@@ -27,7 +27,7 @@ const Category = (props: any) => {
           className={clicked === 'res' ? 'clicked' : 'button'}
         >
           <img src="src/icon/식당.png" style={{ width: '5%' }} />
-          <p style={{ display: 'inline' }}>음식점</p>
+          <p className="category_p" style={{ display: 'inline' }}>음식점</p>
         </label>
         <label
           onClick={() => {
@@ -37,7 +37,7 @@ const Category = (props: any) => {
           className={clicked === 'caf' ? 'clicked' : 'button'}
         >
           <img src="src/icon/카페.png" style={{ width: '5%' }} />
-          <p style={{ display: 'inline' }}>카페</p>
+          <p className="category_p" style={{ display: 'inline' }}>카페</p>
         </label>
       </div>
     </>

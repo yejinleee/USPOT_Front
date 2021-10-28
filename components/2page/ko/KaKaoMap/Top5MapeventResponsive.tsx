@@ -14,7 +14,7 @@ interface Props {
   history: History<LocationState>;
 }
 
-const Top5Mapevent: FC<Props> = (props: Props) => {
+const Top5MapeventResponsive: FC<Props> = (props: Props) => {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
@@ -28,7 +28,7 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
       long.current += el.location_x;
     });
 
-    let container = document.getElementById('mapId');
+    let container = document.getElementById('maprspId');
     let options = {
       center: new kakao.maps.LatLng(latt.current / props.top5data.length, long.current / props.top5data.length),
       level: 10,
@@ -89,17 +89,17 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div id="mapId" style={{ width: '50%', height: '50%'}}></div>
-      <span className="liketop5_span" style={{ position: 'absolute', width: '40%' }}>
+      <div id="maprspId" style={{ width: '100%', height: '50%'}}></div>
+      <div className="liketop5_div">
         <Liketop5
           top5name={props.top5name}
           top5placeid={props.top5placeid}
           history={props.history}
           placeurl={props.placeurl}
         />
-      </span>
+      </div>
     </>
   );
 };
 
-export default Top5Mapevent;
+export default Top5MapeventResponsive;

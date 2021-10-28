@@ -1,12 +1,18 @@
 .place_info {
   display: inline-block;
 }
-
-.icon_li {
-  margin: 0 0.69% 1%;
-  overflow: hidden;
-  width:15em;
+.likevlog_div{
+  position: relative;
+  margin:15% 0;
 }
+@media screen and (max-width: 700px) {
+  .likevlog_div{
+    position: relative;
+    margin :0;
+  }
+}
+
+
 .cate {
   display: none;
 }
@@ -30,25 +36,31 @@
 
 .like {
   padding: 0.4em !important;
-  font-size: 13px;
   cursor: pointer;
 }
 .likeplace {
   padding-right: 0.5em;
   font-size: 13px;
   cursor:pointer;
+  /*padding-left: 10;*/
 }
 .likeplace:hover{
   color:black;
-  font-size: 1.2em;
+  font-size: 1em;
   transition:300ms ease all;
 }
-.custom {
-  padding: 0.45em 0 !important;
+.custom{
+  padding: 0.3em 0 !important;
   display: block;
+  margin: auto;
   border-radius: inherit;
   border: none;
   border: 1px solid #e5e5e5;
   border-radius: 0.7em;
-  color: #666;
+  color: rgb(92, 88, 88);
+  width:95% !important;
+}
+.icon_li{
+  margin: 7px 0.69% 7px !important;
+  overflow: hidden !important;
 }

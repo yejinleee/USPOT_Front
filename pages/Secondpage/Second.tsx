@@ -13,18 +13,8 @@ const Second = (props: any) => {
   return (
     <Layout>
         {language[1]==='KO' ?
-          <>
-          {/*<h2 style={{borderColor:'black', border:'1px solid',}}>*/}
-          {/*  {selectedcity}의 {selectedcategory} 추천장소 TOP5{' '}*/}
-          {/*</h2>*/}
           <Slide selectedcity={selectedcity} selectedcategory={selectedcategory} history={history} />
-          </>
-          : <>
-          <h2 style={{borderColor:'black', border:'1px solid',}}>
-            TOP5 of {selectedcity}
-          </h2>
-          <EnSlide selectedcity={selectedcity} selectedcategory={selectedcategory} history={history} />
-          </>
+          : <EnSlide selectedcity={selectedcity} selectedcategory={selectedcategory} history={history} />
         }
      </Layout>
   );

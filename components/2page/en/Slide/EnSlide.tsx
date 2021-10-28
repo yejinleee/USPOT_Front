@@ -4,6 +4,7 @@ import '@components/2page/Slide.css';
 import axios from 'axios';
 import EnThumbnail from '@components/2page/en/Thumbnail/EnThumbnail';
 import EnTop5Mapevent from '@components/2page/en/KaKaoMap/EnTop5Mapevent';
+import EnTop5MapRsp from '@components/2page/en/KaKaoMap/EnTop5MapRsp';
 import { imageSearch } from './image';
 import { History, LocationState } from 'history';
 
@@ -155,7 +156,6 @@ const EnSlide: FC<Props> = (props: Props) => {
           setMapy((prev: any) => [...prev, response.data.data[i].location_y]);
           setPlaceurl( (prev:any) => [...prev, response.data.data[i].placeUrl]);
         }
-        // console.log('탑data',response.data);
         for (var i = 0; i < 5; i++) {
           const name = response.data.data[i].name;
           const params = {
@@ -185,18 +185,21 @@ const EnSlide: FC<Props> = (props: Props) => {
 
   return (
     <>
+      <div className="title">
+        <h2>
+          TOP5 of {props.selectedcity}
+        </h2>
+      </div>
       <div className="carousel">
         <div className="carousel_card">
-          {/*<div className="top5_carousel_container" style={ top5slide()}>*/}
           <div className="top5_carousel_container">
             <div className={imgloc[start]}>
-              {/*여기에 style={btn_pic ===각번호 ? view_pic3 : view_pic5} 머이런식으로*/}
               <div className="carousel-card-mask">
                 <img src={pic1} alt="pic" className="carousel-img" />
                 <span>
-                  <p>{top5name[0]}</p>
-                  <p>{top5phone[0]}</p>
-                  <p>{top5add[0]}</p>
+                  <p className="top5name_p">{top5name[0]}</p>
+                  <p className="top5phone_p">{top5phone[0]}</p>
+                  <p className="top5add_p">{top5add[0]}</p>
                 </span>
               </div>
             </div>
@@ -204,9 +207,9 @@ const EnSlide: FC<Props> = (props: Props) => {
               <div className="carousel-card-mask">
                 <img src={pic2} alt="pic" className="carousel-img" />
                 <span>
-                  <p>{top5name[1]}</p>
-                  <p>{top5phone[1]}</p>
-                  <p>{top5add[1]}</p>
+                  <p className="top5name_p">{top5name[1]}</p>
+                  <p className="top5phone_p">{top5phone[1]}</p>
+                  <p className="top5add_p">{top5add[1]}</p>
                 </span>
               </div>
             </div>
@@ -214,9 +217,9 @@ const EnSlide: FC<Props> = (props: Props) => {
               <div className="carousel-card-mask">
                 <img src={pic3} alt="pic" className="carousel-img" />
                 <span>
-                  <p>{top5name[2]}</p>
-                  <p>{top5phone[2]}</p>
-                  <p>{top5add[2]}</p>
+                  <p className="top5name_p">{top5name[2]}</p>
+                  <p className="top5phone_p">{top5phone[2]}</p>
+                  <p className="top5add_p">{top5add[2]}</p>
                 </span>
               </div>
             </div>
@@ -224,9 +227,9 @@ const EnSlide: FC<Props> = (props: Props) => {
               <div className="carousel-card-mask">
                 <img src={pic4} alt="pic" className="carousel-img" />
                 <span>
-                  <p>{top5name[3]}</p>
-                  <p>{top5phone[3]}</p>
-                  <p>{top5add[3]}</p>
+                  <p className="top5name_p">{top5name[3]}</p>
+                  <p className="top5phone_p">{top5phone[3]}</p>
+                  <p className="top5add_p">{top5add[3]}</p>
                 </span>
               </div>
             </div>
@@ -234,9 +237,9 @@ const EnSlide: FC<Props> = (props: Props) => {
               <div className="carousel-card-mask">
                 <img src={pic5} alt="pic" className="carousel-img" />
                 <span>
-                  <p>{top5name[4]}</p>
-                  <p>{top5phone[4]}</p>
-                  <p>{top5add[4]}</p>
+                  <p className="top5name_p">{top5name[4]}</p>
+                  <p className="top5phone_p">{top5phone[4]}</p>
+                  <p className="top5add_p">{top5add[4]}</p>
                 </span>
               </div>
             </div>
@@ -307,30 +310,46 @@ const EnSlide: FC<Props> = (props: Props) => {
         </div>
       </div>
 
-      <button className="gotothirdbtn">
-        <Link
-          to={{
-            pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,
-            state: {
-              selectedplace: top5name[btn_pic - 1],
-              mapx: mapx[btn_pic - 1],
-              mapy: mapy[btn_pic - 1],
-              top5placeid: top5placeid[btn_pic - 1],
-            },
-          }}
-          style={{ textDecoration: 'none', color: '#000000' }}
-        >
-          View More !
-        </Link>
-      </button>
-      <EnTop5Mapevent
-        top5data={top5data}
-        imageSrc={imageSrc}
-        top5name={top5name}
-        top5placeid={top5placeid}
-        placeurl={placeurl}
-        history={props.history}
-      />
+      <div className="Test">
+        <button className="gotothirdbtn">
+          <Link
+            to={{
+              pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,
+              state: {
+                selectedplace: top5name[btn_pic - 1],
+                mapx: mapx[btn_pic - 1],
+                mapy: mapy[btn_pic - 1],
+                top5placeid: top5placeid[btn_pic - 1],
+              },
+            }}
+            style={{ textDecoration: 'none', color: '#000000' }}
+          >
+            View More !
+          </Link>
+        </button>
+      </div>
+
+      <div className="top5mapevent" style={{ position: 'relative', width:'100%' }}>
+        <EnTop5Mapevent
+          top5data={top5data}
+          imageSrc={imageSrc}
+          top5name={top5name}
+          top5placeid={top5placeid}
+          placeurl={placeurl}
+          history={props.history}
+        />
+      </div>
+      <div className="top5mapevent_responsive" style={{ position: 'relative' , width:'100%'}}>
+        <EnTop5MapRsp
+          top5data={top5data}
+          imageSrc={imageSrc}
+          top5name={top5name}
+          top5placeid={top5placeid}
+          placeurl={placeurl}
+          history={props.history}
+        />
+      </div>
+
       <EnThumbnail
         selectedcity={props.selectedcity}
         selectedcategory={props.selectedcategory}

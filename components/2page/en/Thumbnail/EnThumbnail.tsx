@@ -2,6 +2,7 @@ import React, { FC, memo, useEffect, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 import '@components/2page/Thumbnail.css';
 import EnYoutubeMapevent from '@components/2page/en/KaKaoMap/EnYoutubeMapevent';
+import EnYoutubeMapRsp from '@components/2page/en/KaKaoMap/EnYoutubeMapRsp';
 import { History, LocationState } from 'history';
 
 interface Props {
@@ -18,8 +19,6 @@ const EnThumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_
   const [vloglist, setVloglist] = useState([] as any); //브이로그 id들 저장할 배열
   const [map, setMap] = useState(false);
   const [id, setId] = useState(null);
-  const [x, setX] = useState();
-  const [y, setY] = useState();
   const [vlogplaceid,setVlogplaceid] = useState([] as any);
   var dic: { [key: string]: number } = {
     가평군: 1,
@@ -123,13 +122,18 @@ const EnThumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_
   };
   useEffect(() => {
     setVloglist([]);
-    axios.get(`/api/en/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`).then((response) => {
-      // console.log('/findtop5/././ response.data.data : ',response.data.data)
-      for (var j = 0; j < response.data.data[btn_pic - 1].vlog_list.length; j++) {
-        console.log('카카오맵검색 id:(이거없으면에러나서,,)',response.data.data[j].id); //있어야 id 에러안나
-        setVlogplaceid((prev: any) => [...prev, response.data.data[j].id]);
-        setVloglist((prev: any) => [...prev, response.data.data[btn_pic - 1].vlog_list[j].url]);
-      }
+    axios
+      .get(`/api/en/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`)
+      .then((response) => {
+        if (response.data.data[btn_pic - 1].vlog_list.length >= 5) {
+          var number = 5;
+        } else {
+          number = response.data.data[btn_pic - 1].vlog_list.length;
+        }
+        for (var j = 0; j < number; j++) {
+          setVlogplaceid((prev: any) => [...prev, response.data.data[j].id]);
+          setVloglist((prev: any) => [...prev, response.data.data[btn_pic - 1].vlog_list[j].url]);
+        }
     })
     .catch((error) => {});
   }, [btn_pic]);
@@ -150,7 +154,7 @@ const EnThumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-              ></iframe>
+              />
               <button
                 className="youtubebutton"
                 onClick={() => {
@@ -164,7 +168,14 @@ const EnThumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_
           ))}
       </div>
       <br/>
-      {map && <EnYoutubeMapevent videoid={id} history={history} vlogplaceid={vlogplaceid}/>}
+      {map && <>
+        <div className="youtubemapevent" style={{ position: 'relative', width:'100%' }}>
+          <EnYoutubeMapevent videoid={id} history={history} vlogplaceid={vlogplaceid} />
+        </div>
+        <div className="youtubemapevent_response" style={{ position: 'relative', width:'100%' }}>
+          <EnYoutubeMapRsp videoid={id} history={history} vlogplaceid={vlogplaceid} />
+        </div>
+      </>}
     </>
   );
 };

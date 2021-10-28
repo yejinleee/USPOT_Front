@@ -1,7 +1,8 @@
 /*global kakao */
-import EnLikeVlog from '@components/2page/en/Like/EnLikeVlog';
+import LikeVlog from '@components/2page/ko/Like/LikeVlog';
 import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
+import '../../Top5Mapevent.css';
 import { History, LocationState } from 'history';
 
 interface Props {
@@ -10,13 +11,13 @@ interface Props {
   vlogplaceid: any;
 }
 
-const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid }) => {
+const YoutubeMapRsp: FC<Props> = ({ children, videoid, history, vlogplaceid }) => {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
   const [place, setPlace] = useState([] as any);
   const [name, setName] = useState([] as any);
-  const [youtubemap, setYoutubemap] = useState(null);
+  const [youtubemap2, setYoutubemap2] = useState(null);
   const [markers, setMarkers] = useState([] as any);
   const [placeurl, setPlaceurl] = useState([] as any);
 
@@ -24,33 +25,28 @@ const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid 
   const y = useRef(0);
 
   useEffect(() => {
-    let container = document.getElementById('youtubemap');
+    let container = document.getElementById('youtubemap2');
     let options = {
       center: new kakao.maps.LatLng(37.55699327194725, 126.97267350572926),
       level: 10,
     };
-    setYoutubemap(new kakao.maps.Map(container, options));
+    setYoutubemap2(new kakao.maps.Map(container, options));
   }, []);
 
   useEffect(() => {
     setPlace([]);
     setName([]);
-    axios.get(`/api/en/vlog/findplace/${videoid}`).then((response) => {
-      //이 비디오에서 등장한 장소들
-      setPlace(response.data.data);
-      for (var i = 0; i < response.data.data.length; i++) {
-        setName((prev: any) => [...prev, response.data.data[i].name]);
-        setPlaceurl((prev:any) => [...prev, response.data.data[i].placeUrl]);
-
-        //////////////////////////////////////////////////////////////////////////////url에 널있는경우
-        // if (response.data.data[i].placeUrl ===null){
-        //   setPlaceurl((prev:any) => [...prev, 0]);
-        // }
-        // else{
-        //   setPlaceurl((prev:any) => [...prev, response.data.data[i].placeUrl]);
-        // }
-      }
-    });
+    axios
+      .get(`/api/vlog/findplace/${videoid}`)
+      .then((response) => {
+        //이 비디오에서 등장한 장소들
+        setPlace(response.data.data);
+        for (var i = 0; i < response.data.data.length; i++) {
+          setName((prev: any) => [...prev, response.data.data[i].name]);
+          setPlaceurl((prev: any) => [...prev, response.data.data[i].placeUrl]);
+        }
+      })
+      .catch((error) => {});
   }, [videoid]);
   useEffect(() => {
     if (place.length !== 0) {
@@ -69,7 +65,7 @@ const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid 
     }
 
     var Position = new kakao.maps.LatLng(y.current / place.length, x.current / place.length);
-    youtubemap.setCenter(Position);
+    youtubemap2.setCenter(Position);
 
     for (var i = 0; i < place.length; i++) {
       var placePosition = new kakao.maps.LatLng(place[i].location_y, place[i].location_x),
@@ -77,9 +73,9 @@ const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid 
       var infowindow = new kakao.maps.InfoWindow({
         content: `<span class="info-title">${place[i].name}</span>`, // 인포윈도우에 표시할 내용
       });
-      infowindow.open(youtubemap, marker);
+      infowindow.open(youtubemap2, marker);
 
-      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(youtubemap, marker, infowindow));
+      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(youtubemap2, marker, infowindow));
       kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
 
       var infoTitle = document.querySelectorAll('.info-title');
@@ -95,7 +91,7 @@ const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid 
         e.parentElement.parentElement.style.background = 'unset';
       });
       infowindow.close();
-      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(youtubemap, marker, infowindow));
+      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(youtubemap2, marker, infowindow));
       kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
     }
   };
@@ -110,7 +106,7 @@ const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid 
         image: markerImage,
       });
 
-    marker.setMap(youtubemap); // 지도 위에 마커를 표출합니다
+    marker.setMap(youtubemap2); // 지도 위에 마커를 표출합니다
     // 배열에 생성된 마커를 추가합니다
     setMarkers((prev: any) => [...prev, marker]);
     return marker;
@@ -135,12 +131,19 @@ const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid 
 
   return (
     <div style={{ position: 'relative' }}>
-      <div id="youtubemap" style={{ width: '50%', height: '40%', display: 'inline-block' }}></div>
-      <span className="likevlog_span" style={{ position: 'absolute', width:'40%' }}>
-        <EnLikeVlog vlogplacename={name} vlogpid={videoid} history={history} vlogplaceid={vlogplaceid} placeurl={placeurl}/>
-      </span>
+      <div id="youtubemap2" style={{ width: '100%', height: '50%'}}></div>
+      <div className="likevlog_div">
+        <LikeVlog
+          vlogplacename={name}
+          vlogpid={videoid}
+          history={history}
+          vlogplaceid={vlogplaceid}
+          placeurl={placeurl}
+        />
+      </div>
     </div>
   );
 };
 
-export default EnYoutubeMapevent;
+
+export default YoutubeMapRsp;

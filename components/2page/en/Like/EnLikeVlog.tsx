@@ -41,14 +41,19 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
   const [like19, setLike19] = useState(0);
 
   const [dblikedlist, setDblikedlist] = useState([] as any);
-  useEffect(() => { //DB에 저장된 즐찾목록의 id들만 가져와서 dblikedlist 배열에 저장
-      axios.get(`/api/en/myplace/findall/1`).then(async (response) => {
-    // axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
-      for (var i = 0; i < response.data.data.length; i++) {
-        setDblikedlist((prev: any) => [...prev, response.data.data[i].placeId]);
-      }
-    })
-     .catch((error) => {});
+  useEffect(() => {
+    //DB에 저장된 즐찾목록의 id들만 가져와서 dblikedlist 배열에 저장
+    if (memberid !== 0) {
+      axios
+        .get(`/api/myplace/findall/${memberid}`)
+        .then(async (response) => {
+          // axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
+          for (var i = 0; i < response.data.data.length; i++) {
+            setDblikedlist((prev: any) => [...prev, response.data.data[i].placeId]);
+          }
+        })
+        .catch((error) => {});
+    }
   }, []);
 
   function func_post(e: number) {
@@ -285,8 +290,6 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
   } //heart
 
   function func(e: number) {
-    var el;
-    var i;
     if (e === 0) {
       if (like0===0){
         if ((dblikedlist.find((i: number) => i === props.vlogplaceid[e])) === props.vlogplaceid[e]){
@@ -1156,7 +1159,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     if (len === 1) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">{makelike0()}</ul>
             </span>
@@ -1166,7 +1169,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 2) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1179,7 +1182,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 3) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1193,7 +1196,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 4) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1208,7 +1211,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 5) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1224,7 +1227,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 6) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1241,7 +1244,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 7) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1259,7 +1262,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 8) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1278,7 +1281,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 9) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1298,7 +1301,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 10) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1319,7 +1322,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 11) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1341,7 +1344,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 12) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1364,7 +1367,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 13) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1388,7 +1391,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 14) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1413,7 +1416,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 15) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1439,7 +1442,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 16) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1466,7 +1469,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 17) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1494,7 +1497,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 18) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1523,7 +1526,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     } else if (len === 19) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}
@@ -1553,7 +1556,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
     }else if (len ===20) {
       return (
         <>
-          <div style={{ position: 'relative' }}>
+          <div className="likevlog_div">
             <span>
               <ul id="vlog">
                 {makelike0()}

@@ -7,36 +7,36 @@ const EnCategory = (props: any) => {
   return (
     <>
       <br />
-      <div style={{display:'inline-block'}}>
+      <div className="encategory_box">
         <label
           onClick={() => {
             props.setSelectedcategory('관광명소');
             setClicked('tor');
           }}
-          className={clicked === 'tor' ? 'clicked' : 'button'}
+          className={clicked === 'tor' ? 'enclicked' : 'enbutton'}
         >
           <img src="src/icon/관광명소.png" style={{ width: '5%' }} />
-          <p style={{ display: 'inline' }}>Attraction</p>
+          <p className="encategory_p" style={{ display: 'inline' }}>ATTRACTION</p>
         </label>
         <label
           onClick={() => {
             props.setSelectedcategory('음식점');
             setClicked('res');
           }}
-          className={clicked === 'res' ? 'clicked' : 'button'}
+          className={clicked === 'res' ? 'enclicked' : 'enbutton'}
         >
           <img src="src/icon/식당.png" style={{ width: '5%' }} />
-          <p style={{ display: 'inline' }}>Restaurant</p>
+          <p className="encategory_p" style={{ display: 'inline' }}>RESTAURANT</p>
         </label>
         <label
           onClick={() => {
             props.setSelectedcategory('카페');
             setClicked('caf');
           }}
-          className={clicked === 'caf' ? 'clicked' : 'button'}
+          className={clicked === 'caf' ? 'enclicked' : 'enbutton'}
         >
           <img src="src/icon/카페.png" style={{ width: '5%' }} />
-          <p style={{ display: 'inline' }}>Cafe</p>
+          <p className="encategory_p" style={{ display: 'inline' }}>CAFE</p>
         </label>
       </div>
     </>
