@@ -669,11 +669,14 @@ const Toggle = () => {
         key={index}
         className="citylist"
         onClick={() => {
-          setMap(gyeongi.city[index].city_link);
+          setMap(require(gyeongi.city[index].city_link));
           setSelectedcity(gyeongi.city[index].city_name);
         }}
       >
-        <li className="city_li" style={map === gyeongi.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+        <li
+          className="city_li"
+          style={map === gyeongi.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}
+        >
           {gyeongi.city[index].city_name}
         </li>
         {map === gyeongi.city[index].city_link && (
@@ -696,7 +699,7 @@ const Toggle = () => {
         setSelectedcity(gangwon.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === gangwon.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === gangwon.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {gangwon.city[index].city_name}
       </li>
       {map === gangwon.city[index].city_link && (
@@ -718,7 +721,7 @@ const Toggle = () => {
         setSelectedcity(chungnam.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === chungnam.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === chungnam.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {chungnam.city[index].city_name}
       </li>
       {map === chungnam.city[index].city_link && (
@@ -740,7 +743,7 @@ const Toggle = () => {
         setSelectedcity(chungbuk.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === chungbuk.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === chungbuk.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {chungbuk.city[index].city_name}
       </li>
       {map === chungbuk.city[index].city_link && (
@@ -762,7 +765,7 @@ const Toggle = () => {
         setSelectedcity(jeonnam.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === jeonnam.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === jeonnam.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {jeonnam.city[index].city_name}
       </li>
       {map === jeonnam.city[index].city_link && (
@@ -784,7 +787,7 @@ const Toggle = () => {
         setSelectedcity(jeonbuk.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === jeonbuk.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === jeonbuk.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {jeonbuk.city[index].city_name}
       </li>
       {map === jeonbuk.city[index].city_link && (
@@ -806,7 +809,10 @@ const Toggle = () => {
         setSelectedcity(gyeongnam.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === gyeongnam.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li
+        className="city_li"
+        style={map === gyeongnam.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}
+      >
         {gyeongnam.city[index].city_name}
       </li>
       {map === gyeongnam.city[index].city_link && (
@@ -828,7 +834,10 @@ const Toggle = () => {
         setSelectedcity(gyeongbuk.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === gyeongbuk.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li
+        className="city_li"
+        style={map === gyeongbuk.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}
+      >
         {gyeongbuk.city[index].city_name}
       </li>
       {map === gyeongbuk.city[index].city_link && (
@@ -850,7 +859,7 @@ const Toggle = () => {
         setSelectedcity(incheon.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === incheon.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === incheon.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {incheon.city[index].city_name}
       </li>
       {map === incheon.city[index].city_link && (
@@ -872,7 +881,7 @@ const Toggle = () => {
         setSelectedcity(daejeon.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === daejeon.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === daejeon.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {daejeon.city[index].city_name}
       </li>
       {map === daejeon.city[index].city_link && (
@@ -894,7 +903,7 @@ const Toggle = () => {
         setSelectedcity(daegu.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === daegu.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === daegu.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {daegu.city[index].city_name}
       </li>
       {map === daegu.city[index].city_link && (
@@ -916,7 +925,7 @@ const Toggle = () => {
         setSelectedcity(busan.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === busan.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === busan.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {busan.city[index].city_name}
       </li>
       {map === busan.city[index].city_link && (
@@ -938,7 +947,7 @@ const Toggle = () => {
         setSelectedcity(ulsan.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === ulsan.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === ulsan.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {ulsan.city[index].city_name}
       </li>
       {map === ulsan.city[index].city_link && (
@@ -960,7 +969,7 @@ const Toggle = () => {
         setSelectedcity(gwangju.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === gwangju.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === gwangju.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {gwangju.city[index].city_name}
       </li>
       {map === gwangju.city[index].city_link && (
@@ -982,7 +991,7 @@ const Toggle = () => {
         setSelectedcity(sejong.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === sejong.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === sejong.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {sejong.city[index].city_name}
       </li>
       {map === sejong.city[index].city_link && (
@@ -1039,18 +1048,18 @@ const Toggle = () => {
       />
 
       <div className="district_toggle">
-        <span style={{position:'absolute'}}>
-        {selectedcity !== '없음' && selectedcategory !== '안' ? (
-          <button className="gotosecondbtn" id='citycatedone' onClick={selectedalert}>
-            <Link to={`/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#F08080' }}>
-              보러가기!!
-            </Link>
-          </button>
-        ) : (
-          <button className="gotosecondbtn" onClick={selectedalert}>
-            보러가기
-          </button>
-        )}
+        <span style={{ position: 'absolute' }}>
+          {selectedcity !== '없음' && selectedcategory !== '안' ? (
+            <button className="gotosecondbtn" id="citycatedone" onClick={selectedalert}>
+              <Link to={`/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#F08080' }}>
+                보러가기!!
+              </Link>
+            </button>
+          ) : (
+            <button className="gotosecondbtn" onClick={selectedalert}>
+              보러가기
+            </button>
+          )}
         </span>
 
         <label

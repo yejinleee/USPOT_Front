@@ -332,7 +332,7 @@ const Slide: FC<Props> = (props: Props) => {
             }}
             style={{ textDecoration: 'none', color: '#000000' }}
           >
-            주변장소 더 보기
+            주변장소더보기
           </Link>
         </button>
       </div>

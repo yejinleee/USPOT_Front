@@ -1,7 +1,8 @@
 {
-  "name": "front",
-  "version": "0.1.0",
-  "private": true,
+  "name": "aws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "dependencies": {
     "@emotion/babel-plugin": "^11.3.0",
     "@emotion/react": "^11.4.1",
@@ -29,12 +30,13 @@
     "swr": "^0.5.7",
     "ts-node": "^10.2.1",
     "use-react-router": "^1.0.7",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "webpack-bundle-analyzer": "^4.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack serve --env development",
-    "build": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack",
+    "dev": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack serve --mode development",
+    "build": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "eslintConfig": {
@@ -69,6 +71,7 @@
     "@types/redux-promise": "^0.5.29",
     "@types/styled-components": "^5.1.12",
     "@types/webpack": "^4.41.30",
+    "@types/webpack-bundle-analyzer": "^4.4.1",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "@typescript-eslint/parser": "^4.29.2",
     "babel-loader": "^8.1.0",

@@ -1,4 +1,11 @@
-import Routes from '@components/Routers/Router';
+import App from '@layouts/App';
 import React from 'react';
 import ReactDOM from 'react-dom';
-ReactDOM.render(<Routes />, document.querySelector('#root'));
+import { BrowserRouter } from 'react-router-dom';
+
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.querySelector('#root'),
+);
