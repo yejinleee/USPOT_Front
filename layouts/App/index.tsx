@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from '@pages/Home/Mainhome';
@@ -6,6 +6,7 @@ import Mypage from '@pages/Mypage/Mypage';
 import Second from '@pages/Secondpage/Second';
 import Third from '@pages/Thirdpage/Third';
 import LogIn from '@pages/LogIn/LogIn';
+
 const App = () => {
   return (
     <Switch>
