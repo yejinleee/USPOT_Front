@@ -1,9 +1,43 @@
 .add {
-  width: 10px;
-  height: 10px;
+  width: 1em;
+  height: 1em;
 }
 
 .trash {
-  width: 10px;
-  height: 10px;
+  width: 1em;
+  height: 1em;
+}
+
+button.listbtn {
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  width: 1.2em;
+  padding: 0;
+}
+
+.likedlist {
+  width: 14em;
+  height: 5.5em;
+  overflow: scroll;
+  cursor: pointer;
+  margin-top: 1em;
+  margin-left: 1.5em;
+  margin-bottom: 1.5em;
+  &::-webkit-scrollbar {
+    width: 0.8em;
+    height: 5%;
+    background: #ffffff;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3.5px;
+    background-color: #ced4da;
+
+    &:hover {
+      background-color: #adb5bd;
+    }
+  }
+  &::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
 }
