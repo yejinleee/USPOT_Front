@@ -1,7 +1,7 @@
 import React, { FC, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, Route } from 'react-router-dom';
 import axios from 'axios';
-import '@components/1page/Toggle.css';
+import '@components/1page/Toggle.scss';
 import Category from '@components/1page/ko/Category/category';
 import Container from '@components/1page/ko/Container/Container';
 
@@ -1048,20 +1048,30 @@ const Toggle = () => {
       />
 
       <div className="district_toggle">
-        <span style={{ position: 'absolute' }}>
+        <div className="nextbutton">
           {selectedcity !== '없음' && selectedcategory !== '안' ? (
             <button className="gotosecondbtn" id="citycatedone" onClick={selectedalert}>
-              <Link to={`/${selectedcity}/${selectedcategory}`}
-                    style={{ textDecoration: 'none', color: '#F08080' }}>
-                보러가기!!
+              <span className="circle" aria-hidden="true">
+                <span className="icon arrow"></span>
+              </span>
+              <span className="button-text">
+                <Link to={`/${selectedcity}/${selectedcategory}`}
+                      style={{ textDecoration: 'none', color: '#F08080' }}>
+                NEXT!!
               </Link>
+              </span>
             </button>
           ) : (
             <button className="gotosecondbtn" onClick={selectedalert}>
-              보러가기
+              <span className="circle" aria-hidden="true">
+                <span className="icon arrow"></span>
+              </span>
+              <span className="button-text">
+                NEXT
+              </span>
             </button>
           )}
-        </span>
+        </div>
 
         <label
           className="district"

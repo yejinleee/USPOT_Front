@@ -194,6 +194,9 @@ $black: #F08080;
   transition: $property $duration $ease;
 }
 
+.nextbutton{
+  margin-left: 10%;
+}
 .gotothirdbutton {
   position: relative;
   display: inline-block;
@@ -280,7 +283,6 @@ $black: #F08080;
 }
 
 @supports (display: grid) {
-
   #gotothirdbtn {
     grid-area: main;
     align-self: center;

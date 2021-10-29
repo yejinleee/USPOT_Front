@@ -253,13 +253,13 @@
 }
 
 @media screen and (max-width: 700px) {
-    .gotosecondbtn {
-        left: 70vw;
-        font-size: 12px;
-        margin: 0;
-        padding-left: 1em;
-        padding-right: 1em;
-    }
+    /*.gotosecondbtn {*/
+    /*    left: 70vw;*/
+    /*    font-size: 12px;*/
+    /*    margin: 0;*/
+    /*    padding-left: 1em;*/
+    /*    padding-right: 1em;*/
+    /*}*/
 }
 .gobtn_outerdiv{
     text-align: center;

@@ -15,8 +15,36 @@ img {
   background-color: #ffa9a9;
 }
 
+.clicked {
+  border-radius: 20px;
+  box-shadow: 1px 4px 0 rgb(0, 0, 0, 0.5);
+  margin: 10px;
+  padding: 1em;
+  background-color: #ffa9a9;
+}
+/*clicked랑 머가달라서..?*/
+.enclicked {
+  border-radius: 20px;
+  box-shadow: 1px 4px 0 rgb(0, 0, 0, 0.5);
+  margin: 10px;
+  padding: 1em;
+  background-color: #ffa9a9;
+}
+
 @media screen and (max-width: 600px) {
   .cbutton {
+    margin: 0.2em;
+    padding: 0.25em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+  .clicked {
+    margin: 0.2em;
+    padding: 0.25em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+  .enclicked {
     margin: 0.2em;
     padding: 0.25em;
     padding-top: 0.5em;
@@ -26,22 +54,6 @@ img {
     /*text-align: center;*/
   }
 }
-
-.clicked {
-  border-radius: 20px;
-  box-shadow: 1px 4px 0 rgb(0, 0, 0, 0.5);
-  margin: 10px;
-  padding: 1em;
-  background-color: #ffa9a9;
-}
-.enclicked {
-  border-radius: 20px;
-  box-shadow: 1px 4px 0 rgb(0, 0, 0, 0.5);
-  margin: 10px;
-  padding: 1em;
-  background-color: #ffa9a9;
-}
-
 .category_p {
   font-size: 15px !important;
 }
@@ -119,10 +131,3 @@ img {
 /*    text-align: center;*/
 /*}*/
 
-.clicked {
-  border-radius: 20px;
-  box-shadow: 1px 4px 0 rgb(0, 0, 0, 0.5);
-  margin: 10px;
-  padding: 1em;
-  background-color: #ffa9a9;
-}
