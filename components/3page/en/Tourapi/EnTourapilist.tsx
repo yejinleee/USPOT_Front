@@ -53,7 +53,6 @@ const EnTourapilist: FC<Props> = (props: Props) => {
         } else {
           setData(response.data.response.body.items.item);
           for (var i = 0; i < response.data.response.body.items.item.length; i++) {
-            console.log(response.data.response.body);
             setNames((prev: any) => [...prev, response.data.response.body.items.item[i].title]);
             setCategories((prev: any) => [...prev, ggcategory]);
             setLocx((prev: any) => [...prev, response.data.response.body.items.item[i].mapx]);
@@ -169,12 +168,12 @@ const EnTourapilist: FC<Props> = (props: Props) => {
             }}
           />
           {/*{func(0)}*/}
-          <label className="custom" htmlFor="listidx0">
-            <span className="like">{like0 === 1 ? '💛' : '🤍'}</span>
-            <div className="likeplace">{names[0]}</div>
-            <div className="likeaddr">{addr[0]}</div>
+          <label className="p3custom" htmlFor="listidx0">
+            <span className="p3like">{like0 === 1 ? '💛' : '🤍'}</span>
+            <div className="p3likeplace">{names[0]}</div>
+            <div className="p3likeaddr">{addr[0]}</div>
             <div>{dist[0]}m</div>
-            <img src={img[0]} alt={names[0]} />
+            <img className="p3img" src={img[0]} alt={names[0]} />
           </label>
         </li>
       </>
@@ -194,12 +193,12 @@ const EnTourapilist: FC<Props> = (props: Props) => {
             }}
           />
           {/*{func(1)}*/}
-          <label className="custom" htmlFor="listidx1">
-            <span className="like">{like1 === 1 ? '💛' : '🤍'}</span>
-            <div className="likeplace">{names[1]}</div>
-            <div className="likeaddr">{addr[1]}</div>
+          <label className="p3custom" htmlFor="listidx1">
+            <span className="p3like">{like1 === 1 ? '💛' : '🤍'}</span>
+            <div className="p3likeplace">{names[1]}</div>
+            <div className="p3likeaddr">{addr[1]}</div>
             <div>{dist[1]}m</div>
-            <img src={img[1]} alt={names[1]} />
+            <img className="p3img" src={img[1]} alt={names[1]} />
           </label>
         </li>
       </>
@@ -219,12 +218,12 @@ const EnTourapilist: FC<Props> = (props: Props) => {
             }}
           />
           {/*{func(2)}*/}
-          <label className="custom" htmlFor="listidx2">
-            <span className="like">{like2 === 1 ? '💛' : '🤍'}</span>
-            <div className="likeplace">{names[2]}</div>
-            <div className="likeaddr">{addr[2]}</div>
+          <label className="p3custom" htmlFor="listidx2">
+            <span className="p3like">{like2 === 1 ? '💛' : '🤍'}</span>
+            <div className="p3likeplace">{names[2]}</div>
+            <div className="p3likeaddr">{addr[2]}</div>
             <div>{dist[2]}m</div>
-            <img src={img[2]} alt={names[2]} />
+            <img className="p3img" src={img[2]} alt={names[2]} />
           </label>
         </li>
       </>
@@ -244,12 +243,12 @@ const EnTourapilist: FC<Props> = (props: Props) => {
             }}
           />
           {/*{func(3)}*/}
-          <label className="custom" htmlFor="listidx3">
-            <span className="like">{like3 === 1 ? '💛' : '🤍'}</span>
-            <div className="likeplace">{names[3]}</div>
-            <div className="likeaddr">{addr[3]}</div>
+          <label className="p3custom" htmlFor="listidx3">
+            <span className="p3like">{like3 === 1 ? '💛' : '🤍'}</span>
+            <div className="p3likeplace">{names[3]}</div>
+            <div className="p3likeaddr">{addr[3]}</div>
             <div>{dist[3]}m</div>
-            <img src={img[3]} alt={names[3]} />
+            <img className="p3img" src={img[3]} alt={names[3]} />
           </label>
         </li>
       </>
@@ -269,12 +268,12 @@ const EnTourapilist: FC<Props> = (props: Props) => {
             }}
           />
           {/*{func(4)}*/}
-          <label className="custom" htmlFor="listidx4">
-            <span className="like">{like4 === 1 ? '💛' : '🤍'}</span>
-            <div className="likeplace">{names[4]}</div>
-            <div className="likeaddr">{addr[4]}</div>
+          <label className="p3custom" htmlFor="listidx4">
+            <span className="p3like">{like4 === 1 ? '💛' : '🤍'}</span>
+            <div className="p3likeplace">{names[4]}</div>
+            <div className="p3likeaddr">{addr[4]}</div>
             <div>{dist[4]}m</div>
-            <img src={img[4]} alt={names[4]} />
+            <img className="p3img" src={img[4]} alt={names[4]} />
           </label>
         </li>
       </>
@@ -328,7 +327,11 @@ const EnTourapilist: FC<Props> = (props: Props) => {
     }
   }
 
-  return <>{make()}</>;
+  return (
+    <>
+      <ul className="p3tourapilist">{make()}</ul>
+    </>
+  );
 };
 
 export default EnTourapilist;

@@ -19,6 +19,11 @@
     flex-direction: column;
     text-align: center;
 }
+@media screen and (max-width: 600px){
+    .클래스명모하지 {
+        font-size: 2vw;
+    }
+}
 .slider-parent{
     padding : 10px;
     text-align: center;

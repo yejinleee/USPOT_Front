@@ -9,6 +9,23 @@
 .youtube_all {
   overflow: scroll;
   transform: matrix3d(10);
+  cursor: pointer;
+  &::-webkit-scrollbar {
+    width: 50%;//값?
+    background: #ffffff;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3.5px;
+    background-color: #ced4da;
+
+    &:hover {
+      background-color: #adb5bd;
+    }
+  }
+  &::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
 }
 .youtube_each {
   margin: auto;
@@ -162,6 +179,7 @@ $framePad : 5px;
     opacity: 0;
   }
 }
+
 
 
 /*.youtubebutton,*/

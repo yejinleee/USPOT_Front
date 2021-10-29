@@ -28,25 +28,11 @@
     transition: transform .2s ease-in;
     transition: transform .2s ease-in, -webkit-transform .2s ease-in;
     list-style: none;
-
-
-    /*margin: 0 0.69% 1%;*/
-    /*overflow: hidden;*/
-    /*width: 35vw;*/
-    /*height: 35vw;*/
-    /*list-style: none;*/
-    /*display: inline-block;*/
-    /*margin: 0.625em;*/
-    /*padding : 1.5rem;*/
-    /*background: #fff;*/
-    /*!*box-shadow: 0 5px 25px rgb(0 0 0 /15%);*!*/
-    /*box-shadow: 0 5px 25px;*/
-    /*border-radius: 1.5rem;*/
-    /*position: relative;*/
-    /*cursor: pointer;*/
-    /*transition: -webkit-transform .2s ease-in;*/
-    /*transition: transform .2s ease-in;*/
-    /*transition: transform .2s ease-in,-webkit-transform .2s ease-in;*/
+}
+@media screen and (max-width: 600px){
+    .page3placelist {
+        padding: 0.5rem;
+    }
 }
 .p3img{
     width: 100%;
