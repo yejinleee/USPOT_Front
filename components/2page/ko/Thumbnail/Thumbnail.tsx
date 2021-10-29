@@ -13,8 +13,6 @@ interface Props {
   selectedplace: any;
 }
 
-// selcetedcity지역의 selectedcategory 카테고리에 해당되는 장소 top5 중 btn_pic번째 장소의 유튜브 보여주는것
-
 const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pic, history, selectedplace }) => {
   const [vloglist, setVloglist] = useState([] as any); //브이로그 id들 저장할 배열
   const [map, setMap] = useState(false);
@@ -143,9 +141,7 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
   return (
     <>
       <div className="youtube_all" style={{ overflowY: 'hidden' }}>
-        <div className="thumbnail_text">
-          {selectedplace}에 방문한 유튜브 vlog 보기 !
-        </div>
+        <div className="thumbnail_text">{selectedplace}에 방문한 유튜브 vlog 보기 !</div>
         {vloglist !== [] &&
           vloglist.map((datas: any, i: any) => (
             <div key={i} className="youtube_each">
@@ -157,7 +153,7 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-             />
+              />
               <button
                 className="underline-hover-btn"
                 onClick={() => {
@@ -166,22 +162,24 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
                   setClickedvlog(i);
                 }}
               >
-                <div className="gomap"
-                     id={clickedvlog===i ? "clickedvlog":"notclickedvlog"}
-                >영상 속 장소 더보기</div>
+                <div className="gomap" id={clickedvlog === i ? 'clickedvlog' : 'notclickedvlog'}>
+                  영상 속 장소 더보기
+                </div>
               </button>
             </div>
           ))}
       </div>
       <br />
-      {map && <>
-        <div className="youtubemapevent" style={{ position: 'relative', width:'100%' }}>
-          <YoutubeMapevent videoid={id} history={history} vlogplaceid={vlogplaceid} />
-        </div>
-        <div className="youtubemapevent_response" style={{ position: 'relative', width:'100%' }}>
-          <YoutubeMapRsp videoid={id} history={history} vlogplaceid={vlogplaceid} />
-        </div>
-        </>}
+      {map && (
+        <>
+          <div className="youtubemapevent" style={{ position: 'relative', width: '100%' }}>
+            <YoutubeMapevent videoid={id} history={history} vlogplaceid={vlogplaceid} />
+          </div>
+          <div className="youtubemapevent_response" style={{ position: 'relative', width: '100%' }}>
+            <YoutubeMapRsp videoid={id} history={history} vlogplaceid={vlogplaceid} />
+          </div>
+        </>
+      )}
     </>
   );
 };

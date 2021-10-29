@@ -2,6 +2,7 @@ import Layout from '@layouts/Layouts';
 import React from 'react';
 import LogIn from '@pages/LogIn/LogIn';
 import Button from '@components/mypage/ko/Button/Button';
+import EnButton from '@components/mypage/en/Button/EnButton';
 
 const Mypage = () => {
   var local = sessionStorage.getItem('memberid');
@@ -11,9 +12,16 @@ const Mypage = () => {
     var memberid = 0;
   }
 
+  if (!localStorage.getItem('language')) {
+    localStorage.setItem('language', JSON.stringify('KO'));
+  }
+
+  var local = localStorage.getItem('language');
+  var language = local.split('"');
+
   return (
     <>
-      <Layout>{memberid === 0 ? <LogIn /> : <Button />}</Layout>
+      <Layout>{memberid === 0 ? <LogIn /> : language[1] === 'KO' ? <Button /> : <EnButton />}</Layout>
     </>
   );
 };

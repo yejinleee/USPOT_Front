@@ -36,10 +36,10 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
   useEffect(() => {
     setPlace([]);
     setName([]);
+    setPlaceurl([]);
     axios
       .get(`/api/vlog/findplace/${videoid}`)
       .then((response) => {
-        //이 비디오에서 등장한 장소들
         setPlace(response.data.data);
         for (var i = 0; i < response.data.data.length; i++) {
           setName((prev: any) => [...prev, response.data.data[i].name]);
@@ -48,6 +48,7 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
       })
       .catch((error) => {});
   }, [videoid]);
+
   useEffect(() => {
     if (place.length !== 0) {
       mapscript();
@@ -97,7 +98,6 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
   };
 
   function addMarker(position: any, idx: any, id: any) {
-    // console.log(id);
     var imageSrc = `/src/icon/${id}.png`, // 마커 이미지 url, 스프라이트 이미지를 씁니다
       imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
       markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize),
@@ -132,7 +132,7 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
   return (
     <div style={{ position: 'relative' }}>
       <div id="youtubemap" style={{ width: '50%', height: '40%', display: 'inline-block' }}></div>
-      <span className="likevlog_span" style={{ position: 'absolute', width:'40%' }}>
+      <span className="likevlog_span" style={{ position: 'absolute', width: '40%' }}>
         <LikeVlog
           vlogplacename={name}
           vlogpid={videoid}
@@ -144,6 +144,5 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
     </div>
   );
 };
-
 
 export default YoutubeMapevent;

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import MakeCourse from '@components/mypage/ko/ReviseCourse/MakeCourse';
-import Search from '../Search/Search';
 import ViewMain from '../ViewCourse/Main';
 import '@components/mypage/Button.scss';
+import EnSearch from '../Search/EnSearch';
 
-const Mypage = () => {
+const EnMypage = () => {
   const [select, setSelect] = useState(0);
 
   const onClickadd = () => {
@@ -21,19 +21,19 @@ const Mypage = () => {
       <div className="displaycourse">
         <div className="btncourse">
           <button className={select === 1 ? 'mypagecourse_clicked' : 'mypagecourse'} onClick={onClickadd}>
-            코스 만들기
+            Make Course
           </button>
           <button className={select === 2 ? 'mypagecourse_clicked' : 'mypagecourse'} onClick={onClickrevise}>
-            코스 수정하기
+            Revise Course
           </button>
           <button className={select === 3 ? 'mypagecourse_clicked' : 'mypagecourse'} onClick={onClickview}>
-            내코스
+            My Course
           </button>
         </div>
       </div>
-      {select !== 0 && (select === 1 ? <Search /> : select === 2 ? <MakeCourse /> : <ViewMain />)}
+      {select !== 0 && (select === 1 ? <EnSearch /> : select === 2 ? <MakeCourse /> : <ViewMain />)}
     </>
   );
 };
 
-export default Mypage;
+export default EnMypage;

@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import None from '../MakeCoures/None';
-import Map from './Map';
+import EnMap from './EnMap';
 import '@components/mypage/Search.scss';
 
-const LandingPage = () => {
+const EnLandingPage = () => {
   const [InputText, setInputText] = useState('');
   const [Place, setPlace] = useState('');
   var local = sessionStorage.getItem('memberid');
@@ -48,7 +48,7 @@ const LandingPage = () => {
               </button>
             </form>
           </div>
-          <Map searchPlace={Place} />
+          <EnMap searchPlace={Place} />
         </>
       ) : (
         <None />
@@ -57,4 +57,4 @@ const LandingPage = () => {
   );
 };
 
-export default React.memo(LandingPage);
+export default React.memo(EnLandingPage);
