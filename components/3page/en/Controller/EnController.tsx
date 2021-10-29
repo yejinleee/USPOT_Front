@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import '@components/3page/Controller.css';
+import '@components/3page/Controller.scss';
 import { History, LocationState } from 'history';
 import EnTourapilist from '../Tourapi/EnTourapilist';
 
@@ -103,7 +103,7 @@ const EnController: FC<Props> = (props: Props) => {
               selectedalert();
             }}
           >
-            More Places !
+            Find More Places !
           </button>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-import '@components/2page/LikeVlog.css';
+import '@components/2page/LikeVlog.scss';
 import { History, LocationState } from 'history';
 
 interface Props {

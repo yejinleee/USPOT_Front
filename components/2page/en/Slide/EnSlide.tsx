@@ -325,26 +325,26 @@ const EnSlide: FC<Props> = (props: Props) => {
 
       <div id="gotothird_div">
         <button className="gotothirdbutton">
-          <span className="circle" aria-hidden="true">
-            <span className="icon arrow"></span>
-          </span>
-          <span className="button-text">
-            <Link
-              to={{
-                pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,
-                state: {
-                  selectedplace: top5name[btn_pic - 1],
-                  mapx: mapx[btn_pic - 1],
-                  mapy: mapy[btn_pic - 1],
-                  top5placeid: top5placeid[btn_pic - 1],
-                },
-              }}
-              style={{ textDecoration: 'none', color: 'rgb(92, 88, 88)' }}
-              id="gotothird_link"
-            >
-            View More !
+          <Link
+            to={{
+              pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,
+              state: {
+                selectedplace: top5name[btn_pic - 1],
+                mapx: mapx[btn_pic - 1],
+                mapy: mapy[btn_pic - 1],
+                top5placeid: top5placeid[btn_pic - 1],
+              },
+            }}
+            style={{ textDecoration: 'none', color: 'rgb(92, 88, 88)' }}
+            id="gotothird_link"
+          >
+            <span className="circle" aria-hidden="true">
+              <span className="icon arrow"></span>
+            </span>
+            <span className="button-text">
+              View More !
+            </span>
           </Link>
-          </span>
         </button>
       </div>
 

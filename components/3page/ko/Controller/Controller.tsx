@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import '@components/3page/Controller.css';
+import '@components/3page/Controller.scss';
 import Tourapilist from '@components/3page/ko/LikeTourapi/LikeTourapi';
 import { History, LocationState } from 'history';
 import { Link } from 'react-router-dom';
@@ -47,7 +47,7 @@ const Controller: FC<Props> = (props: Props) => {
       <div className="controller">
         {/*슬라이더*/}
         <div className="slider-parent" onChange={() => setApigopen(false)}>
-          0
+          0km
           <Slider />
           20 km
           <div className="buble">{slideValue}m</div>
@@ -112,7 +112,7 @@ const Controller: FC<Props> = (props: Props) => {
               selectedalert();
             }}
           >
-            장소 더보기 GO
+            더 찾아보기
           </button>
         </div>
       </div>

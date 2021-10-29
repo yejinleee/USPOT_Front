@@ -12,7 +12,7 @@ const HomePage = () => {
   var language = local.split('"');
   return (
     <>
-      <Layouts>{language[1] === 'KO' ? <Toggle /> : <EnToggle />}</Layouts>;
+      <Layouts>{language[1] === 'KO' ? <Toggle /> : <EnToggle />}</Layouts>
     </>
   );
 };

@@ -6,7 +6,6 @@ const EnCategory = (props: any) => {
 
   return (
     <>
-      <br />
       <div className="encategory_box">
         <label
           onClick={() => {

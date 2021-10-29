@@ -190,7 +190,7 @@ const Slide: FC<Props> = (props: Props) => {
     <>
       <div className="title">
         <h2>
-          {props.selectedcity}의 {props.selectedcategory} 추천장소 TOP5{' '}
+          {props.selectedcity}의 {props.selectedcategory} TOP5{' '}
         </h2>
       </div>
       <div className="carousel">
@@ -315,26 +315,26 @@ const Slide: FC<Props> = (props: Props) => {
 
       <div id="gotothird_div">
         <button className="gotothirdbutton">
-          <span className="circle" aria-hidden="true">
-            <span className="icon arrow"></span>
-          </span>
-          <span className="button-text">
-            <Link
-              to={{
-                pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,
-                state: {
-                  selectedplace: top5name[btn_pic - 1],
-                  mapx: mapx[btn_pic - 1],
-                  mapy: mapy[btn_pic - 1],
-                  top5placeid: top5placeid[btn_pic - 1],
-                },
-              }}
-              style={{ textDecoration: 'none', color: 'rgb(92, 88, 88)' }}
-              id="gotothird_link"
-            >
-            주변장소 더보기
+          <Link
+            to={{
+              pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,
+              state: {
+                selectedplace: top5name[btn_pic - 1],
+                mapx: mapx[btn_pic - 1],
+                mapy: mapy[btn_pic - 1],
+                top5placeid: top5placeid[btn_pic - 1],
+              },
+            }}
+            style={{ textDecoration: 'none', color: 'rgb(92, 88, 88)' }}
+            id="gotothird_link"
+          >
+            <span className="circle" aria-hidden="true">
+              <span className="icon arrow"></span>
+            </span>
+            <span className="button-text">
+              주변장소 더보기
+            </span>
           </Link>
-          </span>
         </button>
       </div>
 

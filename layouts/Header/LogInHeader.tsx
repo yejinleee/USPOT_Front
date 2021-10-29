@@ -25,7 +25,7 @@ const LogInHeader = () => {
   return (
     <header className="Header">
       <div className="Contents">
-        <Link className="log" to="/" style={{ textDecoration: 'none', color: '#000000' }}>
+        <Link className="logo" to="/" style={{ textDecoration: 'none', color: '#000000' }}>
           <img className="uspotlogo" src="/src/icon/USPOT로고1.png" alt="USPOT" width="120" height="70" />
         </Link>
         <nav className="Navigation">

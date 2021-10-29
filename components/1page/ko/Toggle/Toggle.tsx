@@ -1051,15 +1051,15 @@ const Toggle = () => {
         <div className="nextbutton">
           {selectedcity !== '없음' && selectedcategory !== '안' ? (
             <button className="gotosecondbtn" id="citycatedone" onClick={selectedalert}>
-              <span className="circle" aria-hidden="true">
-                <span className="icon arrow"></span>
-              </span>
-              <span className="button-text">
-                <Link to={`/${selectedcity}/${selectedcategory}`}
-                      style={{ textDecoration: 'none', color: '#F08080' }}>
-                NEXT!!
+              <Link to={`/${selectedcity}/${selectedcategory}`}
+                    style={{ textDecoration: 'none', color: 'rgb(92, 88, 88)'  }}>
+                <span className="circle" aria-hidden="true">
+                  <span className="icon arrow"></span>
+                </span>
+                <span className="button-text">
+                Let's Go!
+                </span>
               </Link>
-              </span>
             </button>
           ) : (
             <button className="gotosecondbtn" onClick={selectedalert}>
@@ -1067,7 +1067,7 @@ const Toggle = () => {
                 <span className="icon arrow"></span>
               </span>
               <span className="button-text">
-                NEXT
+                Let's Go
               </span>
             </button>
           )}
