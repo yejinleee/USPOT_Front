@@ -8,6 +8,9 @@ import { withRouter } from 'react-router';
 import './login.css'
 
 const LogIn = ({ history }: RouteComponentProps) => {
+  var local = localStorage.getItem('language');
+  var language = local.split('"');
+
   const [username, onChangeUsername] = useInput('');
   const [password, onChangePassword] = useInput('');
   const onSubmit = useCallback(
@@ -20,11 +23,21 @@ const LogIn = ({ history }: RouteComponentProps) => {
         .post('/api/member/login', JSON.stringify({ password, username }), { headers })
         .then((res) => {
           sessionStorage.setItem('memberid', JSON.stringify(res.data.memberid));
-          alert('로그인 성공!');
+          if (language[1]==='KO'){
+            alert('로그인 성공!');
+          }
+          else{
+            alert('Log in Success');
+          }
           history.goBack();
         })
         .catch((error) => {
-          alert('아이디/비밀번호를 확인해주세요!');
+          if (language[1]==='KO'){
+            alert('아이디/비밀번호를 확인해주세요!');
+          }
+          else{
+            alert('Check your ID & PASSWORD');
+          }
         });
     },
     [username, password],

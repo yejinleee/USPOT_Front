@@ -46,7 +46,7 @@ const EnLiketop5: FC<Props> = (props: Props) => {
     console.log('즐겨찾기 할 id:', memberid, 'placeid', ethplaceid);
 
     if (memberid === 0) {
-      alert('로그인하세욥');
+      alert('You need to log in. Please log in.')
       console.log(props.history);
       return props.history.push('/login');
     } else {

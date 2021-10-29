@@ -41,7 +41,12 @@ const LogInHeader = () => {
                 to="/login"
                 style={{ textDecoration: 'none', color: '#000000' }}
                 onClick={() => {
-                  alert('로그인이 필요한 서비스입니다. 로그인을 해주세요');
+                  if (language[1]==='KO'){
+                    alert('로그인이 필요한 서비스입니다. 로그인을 해주세요.');
+                  }
+                  else{
+                    alert('You need to log in. Please log in.')
+                    }
                   <Redirect to="/login" />;
                 }}
               >

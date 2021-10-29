@@ -23,8 +23,8 @@ const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) =
 
 const EnController: FC<Props> = (props: Props) => {
   const [slideValue, Slider] = useSlider(1, 20000, 5000, 'Threshold', 'threshold');
-  const [selectedArrange, setSelectedArrange] = useState('B'); //  정렬기준 *인기순 B / 거리순 E
-  const [selectedType, setSelectedType] = useState(76);
+  const [selectedArrange, setSelectedArrange] = useState(''); //  정렬기준 *인기순 B / 거리순 E
+  const [selectedType, setSelectedType] = useState(0);
   const [apiopen, setApigopen] = useState(false);
   function funcType(selected: number) {
     setSelectedType(selected);

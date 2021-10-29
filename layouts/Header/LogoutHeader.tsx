@@ -46,7 +46,13 @@ const LogoutHeader = () => {
               <button
                 id="logout"
                 onClick={() => {
-                  alert('로그아웃 되셨습니다!');
+                  if (language[1]==='KO'){
+                    alert('로그아웃 되셨습니다!');
+                  }
+                  else{
+                    alert('Log Out Success');
+                  }
+                  <Redirect to="/login" />;
                   sessionStorage.removeItem('memberid');
                   location.reload();
                 }}

@@ -95,7 +95,7 @@ const EnTourapilist: FC<Props> = (props: Props) => {
       'Content-Type': 'application/json',
     };
     if (memberid === 0) {
-      alert('This service requires login');
+      alert('You need to log in. Please log in.')
       console.log(props.history);
       return props.history.push('/login');
     } else {
