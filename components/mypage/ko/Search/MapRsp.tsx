@@ -2,26 +2,29 @@ import React, { FC, useEffect, useMemo, useState } from 'react';
 import MakeCourse from '@components/mypage/ko/MakeCoures/MakeCourse';
 
 interface Props {
-  searchPlace: string;
+  Place: string;
 }
 
-const MapRsp: FC<Props> = ({ children, searchPlace }) => {
+const MapRsp: FC<Props> = ({ children, Place }) => {
   const kakao = (window as any).kakao;
   const [select, setSelect] = useState('');
   const [open, setOpen] = useState(false);
+  const [map, setMap] = useState(null);
 
   useEffect(() => {
-    var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
     const container = document.getElementById('myMapRsp');
     const options = {
       center: new kakao.maps.LatLng(33.450701, 126.570667),
       level: 3,
     };
-    const map = new kakao.maps.Map(container, options);
+    setMap(new kakao.maps.Map(container, options));
+  }, []);
 
+  useEffect(() => {
+    var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
     const ps = new kakao.maps.services.Places();
 
-    ps.keywordSearch(searchPlace, placesSearchCB);
+    ps.keywordSearch(Place, placesSearchCB);
 
     function placesSearchCB(data: any, status: any, pagination: any) {
       if (status === kakao.maps.services.Status.OK) {
@@ -33,9 +36,14 @@ const MapRsp: FC<Props> = ({ children, searchPlace }) => {
         }
 
         map.setBounds(bounds);
+      } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+        alert('검색 결과가 존재하지 않습니다');
+        return;
+      } else if (status === kakao.maps.services.Status.ERROR) {
+        alert('검색 결과 중 오류가 발생했습니다');
+        return;
       }
     }
-
     function displayMarker(place: any) {
       let marker = new kakao.maps.Marker({
         map: map,
@@ -57,7 +65,7 @@ const MapRsp: FC<Props> = ({ children, searchPlace }) => {
         setOpen(true);
       });
     }
-  }, [searchPlace]);
+  }, [Place]);
 
   return (
     <>

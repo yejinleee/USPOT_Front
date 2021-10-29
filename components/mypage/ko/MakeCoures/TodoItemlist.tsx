@@ -27,14 +27,18 @@ const TodoItemList: FC<Props> = (props: Props) => {
     var name = text;
     var myplaceList = props.todos;
 
-    axios
-      .post(`/api/course/add/${memberid}`, JSON.stringify({ name, myplaceList }), { headers })
-      .then(() => {})
-      .catch((error) => {});
+    if (myplaceList.length !== 0) {
+      axios
+        .post(`/api/course/add/${memberid}`, JSON.stringify({ name, myplaceList }), { headers })
+        .then(() => {})
+        .catch((error) => {});
 
-    alert('코스가 저장되었습니다!');
+      alert('코스가 저장되었습니다!');
 
-    location.reload();
+      location.reload();
+    } else {
+      alert('코스에 장소를 담아주세요!');
+    }
   };
 
   return (

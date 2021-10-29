@@ -86,206 +86,247 @@ const LikeVlog: FC<Props> = (props: Props) => {
       .catch((error) => {});
   }
 
-  function heart(i:number){
-    if (i===0 && like0===0){
-      return(
-        <label htmlFor="listidx0" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===0 && like0!==0){
-      return(
-        <label htmlFor="listidx0" className="like">{like0 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===1 && like1===0){
-      return(
-        <label htmlFor="listidx1" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===1 && like1!==0){
-      return(
-        <label htmlFor="listidx1" className="like">{like1 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===2 && like2===0){
-      return(
-        <label htmlFor="listidx2" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===2 && like2!==0){
-      return(
-        <label htmlFor="listidx2" className="like">{like2 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===3 && like3===0){
-      return(
-        <label htmlFor="listidx3" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===3 && like3!==0){
-      return(
-        <label htmlFor="listidx3" className="like">{like3 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===4 && like4===0){
-      return(
-        <label htmlFor="listidx4" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===4 && like4!==0){
-      return(
-        <label htmlFor="listidx4" className="like">{like4 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===5 && like5===0){
-      return(
-        <label htmlFor="listidx5" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===5 && like5!==0){
-      return(
-        <label htmlFor="listidx5" className="like">{like5 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===6 && like6===0){
-      return(
-        <label htmlFor="listidx6" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===6 && like6!==0){
-      return(
-        <label htmlFor="listidx6" className="like">{like6 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===7 && like7===0){
-      return(
-        <label htmlFor="listidx7" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===7 && like7!==0){
-      return(
-        <label htmlFor="listidx7" className="like">{like7 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===8 && like8===0){
-      return(
-        <label htmlFor="listidx8" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===8 && like8!==0){
-      return(
-        <label htmlFor="listidx8" className="like">{like8 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===9 && like9===0){
-      return(
-        <label htmlFor="listidx9" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===9 && like9!==0){
-      return(
-        <label htmlFor="listidx9" className="like">{like9 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===10 && like10===0){
-      return(
-        <label htmlFor="listidx10" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===10 && like10!==0){
-      return(
-        <label htmlFor="listidx10" className="like">{like10 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===11 && like11===0){
-      return(
-        <label htmlFor="listidx11" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===11 && like11!==0){
-      return(
-        <label htmlFor="listidx11" className="like">{like11 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===12 && like12===0){
-      return(
-        <label htmlFor="listidx12" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===12 && like12!==0){
-      return(
-        <label htmlFor="listidx12" className="like">{like12 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===13 && like13===0){
-      return(
-        <label htmlFor="listidx13" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===13 && like13!==0){
-      return(
-        <label htmlFor="listidx13" className="like">{like13 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===14 && like14===0){
-      return(
-        <label htmlFor="listidx14" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===14 && like14!==0){
-      return(
-        <label htmlFor="listidx14" className="like">{like14 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===15 && like15===0){
-      return(
-        <label htmlFor="listidx15" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===15 && like15!==0){
-      return(
-        <label htmlFor="listidx15" className="like">{like15 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===16 && like16===0){
-      return(
-        <label htmlFor="listidx16" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===16 && like16!==0){
-      return(
-        <label htmlFor="listidx16" className="like">{like16 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===17 && like17===0){
-      return(
-        <label htmlFor="listidx17" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===17 && like17!==0){
-      return(
-        <label htmlFor="listidx17" className="like">{like17 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===18 && like18===0){
-      return(
-        <label htmlFor="listidx18" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===18 && like18!==0){
-      return(
-        <label htmlFor="listidx18" className="like">{like18 === 1 ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===19 && like19===0){
-      return(
-        <label htmlFor="listidx19" className="like">{(dblikedlist.find((e: number) => e === props.vlogplaceid[i])) === props.vlogplaceid[i] ? '💛' : '🤍'}</label>
-      )
-    }
-    else if (i===19 && like19!==0){
-      return(
-        <label htmlFor="listidx19" className="like">{like19 === 1 ? '💛' : '🤍'}</label>
-      )
+  function heart(i: number) {
+    if (i === 0 && like0 === 0) {
+      return (
+        <label htmlFor="listidx0" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 0 && like0 !== 0) {
+      return (
+        <label htmlFor="listidx0" className="like">
+          {like0 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 1 && like1 === 0) {
+      return (
+        <label htmlFor="listidx1" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 1 && like1 !== 0) {
+      return (
+        <label htmlFor="listidx1" className="like">
+          {like1 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 2 && like2 === 0) {
+      return (
+        <label htmlFor="listidx2" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 2 && like2 !== 0) {
+      return (
+        <label htmlFor="listidx2" className="like">
+          {like2 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 3 && like3 === 0) {
+      return (
+        <label htmlFor="listidx3" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 3 && like3 !== 0) {
+      return (
+        <label htmlFor="listidx3" className="like">
+          {like3 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 4 && like4 === 0) {
+      return (
+        <label htmlFor="listidx4" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 4 && like4 !== 0) {
+      return (
+        <label htmlFor="listidx4" className="like">
+          {like4 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 5 && like5 === 0) {
+      return (
+        <label htmlFor="listidx5" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 5 && like5 !== 0) {
+      return (
+        <label htmlFor="listidx5" className="like">
+          {like5 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 6 && like6 === 0) {
+      return (
+        <label htmlFor="listidx6" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 6 && like6 !== 0) {
+      return (
+        <label htmlFor="listidx6" className="like">
+          {like6 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 7 && like7 === 0) {
+      return (
+        <label htmlFor="listidx7" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 7 && like7 !== 0) {
+      return (
+        <label htmlFor="listidx7" className="like">
+          {like7 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 8 && like8 === 0) {
+      return (
+        <label htmlFor="listidx8" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 8 && like8 !== 0) {
+      return (
+        <label htmlFor="listidx8" className="like">
+          {like8 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 9 && like9 === 0) {
+      return (
+        <label htmlFor="listidx9" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 9 && like9 !== 0) {
+      return (
+        <label htmlFor="listidx9" className="like">
+          {like9 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 10 && like10 === 0) {
+      return (
+        <label htmlFor="listidx10" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 10 && like10 !== 0) {
+      return (
+        <label htmlFor="listidx10" className="like">
+          {like10 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 11 && like11 === 0) {
+      return (
+        <label htmlFor="listidx11" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 11 && like11 !== 0) {
+      return (
+        <label htmlFor="listidx11" className="like">
+          {like11 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 12 && like12 === 0) {
+      return (
+        <label htmlFor="listidx12" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 12 && like12 !== 0) {
+      return (
+        <label htmlFor="listidx12" className="like">
+          {like12 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 13 && like13 === 0) {
+      return (
+        <label htmlFor="listidx13" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 13 && like13 !== 0) {
+      return (
+        <label htmlFor="listidx13" className="like">
+          {like13 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 14 && like14 === 0) {
+      return (
+        <label htmlFor="listidx14" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 14 && like14 !== 0) {
+      return (
+        <label htmlFor="listidx14" className="like">
+          {like14 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 15 && like15 === 0) {
+      return (
+        <label htmlFor="listidx15" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 15 && like15 !== 0) {
+      return (
+        <label htmlFor="listidx15" className="like">
+          {like15 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 16 && like16 === 0) {
+      return (
+        <label htmlFor="listidx16" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 16 && like16 !== 0) {
+      return (
+        <label htmlFor="listidx16" className="like">
+          {like16 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 17 && like17 === 0) {
+      return (
+        <label htmlFor="listidx17" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 17 && like17 !== 0) {
+      return (
+        <label htmlFor="listidx17" className="like">
+          {like17 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 18 && like18 === 0) {
+      return (
+        <label htmlFor="listidx18" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 18 && like18 !== 0) {
+      return (
+        <label htmlFor="listidx18" className="like">
+          {like18 === 1 ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 19 && like19 === 0) {
+      return (
+        <label htmlFor="listidx19" className="like">
+          {dblikedlist.find((e: number) => e === props.vlogplaceid[i]) === props.vlogplaceid[i] ? '💛' : '🤍'}
+        </label>
+      );
+    } else if (i === 19 && like19 !== 0) {
+      return (
+        <label htmlFor="listidx19" className="like">
+          {like19 === 1 ? '💛' : '🤍'}
+        </label>
+      );
     }
   } //heart
 
@@ -648,7 +689,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
               func(0);
             }}
           />
-          <label className="custom" >
+          <label className="custom">
             {heart(0)}
             <span className="likeplace" onClick={() => openkakaomap(0)}>
               {props.vlogplacename[0]}
@@ -1492,7 +1533,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           </div>
         </>
       );
-    }else if (len >= 20) {
+    } else if (len >= 20) {
       return (
         <>
           <div className="likevlog_div">
@@ -1523,8 +1564,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
           </div>
         </>
       );
-    }
-    else {
+    } else {
       return <></>;
     }
   }

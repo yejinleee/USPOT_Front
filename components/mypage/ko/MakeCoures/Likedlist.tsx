@@ -7,7 +7,7 @@ interface Props {
 const Likedlist: FC<Props> = (props: Props) => {
   return (
     <>
-      <div className="Likedlist">
+      <div className="allList">
         <div className="Likelistname">[하트 누른 장소들 목록]</div>
         <Main start={props.start} />
       </div>

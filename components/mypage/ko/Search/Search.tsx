@@ -22,6 +22,9 @@ const LandingPage = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setPlace(InputText);
+    if (InputText === '') {
+      alert('장소를 입력해주세요!');
+    }
     setInputText('');
   };
 
@@ -50,12 +53,12 @@ const LandingPage = () => {
             </form>
           </div>
           <div className="map_div">
-            <div className="searchplace" style={{position:'relative'}}>
-              <Map searchPlace={Place} />
+            <div className="searchplace" style={{ position: 'relative' }}>
+              <Map Place={Place} />
             </div>
           </div>
-          <div className="searchplace_responsive" style={{position:'relative'}}>
-            <MapRsp searchPlace={Place} />
+          <div className="searchplace_responsive" style={{ position: 'relative' }}>
+            <MapRsp Place={Place} />
           </div>
         </>
       ) : (

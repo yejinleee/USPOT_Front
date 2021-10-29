@@ -155,28 +155,16 @@ const Slide: FC<Props> = (props: Props) => {
           setMapx((prev: any) => [...prev, response.data.data[i].location_x]);
           setMapy((prev: any) => [...prev, response.data.data[i].location_y]);
           setPlaceurl((prev: any) => [...prev, response.data.data[i].placeUrl]);
-        }
-        for (var i = 0; i < 5; i++) {
-          const name = response.data.data[i].name;
-          const params = {
-            query: name,
-            sort: 'accuracy',
-            size: 5,
-          };
-          const { data } = await imageSearch(params);
-
           if (i === 0) {
-            setPic1(
-              'https://postfiles.pstatic.net/MjAxOTA3MjRfMTE5/MDAxNTYzOTYxNDQyNDg4.SG12qyvO9IPouAihVITyfN70wDR0mVB7_mxTSOaMZRAg.-e3p72yPLKfvWsg43bhmZW_GWj1ZQxsmSZXsCbuPgEIg.JPEG.kmt6101/1111.jpg',
-            );
+            setPic1(response.data.data[i].image);
           } else if (i === 1) {
-            setPic2(data.documents[2].image_url);
-          } else if (i === 2) {
-            setPic3(data.documents[3].image_url);
+            setPic2(response.data.data[i].image);
           } else if (i === 3) {
-            setPic4(data.documents[2].image_url);
+            setPic3(response.data.data[i].image);
+          } else if (i === 4) {
+            setPic4(response.data.data[i].image);
           } else {
-            setPic5(data.documents[2].image_url);
+            setPic5(response.data.data[i].image);
           }
         }
       })
@@ -338,17 +326,17 @@ const Slide: FC<Props> = (props: Props) => {
         </button>
       </div>
 
-      <div className="top5mapevent" style={{ position: 'relative', width:'100%' }}>
+      <div className="top5mapevent" style={{ position: 'relative', width: '100%' }}>
         <Top5Mapevent
-            top5data={top5data}
-            imageSrc={imageSrc}
-            top5name={top5name}
-            top5placeid={top5placeid}
-            placeurl={placeurl}
-            history={props.history}
-          />
+          top5data={top5data}
+          imageSrc={imageSrc}
+          top5name={top5name}
+          top5placeid={top5placeid}
+          placeurl={placeurl}
+          history={props.history}
+        />
       </div>
-      <div className="top5mapevent_responsive" style={{ position: 'relative' , width:'100%'}}>
+      <div className="top5mapevent_responsive" style={{ position: 'relative', width: '100%' }}>
         <Top5MapeventResponsive
           top5data={top5data}
           imageSrc={imageSrc}

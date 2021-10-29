@@ -36,10 +36,14 @@ const TodoItemList: FC<Props> = (props: Props) => {
     var name = text;
     var myplaceList = props.todos;
     props.setName(name);
-    axios
-      .put(`/api/course/update/${memberid}/${props.courseid}`, JSON.stringify({ name, myplaceList }), { headers })
-      .then(() => {})
-      .catch((error) => {});
+    if (myplaceList.length !== 0) {
+      axios
+        .put(`/api/course/update/${memberid}/${props.courseid}`, JSON.stringify({ name, myplaceList }), { headers })
+        .then(() => {})
+        .catch((error) => {});
+    } else {
+      alert('코스에 장소를 담아주세요!');
+    }
   };
 
   return (
