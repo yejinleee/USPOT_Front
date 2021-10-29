@@ -141,6 +141,19 @@ const EnSlide: FC<Props> = (props: Props) => {
     음식점: 2,
     카페: 3,
   };
+  var city_engtokor: { [key: string]: string } = {
+    수원시 : 'Suwon',
+    강릉시 : 'Gangneung',
+    단양군 : 'Danyang',
+    천안시 : 'Cheonan',
+    전주시 : 'Jeonju',
+    순천시 : 'Suncheon',
+    경주시 :'Gyeonju',
+    안동시 : 'Andong',
+    하동군 : 'Hadong',
+    대구 : 'Daegu',
+    부산 : 'Busan',
+  };
   let imageSrc = `/src/icon/${dic_category[props.selectedcategory]}.png`;
   useEffect(() => {
     axios
@@ -187,7 +200,7 @@ const EnSlide: FC<Props> = (props: Props) => {
     <>
       <div className="title">
         <h2>
-          TOP5 of {props.selectedcity}
+          TOP5 of {city_engtokor[props.selectedcity]}
         </h2>
       </div>
       <div className="carousel">

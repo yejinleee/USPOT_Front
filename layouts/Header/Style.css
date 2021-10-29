@@ -26,6 +26,7 @@
 .Navigation ul {
   display: flex;
   list-style: none;
+  margin-bottom: 0.0;
 }
 
 .Navigation li {
@@ -39,6 +40,10 @@
 .header_category {
   /*width: 100px;*/
   /*height: 90px;*/
+}
+#logout {
+  background-color: transparent;
+  border: none;
 }
 @media screen and (max-width: 600px) {
   .uspotlogo {
@@ -70,6 +75,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size:0.8em;
+  }
+  #logout{
+    font-size: 0.8em;
+  }
+  .language{
+    font-size: 0.8em;
   }
   .Navigation li {
     margin-left: 0px;
@@ -80,11 +92,7 @@
   }
 }
 
-button#logout {
-  background-color: transparent;
-  border: none;
-  font-size: 15px;
-}
+
 .language {
   background-color: transparent;
   border: 2px solid #f8ad9d;
@@ -106,4 +114,11 @@ button#logout {
 
 .header_text {
   padding-top: 3px;
+}
+
+@media screen and (min-width: 769px) {
+  .Contents{
+    max-width: 80%;
+  }
+
 }

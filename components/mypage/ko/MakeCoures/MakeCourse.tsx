@@ -1,16 +1,17 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
 import Likedlist from '@components/mypage/ko/MakeCoures/Likedlist';
 import Coursemap from '@components/mypage/ko/Course/Coursemap';
-import axios from 'axios';
+import CoursemapRsp from '@components/mypage/ko/Course/CoursemapRsp';
+import '@components/mypage/map.css'
 interface Props {
   start: any;
 }
 
 const MakeCourse: FC<Props> = (props: Props) => {
-  const [exist, setExsist] = useState(false);
+  const [exist, setExist] = useState(false);
 
   const onClick = () => {
-    setExsist(true);
+    setExist(true);
   };
 
   return (
@@ -19,7 +20,12 @@ const MakeCourse: FC<Props> = (props: Props) => {
       {exist && (
         <>
           <Likedlist start={props.start} />
-          <Coursemap />
+          <div className="coursemap" style={{position:'relative'}}>
+            <Coursemap />
+          </div>
+          <div className="coursemap_responsive" style={{position:'relative'}}>
+            <CoursemapRsp />
+          </div>
         </>
       )}
     </>

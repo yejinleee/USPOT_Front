@@ -1,0 +1,42 @@
+/*//맵 반응형 설정 (675px)*/
+
+.searchplace{
+  margin:auto;
+  display: block;
+}
+.searchplace_responsive{
+    display: none;
+}
+
+.coursemap{
+    margin:auto;
+    display: block;
+}
+.coursemap_responsive{
+    display: none;
+}
+@media screen and (max-width: 675px) {
+    .searchplace {
+        display: none;
+    }
+    .searchplace_responsive {
+        position: relative;
+        width: 90%;
+        height: 70vh;
+        margin: auto;
+        display: block;
+    }
+    .coursemap{
+        display: none;
+    }
+    .coursemap_responsive{
+        position: relative;
+        width: 90%;
+        height: 70vh;
+        margin: auto;
+        display: block;
+    }
+}
+
+
+

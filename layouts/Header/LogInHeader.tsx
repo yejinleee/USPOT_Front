@@ -25,8 +25,8 @@ const LogInHeader = () => {
   return (
     <header className="Header">
       <div className="Contents">
-        <Link to="/" style={{ textDecoration: 'none', color: '#000000' }}>
-          <img className="logo" src="/src/icon/USPOT로고1.png" alt="USPOT" width="120" height="70" />
+        <Link className="log" to="/" style={{ textDecoration: 'none', color: '#000000' }}>
+          <img className="uspotlogo" src="/src/icon/USPOT로고1.png" alt="USPOT" width="120" height="70" />
         </Link>
         <nav className="Navigation">
           <ul>
@@ -50,7 +50,9 @@ const LogInHeader = () => {
               </Link>
             </li>
             <li>
-              <Link to="/login" style={{ textDecoration: 'none', color: '#000000' }}>
+              <Link
+                id="logout"
+                to="/login" style={{ textDecoration: 'none', color: '#000000' }}>
                 <img className="header_category" src="/src/icon/mypage.png" alt="login" width="30" height="30" />
                 <div className="header_text">LOGIN</div>
               </Link>

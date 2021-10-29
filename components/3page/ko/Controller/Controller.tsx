@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react';
 import '@components/3page/Controller.css';
 import Tourapilist from '@components/3page/ko/LikeTourapi/LikeTourapi';
 import { History, LocationState } from 'history';
+import { Link } from 'react-router-dom';
 interface Props {
   mapx: any;
   mapy: any;
@@ -51,66 +52,71 @@ const Controller: FC<Props> = (props: Props) => {
           20 km
           <div className="buble">{slideValue}m</div>
         </div>
-        <br />
         {/*인기순거리순*/}
         <div className="order" onClick={() => setApigopen(false)}>
-          {/*인기순 B / 거리순 E*/}
-          <button
-            onClick={() => funcArrange('B')}
-            className={selectedArrange === 'popularity' ? 'selected' : 'unselected'}
+          <span
+            onClick={() => funcArrange('popularity')}
+            className="order_button"
+            id={selectedArrange === 'popularity' ? 'selected' : 'unselected'}
           >
             인기순
-          </button>
-          <button
-            onClick={() => funcArrange('E')}
-            className={selectedArrange === 'distance' ? 'selected' : 'unselected'}
+          </span>
+          <span
+            onClick={() => funcArrange('distance')}
+            className="order_button"
+            id={selectedArrange === 'distance' ? 'selected' : 'unselected'}
           >
             거리순
-          </button>
+          </span>
         </div>
         {/*카테고리*/}
-        <div className="category" onClick={() => setApigopen(false)}>
-          <button onClick={() => funcType(12)} className={selectedType === 12 ? 'selected' : 'unselected'}>
-            관광지
-          </button>
-          <button onClick={() => funcType(14)} className={selectedType === 14 ? 'selected' : 'unselected'}>
-            문화시설
-          </button>
-          <button onClick={() => funcType(15)} className={selectedType === 15 ? 'selected' : 'unselected'}>
-            축제,공연,행사
-          </button>
-          <button onClick={() => funcType(28)} className={selectedType === 28 ? 'selected' : 'unselected'}>
-            레포츠
-          </button>
-          <button onClick={() => funcType(32)} className={selectedType === 32 ? 'selected' : 'unselected'}>
-            숙박
-          </button>
-          <button onClick={() => funcType(38)} className={selectedType === 38 ? 'selected' : 'unselected'}>
-            쇼핑
-          </button>
-          <button onClick={() => funcType(39)} className={selectedType === 39 ? 'selected' : 'unselected'}>
-            음식
-          </button>
+        <div className="wrapper">
+          <div className="category" onClick={() => setApigopen(false)}>
+            <span onClick={() => funcType(12)}
+                    className="category_button" id={selectedType === 12 ? 'selected' : 'unselected'}>
+              관광지
+            </span>
+            <span onClick={() => funcType(14)}
+                    className="category_button" id={selectedType === 14 ? 'selected' : 'unselected'}>
+              문화시설
+            </span>
+            <span onClick={() => funcType(15)}
+                    className="category_button" id={selectedType === 15 ? 'selected' : 'unselected'}>
+              축제,공연,행사
+            </span>
+            <span onClick={() => funcType(28)}
+                    className="category_button" id={selectedType === 28 ? 'selected' : 'unselected'}>
+              레포츠
+            </span>
+            <span onClick={() => funcType(32)}
+                    className="category_button" id={selectedType === 32 ? 'selected' : 'unselected'}>
+              숙박
+            </span>
+            <span onClick={() => funcType(38)}
+                    className="category_button" id={selectedType === 38 ? 'selected' : 'unselected'}>
+              쇼핑
+            </span>
+            <span onClick={() => funcType(39)}
+                    className="category_button" id={selectedType === 39 ? 'selected' : 'unselected'}>
+              음식
+            </span>
+          </div>
         </div>
-        <br />
-        Arrange : {selectedArrange}
-        <br />
-        거리 : {slideValue}
-        <br />
-        Type : {selectedType}
-        <br />
       </div>
 
-      <div className="gobtn">
-        <button
-          className="go"
-          onClick={() => {
-            selectedalert();
-          }}
-        >
-          장소 더보기 GO
-        </button>
+      <div className="gobtn_outerdiv">
+        <div className="gobtn">
+          <button
+            className="go"
+            onClick={() => {
+              selectedalert();
+            }}
+          >
+            장소 더보기 GO
+          </button>
+        </div>
       </div>
+
       <div className="클래스명모하지">
         {apiopen && (
           <Tourapilist

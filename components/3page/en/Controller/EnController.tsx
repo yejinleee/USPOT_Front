@@ -50,67 +50,64 @@ const EnController: FC<Props> = (props: Props) => {
           20 km
           <div className="buble">{slideValue}m</div>
         </div>
-        <br />
         {/*인기순거리순*/}
         <div className="order" onClick={() => setApigopen(false)}>
-          {/*인기순 B / 거리순 E*/}
-          <button
-            onClick={() => funcArrange('B')}
-            className={selectedArrange === 'popularity' ? 'selected' : 'unselected'}
+          <span
+            onClick={() => funcArrange('popularity')}
+            className="order_button"
+            id={selectedArrange === 'popularity' ? 'selected' : 'unselected'}
           >
             Popularity
-          </button>
-          <button
-            onClick={() => funcArrange('E')}
-            className={selectedArrange === 'distance' ? 'selected' : 'unselected'}
+          </span>
+          <span
+            onClick={() => funcArrange('distance')}
+            className="order_button"
+            id={selectedArrange === 'distance' ? 'selected' : 'unselected'}
           >
             Distance
-          </button>
+          </span>
         </div>
         {/*카테고리*/}
-        <div className="category" onClick={() => setApigopen(false)}>
-          <button onClick={() => funcType(76)} className={selectedType === 76 ? 'selected' : 'unselected'}>
-            Attraction
-          </button>
-          <button onClick={() => funcType(78)} className={selectedType === 78 ? 'selected' : 'unselected'}>
-            Cultural facilities
-          </button>
-          <button onClick={() => funcType(85)} className={selectedType === 85 ? 'selected' : 'unselected'}>
-            Festivals, performances, events.
-          </button>
-          <button onClick={() => funcType(75)} className={selectedType === 75 ? 'selected' : 'unselected'}>
-            Leports
-          </button>
-          <button onClick={() => funcType(80)} className={selectedType === 80 ? 'selected' : 'unselected'}>
-            Accommodation
-          </button>
-          <button onClick={() => funcType(79)} className={selectedType === 79 ? 'selected' : 'unselected'}>
-            Shopping
-          </button>
-          <button onClick={() => funcType(82)} className={selectedType === 82 ? 'selected' : 'unselected'}>
-            Food
-          </button>
+        <div className="wrapper">
+          <div className="category" onClick={() => setApigopen(false)}>
+            <span onClick={() => funcType(76)} className="category_button" id={selectedType === 76 ? 'selected' : 'unselected'}>
+              Attraction
+            </span>
+            <span onClick={() => funcType(78)} className="category_button" id={selectedType === 78 ? 'selected' : 'unselected'}>
+              Cultural facilities
+            </span>
+            <span onClick={() => funcType(79)} className="category_button" id={selectedType === 79 ? 'selected' : 'unselected'}>
+              Shopping
+            </span>
+            <span onClick={() => funcType(82)} className="category_button" id={selectedType === 82 ? 'selected' : 'unselected'}>
+              Food
+            </span>
+            <span onClick={() => funcType(85)} className="category_button" id={selectedType === 85 ? 'selected' : 'unselected'}>
+              Festivals, performances, events
+            </span>
+            <span onClick={() => funcType(75)} className="category_button" id={selectedType === 75 ? 'selected' : 'unselected'}>
+              Leports
+            </span>
+            <span onClick={() => funcType(80)} className="category_button" id={selectedType === 80 ? 'selected' : 'unselected'}>
+              Accommodation
+            </span>
+          </div>
         </div>
-        <br />
-        Arrange : {selectedArrange}
-        <br />
-        Distance : {slideValue}
-        <br />
-        Type : {selectedType}
-        <br />
       </div>
 
-      <div className="gobtn">
-        <button
-          className="go"
-          onClick={() => {
-            // setApigopen(true);
-            selectedalert();
-          }}
-        >
-          More locations GO
-        </button>
+      <div className="gobtn_outerdiv">
+        <div className="gobtn">
+          <button
+            className="go"
+            onClick={() => {
+              selectedalert();
+            }}
+          >
+            More Places !
+          </button>
+        </div>
       </div>
+
       <div className="클래스명모하지">
         {apiopen && (
           <EnTourapilist

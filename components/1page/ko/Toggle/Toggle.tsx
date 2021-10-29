@@ -1051,7 +1051,8 @@ const Toggle = () => {
         <span style={{ position: 'absolute' }}>
           {selectedcity !== '없음' && selectedcategory !== '안' ? (
             <button className="gotosecondbtn" id="citycatedone" onClick={selectedalert}>
-              <Link to={`/${selectedcity}/${selectedcategory}`} style={{ textDecoration: 'none', color: '#F08080' }}>
+              <Link to={`/${selectedcity}/${selectedcategory}`}
+                    style={{ textDecoration: 'none', color: '#F08080' }}>
                 보러가기!!
               </Link>
             </button>

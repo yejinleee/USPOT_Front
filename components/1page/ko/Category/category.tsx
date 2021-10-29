@@ -7,7 +7,6 @@ const Category = (props: any) => {
   return (
     <>
       <br />
-      {/*, paddingLeft:'15vw',*/}
       <div className="category_box">
         <label
           onClick={() => {
