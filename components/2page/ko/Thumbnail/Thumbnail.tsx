@@ -144,7 +144,6 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
         {selectedplace}에 방문한 유튜브 vlog 보기 !
       </div>
       <div className="youtube_all" style={{ overflowY: 'hidden' }}>
-        <div className="thumbnail_text">{selectedplace}에 방문한 유튜브 vlog 보기 !</div>
         {vloglist !== [] &&
           vloglist.map((datas: any, i: any) => (
             <div key={i} className="youtube_each">

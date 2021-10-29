@@ -32,7 +32,6 @@ const Liketop5: FC<Props> = (props: Props) => {
       axios
         .get(`/api/myplace/findall/${memberid}`)
         .then(async (response) => {
-          // axios.get(`/api/myplace/findall/1`).then(async (response) => {
           for (var i = 0; i < response.data.data.length; i++) {
             setDblikedlist((prev: any) => [...prev, response.data.data[i].placeId]);
           }
@@ -225,6 +224,7 @@ const Liketop5: FC<Props> = (props: Props) => {
                 <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[0]}`, '_blank')}> {props.top5name[0]}</span>
               </label>
             </li>
+
             <li className="ticon_li custom-control">
               <input
                 type="checkbox"

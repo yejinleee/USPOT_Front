@@ -142,10 +142,10 @@ const EnThumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_
 
   return (
     <>
-      <div className="youtube_all" style={{overflowY:'hidden'}}>
-        <div className="thumbnail_text">
+      <div className="thumbnail_text">
         View more vlogs in {selectedplace}!
-        </div>
+      </div>
+      <div className="youtube_all" style={{overflowY:'hidden'}}>
         {vloglist !== [] &&
           vloglist.map((datas: any, i: any) => (
             <div key={i} className="youtube_each">
