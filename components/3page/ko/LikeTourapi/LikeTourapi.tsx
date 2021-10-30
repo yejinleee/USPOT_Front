@@ -25,7 +25,7 @@ const LikeTourapi: FC<Props> = (props: Props) => {
   const [dist, setDistance] = useState([] as any);
   const [img, setImg] = useState([] as any);
   const [id, setId] = useState([] as any);
-  const [placeid, setPlaceid] = useState([0, 0, 0, 0, 0] as any);
+  const [placeid, setPlaceid] = useState([-1, -1, -1, -1, -1, -1] as any);
 
   var local = sessionStorage.getItem('memberid');
   try {
