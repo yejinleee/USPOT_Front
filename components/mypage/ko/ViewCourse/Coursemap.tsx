@@ -57,7 +57,7 @@ const Coursemap: FC<Props> = (props: Props) => {
       var placePosition = new kakao.maps.LatLng(place[i].myplaceDto.location_y, place[i].myplaceDto.location_x),
         marker = addMarker(placePosition, i, place[i].myplaceDto.categoryId);
       var infowindow = new kakao.maps.InfoWindow({
-        content: `<span class="info-title">${place[i].myplaceDto.name}</span>`, // 인포윈도우에 표시할 내용
+        content: `<span class="info-title">${place[i].myplaceDto.name}</span>`,
       });
       infowindow.open(coursemap, marker);
 
@@ -84,16 +84,15 @@ const Coursemap: FC<Props> = (props: Props) => {
 
   function addMarker(position: any, idx: any, id: any) {
     var number = String(idx + 1) + String(idx + 1);
-    var imageSrc = `/src/icon/ㅇ.png`, // 마커 이미지 url, 스프라이트 이미지를 씁니다
-      imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
+    var imageSrc = `/src/icon/${number}.png`,
+      imageSize = new kakao.maps.Size(36, 37),
       markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize),
       marker = new kakao.maps.Marker({
-        position: position, // 마커의 위치
+        position: position,
         image: markerImage,
       });
 
-    marker.setMap(coursemap); // 지도 위에 마커를 표출합니다
-    // 배열에 생성된 마커를 추가합니다
+    marker.setMap(coursemap);
     setMarkers((prev: any) => [...prev, marker]);
     return marker;
   }
@@ -102,7 +101,6 @@ const Coursemap: FC<Props> = (props: Props) => {
       infowindow.open(map, marker);
     };
   }
-  // 인포윈도우를 닫는 클로저를 만드는 함수입니다
   function makeOutListener(infowindow: { close: () => void }) {
     return function () {
       infowindow.close();
@@ -117,15 +115,23 @@ const Coursemap: FC<Props> = (props: Props) => {
 
   return (
     <div style={{ position: 'relative' }}>
-      <div>{name}</div>
-      <div id="coursemap" style={{ width: '50%', height: '40%', display: 'inline-block' }}></div>
-
-      {place.map((v: string, index: number) => (
-        <div>
-          <div>{index}</div>
-          <div>{place[index].myplaceDto.name}</div>
-        </div>
-      ))}
+      <div className="viewcoursetitle">&lt;{name}&gt;</div>
+      <ul className="viewcourseul">
+        {place.map((v: string, index: number) => (
+          <>
+            {index === 0 ? (
+              <>
+                <li className="viewcoruseli">{place[index].myplaceDto.name}</li>
+              </>
+            ) : (
+              <>
+                <li className="viewcoruseli">&nbsp;➜ {place[index].myplaceDto.name}</li>
+              </>
+            )}
+          </>
+        ))}
+      </ul>
+      <div id="coursemap" style={{ width: '60%', height: '60%', display: 'relative', margin: 'auto' }}></div>
     </div>
   );
 };

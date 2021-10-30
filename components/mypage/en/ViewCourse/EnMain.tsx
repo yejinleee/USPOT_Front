@@ -42,17 +42,19 @@ const EnViewMain = () => {
 
   const courselist: any = course.map((v: string, index: number) => (
     <>
-      <button id={v} key={index} onClick={() => onClick(course[index].courseid)}>
-        {course[index].name}
-      </button>
+      <div className="viewbuttonclass">
+        <button className="deletebutton" key={index} onClick={() => onClick(course[index].courseid)}>
+          <p className="deletename">{course[index].name}</p>
+        </button>
+      </div>
     </>
   ));
 
   return (
     <>
-      <h3>Delete the course</h3>
-      {courselist}
-      <h3>View my course list</h3>
+      <h3 className="viewtitle">Delete the course</h3>
+      <div className="viewouter">{courselist}</div>
+      <h3 className="viewtitle">View my course list</h3>
       <CourseList courselist={course} />
     </>
   );
