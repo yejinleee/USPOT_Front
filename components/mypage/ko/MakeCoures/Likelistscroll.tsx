@@ -11,7 +11,7 @@ interface Props {
   start: any;
 }
 
-const Likelist: FC<Props> = (props: Props) => {
+const Likelistscroll: FC<Props> = (props: Props) => {
   return (
     <>
       <div className="Likelistname">마이플레이스 목록</div>
@@ -32,4 +32,4 @@ const Likelist: FC<Props> = (props: Props) => {
   );
 };
 
-export default Likelist;
+export default Likelistscroll;

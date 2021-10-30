@@ -54,8 +54,10 @@ $ease_out: cubic-bezier(0.165, 0.84, 0.44, 1);
 
 $framePad : 5px;
 .underline-hover-btn{
-  display: inline-block;
+  //display: inline-block;
+  display: block;
   padding: 0.6em 0;
+  margin-left: 25%;
   border-radius: 0;
   color: rgb(92, 88, 88) !important;
   margin-top:1rem;

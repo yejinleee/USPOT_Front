@@ -180,11 +180,16 @@ button.listbtn {
     margin: auto;
     display: block;
   }
+  #myplacemapRsp{
+    //display: none;
+  }
 
   .likedlist{
     width:100%;
     margin-left: 0;
     margin-top:2vh;
+    height: 50%;
+    z-index: -1;  
   }
 }
 
