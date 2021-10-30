@@ -42,8 +42,8 @@ const ViewMain = () => {
 
   const courselist: any = course.map((v: string, index: number) => (
     <>
-      <button id={v} key={index} onClick={() => onClick(course[index].courseid)}>
-        {course[index].name}
+      <button className="deletebutton" key={index} onClick={() => onClick(course[index].courseid)}>
+        <p className="deletename">{course[index].name}</p>
       </button>
     </>
   ));

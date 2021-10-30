@@ -80,13 +80,14 @@ const Slide: FC<Props> = (props: Props) => {
           setMapx((prev: any) => [...prev, response.data.data[i].location_x]);
           setMapy((prev: any) => [...prev, response.data.data[i].location_y]);
           setPlaceurl((prev: any) => [...prev, response.data.data[i].placeUrl]);
+          console.log(i);
           if (i === 0) {
             setPic1(response.data.data[i].image);
           } else if (i === 1) {
             setPic2(response.data.data[i].image);
-          } else if (i === 3) {
+          } else if (i === 2) {
             setPic3(response.data.data[i].image);
-          } else if (i === 4) {
+          } else if (i === 3) {
             setPic4(response.data.data[i].image);
           } else {
             setPic5(response.data.data[i].image);

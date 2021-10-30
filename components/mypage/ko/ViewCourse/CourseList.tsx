@@ -11,6 +11,7 @@ const CourseList: FC<Props> = (props: Props) => {
     return (
       <div>
         <button
+          className="viewmycoursebutton"
           onClick={() => {
             setCourseid(list.courseid);
             setExist(true);
