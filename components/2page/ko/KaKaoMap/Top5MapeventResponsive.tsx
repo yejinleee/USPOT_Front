@@ -12,6 +12,7 @@ interface Props {
   top5placeid: any;
   placeurl: any;
   history: History<LocationState>;
+  stationlist: any;
 }
 
 const Top5MapeventResponsive: FC<Props> = (props: Props) => {
@@ -23,6 +24,7 @@ const Top5MapeventResponsive: FC<Props> = (props: Props) => {
   }, [props.top5data]);
 
   const mapscript = () => {
+    console.log(props.stationlist);
     props.top5data.forEach((el: any) => {
       latt.current += el.location_y;
       long.current += el.location_x;
@@ -33,26 +35,20 @@ const Top5MapeventResponsive: FC<Props> = (props: Props) => {
       center: new kakao.maps.LatLng(latt.current / props.top5data.length, long.current / props.top5data.length),
       level: 10,
     };
-    //map
     const top5map = new kakao.maps.Map(container, options);
 
     props.top5data.forEach((el: any) => {
-      // 마커를 생성합니다
       var imageSize = new kakao.maps.Size(30, 30),
         imageOption = { offset: new kakao.maps.Point(27, 69) };
       const markerImage = new kakao.maps.MarkerImage(props.imageSrc, imageSize, imageOption);
       const marker = new kakao.maps.Marker({
-        //마커가 표시 될 위치
         position: new kakao.maps.LatLng(el.location_y, el.location_x),
-        //이미지 마커 불러오기
         image: markerImage,
-        // content: el.title,
       });
 
       marker.setMap(top5map);
-      // 마커에 표시할 인포윈도우를 생성합니다
       var infowindow = new kakao.maps.InfoWindow({
-        content: `<span class="info-title">${el.name}</span>`, // 인포윈도우에 표시할 내용
+        content: `<span class="info-title">${el.name}</span>`,
       });
       infowindow.open(top5map, marker);
       var infoTitle = document.querySelectorAll('.info-title');
@@ -72,14 +68,12 @@ const Top5MapeventResponsive: FC<Props> = (props: Props) => {
       kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
     });
 
-    // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
     function makeOverListener(map: any, marker: any, infowindow: { open: (arg0: any, arg1: any) => void }) {
       return function () {
         infowindow.open(map, marker);
       };
     }
 
-    // 인포윈도우를 닫는 클로저를 만드는 함수입니다
     function makeOutListener(infowindow: { close: () => void }) {
       return function () {
         infowindow.close();
@@ -89,7 +83,7 @@ const Top5MapeventResponsive: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div id="maprspId" style={{ width: '100%', height: '50%'}}></div>
+      <div id="maprspId" style={{ width: '100%', height: '50%' }}></div>
       <div className="liketop5_div">
         <Liketop5
           top5name={props.top5name}

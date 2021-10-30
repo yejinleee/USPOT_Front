@@ -39,6 +39,7 @@ const Slide: FC<Props> = (props: Props) => {
   const [mapy, setMapy] = useState([] as any);
   const [top5data, setTop5data] = useState([] as any);
   const [placeurl, setPlaceurl] = useState([] as any);
+  const [station, setStation] = useState([] as any);
 
   var dic: { [key: string]: number } = {
     가평군: 1,
@@ -94,6 +95,12 @@ const Slide: FC<Props> = (props: Props) => {
         }
       })
       .catch((error) => {});
+    axios
+      .get(`/api/station/${dic[props.selectedcity]}`)
+      .then((response) => {
+        setStation(response.data.data);
+      })
+      .then((error) => {});
   }, []);
 
   var selectedplace;
@@ -257,6 +264,7 @@ const Slide: FC<Props> = (props: Props) => {
           top5placeid={top5placeid}
           placeurl={placeurl}
           history={props.history}
+          stationlist={station}
         />
       </div>
       <div className="top5mapevent_responsive" style={{ position: 'relative', width: '100%' }}>
@@ -267,6 +275,7 @@ const Slide: FC<Props> = (props: Props) => {
           top5placeid={top5placeid}
           placeurl={placeurl}
           history={props.history}
+          stationlist={station}
         />
       </div>
 
