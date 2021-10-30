@@ -5,7 +5,7 @@ import TodoTitle from './TodoTitle';
 interface Props {
   courseid: number;
   coursename: string;
-  setName: any;
+  setCourese: any;
 }
 
 const TodoTemplate: FC<Props> = (props: Props) => {
@@ -82,7 +82,7 @@ const TodoTemplate: FC<Props> = (props: Props) => {
         onRemove={onRemove}
         courseid={props.courseid}
         coursename={props.coursename}
-        setName={props.setName}
+        setCourese={props.setCourese}
       />
     </>
   );

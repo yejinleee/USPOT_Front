@@ -22,7 +22,7 @@ const Main = () => {
         setCourese(response.data.data);
       })
       .catch((error) => {});
-  }, [name]);
+  }, []);
 
   const onClick = (id: number, coursename: string) => {
     setState(id);
@@ -48,7 +48,7 @@ const Main = () => {
       <div className="reviselist">{courselist}</div>
       {state !== 0 && (
         <>
-          <TodoTemplate courseid={state} coursename={name} setName={setName} />
+          <TodoTemplate courseid={state} coursename={name} setCourese={setCourese} />
         </>
       )}
     </>

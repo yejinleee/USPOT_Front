@@ -6,7 +6,7 @@ interface Props {
   onRemove: any;
   courseid: any;
   coursename: any;
-  setName: any;
+  setCourese: any;
 }
 
 const TodoItemList: FC<Props> = (props: Props) => {
@@ -34,13 +34,17 @@ const TodoItemList: FC<Props> = (props: Props) => {
   const onClick = () => {
     var name = text;
     var myplaceList = props.todos;
-    props.setName(name);
     if (myplaceList.length !== 0) {
       axios
         .put(`/api/course/update/${memberid}/${props.courseid}`, JSON.stringify({ name, myplaceList }), { headers })
         .then(() => {
           alert('코스가 수정되었습니다!');
-          location.reload();
+          axios
+            .get(`/api/course/findall/${memberid}`)
+            .then(async (response) => {
+              props.setCourese(response.data.data);
+            })
+            .catch((error) => {});
         })
         .catch((error) => {});
     } else {

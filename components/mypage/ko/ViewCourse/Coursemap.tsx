@@ -131,7 +131,10 @@ const Coursemap: FC<Props> = (props: Props) => {
           </>
         ))}
       </ul>
-      <div id="coursemap" style={{ width: '60%', height: '60%', display: 'relative', margin: 'auto' }}></div>
+      <div
+        id="coursemap"
+        style={{ width: '60%', height: '60%', display: 'relative', margin: 'auto', marginBottom: '5px' }}
+      ></div>
     </div>
   );
 };
