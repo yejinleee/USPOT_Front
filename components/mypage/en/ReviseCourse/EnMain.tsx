@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import EnTodoTemplate from './EnTodoTemplate';
+import TodoTemplate from '@components/mypage/ko/ReviseCourse/TodoTemplate';
 
 const EnMain = () => {
   var local = sessionStorage.getItem('memberid');
@@ -34,6 +35,7 @@ const EnMain = () => {
       <button
         id={v}
         key={index}
+        className="revisecoursebutton"
         onClick={() => {
           onClick(course[index].courseid, course[index].name);
         }}
@@ -44,14 +46,14 @@ const EnMain = () => {
   ));
   return (
     <>
-      <div className="reviselist" style={{margin:'2vh 0 1vh'}}>{courselist}</div>
-      <div>Please choose a course to modify</div>
-      <div className="reviselist">{courselist}</div>
+      <div className="revisetitle" style={{margin:'2vh 0 1vh'}}>Please choose a course to modify</div>
+      {courselist}
       {state !== 0 && (
         <>
           <EnTodoTemplate courseid={state} coursename={name} setName={setName} />
         </>
       )}
+
     </>
   );
 };
