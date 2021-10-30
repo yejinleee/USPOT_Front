@@ -6,7 +6,7 @@ interface Props {
   onRemove: any;
 }
 
-const TodoItemList: FC<Props> = (props: Props) => {
+const EnTodoItemList: FC<Props> = (props: Props) => {
   var imgsrc = './src/icon/star.png';
   return (
     <>
@@ -18,4 +18,4 @@ const TodoItemList: FC<Props> = (props: Props) => {
   );
 };
 
-export default TodoItemList;
+export default EnTodoItemList;

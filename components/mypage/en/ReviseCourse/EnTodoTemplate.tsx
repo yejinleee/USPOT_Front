@@ -1,14 +1,14 @@
 import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
-import TodoItemList from './TodoItemlist';
-import TodoTitle from './TodoTitle';
+import EnTodoItemList from './EnTodoItemlist';
+import EnTodoTitle from './EnTodoTitle';
 interface Props {
   courseid: number;
   coursename: string;
   setName: any;
 }
 
-const TodoTemplate: FC<Props> = (props: Props) => {
+const EnTodoTemplate: FC<Props> = (props: Props) => {
   var local = sessionStorage.getItem('memberid');
   try {
     var memberid = Number(local.split('')[1]);
@@ -22,7 +22,7 @@ const TodoTemplate: FC<Props> = (props: Props) => {
 
   useEffect(() => {
     axios
-      .get(`/api/myplace/findall/${memberid}`)
+      .get(`/api/en/myplace/findall/${memberid}`)
       .then(async (response) => {
         for (var i = 0; i < response.data.data.length; i++) {
           setPlacelist(response.data.data);
@@ -36,7 +36,7 @@ const TodoTemplate: FC<Props> = (props: Props) => {
     setTodos([]);
     setIndex([]);
     axios
-      .get(`/api/myplacecourse/findall/${props.courseid}`)
+      .get(`/api/en/myplacecourse/findall/${props.courseid}`)
       .then(async (response) => {
         for (var i = 0; i < response.data.data.length; i++) {
           setTodos((prev: any) => [...prev, response.data.data[i].myplaceDto]);
@@ -47,13 +47,12 @@ const TodoTemplate: FC<Props> = (props: Props) => {
   }, [props.courseid]);
 
   const onClick = (list: any) => {
-    if (todos.length === 0) {
-      setTodos((prev: any) => [...prev, list]);
-      setIndex((prev: any) => [...prev, list.placeId]);
+    if (todos.length >= 10) {
+      alert('코스는 10개를 넘을 수 없습니다!');
     } else {
-      if (index.indexOf(list.placeId) === -1) {
+      if (index.indexOf(list.id) === -1) {
         setTodos((prev: any) => [...prev, list]);
-        setIndex((prev: any) => [...prev, list.placeId]);
+        setIndex((prev: any) => [...prev, list.id]);
       }
     }
   };
@@ -77,8 +76,8 @@ const TodoTemplate: FC<Props> = (props: Props) => {
       <div className="likedlist" style={{ display: 'inline-block' }}>
         {likedlist}
       </div>
-      <TodoTitle>코스를 수정해 보아요!</TodoTitle>
-      <TodoItemList
+      <EnTodoTitle>코스를 수정해 보아요!</EnTodoTitle>
+      <EnTodoItemList
         todos={todos}
         onRemove={onRemove}
         courseid={props.courseid}
@@ -89,4 +88,4 @@ const TodoTemplate: FC<Props> = (props: Props) => {
   );
 };
 
-export default TodoTemplate;
+export default EnTodoTemplate;

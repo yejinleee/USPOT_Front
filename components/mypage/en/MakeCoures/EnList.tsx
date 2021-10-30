@@ -55,7 +55,6 @@ const EnList: FC<Props> = (props: Props) => {
       <div className="makecourselist">
         <EnTodoItemList todos={props.todos} onRemove={props.onRemove} placeid={props.start} />
       </div>
-      {/*코스저장save버튼*/}
       <EnCourseInputSave todos={props.todos} onRemove={props.onRemove} placeid={props.start} />
       <div className="myplacemap_div">
         <EnCoursemap />

@@ -1,6 +1,6 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
-import CoursemapRsp from '@components/mypage/ko/Course/CoursemapRsp';
 import '@components/mypage/Coursemap.css';
+import EnCoursemapRsp from '../Course/EnCoursemapRsp';
 interface Props {
   start: any;
   startplacename: string;
@@ -21,7 +21,7 @@ const EnMakeCourseRsp: FC<Props> = (props: Props) => {
       {exist && (
         <>
           <div className="coursemap_responsive" style={{ position: 'relative' }}>
-            <CoursemapRsp />
+            <EnCoursemapRsp />
           </div>
         </>
       )}

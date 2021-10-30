@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { FC, useEffect, useState } from 'react';
-import CourseList from './CourseList';
+import CourseList from './EnCourseList';
 
-const ViewMain = () => {
+const EnViewMain = () => {
   var local = sessionStorage.getItem('memberid');
   const [course, setCourese] = useState([] as any);
   try {
@@ -14,7 +14,7 @@ const ViewMain = () => {
   useEffect(() => {
     setCourese([]);
     axios
-      .get(`/api/course/findall/${memberid}`)
+      .get(`/api/en/course/findall/${memberid}`)
       .then(async (response) => {
         setCourese(response.data.data);
       })
@@ -22,12 +22,16 @@ const ViewMain = () => {
   }, []);
 
   const onClick = (id: number) => {
-    axios
-      .delete(`/api/course/delete/${id}`)
-      .then((response) => {})
-      .catch((error) => {});
-    setCourese([]);
+    if (window.confirm('코스를 삭제 하시겠습니까?')) {
+      axios
+        .delete(`/api/en/course/delete/${id}`)
+        .then((response) => {})
+        .catch((error) => {});
 
+      setCourese([]);
+
+      alert('코스가 삭제 되었습니다!');
+    }
     axios
       .get(`/api/course/findall/${memberid}`)
       .then(async (response) => {
@@ -53,4 +57,4 @@ const ViewMain = () => {
     </>
   );
 };
-export default ViewMain;
+export default EnViewMain;

@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useState } from 'react';
-import Coursemap from './Coursemap';
+import EnCoursemap from './EnCoursemap';
 interface Props {
   courselist: any;
 }
 
-const CourseList: FC<Props> = (props: Props) => {
+const EnCourseList: FC<Props> = (props: Props) => {
   const [courseid, setCourseid] = useState();
   const [exist, setExist] = useState(false);
   function Likelist({ list, name }: any) {
@@ -27,8 +27,8 @@ const CourseList: FC<Props> = (props: Props) => {
       {props.courselist.map((v: string, index: number) => (
         <Likelist list={props.courselist[index]} name={props.courselist[index].name} />
       ))}
-      {exist && <Coursemap courseid={courseid} />}
+      {exist && <EnCoursemap courseid={courseid} />}
     </>
   );
 };
-export default CourseList;
+export default EnCourseList;

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import MakeCourse from '@components/mypage/ko/ReviseCourse/MakeCourse';
-import ViewMain from '../ViewCourse/Main';
+import ViewMain from '../ViewCourse/EnMain';
 import '@components/mypage/Button.scss';
 import EnSearch from '../Search/EnSearch';
+import EnMakeCourse from '../ReviseCourse/EnMakeCourse';
+import EnViewMain from '../ViewCourse/EnMain';
 
 const EnMypage = () => {
   const [select, setSelect] = useState(0);
@@ -31,7 +33,7 @@ const EnMypage = () => {
           </button>
         </div>
       </div>
-      {select !== 0 && (select === 1 ? <EnSearch /> : select === 2 ? <MakeCourse /> : <ViewMain />)}
+      {select !== 0 && (select === 1 ? <EnSearch /> : select === 2 ? <EnMakeCourse /> : <EnViewMain />)}
     </>
   );
 };

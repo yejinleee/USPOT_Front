@@ -1,8 +1,8 @@
 import axios from 'axios';
-import React, { FC, useEffect, useState } from 'react';
-import TodoTemplate from './TodoTemplate';
+import React, { useEffect, useState } from 'react';
+import EnTodoTemplate from './EnTodoTemplate';
 
-const Main = () => {
+const EnMain = () => {
   var local = sessionStorage.getItem('memberid');
   const [state, setState] = useState(0);
   const [course, setCourese] = useState([] as any);
@@ -17,10 +17,9 @@ const Main = () => {
   useEffect(() => {
     setCourese([]);
     axios
-      .get(`/api/course/findall/${memberid}`)
+      .get(`/api/en/course/findall/${memberid}`)
       .then(async (response) => {
         setCourese(response.data.data);
-        console.log(response.data.data);
       })
       .catch((error) => {});
   }, [name]);
@@ -50,10 +49,10 @@ const Main = () => {
       </div>
       {state !== 0 && (
         <>
-          <TodoTemplate courseid={state} coursename={name} setName={setName} />
+          <EnTodoTemplate courseid={state} coursename={name} setName={setName} />
         </>
       )}
     </>
   );
 };
-export default Main;
+export default EnMain;

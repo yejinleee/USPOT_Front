@@ -2,7 +2,7 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 
-export default function EnCoursemap() {
+export default function Coursemap() {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
@@ -33,7 +33,7 @@ export default function EnCoursemap() {
       long.current += el.location_x;
     });
 
-    let container = document.getElementById('enmyplacemap');
+    let container = document.getElementById('myplacemapRsp');
     let options = {
       center: new kakao.maps.LatLng(latt.current / myplace.length, long.current / myplace.length),
       level: 13,
@@ -80,9 +80,5 @@ export default function EnCoursemap() {
     }
   };
 
-  return (
-    <>
-      <div id="enmyplacemap" style={{ width: '35vw', height: '35vw', margin: 'auto', display: 'inline-block' }}></div>
-    </>
-  );
+  return <div id="myplacemapRsp" style={{ width: '100%', height: '50vw' }}></div>;
 }
