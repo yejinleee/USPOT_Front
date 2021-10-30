@@ -1,12 +1,12 @@
-import React, { FC, memo, useEffect, useMemo, useState } from 'react';
+import React, { FC, useState } from 'react';
 import '@components/mypage/Coursemap.css';
-import TodoTemplate from '@components/mypage/ko/MakeCoures/TodoTemplate';
+import EnTodoTemplate from './EnTodoTemplate';
 interface Props {
   start: any;
   startplacename: string;
 }
 
-const MakeCourse: FC<Props> = (props: Props) => {
+const EnMakeCourse: FC<Props> = (props: Props) => {
   const [exist, setExist] = useState(false);
 
   const onClick = () => {
@@ -17,14 +17,13 @@ const MakeCourse: FC<Props> = (props: Props) => {
     <>
       <div className="setstartbtn_div">
         <button onClick={onClick} className="setstartbtn">
-          {' '}
           "{props.startplacename}"에서 출발하기
         </button>
       </div>
       {exist && (
         <>
           <div className="makecourse_div">
-            <TodoTemplate start={props.start} />
+            <EnTodoTemplate start={props.start} />
           </div>
           <div className="coursemap" style={{ position: 'relative' }}></div>
         </>
@@ -33,4 +32,4 @@ const MakeCourse: FC<Props> = (props: Props) => {
   );
 };
 
-export default MakeCourse;
+export default EnMakeCourse;

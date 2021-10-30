@@ -6,7 +6,7 @@ interface Props {
   startplacename: string;
 }
 
-const MakeCourse: FC<Props> = (props: Props) => {
+const EnMakeCourseRsp: FC<Props> = (props: Props) => {
   const [exist, setExist] = useState(false);
 
   const onClick = () => {
@@ -16,7 +16,6 @@ const MakeCourse: FC<Props> = (props: Props) => {
   return (
     <>
       <button onClick={onClick} className="setstartbtn">
-        {' '}
         "{props.startplacename}"에서 출발하기
       </button>
       {exist && (
@@ -30,4 +29,4 @@ const MakeCourse: FC<Props> = (props: Props) => {
   );
 };
 
-export default MakeCourse;
+export default EnMakeCourseRsp;
