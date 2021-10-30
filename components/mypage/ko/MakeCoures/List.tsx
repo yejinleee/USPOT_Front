@@ -3,8 +3,11 @@ import TodoItemList from './TodoItemlist';
 import Likelistscroll from '@components/mypage/ko/MakeCoures/Likelistscroll';
 import '@components/mypage/List.scss';
 import Coursemap from '@components/mypage/ko/Course/Coursemap';
+import CoursemapRsp from '@components/mypage/ko/Course/CoursemapRsp';
 import CourseInputSave from '@components/mypage/ko/MakeCoures/CourseInputSave';
 import axios from 'axios';
+import Map from '@components/mypage/ko/Search/Map';
+import MapRsp from '@components/mypage/ko/Search/MapRsp';
 
 interface Props {
   placelist: any;
@@ -62,11 +65,26 @@ const List: FC<Props> = (props: Props) => {
       </div>
       {/*코스저장save버튼*/}
       <CourseInputSave todos={props.todos} onRemove={props.onRemove} placeid={props.start} />
+
+
       <div className="myplacemap_div">
-        <Coursemap />
-        <span className="likedlist" style={{ display: 'inline-block' , position:'absolute'}}>
+        <div className="coursemap"  style={{ position: 'relative', width: '100%' }}>
+          <Coursemap />
+          <span className="likedlist" style={{ display: 'inline-block' , position:'absolute'}}>
           <Likelistscroll placelist={props.placelist} todos={props.todos} onClick={props.onClick} ondeleteClick={props.ondeleteClick} onRemove={props.onRemove} start={props.start} />
         </span>
+        </div>
+
+        <div className="coursemap_responsive" style={{ position: 'relative', width: '100%' }}>
+          <CoursemapRsp />
+          <span className="likedlist" style={{ display: 'inline-block' , position:'absolute'}}>
+          <Likelistscroll placelist={props.placelist} todos={props.todos} onClick={props.onClick} ondeleteClick={props.ondeleteClick} onRemove={props.onRemove} start={props.start} />
+        </span>
+        </div>
+
+
+
+
       </div>
 
 

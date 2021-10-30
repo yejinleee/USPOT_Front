@@ -2,7 +2,7 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 
-export default function Coursemap() {
+export default function CoursemapRsp() {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;
@@ -80,5 +80,8 @@ export default function Coursemap() {
     }
   };
 
-  return <div id="myplacemapRsp" style={{ width: '100%', height: '50vw' }}></div>;
+  return (<>
+    <div id="myplacemapRsp" style={{ width: '100%', height: '50vw'}}></div>
+    </>
+  )
 }

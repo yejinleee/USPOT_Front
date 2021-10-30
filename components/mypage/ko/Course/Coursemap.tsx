@@ -1,6 +1,7 @@
 /*global kakao */
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
+import '@components/mypage/List.scss';
 
 export default function Coursemap() {
   const latt = useRef(0);
@@ -82,7 +83,11 @@ export default function Coursemap() {
 
   return (
     <>
-      <div id="myplacemap" style={{ width: '35vw', height: '35vw', margin:'auto', display:'inline-block' }}></div>
+      <div id="myplacemap" style={{ width: '50%', height: '50%'}}></div>
+
+
+      {/*//원래*/}
+      {/*<div id="myplacemap" style={{ width: '35vw', height: '35vw', margin:'auto' }}></div>*/}
     </>
   )
 }
