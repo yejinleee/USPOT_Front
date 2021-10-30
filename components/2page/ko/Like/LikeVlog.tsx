@@ -49,10 +49,11 @@ const LikeVlog: FC<Props> = (props: Props) => {
           for (var i = 0; i < response.data.data.length; i++) {
             setDblikedlist((prev: any) => [...prev, response.data.data[i].placeId]);
           }
+          console.log(response.data.data);
         })
         .catch((error) => {});
     }
-  }, []);
+  }, [props.vlogpid]);
 
   function func_post(e: number) {
     var ethplaceid = props.vlogplaceid[e];

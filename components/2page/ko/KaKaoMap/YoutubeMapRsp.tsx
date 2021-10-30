@@ -35,7 +35,6 @@ const YoutubeMapRsp: FC<Props> = ({ children, videoid, history }) => {
     axios
       .get(`/api/vlog/findplace/${videoid}`)
       .then((response) => {
-        //이 비디오에서 등장한 장소들
         setPlace(response.data.data);
         setName([]);
         setPlaceurl([]);

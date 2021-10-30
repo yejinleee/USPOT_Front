@@ -2,7 +2,6 @@
   display: inline-block;
 }
 
-
 /*.input_radio label:hover {*/
 /*    background-color:#F08080;*/
 /*    color:white*/
@@ -20,7 +19,7 @@
   padding: 0px 10px;
 }
 
-#mapId{
+#entop5 {
   width: 50%;
   height: 50%;
   display: inline-block;
@@ -28,11 +27,11 @@
 /*.top5map_div{*/
 /*  position:relative;*/
 /*}*/
-.liketop5_span{
+.liketop5_span {
   position: absolute;
   padding-left: 20;
 }
-.likevlog_span{
+.likevlog_span {
   position: absolute;
   padding-left: 20;
 }
