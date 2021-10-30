@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { FC, useEffect, useState } from 'react';
-import styled from 'styled-components';
 import TodoItem from './TodoItem';
 interface Props {
   todos: any;
@@ -39,7 +38,10 @@ const TodoItemList: FC<Props> = (props: Props) => {
     if (myplaceList.length !== 0) {
       axios
         .put(`/api/course/update/${memberid}/${props.courseid}`, JSON.stringify({ name, myplaceList }), { headers })
-        .then(() => {})
+        .then(() => {
+          alert('코스가 수정되었습니다!');
+          location.reload();
+        })
         .catch((error) => {});
     } else {
       alert('코스에 장소를 담아주세요!');
@@ -49,7 +51,7 @@ const TodoItemList: FC<Props> = (props: Props) => {
   return (
     <>
       <input onChange={onChange} value={text} />
-      <button onClick={onClick}>editname</button>
+      <button onClick={onClick}>수정하기</button>
       {props.todos.map((todo: any) => (
         <TodoItem todos={todo} id={todo.id} onRemove={props.onRemove} />
       ))}

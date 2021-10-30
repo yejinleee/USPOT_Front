@@ -22,7 +22,6 @@ const Main = () => {
       .get(`/api/course/findall/${memberid}`)
       .then(async (response) => {
         setCourese(response.data.data);
-        console.log(response.data.data);
       })
       .catch((error) => {});
   }, [name]);

@@ -49,6 +49,7 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
     axios
       .get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`)
       .then((response) => {
+        console.log(response.data.data);
         if (response.data.data[btn_pic - 1].vlog_list.length >= 5) {
           var number = 5;
         } else {
