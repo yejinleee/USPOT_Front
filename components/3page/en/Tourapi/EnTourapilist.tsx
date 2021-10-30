@@ -39,6 +39,7 @@ const EnTourapilist: FC<Props> = (props: Props) => {
   const [like2, setLike2] = useState(0);
   const [like3, setLike3] = useState(0);
   const [like4, setLike4] = useState(0);
+  const [like5, setLike5] = useState(0);
 
   var ggcategory = '관광명소';
   if (props.type === 39) {
@@ -61,26 +62,6 @@ const EnTourapilist: FC<Props> = (props: Props) => {
         } else {
           setData(response.data.response.body.items.item);
           for (var i = 0; i < response.data.response.body.items.item.length; i++) {
-            const headers = {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            };
-            const existid = response.data.response.body.items.item[i].contentid;
-            axios
-              .post(
-                `/api/myplace/isexists/${memberid}`,
-                JSON.stringify({ existid }),
-                { headers },
-              )
-              .then((res) => {
-                placeid[j] = res.data[0];
-                // console.log(j, '번째placeid[j]', placeid[j]);
-                // console.log('placeid', placeid);
-                j = j + 1;
-              })
-              .catch((error) => {
-                // console.log(j, '번쨰에서 catch');
-              });
             setNames((prev: any) => [...prev, response.data.response.body.items.item[i].title]);
             setCategories((prev: any) => [...prev, ggcategory]);
             setLocx((prev: any) => [...prev, response.data.response.body.items.item[i].mapx]);
@@ -129,6 +110,7 @@ const EnTourapilist: FC<Props> = (props: Props) => {
         ) // 500에러
         // { withCredentials:true }) //이건 415인데 위에 headers 저렇게써야하는거라구해서 header로 바꾸면 500..
         .then((res) => {
+          console.log(res.data);
           placeid[e] = res.data.myplaceid;
           console.log('넣어진 id: ', memberid, 'placeid[e]', placeid[e]);
         })
@@ -136,6 +118,7 @@ const EnTourapilist: FC<Props> = (props: Props) => {
         });
     }
   }
+  console.log(placeid);
   function func_delete(e: number) {
     console.log('즐겨찾기에서 지울 id: ', memberid, 'placeid[e]', placeid[e]);
     axios
@@ -187,8 +170,15 @@ const EnTourapilist: FC<Props> = (props: Props) => {
       return (
         <span className="p3like">{like4 === 1 ? '💛' : '🤍'}</span>
       )
+    } else if (i === 5 && like5 === 0) {
+      return (
+        <span className="p3like">{placeid[5] !== -1 ? '💛' : '🤍'}</span>
+      );
+    } else if (i === 5 && like5 !== 0) {
+      return (
+        <span className="p3like">{like5 === 1 ? '💛' : '🤍'}</span>
+      )
     }
-
   }
 
   function func(e: number) {
@@ -271,6 +261,22 @@ const EnTourapilist: FC<Props> = (props: Props) => {
         func_delete(e);
       } else if (like4 === 2) {
         setLike4(1);
+        func_post(e);
+      }
+    } else if (e === 5) {
+      if (like5 === 0) {
+        if (placeid[e] !== -1) {
+          setLike5(2);
+          func_delete(e);
+        } else {
+          setLike5(1);
+          func_post(e);
+        }
+      } else if (like5 === 1) {
+        setLike5(2);
+        func_delete(e);
+      } else if (like5 === 2) {
+        setLike5(1);
         func_post(e);
       }
     }
@@ -397,7 +403,30 @@ const EnTourapilist: FC<Props> = (props: Props) => {
         </li>
       </>
     )
-
+  }
+  function makelike5(){
+    return (
+      <>
+        <li className="page3placelist">
+          <input
+            type="checkbox"
+            className="likeinput"
+            id="listidx5"
+            onClick={() => {
+              func(5);
+              // like5 === 1 ? setLike5(2) : setLike5(1);
+            }}
+          />
+          <label className="p3custom" htmlFor="listidx5">
+            {heart(5)}
+            <div className="p3likeplace">{names[5]}</div>
+            <div className="p3likeaddr">{addr[5]}</div>
+            <div>{dist[5]}m</div>
+            <img className="p3img" src={img[5]} alt={names[5]} />
+          </label>
+        </li>
+      </>
+    )
   }
 
   //웹페이지에 표시할 태그들. return에서 호출
@@ -438,7 +467,18 @@ const EnTourapilist: FC<Props> = (props: Props) => {
           {makelike4()}
         </>
       );
-    } else if (len === 0) {
+    } else if (len === 6) {
+      return (
+        <>
+          {makelike0()}
+          {makelike1()}
+          {makelike2()}
+          {makelike3()}
+          {makelike4()}
+          {makelike5()}
+        </>
+      );
+    }else if (len === 0) {
       return (
         <>
           <p>not exist!</p>
@@ -453,20 +493,8 @@ const EnTourapilist: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="gobtn_outerdiv">
-        <div className="gobtn">
-          <button
-            className="go"
-            onClick={() => {
-              reRender();
-            }}
-          >
-            Find More Places !
-            {/*re-render*/}
-          </button>
-        </div>
-      </div>
-      {random===1 ? <ul className="p3tourapilist">{make()}</ul> : null}
+      <ul className="p3tourapilist">{make()}</ul>
+
     </>
   );
 };

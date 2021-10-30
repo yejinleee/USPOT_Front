@@ -17,7 +17,6 @@ const LikeTourapi: FC<Props> = (props: Props) => {
   let number = 6;
   let pnumber = 1;
   const [data, setData] = useState([] as any);
-
   const [names, setNames] = useState([] as any);
   const [categories, setCategories] = useState([] as any);
   const [locx, setLocx] = useState([] as any);
