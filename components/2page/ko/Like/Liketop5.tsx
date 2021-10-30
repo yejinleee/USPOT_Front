@@ -41,7 +41,7 @@ const Liketop5: FC<Props> = (props: Props) => {
   function func_post(e: number) {
     var ethplaceid = props.top5placeid[e];
     if (memberid === 0) {
-      alert('로그인하세욥');
+      alert('로그인이 필요한 서비스입니다 로그인을 해주세요');
       return props.history.push('/login');
     } else {
       axios
@@ -211,7 +211,7 @@ const Liketop5: FC<Props> = (props: Props) => {
         func_post(e);
       }
     }
-  } //func
+  }
 
   return (
     <>

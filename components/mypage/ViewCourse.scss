@@ -55,3 +55,53 @@
 .deletebutton:-webkit-details-marker {
   display: none;
 }
+
+.viewcourseul {
+  list-style: none;
+  text-align: center;
+}
+
+.viewcoruseli {
+  display: inline-block;
+}
+
+.viewcoursetitle {
+  text-align: center;
+  margin-top: 1em;
+}
+
+.viewtitle {
+  text-align: center;
+}
+
+.viewbuttonclass {
+  display: inline-block;
+}
+
+.viewouter {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+@media screen and (max-width: 675px) {
+  #coursemap {
+    width: 100% !important;
+    height: 40vh !important;
+  }
+  .viewcoruseli {
+    font-size: 0.8em;
+  }
+  .viewcoursetitle {
+    font-size: 0.9em;
+  }
+  .viewouter {
+    font-size: 0.9em;
+  }
+  .viewtitle {
+    font-size: 0.9em;
+  }
+  .deletename {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}

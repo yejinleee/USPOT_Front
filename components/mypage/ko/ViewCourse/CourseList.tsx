@@ -10,22 +10,24 @@ const CourseList: FC<Props> = (props: Props) => {
   function Likelist({ list, name }: any) {
     return (
       <button
-        className="viewmycoursebutton"
+        className="deletebutton"
         onClick={() => {
           setCourseid(list.courseid);
           setExist(true);
         }}
       >
-        <p>{name}</p>
+        <p className="deletename">{name}</p>
       </button>
     );
   }
 
   return (
     <>
-      {props.courselist.map((v: string, index: number) => (
-        <Likelist list={props.courselist[index]} name={props.courselist[index].name} />
-      ))}
+      <div className="viewouter">
+        {props.courselist.map((v: string, index: number) => (
+          <Likelist list={props.courselist[index]} name={props.courselist[index].name} />
+        ))}
+      </div>
       {exist && <Coursemap courseid={courseid} />}
     </>
   );
