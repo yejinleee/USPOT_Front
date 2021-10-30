@@ -3,6 +3,7 @@ import '@components/3page/Controller.scss';
 import Tourapilist from '@components/3page/ko/LikeTourapi/LikeTourapi';
 import { History, LocationState } from 'history';
 import { Link } from 'react-router-dom';
+
 interface Props {
   mapx: any;
   mapy: any;
@@ -17,7 +18,7 @@ const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) =
   };
 
   const Slider = () => (
-    <input type="range" id={id} min={min} max={max} step={0.5} defaultValue={state} onMouseUp={handleChange} />
+    <input type="range" id={id} min={min} max={max} step={1} defaultValue={state} onMouseUp={handleChange} />
   );
   return [state, Slider, setSlide];
 };
@@ -104,21 +105,22 @@ const Controller: FC<Props> = (props: Props) => {
         </div>
       </div>
 
-      <div className="gobtn_outerdiv">
-        <div className="gobtn">
-          <button
-            className="go"
-            onClick={() => {
-              selectedalert();
-            }}
-          >
-            더 찾아보기
-          </button>
-        </div>
-      </div>
+      {/*<div className="gobtn_outerdiv">*/}
+      {/*  <div className="gobtn">*/}
+      {/*    <button*/}
+      {/*      className="go"*/}
+      {/*      onClick={() => {*/}
+      {/*        selectedalert();*/}
+      {/*      }}*/}
+      {/*    >*/}
+      {/*      더 찾아보기*/}
+      {/*    </button>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
+
 
       <div className="클래스명모하지">
-        {apiopen && (
+        { (selectedType !== 0 && selectedArrange !== '') ?
           <Tourapilist
             arrange={selectedArrange}
             distance={slideValue}
@@ -126,8 +128,18 @@ const Controller: FC<Props> = (props: Props) => {
             mapx={props.mapx}
             mapy={props.mapy}
             history={props.history}
-          />
-        )}
+          /> : null
+        }
+        {/*{apiopen && (*/}
+        {/*  <Tourapilist*/}
+        {/*    arrange={selectedArrange}*/}
+        {/*    distance={slideValue}*/}
+        {/*    type={selectedType}*/}
+        {/*    mapx={props.mapx}*/}
+        {/*    mapy={props.mapy}*/}
+        {/*    history={props.history}*/}
+        {/*  />*/}
+        {/*)}*/}
       </div>
     </>
   );

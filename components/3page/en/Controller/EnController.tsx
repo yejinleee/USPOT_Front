@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react';
 import '@components/3page/Controller.scss';
 import { History, LocationState } from 'history';
 import EnTourapilist from '../Tourapi/EnTourapilist';
+import Tourapilist from '@components/3page/ko/LikeTourapi/LikeTourapi';
 
 interface Props {
   mapx: any;
@@ -95,21 +96,21 @@ const EnController: FC<Props> = (props: Props) => {
         </div>
       </div>
 
-      <div className="gobtn_outerdiv">
-        <div className="gobtn">
-          <button
-            className="go"
-            onClick={() => {
-              selectedalert();
-            }}
-          >
-            Find More Places !
-          </button>
-        </div>
-      </div>
+      {/*<div className="gobtn_outerdiv">*/}
+      {/*  <div className="gobtn">*/}
+      {/*    <button*/}
+      {/*      className="go"*/}
+      {/*      onClick={() => {*/}
+      {/*        selectedalert();*/}
+      {/*      }}*/}
+      {/*    >*/}
+      {/*      Find More Places !*/}
+      {/*    </button>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
 
       <div className="클래스명모하지">
-        {apiopen && (
+        { (selectedType !== 0 && selectedArrange !== '') ?
           <EnTourapilist
             arrange={selectedArrange}
             distance={slideValue}
@@ -117,8 +118,19 @@ const EnController: FC<Props> = (props: Props) => {
             mapx={props.mapx}
             mapy={props.mapy}
             history={props.history}
-          />
-        )}
+          /> : null
+        }
+
+        {/*{apiopen && (*/}
+        {/*  <EnTourapilist*/}
+        {/*    arrange={selectedArrange}*/}
+        {/*    distance={slideValue}*/}
+        {/*    type={selectedType}*/}
+        {/*    mapx={props.mapx}*/}
+        {/*    mapy={props.mapy}*/}
+        {/*    history={props.history}*/}
+        {/*  />*/}
+        {/*)}*/}
       </div>
     </>
   );
