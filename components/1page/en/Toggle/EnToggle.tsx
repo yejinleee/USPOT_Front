@@ -25,7 +25,6 @@ const Toggle = () => {
   const [busantoggle, setBusantoggle] = useState(false);
   const [ulsantoggle, setUlsantoggle] = useState(false);
   const [gwangjutoggle, setGwangjutoggle] = useState(false);
-  const [sejongtoggle, setSejongtoggle] = useState(false);
 
   const [gyeongi, setGyeongi] = useState({
     id: '',
@@ -111,12 +110,6 @@ const Toggle = () => {
     link: '',
     city: [],
   } as any);
-  const [sejong, setSejong] = useState({
-    id: '',
-    name: '',
-    link: '',
-    city: [],
-  } as any);
 
   const [stationlist, setStationlist] = useState([] as any);
   const [flag, setFlag] = useState(false);
@@ -136,7 +129,6 @@ const Toggle = () => {
   const busanindex = useRef(0);
   const ulsanindex = useRef(0);
   const gwangjuindex = useRef(0);
-  const sejongindex = useRef(0);
 
   useEffect(() => {
     axios.get('/api/en/province/findall').then((response) => {
@@ -467,31 +459,6 @@ const Toggle = () => {
             setFlag(true);
           }
           setFlag(false);
-        } else if (i === 13) {
-          for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-            setStationlist([]);
-            setFlag(false);
-            for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-              setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
-            }
-            setGwangju((prev: any) => ({
-              ...prev,
-              id: i + 1,
-              name: response.data.data[i].name,
-              link: response.data.data[i].provinceLink,
-              city: [
-                ...prev.city,
-                {
-                  city_id: response.data.data[i].cityList[j].cityid,
-                  city_name: response.data.data[i].cityList[j].name,
-                  city_link: response.data.data[i].cityList[j].cityLink,
-                  station: [],
-                },
-              ],
-            }));
-            setFlag(true);
-          }
-          setFlag(false);
         } else {
           for (var j = 0; j < response.data.data[i].cityList.length; j++) {
             setStationlist([]);
@@ -499,7 +466,7 @@ const Toggle = () => {
             for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
               setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
             }
-            setSejong((prev: any) => ({
+            setGwangju((prev: any) => ({
               ...prev,
               id: i + 1,
               name: response.data.data[i].name,
@@ -639,21 +606,12 @@ const Toggle = () => {
         }
       }
     }
-  } else if (index === 13) {
+  } else {
     if (gwangju.id != '') {
       if (flag) {
         if (stationlist != '') {
           gwangju.city[gwangjuindex.current].station = stationlist;
           gwangjuindex.current += 1;
-        }
-      }
-    }
-  } else {
-    if (sejong.id != '') {
-      if (flag) {
-        if (stationlist != '') {
-          sejong.city[sejongindex.current].station = stationlist;
-          sejongindex.current += 1;
         }
       }
     }
@@ -670,7 +628,10 @@ const Toggle = () => {
           setSelectedcity(gyeongi.city[index].city_name);
         }}
       >
-        <li className="city_li" style={map === gyeongi.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+        <li
+          className="city_li"
+          style={map === gyeongi.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}
+        >
           {gyeongi.city[index].city_name}
         </li>
         {map === gyeongi.city[index].city_link && (
@@ -693,7 +654,7 @@ const Toggle = () => {
         setSelectedcity(gangwon.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === gangwon.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === gangwon.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {gangwon.city[index].city_name}
       </li>
       {map === gangwon.city[index].city_link && (
@@ -715,7 +676,7 @@ const Toggle = () => {
         setSelectedcity(chungnam.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === chungnam.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === chungnam.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {chungnam.city[index].city_name}
       </li>
       {map === chungnam.city[index].city_link && (
@@ -737,7 +698,7 @@ const Toggle = () => {
         setSelectedcity(chungbuk.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === chungbuk.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === chungbuk.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {chungbuk.city[index].city_name}
       </li>
       {map === chungbuk.city[index].city_link && (
@@ -759,7 +720,7 @@ const Toggle = () => {
         setSelectedcity(jeonnam.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === jeonnam.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === jeonnam.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {jeonnam.city[index].city_name}
       </li>
       {map === jeonnam.city[index].city_link && (
@@ -781,7 +742,7 @@ const Toggle = () => {
         setSelectedcity(jeonbuk.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === jeonbuk.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === jeonbuk.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {jeonbuk.city[index].city_name}
       </li>
       {map === jeonbuk.city[index].city_link && (
@@ -803,7 +764,10 @@ const Toggle = () => {
         setSelectedcity(gyeongnam.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === gyeongnam.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li
+        className="city_li"
+        style={map === gyeongnam.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}
+      >
         {gyeongnam.city[index].city_name}
       </li>
       {map === gyeongnam.city[index].city_link && (
@@ -825,7 +789,10 @@ const Toggle = () => {
         setSelectedcity(gyeongbuk.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === gyeongbuk.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li
+        className="city_li"
+        style={map === gyeongbuk.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}
+      >
         {gyeongbuk.city[index].city_name}
       </li>
       {map === gyeongbuk.city[index].city_link && (
@@ -847,7 +814,7 @@ const Toggle = () => {
         setSelectedcity(incheon.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === incheon.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === incheon.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {incheon.city[index].city_name}
       </li>
       {map === incheon.city[index].city_link && (
@@ -869,7 +836,7 @@ const Toggle = () => {
         setSelectedcity(daejeon.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === daejeon.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === daejeon.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {daejeon.city[index].city_name}
       </li>
       {map === daejeon.city[index].city_link && (
@@ -891,7 +858,7 @@ const Toggle = () => {
         setSelectedcity(daegu.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === daegu.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === daegu.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {daegu.city[index].city_name}
       </li>
       {map === daegu.city[index].city_link && (
@@ -913,7 +880,7 @@ const Toggle = () => {
         setSelectedcity(busan.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === busan.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === busan.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {busan.city[index].city_name}
       </li>
       {map === busan.city[index].city_link && (
@@ -935,7 +902,7 @@ const Toggle = () => {
         setSelectedcity(ulsan.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === ulsan.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === ulsan.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {ulsan.city[index].city_name}
       </li>
       {map === ulsan.city[index].city_link && (
@@ -957,34 +924,12 @@ const Toggle = () => {
         setSelectedcity(gwangju.city[index].city_name);
       }}
     >
-      <li className="city_li" style={map === gwangju.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
+      <li className="city_li" style={map === gwangju.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
         {gwangju.city[index].city_name}
       </li>
       {map === gwangju.city[index].city_link && (
         <ul className="station_ul">
           {gwangju.city[index].station.map((li: any) => (
-            <li className="station_li">{li}</li>
-          ))}
-        </ul>
-      )}
-    </div>
-  ));
-  const sejong_list = sejong.city.map((v: string, index: number) => (
-    <div
-      id={v}
-      key={index}
-      className="citylist"
-      onClick={() => {
-        setMap(sejong.city[index].city_link);
-        setSelectedcity(sejong.city[index].city_name);
-      }}
-    >
-      <li className="city_li" style={map === sejong.city[index].city_link ? {fontSize:'1.2em'} : {fontSize:''}}>
-        {sejong.city[index].city_name}
-      </li>
-      {map === sejong.city[index].city_link && (
-        <ul className="station_ul">
-          {sejong.city[index].station.map((li: any) => (
             <li className="station_li">{li}</li>
           ))}
         </ul>
@@ -1041,7 +986,6 @@ const Toggle = () => {
         setDaegutoggle={setDaegutoggle}
         setUlsantoggle={setUlsantoggle}
         setBusantoggle={setBusantoggle}
-        setSejongtoggle={setSejongtoggle}
         setMap={setMap}
         setSelectedcity={setSelectedcity}
       />
@@ -1050,14 +994,14 @@ const Toggle = () => {
         <div className="nextbutton">
           {selectedcity !== '없음' && selectedcategory !== '안' ? (
             <button className="gotosecondbtn" id="citycatedone" onClick={selectedalert}>
-              <Link to={`/${city_engtokor[selectedcity]}/${selectedcategory}`}
-                    style={{ textDecoration: 'none', color: 'rgb(92, 88, 88)'  }}>
+              <Link
+                to={`/${city_engtokor[selectedcity]}/${selectedcategory}`}
+                style={{ textDecoration: 'none', color: 'rgb(92, 88, 88)' }}
+              >
                 <span className="circle" aria-hidden="true">
                   <span className="icon arrow"></span>
                 </span>
-                <span className="button-text">
-                  Let's Go!
-                </span>
+                <span className="button-text">Let's Go!</span>
               </Link>
             </button>
           ) : (
@@ -1065,9 +1009,7 @@ const Toggle = () => {
               <span className="circle" aria-hidden="true">
                 <span className="icon arrow"></span>
               </span>
-              <span className="button-text">
-                Let's Go
-              </span>
+              <span className="button-text">Let's Go</span>
             </button>
           )}
         </div>
@@ -1081,7 +1023,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1106,7 +1047,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1122,31 +1062,30 @@ const Toggle = () => {
           <span className="district_name">{gangwon.name}</span>
         </label>
         <div>{gangwontoggle && gangwon_list}</div>
-        {/*<label*/}
-        {/*  className="district"*/}
-        {/*  onClick={() => {*/}
-        {/*    setGyeongitoggle(false);*/}
-        {/*    setGangwontoggle(false);*/}
-        {/*    setIncheontoggle(!incheontoggle);*/}
-        {/*    setChungbuktoggle(false);*/}
-        {/*    setChungnamtoggle(false);*/}
-        {/*    setDaejeontoggle(false);*/}
-        {/*    setSejongtoggle(false);*/}
-        {/*    setJeonbuktoggle(false);*/}
-        {/*    setJeonnamtoggle(false);*/}
-        {/*    setGwangjutoggle(false);*/}
-        {/*    setGyeonbuktoggle(false);*/}
-        {/*    setGyeonnamtoggle(false);*/}
-        {/*    setDaegutoggle(false);*/}
-        {/*    setUlsantoggle(false);*/}
-        {/*    setBusantoggle(false);*/}
-        {/*    !incheontoggle && setMap(incheon.link);*/}
-        {/*  }}*/}
-        {/*  id={incheontoggle ? 'selecteddistrict' : 'notselecteddistrict'}*/}
-        {/*>*/}
-        {/*  <span className="district_name">{incheon.name}</span>*/}
-        {/*</label>*/}
-        {/*<div>{incheontoggle && incheon_list}</div>*/}
+        <label
+          className="district"
+          onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(!incheontoggle);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
+            setBusantoggle(false);
+            !incheontoggle && setMap(incheon.link);
+          }}
+          id={incheontoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+        >
+          <span className="district_name">{incheon.name}</span>
+        </label>
+        <div>{incheontoggle && incheon_list}</div>
         <label
           className="district"
           onClick={() => {
@@ -1156,7 +1095,6 @@ const Toggle = () => {
             setChungbuktoggle(!chungbuktoggle);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1181,7 +1119,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(!chungnamtoggle);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1197,56 +1134,30 @@ const Toggle = () => {
           <span className="district_name">{chungnam.name}</span>
         </label>
         <div>{chungnamtoggle && chungnam_list}</div>
-        {/*<label*/}
-        {/*  className="district"*/}
-        {/*  onClick={() => {*/}
-        {/*    setGyeongitoggle(false);*/}
-        {/*    setGangwontoggle(false);*/}
-        {/*    setIncheontoggle(false);*/}
-        {/*    setChungbuktoggle(false);*/}
-        {/*    setChungnamtoggle(false);*/}
-        {/*    setDaejeontoggle(!daejeontoggle);*/}
-        {/*    setSejongtoggle(false);*/}
-        {/*    setJeonbuktoggle(false);*/}
-        {/*    setJeonnamtoggle(false);*/}
-        {/*    setGwangjutoggle(false);*/}
-        {/*    setGyeonbuktoggle(false);*/}
-        {/*    setGyeonnamtoggle(false);*/}
-        {/*    setDaegutoggle(false);*/}
-        {/*    setUlsantoggle(false);*/}
-        {/*    setBusantoggle(false);*/}
-        {/*    !daejeontoggle && setMap(daejeon.link);*/}
-        {/*  }}*/}
-        {/*  id={daejeontoggle ? 'selecteddistrict' : 'notselecteddistrict'}*/}
-        {/*>*/}
-        {/*  <span className="district_name">{daejeon.name}</span>*/}
-        {/*</label>*/}
-        {/*<div>{daejeontoggle && daejeon_list}</div>*/}
-        {/*<label*/}
-        {/*  className="district"*/}
-        {/*  onClick={() => {*/}
-        {/*    setGyeongitoggle(false);*/}
-        {/*    setGangwontoggle(false);*/}
-        {/*    setIncheontoggle(false);*/}
-        {/*    setChungbuktoggle(false);*/}
-        {/*    setChungnamtoggle(false);*/}
-        {/*    setDaejeontoggle(false);*/}
-        {/*    setSejongtoggle(!sejongtoggle);*/}
-        {/*    setJeonbuktoggle(false);*/}
-        {/*    setJeonnamtoggle(false);*/}
-        {/*    setGwangjutoggle(false);*/}
-        {/*    setGyeonbuktoggle(false);*/}
-        {/*    setGyeonnamtoggle(false);*/}
-        {/*    setDaegutoggle(false);*/}
-        {/*    setUlsantoggle(false);*/}
-        {/*    setBusantoggle(false);*/}
-        {/*    !sejongtoggle && setMap(sejong.link);*/}
-        {/*  }}*/}
-        {/*  id={sejongtoggle ? 'selecteddistrict' : 'notselecteddistrict'}*/}
-        {/*>*/}
-        {/*  <span className="district_name">{sejong.name}</span>*/}
-        {/*</label>*/}
-        {/*<div>{sejongtoggle && sejong_list}</div>*/}
+        <label
+          className="district"
+          onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(!daejeontoggle);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
+            setBusantoggle(false);
+            !daejeontoggle && setMap(daejeon.link);
+          }}
+          id={daejeontoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+        >
+          <span className="district_name">{daejeon.name}</span>
+        </label>
+        <div>{daejeontoggle && daejeon_list}</div>
         <label
           className="district"
           onClick={() => {
@@ -1256,7 +1167,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(!jeonbuktoggle);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1281,7 +1191,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(!jeonnamtoggle);
             setGwangjutoggle(false);
@@ -1297,31 +1206,6 @@ const Toggle = () => {
           <span className="district_name">{jeonnam.name}</span>
         </label>
         <div>{jeonnamtoggle && jeonnam_list}</div>
-        {/*<label*/}
-        {/*  className="district"*/}
-        {/*  onClick={() => {*/}
-        {/*    setGyeongitoggle(false);*/}
-        {/*    setGangwontoggle(false);*/}
-        {/*    setIncheontoggle(false);*/}
-        {/*    setChungbuktoggle(false);*/}
-        {/*    setChungnamtoggle(false);*/}
-        {/*    setDaejeontoggle(false);*/}
-        {/*    setSejongtoggle(false);*/}
-        {/*    setJeonbuktoggle(false);*/}
-        {/*    setJeonnamtoggle(false);*/}
-        {/*    setGwangjutoggle(!gwangjutoggle);*/}
-        {/*    setGyeonbuktoggle(false);*/}
-        {/*    setGyeonnamtoggle(false);*/}
-        {/*    setDaegutoggle(false);*/}
-        {/*    setUlsantoggle(false);*/}
-        {/*    setBusantoggle(false);*/}
-        {/*    !gwangjutoggle && setMap(gwangju.link);*/}
-        {/*  }}*/}
-        {/*  id={gwangjutoggle ? 'selecteddistrict' : 'notselecteddistrict'}*/}
-        {/*>*/}
-        {/*  <span className="district_name">{gwangju.name}</span>*/}
-        {/*</label>*/}
-        {/*<div>{gwangjutoggle && gwangju_list}</div>*/}
         <label
           className="district"
           onClick={() => {
@@ -1331,7 +1215,30 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(!gwangjutoggle);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(false);
+            setBusantoggle(false);
+            !gwangjutoggle && setMap(gwangju.link);
+          }}
+          id={gwangjutoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+        >
+          <span className="district_name">{gwangju.name}</span>
+        </label>
+        <div>{gwangjutoggle && gwangju_list}</div>
+        <label
+          className="district"
+          onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1356,7 +1263,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1381,7 +1287,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1397,31 +1302,6 @@ const Toggle = () => {
           <span className="district_name">{daegu.name}</span>
         </label>
         <div>{daegutoggle && daegu_list}</div>
-        {/*<label*/}
-        {/*  className="district"*/}
-        {/*  onClick={() => {*/}
-        {/*    setGyeongitoggle(false);*/}
-        {/*    setGangwontoggle(false);*/}
-        {/*    setIncheontoggle(false);*/}
-        {/*    setChungbuktoggle(false);*/}
-        {/*    setChungnamtoggle(false);*/}
-        {/*    setDaejeontoggle(false);*/}
-        {/*    setSejongtoggle(false);*/}
-        {/*    setJeonbuktoggle(false);*/}
-        {/*    setJeonnamtoggle(false);*/}
-        {/*    setGwangjutoggle(false);*/}
-        {/*    setGyeonbuktoggle(false);*/}
-        {/*    setGyeonnamtoggle(false);*/}
-        {/*    setDaegutoggle(false);*/}
-        {/*    setUlsantoggle(!ulsantoggle);*/}
-        {/*    setBusantoggle(false);*/}
-        {/*    !ulsantoggle && setMap(ulsan.link);*/}
-        {/*  }}*/}
-        {/*  id={ulsantoggle ? 'selecteddistrict' : 'notselecteddistrict'}*/}
-        {/*>*/}
-        {/*  <span className="district_name">{ulsan.name}</span>*/}
-        {/*</label>*/}
-        {/*<div>{ulsantoggle && ulsan_list}</div>*/}
         <label
           className="district"
           onClick={() => {
@@ -1431,7 +1311,30 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
+            setJeonbuktoggle(false);
+            setJeonnamtoggle(false);
+            setGwangjutoggle(false);
+            setGyeonbuktoggle(false);
+            setGyeonnamtoggle(false);
+            setDaegutoggle(false);
+            setUlsantoggle(!ulsantoggle);
+            setBusantoggle(false);
+            !ulsantoggle && setMap(ulsan.link);
+          }}
+          id={ulsantoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+        >
+          <span className="district_name">{ulsan.name}</span>
+        </label>
+        <div>{ulsantoggle && ulsan_list}</div>
+        <label
+          className="district"
+          onClick={() => {
+            setGyeongitoggle(false);
+            setGangwontoggle(false);
+            setIncheontoggle(false);
+            setChungbuktoggle(false);
+            setChungnamtoggle(false);
+            setDaejeontoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);

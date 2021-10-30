@@ -25,7 +25,6 @@ const Toggle = () => {
   const [busantoggle, setBusantoggle] = useState(false);
   const [ulsantoggle, setUlsantoggle] = useState(false);
   const [gwangjutoggle, setGwangjutoggle] = useState(false);
-  const [sejongtoggle, setSejongtoggle] = useState(false);
 
   const [gyeongi, setGyeongi] = useState({
     id: '',
@@ -111,12 +110,6 @@ const Toggle = () => {
     link: '',
     city: [],
   } as any);
-  const [sejong, setSejong] = useState({
-    id: '',
-    name: '',
-    link: '',
-    city: [],
-  } as any);
 
   const [stationlist, setStationlist] = useState([] as any);
   const [flag, setFlag] = useState(false);
@@ -136,7 +129,6 @@ const Toggle = () => {
   const busanindex = useRef(0);
   const ulsanindex = useRef(0);
   const gwangjuindex = useRef(0);
-  const sejongindex = useRef(0);
 
   useEffect(() => {
     axios
@@ -469,31 +461,6 @@ const Toggle = () => {
               setFlag(true);
             }
             setFlag(false);
-          } else if (i === 13) {
-            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-              setStationlist([]);
-              setFlag(false);
-              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
-              }
-              setGwangju((prev: any) => ({
-                ...prev,
-                id: i + 1,
-                name: response.data.data[i].name,
-                link: response.data.data[i].provinceLink,
-                city: [
-                  ...prev.city,
-                  {
-                    city_id: response.data.data[i].cityList[j].cityid,
-                    city_name: response.data.data[i].cityList[j].name,
-                    city_link: response.data.data[i].cityList[j].cityLink,
-                    station: [],
-                  },
-                ],
-              }));
-              setFlag(true);
-            }
-            setFlag(false);
           } else {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
               setStationlist([]);
@@ -501,7 +468,7 @@ const Toggle = () => {
               for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
                 setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
               }
-              setSejong((prev: any) => ({
+              setGwangju((prev: any) => ({
                 ...prev,
                 id: i + 1,
                 name: response.data.data[i].name,
@@ -642,21 +609,12 @@ const Toggle = () => {
         }
       }
     }
-  } else if (index === 13) {
+  } else {
     if (gwangju.id != '') {
       if (flag) {
         if (stationlist != '') {
           gwangju.city[gwangjuindex.current].station = stationlist;
           gwangjuindex.current += 1;
-        }
-      }
-    }
-  } else {
-    if (sejong.id != '') {
-      if (flag) {
-        if (stationlist != '') {
-          sejong.city[sejongindex.current].station = stationlist;
-          sejongindex.current += 1;
         }
       }
     }
@@ -675,7 +633,7 @@ const Toggle = () => {
       >
         <li
           className="city_li"
-          style={map === gyeongi.city[index].city_link ? { fontSize: '1.2em', fontWeight:'bolder' } : { fontSize: '' }}
+          style={map === gyeongi.city[index].city_link ? { fontSize: '1.2em', fontWeight: 'bolder' } : { fontSize: '' }}
         >
           {gyeongi.city[index].city_name}
         </li>
@@ -981,28 +939,6 @@ const Toggle = () => {
       )}
     </div>
   ));
-  const sejong_list = sejong.city.map((v: string, index: number) => (
-    <div
-      id={v}
-      key={index}
-      className="citylist"
-      onClick={() => {
-        setMap(sejong.city[index].city_link);
-        setSelectedcity(sejong.city[index].city_name);
-      }}
-    >
-      <li className="city_li" style={map === sejong.city[index].city_link ? { fontSize: '1.2em' } : { fontSize: '' }}>
-        {sejong.city[index].city_name}
-      </li>
-      {map === sejong.city[index].city_link && (
-        <ul className="station_ul">
-          {sejong.city[index].station.map((li: any) => (
-            <li className="station_li">{li}</li>
-          ))}
-        </ul>
-      )}
-    </div>
-  ));
 
   function selectedalert() {
     if (selectedcity === '없음') {
@@ -1042,7 +978,6 @@ const Toggle = () => {
         setDaegutoggle={setDaegutoggle}
         setUlsantoggle={setUlsantoggle}
         setBusantoggle={setBusantoggle}
-        setSejongtoggle={setSejongtoggle}
         setMap={setMap}
         setSelectedcity={setSelectedcity}
       />
@@ -1051,14 +986,14 @@ const Toggle = () => {
         <div className="nextbutton">
           {selectedcity !== '없음' && selectedcategory !== '안' ? (
             <button className="gotosecondbtn" id="citycatedone" onClick={selectedalert}>
-              <Link to={`/${selectedcity}/${selectedcategory}`}
-                    style={{ textDecoration: 'none', color: 'rgb(92, 88, 88)'  }}>
+              <Link
+                to={`/${selectedcity}/${selectedcategory}`}
+                style={{ textDecoration: 'none', color: 'rgb(92, 88, 88)' }}
+              >
                 <span className="circle" aria-hidden="true">
                   <span className="icon arrow"></span>
                 </span>
-                <span className="button-text">
-                Let's Go!
-                </span>
+                <span className="button-text">Let's Go!</span>
               </Link>
             </button>
           ) : (
@@ -1066,9 +1001,7 @@ const Toggle = () => {
               <span className="circle" aria-hidden="true">
                 <span className="icon arrow"></span>
               </span>
-              <span className="button-text">
-                Let's Go
-              </span>
+              <span className="button-text">Let's Go</span>
             </button>
           )}
         </div>
@@ -1082,7 +1015,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1107,7 +1039,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1132,7 +1063,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1157,7 +1087,6 @@ const Toggle = () => {
             setChungbuktoggle(!chungbuktoggle);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1182,7 +1111,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(!chungnamtoggle);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1207,7 +1135,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(!daejeontoggle);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1232,32 +1159,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(!sejongtoggle);
-            setJeonbuktoggle(false);
-            setJeonnamtoggle(false);
-            setGwangjutoggle(false);
-            setGyeonbuktoggle(false);
-            setGyeonnamtoggle(false);
-            setDaegutoggle(false);
-            setUlsantoggle(false);
-            setBusantoggle(false);
-            !sejongtoggle && setMap(sejong.link);
-          }}
-          id={sejongtoggle ? 'selecteddistrict' : 'notselecteddistrict'}
-        >
-          <span className="district_name">{sejong.name}</span>
-        </label>
-        <div>{sejongtoggle && sejong_list}</div>
-        <label
-          className="district"
-          onClick={() => {
-            setGyeongitoggle(false);
-            setGangwontoggle(false);
-            setIncheontoggle(false);
-            setChungbuktoggle(false);
-            setChungnamtoggle(false);
-            setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(!jeonbuktoggle);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1282,7 +1183,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(!jeonnamtoggle);
             setGwangjutoggle(false);
@@ -1307,7 +1207,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(!gwangjutoggle);
@@ -1332,7 +1231,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1357,7 +1255,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1382,7 +1279,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1407,7 +1303,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);
@@ -1432,7 +1327,6 @@ const Toggle = () => {
             setChungbuktoggle(false);
             setChungnamtoggle(false);
             setDaejeontoggle(false);
-            setSejongtoggle(false);
             setJeonbuktoggle(false);
             setJeonnamtoggle(false);
             setGwangjutoggle(false);

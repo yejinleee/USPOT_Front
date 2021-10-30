@@ -1,9 +1,5 @@
 [       
-  {
-    "name": "가평군",
-    "cityLink": "src/city/가평군.png",
-    "id" : 1
-  },
+  
   {
     "name": "광명시",
     "cityLink": "src/city/광명시.png",
@@ -39,11 +35,7 @@
     "cityLink": "src/city/양평군.png",
     "id" : 1
   },
-  {
-    "name": "고양시",
-    "cityLink": "src/city/고양시.png",
-    "id" : 1
-  },
+  
   {
     "name": "평택시",
     "cityLink": "src/city/평택시.png",
