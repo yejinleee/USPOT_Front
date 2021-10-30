@@ -1,5 +1,4 @@
 /*global kakao */
-import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import '../../Top5Mapevent.css';
 import { History, LocationState } from 'history';
@@ -10,8 +9,9 @@ interface Props {
   top5name: any;
   imageSrc: any;
   top5placeid: any;
-  placeurl:any;
+  placeurl: any;
   history: History<LocationState>;
+  stationlist: any;
 }
 
 const EnTop5Mapevent: FC<Props> = (props: Props) => {
@@ -28,31 +28,31 @@ const EnTop5Mapevent: FC<Props> = (props: Props) => {
       long.current += el.location_x;
     });
 
-    let container = document.getElementById('top5map');
+    props.stationlist.forEach((el: any) => {
+      latt.current += el.location_y;
+      long.current += el.location_x;
+    });
+    let container = document.getElementById('entop5');
+    let length = props.stationlist.length + props.top5data.length;
     let options = {
-      center: new kakao.maps.LatLng(latt.current / props.top5data.length, long.current / props.top5data.length),
+      center: new kakao.maps.LatLng(latt.current / length, long.current / length),
       level: 10,
     };
-    //map
     const top5map = new kakao.maps.Map(container, options);
-
-    props.top5data.forEach((el: any) => {
-      // 마커를 생성합니다
+    props.stationlist.forEach((el: any) => {
+      var imageSrc = '/src/icon/0.png';
       var imageSize = new kakao.maps.Size(30, 30),
         imageOption = { offset: new kakao.maps.Point(27, 69) };
-      const markerImage = new kakao.maps.MarkerImage(props.imageSrc, imageSize, imageOption);
+      const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
       const marker = new kakao.maps.Marker({
-        //마커가 표시 될 위치
         position: new kakao.maps.LatLng(el.location_y, el.location_x),
-        //이미지 마커 불러오기
         image: markerImage,
-        // content: el.title,
       });
 
       marker.setMap(top5map);
-      // 마커에 표시할 인포윈도우를 생성합니다
+
       var infowindow = new kakao.maps.InfoWindow({
-        content: `<span class="info-title">${el.name}</span>`, // 인포윈도우에 표시할 내용
+        content: `<span class="info-title">${el.name}</span>`,
       });
       infowindow.open(top5map, marker);
       var infoTitle = document.querySelectorAll('.info-title');
@@ -71,15 +71,41 @@ const EnTop5Mapevent: FC<Props> = (props: Props) => {
       kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(top5map, marker, infowindow));
       kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
     });
+    props.top5data.forEach((el: any) => {
+      var imageSize = new kakao.maps.Size(30, 30),
+        imageOption = { offset: new kakao.maps.Point(27, 69) };
+      const markerImage = new kakao.maps.MarkerImage(props.imageSrc, imageSize, imageOption);
+      const marker = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(el.location_y, el.location_x),
+        image: markerImage,
+      });
 
-    // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+      marker.setMap(top5map);
+      var infowindow = new kakao.maps.InfoWindow({
+        content: `<span class="info-title">${el.name}</span>`,
+      });
+      infowindow.open(top5map, marker);
+      var infoTitle = document.querySelectorAll('.info-title');
+      infoTitle.forEach(function (e: any) {
+        var w = e.offsetWidth + 10;
+        var ml = w / 2;
+        e.parentElement.style.top = '82px';
+        e.parentElement.style.left = '50%';
+        e.parentElement.style.marginLeft = -ml + 'px';
+        e.parentElement.style.width = w + 'px';
+        e.parentElement.previousSibling.style.display = 'none';
+        e.parentElement.parentElement.style.border = '0px';
+        e.parentElement.parentElement.style.background = 'unset';
+      });
+      infowindow.close();
+      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(top5map, marker, infowindow));
+      kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+    });
     function makeOverListener(map: any, marker: any, infowindow: { open: (arg0: any, arg1: any) => void }) {
       return function () {
         infowindow.open(map, marker);
       };
     }
-
-    // 인포윈도우를 닫는 클로저를 만드는 함수입니다
     function makeOutListener(infowindow: { close: () => void }) {
       return function () {
         infowindow.close();
@@ -91,9 +117,14 @@ const EnTop5Mapevent: FC<Props> = (props: Props) => {
     <>
       <div style={{ position: 'relative' }}>
         <div id="star"></div>
-        <div id="top5map" style={{ width: '50%', height: '50%', display: 'inline-block' }}></div>
-        <span style={{ position: 'absolute', width:'50%' }}>
-          <EnLiketop5 top5name={props.top5name} top5placeid={props.top5placeid} history={props.history} placeurl={props.placeurl} />
+        <div id="entop5" style={{ width: '50%', height: '50%', display: 'inline-block' }}></div>
+        <span style={{ position: 'absolute', width: '50%' }}>
+          <EnLiketop5
+            top5name={props.top5name}
+            top5placeid={props.top5placeid}
+            history={props.history}
+            placeurl={props.placeurl}
+          />
         </span>
       </div>
     </>

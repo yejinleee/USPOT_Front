@@ -20,7 +20,6 @@ const Slide: FC<Props> = (props: Props) => {
   const [pic4, setPic4] = useState('' as any);
   const [pic5, setPic5] = useState('' as any);
   const [btn_pic, setBtn_pic] = useState(1);
-  // 이걸 자리 번호별 transform 값으로 지정해두자. 주로 바뀌는게 transform: translateX 랑 translate 일듯
   const [start, setStart] = useState(0);
 
   const [imgloc, setImgloc] = useState([

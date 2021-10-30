@@ -18,8 +18,7 @@ const Liketop5: FC<Props> = (props: Props) => {
   } catch {
     var memberid = 0;
   }
-  // console.log('top5placeid',props.top5placeid);
-  const [like0, setLike0] = useState(0); //초기0 누르면1 눌렀다 빼면 2 //처음렌더링대 false라 else문들어갈까봐
+  const [like0, setLike0] = useState(0);
   const [like1, setLike1] = useState(0);
   const [like2, setLike2] = useState(0);
   const [like3, setLike3] = useState(0);
@@ -27,7 +26,6 @@ const Liketop5: FC<Props> = (props: Props) => {
 
   const [dblikedlist, setDblikedlist] = useState([] as any);
   useEffect(() => {
-    //DB에 저장된 즐찾목록의 id들만 가져와서 apilistid 배열에 저장
     if (memberid !== 0) {
       axios
         .get(`/api/myplace/findall/${memberid}`)
@@ -42,33 +40,24 @@ const Liketop5: FC<Props> = (props: Props) => {
 
   function func_post(e: number) {
     var ethplaceid = props.top5placeid[e];
-    console.log('즐겨찾기 할 id:', memberid, 'placeid', ethplaceid);
-
     if (memberid === 0) {
       alert('로그인하세욥');
-      console.log(props.history);
       return props.history.push('/login');
     } else {
       axios
         .post(
           `/api/myplace/add/${memberid}/${props.top5placeid[e]}`,
           { memberid, ethplaceid },
-          { withCredentials: true }, //post에선 3번째자리에 설정
+          { withCredentials: true },
         )
-        .then(() => {
-          console.log('넣어진 id: ', memberid, 'placeid', ethplaceid);
-        })
+        .then(() => {})
         .catch((error) => {});
     }
   }
   function func_delete(e: number) {
-    // var ethplaceid = top5placeid[e];
-    console.log('즐겨찾기에서 지울 id: ', memberid, 'placeid', props.top5placeid[e]);
     axios
       .delete(`/api/myplace/deletebyplace/${memberid}/${props.top5placeid[e]}`)
-      .then(() => {
-        console.log('지워진 id: ', memberid, 'placeid', props.top5placeid[e]);
-      })
+      .then(() => {})
       .catch((error) => {});
   }
 
@@ -80,7 +69,11 @@ const Liketop5: FC<Props> = (props: Props) => {
         </label>
       );
     } else if (i === 0 && like0 !== 0) {
-      return <label htmlFor="tlistidx0" className="tlike">{like0 === 1 ? '💛' : '🤍'}</label>;
+      return (
+        <label htmlFor="tlistidx0" className="tlike">
+          {like0 === 1 ? '💛' : '🤍'}
+        </label>
+      );
     } else if (i === 1 && like1 === 0) {
       return (
         <label htmlFor="tlistidx1" className="tlike">
@@ -88,7 +81,11 @@ const Liketop5: FC<Props> = (props: Props) => {
         </label>
       );
     } else if (i === 1 && like1 !== 0) {
-      return <label htmlFor="tlistidx1" className="tlike">{like1 === 1 ? '💛' : '🤍'}</label>;
+      return (
+        <label htmlFor="tlistidx1" className="tlike">
+          {like1 === 1 ? '💛' : '🤍'}
+        </label>
+      );
     } else if (i === 2 && like2 === 0) {
       return (
         <label htmlFor="tlistidx2" className="tlike">
@@ -96,7 +93,11 @@ const Liketop5: FC<Props> = (props: Props) => {
         </label>
       );
     } else if (i === 2 && like2 !== 0) {
-      return <label htmlFor="tlistidx2" className="tlike">{like2 === 1 ? '💛' : '🤍'}</label>;
+      return (
+        <label htmlFor="tlistidx2" className="tlike">
+          {like2 === 1 ? '💛' : '🤍'}
+        </label>
+      );
     } else if (i === 3 && like3 === 0) {
       return (
         <label htmlFor="tlistidx3" className="tlike">
@@ -104,7 +105,11 @@ const Liketop5: FC<Props> = (props: Props) => {
         </label>
       );
     } else if (i === 3 && like3 !== 0) {
-      return <label htmlFor="tlistidx3" className="tlike">{like3 === 1 ? '💛' : '🤍'}</label>;
+      return (
+        <label htmlFor="tlistidx3" className="tlike">
+          {like3 === 1 ? '💛' : '🤍'}
+        </label>
+      );
     } else if (i === 4 && like4 === 0) {
       return (
         <label htmlFor="tlistidx4" className="tlike">
@@ -112,7 +117,11 @@ const Liketop5: FC<Props> = (props: Props) => {
         </label>
       );
     } else if (i === 4 && like4 !== 0) {
-      return <label htmlFor="tlistidx4" className="tlike">{like4 === 1 ? '💛' : '🤍'}</label>;
+      return (
+        <label htmlFor="tlistidx4" className="tlike">
+          {like4 === 1 ? '💛' : '🤍'}
+        </label>
+      );
     }
   } //heart
   function func(e: number) {
@@ -221,7 +230,10 @@ const Liketop5: FC<Props> = (props: Props) => {
               />
               <label className="tcustom">
                 {heart(0)}
-                <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[0]}`, '_blank')}> {props.top5name[0]}</span>
+                <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[0]}`, '_blank')}>
+                  {' '}
+                  {props.top5name[0]}
+                </span>
               </label>
             </li>
 
@@ -237,8 +249,10 @@ const Liketop5: FC<Props> = (props: Props) => {
               />
               <label className="tcustom">
                 {heart(1)}
-                <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[1]}`, '_blank')}> {props.top5name[1]}</span>
-
+                <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[1]}`, '_blank')}>
+                  {' '}
+                  {props.top5name[1]}
+                </span>
               </label>
             </li>
             <li className="ticon_li custom-control">
@@ -253,8 +267,10 @@ const Liketop5: FC<Props> = (props: Props) => {
               />
               <label className="tcustom">
                 {heart(2)}
-                <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[2]}`, '_blank')}> {props.top5name[2]}</span>
-
+                <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[2]}`, '_blank')}>
+                  {' '}
+                  {props.top5name[2]}
+                </span>
               </label>
             </li>
             <li className="ticon_li custom-control">
@@ -269,8 +285,10 @@ const Liketop5: FC<Props> = (props: Props) => {
               />
               <label className="tcustom">
                 {heart(3)}
-                <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[3]}`, '_blank')}> {props.top5name[3]}</span>
-
+                <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[3]}`, '_blank')}>
+                  {' '}
+                  {props.top5name[3]}
+                </span>
               </label>
             </li>
             <li className="ticon_li custom-control">
@@ -285,7 +303,10 @@ const Liketop5: FC<Props> = (props: Props) => {
               />
               <label className="tcustom">
                 {heart(4)}
-                <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[4]}`, '_blank')}> {props.top5name[4]}</span>
+                <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[4]}`, '_blank')}>
+                  {' '}
+                  {props.top5name[4]}
+                </span>
               </label>
             </li>
           </ul>

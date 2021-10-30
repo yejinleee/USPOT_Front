@@ -20,7 +20,6 @@ const EnSlide: FC<Props> = (props: Props) => {
   const [pic4, setPic4] = useState('' as any);
   const [pic5, setPic5] = useState('' as any);
   const [btn_pic, setBtn_pic] = useState(1);
-  // 이걸 자리 번호별 transform 값으로 지정해두자. 주로 바뀌는게 transform: translateX 랑 translate 일듯
   const [start, setStart] = useState(0);
 
   const [imgloc, setImgloc] = useState([
@@ -39,6 +38,7 @@ const EnSlide: FC<Props> = (props: Props) => {
   const [mapy, setMapy] = useState([] as any);
   const [top5data, setTop5data] = useState([] as any);
   const [placeurl, setPlaceurl] = useState([] as any);
+  const [station, setStation] = useState([] as any);
 
   var dic: { [key: string]: number } = {
     가평군: 1,
@@ -107,6 +107,12 @@ const EnSlide: FC<Props> = (props: Props) => {
         }
       })
       .catch((error) => {});
+    axios
+      .get(`/api/en/station/${dic[props.selectedcity]}`)
+      .then((response) => {
+        setStation(response.data.data);
+      })
+      .then((error) => {});
   }, []);
   var selectedplace;
   selectedplace = top5name[btn_pic - 1];
@@ -267,6 +273,7 @@ const EnSlide: FC<Props> = (props: Props) => {
           top5placeid={top5placeid}
           placeurl={placeurl}
           history={props.history}
+          stationlist={station}
         />
       </div>
       <div className="top5mapevent_responsive" style={{ position: 'relative', width: '100%' }}>
@@ -277,6 +284,7 @@ const EnSlide: FC<Props> = (props: Props) => {
           top5placeid={top5placeid}
           placeurl={placeurl}
           history={props.history}
+          stationlist={station}
         />
       </div>
 

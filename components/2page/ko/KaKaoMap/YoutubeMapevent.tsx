@@ -72,7 +72,7 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history }) => {
       var placePosition = new kakao.maps.LatLng(place[i].location_y, place[i].location_x),
         marker = addMarker(placePosition, i, place[i].categoryId);
       var infowindow = new kakao.maps.InfoWindow({
-        content: `<span class="info-title">${place[i].name}</span>`, // 인포윈도우에 표시할 내용
+        content: `<span class="info-title">${place[i].name}</span>`,
       });
       infowindow.open(youtubemap, marker);
 

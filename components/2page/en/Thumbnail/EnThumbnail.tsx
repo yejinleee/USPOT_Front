@@ -13,10 +13,8 @@ interface Props {
   selectedplace: any;
 }
 
-// selcetedcity지역의 selectedcategory 카테고리에 해당되는 장소 top5 중 btn_pic번째 장소의 유튜브 보여주는것
-
 const EnThumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pic, history, selectedplace }) => {
-  const [vloglist, setVloglist] = useState([] as any); //브이로그 id들 저장할 배열
+  const [vloglist, setVloglist] = useState([] as any);
   const [map, setMap] = useState(false);
   const [id, setId] = useState(null);
   const [vlogplaceid, setVlogplaceid] = useState([] as any);

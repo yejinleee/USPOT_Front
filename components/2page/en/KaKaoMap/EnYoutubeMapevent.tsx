@@ -11,15 +11,13 @@ interface Props {
 }
 
 const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid }) => {
-  const latt = useRef(0);
-  const long = useRef(0);
   const kakao = (window as any).kakao;
   const [place, setPlace] = useState([] as any);
   const [name, setName] = useState([] as any);
   const [youtubemap, setYoutubemap] = useState(null);
   const [markers, setMarkers] = useState([] as any);
   const [placeurl, setPlaceurl] = useState([] as any);
-
+  const [vlogid, setVlogid] = useState([] as any);
   const x = useRef(0);
   const y = useRef(0);
 
@@ -33,22 +31,15 @@ const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid 
   }, []);
 
   useEffect(() => {
-    setPlace([]);
-    setName([]);
     axios.get(`/api/en/vlog/findplace/${videoid}`).then((response) => {
-      //이 비디오에서 등장한 장소들
       setPlace(response.data.data);
+      setName([]);
+      setPlaceurl([]);
+      setVlogid([]);
       for (var i = 0; i < response.data.data.length; i++) {
         setName((prev: any) => [...prev, response.data.data[i].name]);
-        setPlaceurl((prev:any) => [...prev, response.data.data[i].placeUrl]);
-
-        //////////////////////////////////////////////////////////////////////////////url에 널있는경우
-        // if (response.data.data[i].placeUrl ===null){
-        //   setPlaceurl((prev:any) => [...prev, 0]);
-        // }
-        // else{
-        //   setPlaceurl((prev:any) => [...prev, response.data.data[i].placeUrl]);
-        // }
+        setPlaceurl((prev: any) => [...prev, response.data.data[i].placeUrl]);
+        setVlogid((prev: any) => [...prev, response.data.data[i].placeId]);
       }
     });
   }, [videoid]);
@@ -60,7 +51,6 @@ const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid 
 
   const mapscript = () => {
     removeMarker();
-
     x.current = 0;
     y.current = 0;
     for (var i = 0; i < place.length; i++) {
@@ -75,7 +65,7 @@ const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid 
       var placePosition = new kakao.maps.LatLng(place[i].location_y, place[i].location_x),
         marker = addMarker(placePosition, i, place[i].categoryId);
       var infowindow = new kakao.maps.InfoWindow({
-        content: `<span class="info-title">${place[i].name}</span>`, // 인포윈도우에 표시할 내용
+        content: `<span class="info-title">${place[i].name}</span>`,
       });
       infowindow.open(youtubemap, marker);
 
@@ -101,17 +91,15 @@ const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid 
   };
 
   function addMarker(position: any, idx: any, id: any) {
-    // console.log(id);
-    var imageSrc = `/src/icon/${id}.png`, // 마커 이미지 url, 스프라이트 이미지를 씁니다
-      imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
+    var imageSrc = `/src/icon/${id}.png`,
+      imageSize = new kakao.maps.Size(36, 37),
       markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize),
       marker = new kakao.maps.Marker({
-        position: position, // 마커의 위치
+        position: position,
         image: markerImage,
       });
 
-    marker.setMap(youtubemap); // 지도 위에 마커를 표출합니다
-    // 배열에 생성된 마커를 추가합니다
+    marker.setMap(youtubemap);
     setMarkers((prev: any) => [...prev, marker]);
     return marker;
   }
@@ -120,7 +108,6 @@ const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid 
       infowindow.open(map, marker);
     };
   }
-  // 인포윈도우를 닫는 클로저를 만드는 함수입니다
   function makeOutListener(infowindow: { close: () => void }) {
     return function () {
       infowindow.close();
@@ -136,8 +123,8 @@ const EnYoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid 
   return (
     <div style={{ position: 'relative' }}>
       <div id="youtubemap" style={{ width: '50%', height: '40%', display: 'inline-block' }}></div>
-      <span className="likevlog_span" style={{ position: 'absolute', width:'45%' }}>
-        <EnLikeVlog vlogplacename={name} vlogpid={videoid} history={history} vlogplaceid={vlogplaceid} placeurl={placeurl}/>
+      <span className="likevlog_span" style={{ position: 'absolute', width: '45%' }}>
+        <EnLikeVlog vlogplacename={name} vlogpid={videoid} history={history} vlogplaceid={vlogid} placeurl={placeurl} />
       </span>
     </div>
   );

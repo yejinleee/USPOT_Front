@@ -24,7 +24,6 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
   }, [props.top5data]);
 
   const mapscript = () => {
-    console.log(props.stationlist);
     props.top5data.forEach((el: any) => {
       latt.current += el.location_y;
       long.current += el.location_x;
