@@ -5,7 +5,7 @@ import EnMap from './EnMap';
 const EnSearch = () => {
   return (
     <div className="myplacecontents">
-      <div>Please select a departure point</div>
+      <div style={{margin:'2vh 0 1vh 0'}}>Please select a departure point</div>
       <EnMap />
     </div>
   );
