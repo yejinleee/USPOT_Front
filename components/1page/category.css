@@ -78,6 +78,10 @@ img {
   background-color: #ffa9a9;
 }
 
+.encategory_p {
+  font-size: 15px;
+}
+
 @media screen and (max-width: 1024px) {
   .enbutton {
     margin: 7px;
@@ -93,10 +97,11 @@ img {
   .encategory_box {
     margin-left: 0;
   }
+  .categortimg {
+    display: none;
+  }
 }
-.encategory_p {
-  font-size: 15px;
-}
+
 @media screen and (max-width: 606px) {
   .encategory_p {
     font-size: 10px;
@@ -108,6 +113,9 @@ img {
   .enbutton {
     padding: 0.5em;
   }
+  .categortimg {
+    display: none;
+  }
 }
 @media screen and (max-width: 450px) {
   .encategory_p {
@@ -116,6 +124,9 @@ img {
   .encategory_box {
     display: grid !important;
     text-align: center;
+  }
+  .categortimg {
+    display: none;
   }
 }
 
@@ -130,4 +141,3 @@ img {
 /*.encategory_box {*/
 /*    text-align: center;*/
 /*}*/
-

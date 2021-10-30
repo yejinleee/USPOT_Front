@@ -14,8 +14,10 @@ const EnCategory = (props: any) => {
           }}
           className={clicked === 'tor' ? 'enclicked' : 'enbutton'}
         >
-          <img src="src/icon/관광명소.png" style={{ width: '5%' }} />
-          <p className="encategory_p" style={{ display: 'inline' }}>ATTRACTION</p>
+          <img className="categortimg" src="src/icon/관광명소.png" style={{ width: '5%' }} />
+          <p className="encategory_p" style={{ display: 'inline' }}>
+            ATTRACTION
+          </p>
         </label>
         <label
           onClick={() => {
@@ -24,8 +26,10 @@ const EnCategory = (props: any) => {
           }}
           className={clicked === 'res' ? 'enclicked' : 'enbutton'}
         >
-          <img src="src/icon/식당.png" style={{ width: '5%' }} />
-          <p className="encategory_p" style={{ display: 'inline' }}>RESTAURANT</p>
+          <img className="categortimg" src="src/icon/식당.png" style={{ width: '5%' }} />
+          <p className="encategory_p" style={{ display: 'inline' }}>
+            RESTAURANT
+          </p>
         </label>
         <label
           onClick={() => {
@@ -34,8 +38,10 @@ const EnCategory = (props: any) => {
           }}
           className={clicked === 'caf' ? 'enclicked' : 'enbutton'}
         >
-          <img src="src/icon/카페.png" style={{ width: '5%' }} />
-          <p className="encategory_p" style={{ display: 'inline' }}>CAFE</p>
+          <img className="categortimg" src="src/icon/카페.png" style={{ width: '5%' }} />
+          <p className="encategory_p" style={{ display: 'inline' }}>
+            CAFE
+          </p>
         </label>
       </div>
     </>

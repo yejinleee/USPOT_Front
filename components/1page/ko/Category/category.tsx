@@ -14,7 +14,7 @@ const Category = (props: any) => {
           }}
           className={clicked === 'tor' ? 'clicked' : 'cbutton'}
         >
-          <img src="src/icon/관광명소.png" style={{ width: '5%' }} />
+          <img className="categortimg" src="src/icon/관광명소.png" style={{ width: '5%' }} />
           <p className="category_p" style={{ display: 'inline' }}>
             관광명소
           </p>
@@ -26,7 +26,7 @@ const Category = (props: any) => {
           }}
           className={clicked === 'res' ? 'clicked' : 'cbutton'}
         >
-          <img src="src/icon/식당.png" style={{ width: '5%' }} />
+          <img className="categortimg" src="src/icon/식당.png" style={{ width: '5%' }} />
           <p className="category_p" style={{ display: 'inline' }}>
             음식점
           </p>
@@ -38,7 +38,7 @@ const Category = (props: any) => {
           }}
           className={clicked === 'caf' ? 'clicked' : 'cbutton'}
         >
-          <img src="src/icon/카페.png" style={{ width: '5%' }} />
+          <img className="categortimg" src="src/icon/카페.png" style={{ width: '5%' }} />
           <p className="category_p" style={{ display: 'inline' }}>
             카페
           </p>
