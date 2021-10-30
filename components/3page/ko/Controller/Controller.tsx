@@ -17,7 +17,7 @@ const useSlider = (min: any, max: any, defaultState: any, label: any, id: any) =
   };
 
   const Slider = () => (
-    <input type="range" id={id} min={min} max={max} step={0.5} defaultValue={state} onMouseUp={handleChange} />
+    <input type="range" id={id} min={min} max={max} step={1} defaultValue={state} onMouseUp={handleChange} />
   );
   return [state, Slider, setSlide];
 };

@@ -61,26 +61,6 @@ const EnTourapilist: FC<Props> = (props: Props) => {
         } else {
           setData(response.data.response.body.items.item);
           for (var i = 0; i < response.data.response.body.items.item.length; i++) {
-            const headers = {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            };
-            const existid = response.data.response.body.items.item[i].contentid;
-            axios
-              .post(
-                `/api/myplace/isexists/${memberid}`,
-                JSON.stringify({ existid }),
-                { headers },
-              )
-              .then((res) => {
-                placeid[j] = res.data[0];
-                // console.log(j, '번째placeid[j]', placeid[j]);
-                // console.log('placeid', placeid);
-                j = j + 1;
-              })
-              .catch((error) => {
-                // console.log(j, '번쨰에서 catch');
-              });
             setNames((prev: any) => [...prev, response.data.response.body.items.item[i].title]);
             setCategories((prev: any) => [...prev, ggcategory]);
             setLocx((prev: any) => [...prev, response.data.response.body.items.item[i].mapx]);
@@ -129,6 +109,7 @@ const EnTourapilist: FC<Props> = (props: Props) => {
         ) // 500에러
         // { withCredentials:true }) //이건 415인데 위에 headers 저렇게써야하는거라구해서 header로 바꾸면 500..
         .then((res) => {
+          console.log(res.data);
           placeid[e] = res.data.myplaceid;
           console.log('넣어진 id: ', memberid, 'placeid[e]', placeid[e]);
         })
@@ -136,6 +117,7 @@ const EnTourapilist: FC<Props> = (props: Props) => {
         });
     }
   }
+  console.log(placeid);
   function func_delete(e: number) {
     console.log('즐겨찾기에서 지울 id: ', memberid, 'placeid[e]', placeid[e]);
     axios
@@ -453,20 +435,8 @@ const EnTourapilist: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="gobtn_outerdiv">
-        <div className="gobtn">
-          <button
-            className="go"
-            onClick={() => {
-              reRender();
-            }}
-          >
-            Find More Places !
-            {/*re-render*/}
-          </button>
-        </div>
-      </div>
-      {random===1 ? <ul className="p3tourapilist">{make()}</ul> : null}
+      <ul className="p3tourapilist">{make()}</ul>
+
     </>
   );
 };

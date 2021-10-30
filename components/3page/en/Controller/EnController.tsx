@@ -44,7 +44,6 @@ const EnController: FC<Props> = (props: Props) => {
     <>
       <h2>Find the surrounding places of {props.selectedplace}</h2>
       <div className="controller">
-        {/*슬라이더*/}
         <div className="slider-parent" onChange={() => setApigopen(false)}>
           0
           <Slider />
@@ -96,21 +95,21 @@ const EnController: FC<Props> = (props: Props) => {
         </div>
       </div>
 
-      {/*<div className="gobtn_outerdiv">*/}
-      {/*  <div className="gobtn">*/}
-      {/*    <button*/}
-      {/*      className="go"*/}
-      {/*      onClick={() => {*/}
-      {/*        selectedalert();*/}
-      {/*      }}*/}
-      {/*    >*/}
-      {/*      Find More Places !*/}
-      {/*    </button>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
+      <div className="gobtn_outerdiv">
+        <div className="gobtn">
+          <button
+            className="go"
+            onClick={() => {
+              selectedalert();
+            }}
+          >
+            Find More Places !
+          </button>
+        </div>
+      </div>
 
       <div className="클래스명모하지">
-        { (selectedType !== 0 && selectedArrange !== '') ?
+        {apiopen && (
           <EnTourapilist
             arrange={selectedArrange}
             distance={slideValue}
@@ -118,19 +117,9 @@ const EnController: FC<Props> = (props: Props) => {
             mapx={props.mapx}
             mapy={props.mapy}
             history={props.history}
-          /> : null
-        }
-
-        {/*{apiopen && (*/}
-        {/*  <EnTourapilist*/}
-        {/*    arrange={selectedArrange}*/}
-        {/*    distance={slideValue}*/}
-        {/*    type={selectedType}*/}
-        {/*    mapx={props.mapx}*/}
-        {/*    mapy={props.mapy}*/}
-        {/*    history={props.history}*/}
-        {/*  />*/}
-        {/*)}*/}
+          />
+        )}
+        
       </div>
     </>
   );
