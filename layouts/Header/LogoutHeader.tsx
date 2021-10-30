@@ -38,18 +38,17 @@ const LogoutHeader = () => {
             </li>
             <li>
               <Link to="/mypage" style={{ textDecoration: 'none', color: '#000000' }}>
-                <img className="header_category" src="/src/icon/mypage.png" alt="mypage" width="30" height="30" />
-                <div className="header_text">MYPAGE</div>
+                <img className="header_category" src="/src/icon/location.png" alt="myplace" width="30" height="30" />
+                <div className="header_text">MYPLACE</div>
               </Link>
             </li>
             <li>
               <button
                 id="logout"
                 onClick={() => {
-                  if (language[1]==='KO'){
+                  if (language[1] === 'KO') {
                     alert('로그아웃 되셨습니다!');
-                  }
-                  else{
+                  } else {
                     alert('Log Out Success');
                   }
                   <Redirect to="/login" />;
