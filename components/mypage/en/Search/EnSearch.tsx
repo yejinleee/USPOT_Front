@@ -1,41 +1,14 @@
 import React, { useEffect } from 'react';
-import { useState } from 'react';
-import axios from 'axios';
+import '@components/mypage/en/Search/Search.scss';
+import EnCoursemap from '../Course/Coursemap';
 
-const Container = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [station, setStation] = useState([] as any);
-
-  // useEffect(() => {
-  //   axios.get()
-  // })
-
+const EnSearch = () => {
   return (
-    <div className="Searchinput">
-      {/* <input
-        type="text"
-        placeholder="어디로 떠나실건가요?"
-        onChange={(event) => {
-          setSearchTerm(event.target.value);
-        }}
-      />
-      <div className="container">
-        {JSONDATA.filter((val: any) => {
-          if (searchTerm == '') {
-            return val;
-          } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-            return val;
-          }
-        }).map((val: any, key: any) => {
-          return (
-            <div className="contry" key={key}>
-              <p onClick={() => selectCity(val)}>{val.name}</p>
-            </div>
-          );
-        })}
-      </div> */}
+    <div className="myplacecontents">
+      <div>Please select a departure point</div>
+      <EnCoursemap />
     </div>
   );
 };
 
-export default Container;
+export default EnSearch;

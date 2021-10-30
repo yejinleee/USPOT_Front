@@ -41,23 +41,20 @@ const LogInHeader = () => {
                 to="/login"
                 style={{ textDecoration: 'none', color: '#000000' }}
                 onClick={() => {
-                  if (language[1]==='KO'){
+                  if (language[1] === 'KO') {
                     alert('로그인이 필요한 서비스입니다. 로그인을 해주세요.');
+                  } else {
+                    alert('You need to log in. Please log in.');
                   }
-                  else{
-                    alert('You need to log in. Please log in.')
-                    }
                   <Redirect to="/login" />;
                 }}
               >
-                <img className="header_category" src="/src/icon/mypage.png" alt="mypage" width="30" height="30" />
-                <div className="header_text">MYPAGE</div>
+                <img className="header_category" src="/src/icon/location.png" alt="myplace" width="30" height="30" />
+                <div className="header_text">MYPLACE</div>
               </Link>
             </li>
             <li>
-              <Link
-                id="logout"
-                to="/login" style={{ textDecoration: 'none', color: '#000000' }}>
+              <Link id="logout" to="/login" style={{ textDecoration: 'none', color: '#000000' }}>
                 <img className="header_category" src="/src/icon/mypage.png" alt="login" width="30" height="30" />
                 <div className="header_text">LOGIN</div>
               </Link>
