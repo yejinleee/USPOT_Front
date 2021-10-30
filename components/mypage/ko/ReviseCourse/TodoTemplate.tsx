@@ -47,13 +47,12 @@ const TodoTemplate: FC<Props> = (props: Props) => {
   }, [props.courseid]);
 
   const onClick = (list: any) => {
-    if (todos.length === 0) {
-      setTodos((prev: any) => [...prev, list]);
-      setIndex((prev: any) => [...prev, list.placeId]);
+    if (todos.length >= 10) {
+      alert('코스는 10개를 넘을 수 없습니다!');
     } else {
-      if (index.indexOf(list.placeId) === -1) {
+      if (index.indexOf(list.id) === -1) {
         setTodos((prev: any) => [...prev, list]);
-        setIndex((prev: any) => [...prev, list.placeId]);
+        setIndex((prev: any) => [...prev, list.id]);
       }
     }
   };
