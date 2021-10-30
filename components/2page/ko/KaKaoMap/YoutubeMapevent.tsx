@@ -8,18 +8,16 @@ import { History, LocationState } from 'history';
 interface Props {
   videoid: any;
   history: History<LocationState>;
-  vlogplaceid: any;
 }
 
-const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid }) => {
-  const latt = useRef(0);
-  const long = useRef(0);
+const YoutubeMapevent: FC<Props> = ({ children, videoid, history }) => {
   const kakao = (window as any).kakao;
   const [place, setPlace] = useState([] as any);
   const [name, setName] = useState([] as any);
   const [youtubemap, setYoutubemap] = useState(null);
   const [markers, setMarkers] = useState([] as any);
   const [placeurl, setPlaceurl] = useState([] as any);
+  const [vlogid, setVlogid] = useState([] as any);
 
   const x = useRef(0);
   const y = useRef(0);
@@ -35,14 +33,16 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
 
   useEffect(() => {
     setPlace([]);
-    setName([]);
-    setPlaceurl([]);
     axios
       .get(`/api/vlog/findplace/${videoid}`)
       .then((response) => {
         setPlace(response.data.data);
+        setName([]);
+        setPlaceurl([]);
+        setVlogid([]);
         for (var i = 0; i < response.data.data.length; i++) {
           setName((prev: any) => [...prev, response.data.data[i].name]);
+          setVlogid((prev: any) => [...prev, response.data.data[i].placeId]);
           setPlaceurl((prev: any) => [...prev, response.data.data[i].placeUrl]);
         }
       })
@@ -98,16 +98,15 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
   };
 
   function addMarker(position: any, idx: any, id: any) {
-    var imageSrc = `/src/icon/${id}.png`, // 마커 이미지 url, 스프라이트 이미지를 씁니다
-      imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
+    var imageSrc = `/src/icon/${id}.png`,
+      imageSize = new kakao.maps.Size(36, 37),
       markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize),
       marker = new kakao.maps.Marker({
-        position: position, // 마커의 위치
+        position: position,
         image: markerImage,
       });
 
-    marker.setMap(youtubemap); // 지도 위에 마커를 표출합니다
-    // 배열에 생성된 마커를 추가합니다
+    marker.setMap(youtubemap);
     setMarkers((prev: any) => [...prev, marker]);
     return marker;
   }
@@ -116,7 +115,6 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
       infowindow.open(map, marker);
     };
   }
-  // 인포윈도우를 닫는 클로저를 만드는 함수입니다
   function makeOutListener(infowindow: { close: () => void }) {
     return function () {
       infowindow.close();
@@ -132,14 +130,8 @@ const YoutubeMapevent: FC<Props> = ({ children, videoid, history, vlogplaceid })
   return (
     <div style={{ position: 'relative' }}>
       <div id="youtubemap" style={{ width: '50%', height: '40%', display: 'inline-block' }}></div>
-      <span className="likevlog_span" style={{ position: 'absolute', width:'45%' }}>
-        <LikeVlog
-          vlogplacename={name}
-          vlogpid={videoid}
-          history={history}
-          vlogplaceid={vlogplaceid}
-          placeurl={placeurl}
-        />
+      <span className="likevlog_span" style={{ position: 'absolute', width: '45%' }}>
+        <LikeVlog vlogplacename={name} vlogpid={videoid} history={history} vlogplaceid={vlogid} placeurl={placeurl} />
       </span>
     </div>
   );

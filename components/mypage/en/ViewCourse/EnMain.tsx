@@ -22,7 +22,7 @@ const EnViewMain = () => {
   }, []);
 
   const onClick = (id: number) => {
-    if (window.confirm('코스를 삭제 하시겠습니까?')) {
+    if (window.confirm('Do you want to delete the course?')) {
       axios
         .delete(`/api/en/course/delete/${id}`)
         .then((response) => {})
@@ -30,10 +30,10 @@ const EnViewMain = () => {
 
       setCourese([]);
 
-      alert('코스가 삭제 되었습니다!');
+      alert('The course has been deleted!');
     }
     axios
-      .get(`/api/course/findall/${memberid}`)
+      .get(`/api/en/course/findall/${memberid}`)
       .then(async (response) => {
         setCourese(response.data.data);
       })
@@ -50,9 +50,9 @@ const EnViewMain = () => {
 
   return (
     <>
-      <h3>코스 삭제하기</h3>
+      <h3>Delete the course</h3>
       {courselist}
-      <h3>코스 한눈에 보기</h3>
+      <h3>View my course list</h3>
       <CourseList courselist={course} />
     </>
   );

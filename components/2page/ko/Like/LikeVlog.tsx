@@ -4,10 +4,10 @@ import '@components/2page/LikeVlog.scss';
 import { History, LocationState } from 'history';
 
 interface Props {
-  vlogplacename: any; //vlog에서 방문한 장소명 목록
-  vlogpid: any; //vlog 유튜브번호 CKvzYfkgTyc이런거
+  vlogplacename: any;
+  vlogpid: any;
   history: History<LocationState>;
-  vlogplaceid: any; //vlog에서 방문한 장소 placeid 목록
+  vlogplaceid: any;
   placeurl: any;
 }
 const LikeVlog: FC<Props> = (props: Props) => {
@@ -19,7 +19,7 @@ const LikeVlog: FC<Props> = (props: Props) => {
   }
   var len = props.vlogplacename.length;
 
-  const [like0, setLike0] = useState(0); //초기0 누르면1 눌렀다 빼면 2 //처음렌더링대 false라 else문들어갈까봐
+  const [like0, setLike0] = useState(0);
   const [like1, setLike1] = useState(0);
   const [like2, setLike2] = useState(0);
   const [like3, setLike3] = useState(0);
@@ -42,12 +42,10 @@ const LikeVlog: FC<Props> = (props: Props) => {
 
   const [dblikedlist, setDblikedlist] = useState([] as any);
   useEffect(() => {
-    //DB에 저장된 즐찾목록의 id들만 가져와서 dblikedlist 배열에 저장
     if (memberid !== 0) {
       axios
         .get(`/api/myplace/findall/${memberid}`)
         .then(async (response) => {
-          // axios.get(`/api/myplace/findall/${memberid}`).then(async (response) => {
           for (var i = 0; i < response.data.data.length; i++) {
             setDblikedlist((prev: any) => [...prev, response.data.data[i].placeId]);
           }
@@ -58,31 +56,24 @@ const LikeVlog: FC<Props> = (props: Props) => {
 
   function func_post(e: number) {
     var ethplaceid = props.vlogplaceid[e];
-    console.log('즐겨찾기 할 id:', memberid, 'placeid', ethplaceid);
-
     if (memberid === 0) {
-      alert('로그인하세욥');
+      alert('로그인이 필요한 서비스입니다!');
       return props.history.push('/login');
     } else {
       axios
         .post(
           `/api/myplace/add/${memberid}/${props.vlogplaceid[e]}`,
           { memberid, ethplaceid },
-          { withCredentials: true }, //post에선 3번째자리에 설정
+          { withCredentials: true },
         )
-        .then(() => {
-          console.log('넣어진 id: ', memberid, 'placeid', ethplaceid);
-        })
+        .then(() => {})
         .catch((error) => {});
     }
   }
   function func_delete(e: number) {
-    console.log('즐겨찾기에서 지울 id:', memberid, 'placeid', props.vlogplaceid[e]);
     axios
       .delete(`/api/myplace/deletebyplace/${memberid}/${props.vlogplaceid[e]}`)
-      .then(() => {
-        console.log('지워진 id: ', memberid, 'placeid', props.vlogplaceid[e]);
-      })
+      .then(() => {})
       .catch((error) => {});
   }
 
