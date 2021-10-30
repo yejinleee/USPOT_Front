@@ -3,7 +3,7 @@ import MakeCourse from '@components/mypage/ko/ReviseCourse/MakeCourse';
 import Search from '../Search/Search';
 import ViewMain from '../ViewCourse/Main';
 import '@components/mypage/Button.scss';
-import '@components/mypage/map.css'
+import '@components/mypage/Coursemap.css'
 
 const Mypage = () => {
   const [select, setSelect] = useState(0);

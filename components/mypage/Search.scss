@@ -1,3 +1,7 @@
+*{
+  color:rgb(92 88 88);
+}
+
 form.inputForm {
   margin-top: 1.5em;
 }
@@ -24,7 +28,7 @@ form.inputForm {
   }
 }
 
-.startbutton {
+.searchbutton {
   margin-left: 10px;
   height: 30px;
   border: none;
@@ -33,9 +37,10 @@ form.inputForm {
   border-radius: 50%;
   box-shadow: 0 3px 14px -1px rgb(0 0 0 / 60%);
   width: 30px;
+  cursor: pointer;
 }
 
-.startbutton img {
+.searchbutton img {
   width: 18px;
   height: 18px;
 }
@@ -47,14 +52,14 @@ form.inputForm {
     margin-top: 0;
     height: 2.5em;
   }
-  .startbutton {
+  .searchbutton {
     padding: 0 !important;
     margin-left: 6px;
     margin-right: 6px;
     width: 20px;
     height: 20px;
   }
-  .startbutton img {
+  .searchbutton img {
     width: 15px;
     height: 15px;
   }
@@ -62,7 +67,36 @@ form.inputForm {
 .map_div{
   text-align: center;
 }
+
 .searchplace{
   margin:auto;
-  display: inline-block;
+  display: block;
+}
+.searchplace_responsive{
+  display: none;
+}
+
+
+/*//맵 반응형 설정 (675px)*/
+@media screen and (max-width: 675px) {
+  .searchplace {
+    display: none;
+  }
+  .searchplace_responsive {
+    position: relative;
+    width: 90%;
+    height: 70vh;
+    margin: auto;
+    display: block;
+  }
+}
+
+//출발지설정버튼
+.setstartbtn{
+  background: transparent;
+  margin: 1vh 0px;
+  padding: 0.5vw 1vw;
+  border: 1px solid rgb(92 88 88);
+  border-radius: 20px;
+  cursor: pointer;
 }

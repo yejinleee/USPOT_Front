@@ -58,14 +58,14 @@ const EnController: FC<Props> = (props: Props) => {
             className="order_button"
             id={selectedArrange === 'popularity' ? 'selected' : 'unselected'}
           >
-            Popularity
+            Order of Popularity
           </span>
           <span
             onClick={() => funcArrange('distance')}
             className="order_button"
             id={selectedArrange === 'distance' ? 'selected' : 'unselected'}
           >
-            Distance
+            Order of Distance
           </span>
         </div>
         {/*카테고리*/}

@@ -21,8 +21,8 @@ const MakeCourse: FC<Props> = (props: Props) => {
       {exist && (
         <>
           <Likedlist start={props.start} />
-          <div className="coursemap" style={{position:'relative'}}>
-            <Coursemap />
+          <div className="coursemap_responsive" style={{position:'relative'}}>
+            <CoursemapRsp />
           </div>
         </>
       )}
