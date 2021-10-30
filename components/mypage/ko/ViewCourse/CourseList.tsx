@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { FC, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Coursemap from './Coursemap';
 
 const CourseList = () => {
@@ -44,22 +44,25 @@ const CourseList = () => {
     console.log(list, name);
     return (
       <>
-        <button
-          className="deletebutton"
-          onClick={() => {
-            setCourseid(list.courseid);
-            setExist(true);
-          }}
-        >
-          <p className="deletename">{name}</p>
-        </button>
-        <button
-          onClick={() => {
-            onClick(list.courseid);
-          }}
-        >
-          <img src="/src/icon/trash.png" />
-        </button>
+        <div className="viewbuttonlist">
+          <button
+            className="deletebutton"
+            onClick={() => {
+              setCourseid(list.courseid);
+              setExist(true);
+            }}
+          >
+            <p className="deletename">{name}</p>
+          </button>
+          <button
+            className="viewimg"
+            onClick={() => {
+              onClick(list.courseid);
+            }}
+          >
+            <img className="viewtrashbutton" src="/src/icon/delete-button.png" width="30" />
+          </button>
+        </div>
       </>
     );
   }

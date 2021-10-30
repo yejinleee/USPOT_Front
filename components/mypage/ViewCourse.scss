@@ -83,6 +83,15 @@
   margin-bottom: 1em;
 }
 
+.viewbuttonlist {
+  display: inline-block;
+}
+.viewimg {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
 @media screen and (max-width: 675px) {
   #coursemap {
     width: 100% !important;
@@ -103,5 +112,11 @@
   .deletename {
     margin-bottom: 0;
     margin-top: 0;
+  }
+  .viewbuttonlist {
+    display: block;
+  }
+  .viewtrashbutton {
+    width: 20;
   }
 }
