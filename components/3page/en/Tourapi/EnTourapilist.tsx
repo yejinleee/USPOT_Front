@@ -14,7 +14,7 @@ interface Props {
 
 const EnTourapilist: FC<Props> = (props: Props) => {
   let api = process.env.REACT_APP_TOUR_API_KEY;
-  let number = 5;
+  let number = 6;
   let pnumber = 1;
   const [data, setData] = useState([] as any);
   const [names, setNames] = useState([] as any);
@@ -25,7 +25,7 @@ const EnTourapilist: FC<Props> = (props: Props) => {
   const [dist, setDistance] = useState([] as any);
   const [img, setImg] = useState([] as any);
   const [id, setId] = useState([] as any);
-  const [placeid, setPlaceid] = useState([-1, -1, -1, -1, -1] as any);
+  const [placeid, setPlaceid] = useState([-1, -1, -1, -1, -1, -1] as any);
 
   var local = sessionStorage.getItem('memberid');
   try {
@@ -34,7 +34,7 @@ const EnTourapilist: FC<Props> = (props: Props) => {
     var memberid = 0;
   }
 
-  const [like0, setLike0] = useState(0); //초기0 누르면1 눌렀다 빼면 2 //처음렌더링대 false라 else문들어갈까봐
+  const [like0, setLike0] = useState(0);
   const [like1, setLike1] = useState(0);
   const [like2, setLike2] = useState(0);
   const [like3, setLike3] = useState(0);
@@ -56,7 +56,6 @@ const EnTourapilist: FC<Props> = (props: Props) => {
         `http://api.visitkorea.or.kr/openapi/service/rest/EngService/locationBasedList?serviceKey=${api}&numOfRows=${number}&pageNo=${pnumber}&MobileOS=ETC&MobileApp=AppTest&listYN=Y&arrange=${props.arrange}&contentTypeId=${props.type}&mapX=${props.mapx}&mapY=${props.mapy}&radius=${props.distance}&_type=json`,
       )
       .then((response) => {
-        console.log(response.data.response.body);
         if (response.data.response.body.items === '') {
           setData([]);
         } else {
@@ -80,7 +79,6 @@ const EnTourapilist: FC<Props> = (props: Props) => {
       })
       .catch((error) => {
         setData([]);
-        console.log(error);
       });
   }, []);
 
@@ -98,8 +96,7 @@ const EnTourapilist: FC<Props> = (props: Props) => {
       'Content-Type': 'application/json',
     };
     if (memberid === 0) {
-      alert('You need to log in. Please log in.')
-      console.log(props.history);
+      alert('You need to log in! Please log in');
       return props.history.push('/login');
     } else {
       axios
@@ -107,82 +104,49 @@ const EnTourapilist: FC<Props> = (props: Props) => {
           `/api/en/myplace/addfromapi/${memberid}`,
           JSON.stringify({ name, category, location_x, location_y, address, placeId }),
           { headers },
-        ) // 500에러
-        // { withCredentials:true }) //이건 415인데 위에 headers 저렇게써야하는거라구해서 header로 바꾸면 500..
+        )
         .then((res) => {
-          console.log(res.data);
           placeid[e] = res.data.myplaceid;
-          console.log('넣어진 id: ', memberid, 'placeid[e]', placeid[e]);
         })
-        .catch((error) => {
-        });
+        .catch((error) => {});
     }
   }
-  console.log(placeid);
   function func_delete(e: number) {
-    console.log('즐겨찾기에서 지울 id: ', memberid, 'placeid[e]', placeid[e]);
     axios
       .delete(`/api/en/myplace/deletebymyplace/${memberid}/${placeid[e]}`)
-      .then(() => {
-        console.log('지워진 id: ', memberid, 'placeid[e]', placeid[e]);
-      })
+      .then(() => {})
       .catch((error) => {});
   }
 
   function heart(i: number) {
     if (i === 0 && like0 === 0) {
-      return (
-        <span className="p3like">{placeid[0] !== -1 ? '💛' : '🤍'}</span>
-      );
+      return <span className="p3like">{placeid[0] !== -1 ? '💛' : '🤍'}</span>;
     } else if (i === 0 && like0 !== 0) {
-      return (
-        <span className="p3like">{like0 === 1 ? '💛' : '🤍'}</span>
-      )
+      return <span className="p3like">{like0 === 1 ? '💛' : '🤍'}</span>;
     } else if (i === 1 && like1 === 0) {
-      return (
-        <span className="p3like">{placeid[1] !== -1 ? '💛' : '🤍'}</span>
-      );
+      return <span className="p3like">{placeid[1] !== -1 ? '💛' : '🤍'}</span>;
     } else if (i === 1 && like1 !== 0) {
-      return (
-        <span className="p3like">{like1 === 1 ? '💛' : '🤍'}</span>
-      )
+      return <span className="p3like">{like1 === 1 ? '💛' : '🤍'}</span>;
     } else if (i === 2 && like2 === 0) {
-      return (
-        <span className="p3like">{placeid[2] !== -1 ? '💛' : '🤍'}</span>
-      );
+      return <span className="p3like">{placeid[2] !== -1 ? '💛' : '🤍'}</span>;
     } else if (i === 2 && like2 !== 0) {
-      return (
-        <span className="p3like">{like2 === 1 ? '💛' : '🤍'}</span>
-      )
+      return <span className="p3like">{like2 === 1 ? '💛' : '🤍'}</span>;
     } else if (i === 3 && like3 === 0) {
-      return (
-        <span className="p3like">{placeid[3] !== -1 ? '💛' : '🤍'}</span>
-      );
+      return <span className="p3like">{placeid[3] !== -1 ? '💛' : '🤍'}</span>;
     } else if (i === 3 && like3 !== 0) {
-      return (
-        <span className="p3like">{like3 === 1 ? '💛' : '🤍'}</span>
-      )
+      return <span className="p3like">{like3 === 1 ? '💛' : '🤍'}</span>;
     } else if (i === 4 && like4 === 0) {
-      return (
-        <span className="p3like">{placeid[4] !== -1 ? '💛' : '🤍'}</span>
-      );
+      return <span className="p3like">{placeid[4] !== -1 ? '💛' : '🤍'}</span>;
     } else if (i === 4 && like4 !== 0) {
-      return (
-        <span className="p3like">{like4 === 1 ? '💛' : '🤍'}</span>
-      )
+      return <span className="p3like">{like4 === 1 ? '💛' : '🤍'}</span>;
     } else if (i === 5 && like5 === 0) {
-      return (
-        <span className="p3like">{placeid[5] !== -1 ? '💛' : '🤍'}</span>
-      );
+      return <span className="p3like">{placeid[5] !== -1 ? '💛' : '🤍'}</span>;
     } else if (i === 5 && like5 !== 0) {
-      return (
-        <span className="p3like">{like5 === 1 ? '💛' : '🤍'}</span>
-      )
+      return <span className="p3like">{like5 === 1 ? '💛' : '🤍'}</span>;
     }
   }
 
   function func(e: number) {
-    //api에 post나 delete 하는 함수
     if (e === 0) {
       if (like0 === 0) {
         if (placeid[0] !== -1) {
@@ -280,9 +244,9 @@ const EnTourapilist: FC<Props> = (props: Props) => {
         func_post(e);
       }
     }
-  } //func
+  }
 
-  function makelike0(){
+  function makelike0() {
     return (
       <>
         <li className="page3placelist">
@@ -294,7 +258,6 @@ const EnTourapilist: FC<Props> = (props: Props) => {
               func(0);
             }}
           />
-          {/*{func(0)}*/}
           <label className="p3custom" htmlFor="listidx0">
             {heart(0)}
             <div className="p3likeplace">{names[0]}</div>
@@ -304,9 +267,9 @@ const EnTourapilist: FC<Props> = (props: Props) => {
           </label>
         </li>
       </>
-    )
+    );
   }
-  function makelike1(){
+  function makelike1() {
     return (
       <>
         <li className="page3placelist">
@@ -327,10 +290,9 @@ const EnTourapilist: FC<Props> = (props: Props) => {
           </label>
         </li>
       </>
-    )
-
+    );
   }
-  function makelike2(){
+  function makelike2() {
     return (
       <>
         <li className="page3placelist">
@@ -340,7 +302,6 @@ const EnTourapilist: FC<Props> = (props: Props) => {
             id="listidx2"
             onClick={() => {
               func(2);
-              // like2 === 1 ? setLike2(2) : setLike2(1);
             }}
           />
           <label className="p3custom" htmlFor="listidx2">
@@ -352,10 +313,9 @@ const EnTourapilist: FC<Props> = (props: Props) => {
           </label>
         </li>
       </>
-    )
-
+    );
   }
-  function makelike3(){
+  function makelike3() {
     return (
       <>
         <li className="page3placelist">
@@ -365,7 +325,6 @@ const EnTourapilist: FC<Props> = (props: Props) => {
             id="listidx3"
             onClick={() => {
               func(3);
-              // like3 === 1 ? setLike3(2) : setLike3(1);
             }}
           />
           <label className="p3custom" htmlFor="listidx3">
@@ -377,10 +336,9 @@ const EnTourapilist: FC<Props> = (props: Props) => {
           </label>
         </li>
       </>
-    )
-
+    );
   }
-  function makelike4(){
+  function makelike4() {
     return (
       <>
         <li className="page3placelist">
@@ -390,7 +348,6 @@ const EnTourapilist: FC<Props> = (props: Props) => {
             id="listidx4"
             onClick={() => {
               func(4);
-              // like4 === 1 ? setLike4(2) : setLike4(1);
             }}
           />
           <label className="p3custom" htmlFor="listidx4">
@@ -402,9 +359,9 @@ const EnTourapilist: FC<Props> = (props: Props) => {
           </label>
         </li>
       </>
-    )
+    );
   }
-  function makelike5(){
+  function makelike5() {
     return (
       <>
         <li className="page3placelist">
@@ -414,7 +371,6 @@ const EnTourapilist: FC<Props> = (props: Props) => {
             id="listidx5"
             onClick={() => {
               func(5);
-              // like5 === 1 ? setLike5(2) : setLike5(1);
             }}
           />
           <label className="p3custom" htmlFor="listidx5">
@@ -426,10 +382,9 @@ const EnTourapilist: FC<Props> = (props: Props) => {
           </label>
         </li>
       </>
-    )
+    );
   }
 
-  //웹페이지에 표시할 태그들. return에서 호출
   function make() {
     if (len === 1) {
       return <>{makelike0()}</>;
@@ -478,7 +433,7 @@ const EnTourapilist: FC<Props> = (props: Props) => {
           {makelike5()}
         </>
       );
-    }else if (len === 0) {
+    } else if (len === 0) {
       return (
         <>
           <p>not exist!</p>
@@ -487,14 +442,9 @@ const EnTourapilist: FC<Props> = (props: Props) => {
     }
   }
 
-  //의도적 리렌더링-----
-  const [random, setRandom] = React.useState(0);
-  const reRender = () => setRandom(1);
-
   return (
     <>
       <ul className="p3tourapilist">{make()}</ul>
-
     </>
   );
 };

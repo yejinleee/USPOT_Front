@@ -1,5 +1,5 @@
 import Layout from '@layouts/Layouts';
-import React from 'react';
+import React, { useEffect } from 'react';
 import LogIn from '@pages/LogIn/LogIn';
 import Button from '@components/mypage/ko/Button/Button';
 import EnButton from '@components/mypage/en/Button/EnButton';
@@ -18,6 +18,10 @@ const Mypage = () => {
 
   var local = localStorage.getItem('language');
   var language = local.split('"');
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

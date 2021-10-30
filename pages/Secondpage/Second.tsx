@@ -10,13 +10,18 @@ const Second = (props: any) => {
   const selectedcategory = props.match.params.selectedcategory;
   const history = props.history;
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Layout>
-        {language[1]==='KO' ?
-          <Slide selectedcity={selectedcity} selectedcategory={selectedcategory} history={history} />
-          : <EnSlide selectedcity={selectedcity} selectedcategory={selectedcategory} history={history} />
-        }
-     </Layout>
+      {language[1] === 'KO' ? (
+        <Slide selectedcity={selectedcity} selectedcategory={selectedcategory} history={history} />
+      ) : (
+        <EnSlide selectedcity={selectedcity} selectedcategory={selectedcategory} history={history} />
+      )}
+    </Layout>
   );
 };
 

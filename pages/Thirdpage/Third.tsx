@@ -12,7 +12,11 @@ interface Props {
 const Third: FC<Props> = (props: Props) => {
   var local = localStorage.getItem('language');
   var language = local.split('"');
-  console.log(props.location.state);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Layout>
       {language[1] === 'KO' ? (

@@ -23,7 +23,7 @@ const EnMain = () => {
         setCourese(response.data.data);
       })
       .catch((error) => {});
-  }, [name]);
+  }, []);
 
   const onClick = (id: number, coursename: string) => {
     setState(id);
@@ -50,7 +50,7 @@ const EnMain = () => {
       {courselist}
       {state !== 0 && (
         <>
-          <EnTodoTemplate courseid={state} coursename={name} setName={setName} />
+          <EnTodoTemplate courseid={state} coursename={name} setCourese={setCourese} />
         </>
       )}
 

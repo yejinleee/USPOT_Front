@@ -9,6 +9,7 @@ interface Props {
   // courseid:any;
   // coursename:any;
   // setName:any;
+
 }
 
 const TodoItemList: FC<Props> = (props: Props) => {
@@ -25,6 +26,7 @@ const TodoItemList: FC<Props> = (props: Props) => {
   }
 
   var imgsrc = './src/icon/x-mark.png';
+
 
   return (
     <>

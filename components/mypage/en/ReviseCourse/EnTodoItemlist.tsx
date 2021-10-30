@@ -6,7 +6,7 @@ interface Props {
   onRemove: any;
   courseid: any;
   coursename: any;
-  setName: any;
+  setCourese: any;
 }
 
 const EnTodoItemList: FC<Props> = (props: Props) => {
@@ -34,24 +34,28 @@ const EnTodoItemList: FC<Props> = (props: Props) => {
   const onClick = () => {
     var name = text;
     var myplaceList = props.todos;
-    props.setName(name);
     if (myplaceList.length !== 0) {
       axios
         .put(`/api/en/course/update/${memberid}/${props.courseid}`, JSON.stringify({ name, myplaceList }), { headers })
         .then(() => {
-          alert('코스가 수정되었습니다!');
-          location.reload();
+          alert('The course has been modified!');
+          axios
+            .get(`/api/en/course/findall/${memberid}`)
+            .then(async (response) => {
+              props.setCourese(response.data.data);
+            })
+            .catch((error) => {});
         })
         .catch((error) => {});
     } else {
-      alert('코스에 장소를 담아주세요!');
+      alert('Please put the location on the course!');
     }
   };
 
   return (
     <>
       <input onChange={onChange} value={text} />
-      <button onClick={onClick}>수정하기</button>
+      <button onClick={onClick}>Fix it</button>
       {props.todos.map((todo: any) => (
         <EnTodoItem todos={todo} id={todo.id} onRemove={props.onRemove} />
       ))}

@@ -18,7 +18,7 @@ const Coursemap: FC<Props> = (props: Props) => {
     let container = document.getElementById('coursemap');
     let options = {
       center: new kakao.maps.LatLng(37.55699327194725, 126.97267350572926),
-      level: 10,
+      level: 13,
     };
     setCoursemap(new kakao.maps.Map(container, options));
   }, []);
@@ -131,7 +131,10 @@ const Coursemap: FC<Props> = (props: Props) => {
           </>
         ))}
       </ul>
-      <div id="coursemap" style={{ width: '60%', height: '60%', display: 'relative', margin: 'auto' }}></div>
+      <div
+        id="coursemap"
+        style={{ width: '60%', height: '60%', display: 'relative', margin: 'auto', marginBottom: '5px' }}
+      ></div>
     </div>
   );
 };

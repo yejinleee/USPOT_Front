@@ -18,7 +18,7 @@ const EnCoursemap: FC<Props> = (props: Props) => {
     let container = document.getElementById('coursemap');
     let options = {
       center: new kakao.maps.LatLng(37.55699327194725, 126.97267350572926),
-      level: 10,
+      level: 13,
     };
     setCoursemap(new kakao.maps.Map(container, options));
   }, []);

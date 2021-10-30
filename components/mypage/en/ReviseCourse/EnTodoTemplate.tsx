@@ -5,7 +5,7 @@ import EnTodoTitle from './EnTodoTitle';
 interface Props {
   courseid: number;
   coursename: string;
-  setName: any;
+  setCourese: any;
 }
 
 const EnTodoTemplate: FC<Props> = (props: Props) => {
@@ -48,7 +48,7 @@ const EnTodoTemplate: FC<Props> = (props: Props) => {
 
   const onClick = (list: any) => {
     if (todos.length >= 10) {
-      alert('코스는 10개를 넘을 수 없습니다!');
+      alert('There can not be more than 10 places!');
     } else {
       if (index.indexOf(list.placeId) === -1) {
         setTodos((prev: any) => [...prev, list]);
@@ -76,13 +76,13 @@ const EnTodoTemplate: FC<Props> = (props: Props) => {
       <div className="likedlist" style={{ display: 'inline-block' }}>
         {likedlist}
       </div>
-      <EnTodoTitle>코스를 수정해 보아요!</EnTodoTitle>
+      <EnTodoTitle>Please change the course</EnTodoTitle>
       <EnTodoItemList
         todos={todos}
         onRemove={onRemove}
         courseid={props.courseid}
         coursename={props.coursename}
-        setName={props.setName}
+        setCourese={props.setCourese}
       />
     </>
   );

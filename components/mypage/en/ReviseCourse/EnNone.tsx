@@ -3,7 +3,7 @@ import React from 'react';
 const EnNone = () => {
   return (
     <>
-      <div>코스가 없습니다 코스를 담아주세요!</div>
+      <div>There's no course. Please make a course!</div>
     </>
   );
 };

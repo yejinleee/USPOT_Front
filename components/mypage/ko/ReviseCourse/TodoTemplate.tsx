@@ -10,7 +10,8 @@ import CoursemapRsp from '@components/mypage/ko/Course/CoursemapRsp';
 interface Props {
   courseid: number;
   coursename: string;
-  setName: any;
+  setCourese: any;
+  setName:any;
 }
 
 const TodoTemplate: FC<Props> = (props: Props) => {

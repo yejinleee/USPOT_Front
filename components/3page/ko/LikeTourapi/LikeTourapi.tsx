@@ -25,7 +25,7 @@ const LikeTourapi: FC<Props> = (props: Props) => {
   const [dist, setDistance] = useState([] as any);
   const [img, setImg] = useState([] as any);
   const [id, setId] = useState([] as any);
-  const [placeid, setPlaceid] = useState([0, 0, 0, 0, 0] as any);
+  const [placeid, setPlaceid] = useState([-1, -1, -1, -1, -1, -1] as any);
 
   var local = sessionStorage.getItem('memberid');
   try {
@@ -93,7 +93,7 @@ const LikeTourapi: FC<Props> = (props: Props) => {
       'Content-Type': 'application/json',
     };
     if (memberid === 0) {
-      alert('로그인하세욥');
+      alert('로그인이 필요한 서비스입니다 로그인을 해주세요!');
       return props.history.push('/login');
     } else {
       axios
@@ -301,7 +301,6 @@ const LikeTourapi: FC<Props> = (props: Props) => {
     );
   }
   function make() {
-    //웹페이지에 표시할 태그들. return에서 호출
     if (len === 1) {
       return <>{makelike0()}</>;
     } else if (len === 2) {
