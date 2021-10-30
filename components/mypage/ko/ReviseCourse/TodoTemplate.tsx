@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import TodoItemList from './TodoItemlist';
 import TodoTitle from './TodoTitle';
+import '@components/mypage/Revisecss.scss';
 interface Props {
   courseid: number;
   coursename: string;

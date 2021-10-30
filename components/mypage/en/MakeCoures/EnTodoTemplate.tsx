@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
-import List from './EnList';
+import EnList from '@components/mypage/en/MakeCoures/EnList';
 interface Props {
   start: any;
 }
@@ -58,7 +58,7 @@ const EnTodoTemplate: FC<Props> = (props: Props) => {
 
   const onClick = (list: any) => {
     if (todos.length >= 10) {
-      alert('코스는 10개를 넘을 수 없습니다!');
+      alert('You can only save up to ten');
     } else {
       if (index.indexOf(list.id) === -1) {
         setTodos((prev: any) => [...prev, list]);
@@ -82,7 +82,7 @@ const EnTodoTemplate: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <List
+      <EnList
         placelist={placelist}
         todos={todos}
         onClick={onClick}

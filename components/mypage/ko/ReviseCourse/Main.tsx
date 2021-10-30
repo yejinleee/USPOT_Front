@@ -44,8 +44,7 @@ const Main = () => {
   ));
   return (
     <>
-      <div className="revisetitle">수정할 코스를 선택해주세요</div>
-      <div className="reviselist">{courselist}</div>
+      <div className="revisetitle" style={{margin:'2vh 0 1vh'}}>수정할 코스를 선택해주세요</div>
       {state !== 0 && (
         <>
           <TodoTemplate courseid={state} coursename={name} setCourese={setCourese} />

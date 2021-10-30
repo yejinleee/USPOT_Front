@@ -20,8 +20,6 @@ interface Props {
 
 const List: FC<Props> = (props: Props) => {
 
-
-  //
   const [text, setText] = useState('코스');
   var local = sessionStorage.getItem('memberid');
   const headers = {

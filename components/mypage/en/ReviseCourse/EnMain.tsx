@@ -44,6 +44,7 @@ const EnMain = () => {
   ));
   return (
     <>
+      <div className="reviselist" style={{margin:'2vh 0 1vh'}}>{courselist}</div>
       <div>Please choose a course to modify</div>
       <div className="reviselist">{courselist}</div>
       {state !== 0 && (

@@ -33,7 +33,7 @@ export default function EnCoursemap() {
       long.current += el.location_x;
     });
 
-    let container = document.getElementById('enmyplacemap');
+    let container = document.getElementById('myplacemap');
     let options = {
       center: new kakao.maps.LatLng(latt.current / myplace.length, long.current / myplace.length),
       level: 13,
@@ -82,7 +82,7 @@ export default function EnCoursemap() {
 
   return (
     <>
-      <div id="enmyplacemap" style={{ width: '35vw', height: '35vw', margin: 'auto', display: 'inline-block' }}></div>
+      <div id="myplacemap" style={{ width: '50%', height: '50%'}}></div>
     </>
   );
 }
