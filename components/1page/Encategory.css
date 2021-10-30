@@ -1,10 +1,10 @@
-img {
+/* img {
     vertical-align: middle;
 }
 
 .button {
     border-radius: 20px;
-    box-shadow: 1px 4px 0 rgb(0, 0, 0, 0.5);
+    box-shadow: 1px 4px 0 rgb(0, 0, 0, 0.5);s
     margin: 10px;
     padding: 1em;
     cursor: pointer;
@@ -13,7 +13,6 @@ img {
 .button:hover {
     background-color: #ffa9a9;
 }
-
 
 
 @media screen and (max-width: 1024px) {
@@ -55,8 +54,7 @@ img {
         display: grid !important;
         text-align: center;
     }
-}
-
+} */
 
 /*@media screen and (max-width: 600px) {*/
 /*.button {*/
@@ -71,9 +69,9 @@ img {
 /*}*/
 
 .clicked {
-    border-radius: 20px;
-    box-shadow: 1px 4px 0 rgb(0, 0, 0, 0.5);
-    margin: 10px;
-    padding: 1em;
-    background-color: #ffa9a9;
+  border-radius: 20px;
+  box-shadow: 1px 4px 0 rgb(0, 0, 0, 0.5);
+  margin: 10px;
+  padding: 1em;
+  background-color: #ffa9a9;
 }

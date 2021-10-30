@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 300;
   src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff2') format('woff2'),
-  url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff') format('woff');
+    url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff') format('woff');
 }
 * {
   font-family: 'Godo' !important;
@@ -11,28 +11,23 @@
 }
 
 .map {
-  /* position: absolute; */
   position: -webkit-sticky;
   position: fixed;
   float: right;
   width: 25%;
-  /* height: 50%; */
-  /*top: 23%;*/
-  right: 15vw;
-  /* left: 100px; */
+  right: 18vw;
   z-index: -11;
 }
 
-
 $bg: #f3f8fa;
 $white: #fff;
-$black: #F08080;
+$black: #f08080;
 
-@mixin transition($property: all, $duration: 0.45s, $ease: cubic-bezier(0.65,0,.076,1)) {
+@mixin transition($property: all, $duration: 0.45s, $ease: cubic-bezier(0.65, 0, 0.076, 1)) {
   transition: $property $duration $ease;
 }
 
-.gotosecondbtn{
+.gotosecondbtn {
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -45,12 +40,12 @@ $black: #F08080;
   font-size: inherit;
   font-family: inherit;
   margin-bottom: 0.5em;
-  margin-left:2.5em;
+  margin-left: 2.5em;
   &.gotosecondbtn {
     width: 10em;
     height: auto;
     .circle {
-      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+      @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
       position: relative;
       display: block;
       margin: 0;
@@ -59,14 +54,14 @@ $black: #F08080;
       background: $black;
       border-radius: 1.625rem;
       .icon {
-        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
         position: absolute;
         top: 0;
         bottom: 0;
         margin: auto;
         background: $white;
         &.arrow {
-          @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+          @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
           left: 0.2rem;
           width: 1.125rem;
           height: 0.125rem;
@@ -86,7 +81,7 @@ $black: #F08080;
       }
     }
     .button-text {
-      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+      @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
       position: absolute;
       top: 0;
       left: 0;
@@ -118,97 +113,10 @@ $black: #F08080;
   }
 }
 
-
-
-
-
-//.gotosecondbtn {
-//  height: 30px;
-//  /*border-radius: 10px;*/
-//  border: none;
-//  /*position:relative;*/
-//  padding: 0 1em;
-//  cursor: pointer;
-//  transition: 800ms ease all;
-//  outline: none;
-//
-//  position: fixed;
-//  left: 45vw;
-//  /*color: white;*/
-//  margin-top: 1%;
-//
-//  background-color: white;
-//  color: #f08080;
-//  border-top: 1px solid;
-//  border-bottom: 1px solid;
-//}
-//.gotosecondbtn:hover {
-//  background: #fff;
-//  color: #f08080;
-//  border-top: 0;
-//  border-bottom: 0;
-//}
-//.gotosecondbtn:before,
-//.gotosecondbtn:after {
-//  content: '';
-//  position: absolute;
-//  top: 0;
-//  right: 0;
-//  height: 2px;
-//  width: 0;
-//  background: #f08080;
-//  transition: 400ms ease all;
-//}
-//.gotosecondbtn:after {
-//  right: inherit;
-//  top: inherit;
-//  left: 0;
-//  bottom: 0;
-//}
-//.gotosecondbtn:hover:before,
-//.gotosecondbtn:hover:after {
-//  width: 100%;
-//  transition: 800ms ease all;
-//}
-//#citycatedone {
-//  height: 30px;
-//  /*border-radius: 10px;*/
-//  border: none;
-//  /*position:relative;*/
-//  padding: 0 1em;
-//  cursor: pointer;
-//  transition: 800ms ease all;
-//  outline: none;
-//
-//  position: fixed;
-//  left: 45vw;
-//  /*color: white;*/
-//  margin-top: 1%;
-//
-//  background-color: white;
-//  color: #f08080;
-//  border-bottom: 2px solid;
-//  border-top: 2px solid;
-//}
-@media screen and (max-width: 1230px) {
-  .map {
-    top: 23%;
-  }
-}
-@media screen and (max-width: 700px) {
-  .map {
-    display: none;
-  }
-}
-
 .district_toggle {
   position: relative;
   width: 40%;
-  /*position: absolute;*/
   vertical-align: middle;
-  /*display: inline;*/
-  /*padding-left: 13vw;*/
-  /*///*/
 }
 label {
   vertical-align: middle;
@@ -218,7 +126,6 @@ label {
 .district {
   cursor: pointer;
   display: block;
-  /* background: #eee; */
   text-align: center;
   border: 1px solid #d9d9d9;
   border-radius: 13px;
@@ -228,15 +135,10 @@ label {
 }
 #selecteddistrict {
   font-weight: bold;
-  /*border: 2px solid #7974DB;*/
-  /*border: 2px solid #CC655E;*/
   border: 2px solid #f08080;
 }
 .district_name {
   color: #3a3945;
-}
-.citylist:hover {
-  /*background: #ffc0ba;*/
 }
 .citylist {
   cursor: pointer;
@@ -245,7 +147,6 @@ label {
 }
 .city_li {
   list-style: none;
-  /*list-style-image: url('1.png');*/
   padding-bottom: 0.3em;
   color: #3a3945;
 }
@@ -257,9 +158,20 @@ label {
 .station_ul {
   margin-bottom: 0.8em;
   margin-top: 0.3em;
+  padding-left: 20px;
 }
 .station_li {
-  list-style : none;
+  list-style: none;
   color: #3a3945;
 }
-/*fontWeight: 'bold' , border:'2px solid #7974DB'*/
+
+@media screen and (max-width: 1230px) {
+  .map {
+    top: 23%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .map {
+    display: none;
+  }
+}

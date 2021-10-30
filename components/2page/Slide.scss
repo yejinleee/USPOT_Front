@@ -1,7 +1,7 @@
-.title{
-  border-color: #3A3945;
+.title {
+  border-color: #3a3945;
   /*border:1px solid;*/
-  margin-top:2em;
+  margin-top: 2em;
   margin-bottom: 2em;
   text-align: center;
 }
@@ -21,7 +21,7 @@
   display: inline-table;
   position: absolute;
   background-color: white;
-  border: 2px solid #D7D7D7;
+  border: 2px solid #d7d7d7;
 }
 
 .carousel_card_item img {
@@ -67,7 +67,6 @@ button#btn_now {
 
 .carousel-card-mask {
   text-align: center;
-
 }
 
 .leftback {
@@ -178,23 +177,21 @@ button#btn_now {
   margin: 0 auto;
   margin-top: 1px;
   margin-bottom: 10px;
-  text-align:center;
+  text-align: center;
 }
-#gotothird_link{
+#gotothird_link {
   margin-left: 1em;
-
 }
-
 
 $bg: #f3f8fa;
 $white: #fff;
-$black: #F08080;
+$black: #f08080;
 
-@mixin transition($property: all, $duration: 0.45s, $ease: cubic-bezier(0.65,0,.076,1)) {
+@mixin transition($property: all, $duration: 0.45s, $ease: cubic-bezier(0.65, 0, 0.076, 1)) {
   transition: $property $duration $ease;
 }
 
-.nextbutton{
+.nextbutton {
   margin-left: 10%;
 }
 .gotothirdbutton {
@@ -214,7 +211,7 @@ $black: #F08080;
     width: 12rem;
     height: auto;
     .circle {
-      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+      @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
       position: relative;
       display: block;
       margin: 0;
@@ -223,14 +220,14 @@ $black: #F08080;
       background: $black;
       border-radius: 1.625rem;
       .icon {
-        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
         position: absolute;
         top: 0;
         bottom: 0;
         margin: auto;
         background: $white;
         &.arrow {
-          @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+          @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
           left: 0.2rem;
           width: 1.125rem;
           height: 0.125rem;
@@ -250,7 +247,7 @@ $black: #F08080;
       }
     }
     .button-text {
-      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+      @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
       position: absolute;
       top: 0;
       left: 0;
@@ -290,19 +287,18 @@ $black: #F08080;
   }
 }
 
-
-.top5mapevent{
+.top5mapevent {
   margin: auto;
   display: block;
 }
-.top5mapevent_responsive{
+.top5mapevent_responsive {
   display: none;
 }
 @media screen and (max-width: 675px) {
-  .top5mapevent{
+  .top5mapevent {
     display: none;
   }
-  .top5mapevent_responsive{
+  .top5mapevent_responsive {
     position: relative;
     width: 90%;
     height: 70vh;
@@ -310,7 +306,7 @@ $black: #F08080;
     display: block;
   }
 
-  .carousel_card_item{
+  .carousel_card_item {
     display: inline-block;
   }
   .leftback {
@@ -342,14 +338,31 @@ $black: #F08080;
     z-index: -2;
     transition: 0.5s;
   }
-
+  .topname_p {
+    font-size: 0.5em !important;
+  }
+  .top5phone_p {
+    font-size: 0.7em !important;
+  }
+  .top5add_p {
+    font-size: 0.1em !important;
+  }
 }
-.category_box{
+.category_box {
   display: inline-block;
   margin-left: 1em;
 }
 @media screen and (max-width: 350px) {
-  .category_box{
-    margin:0;
+  .category_box {
+    margin: 0;
+  }
+  .topname_p {
+    font-size: 0.5em !important;
+  }
+  .top5phone_p {
+    font-size: 0.7em !important;
+  }
+  .top5add_p {
+    font-size: 0.1em !important;
   }
 }
