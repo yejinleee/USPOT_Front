@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import TodoItemList from './TodoItemlist';
-import TodoTitle from './TodoTitle';
 import Likelistscroll from '@components/mypage/ko/MakeCoures/Likelistscroll';
 import '@components/mypage/List.scss';
 import Coursemap from '@components/mypage/ko/Course/Coursemap';

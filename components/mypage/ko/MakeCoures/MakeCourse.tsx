@@ -3,7 +3,6 @@ import Likedlist from '@components/mypage/ko/MakeCoures/Likedlist';
 import Coursemap from '@components/mypage/ko/Course/Coursemap';
 import CoursemapRsp from '@components/mypage/ko/Course/CoursemapRsp';
 import '@components/mypage/Coursemap.css'
-import Main from '@components/mypage/ko/MakeCoures/Main';
 import TodoTemplate from '@components/mypage/ko/MakeCoures/TodoTemplate';
 interface Props {
   start: any;

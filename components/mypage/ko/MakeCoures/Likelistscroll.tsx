@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import TodoItemList from './TodoItemlist';
-import TodoTitle from './TodoTitle';
 import '@components/mypage/List.scss';
 
 interface Props {
