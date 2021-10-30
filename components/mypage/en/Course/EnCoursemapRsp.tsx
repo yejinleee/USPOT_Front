@@ -2,7 +2,7 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 
-export default function Coursemap() {
+export default function EnCoursemapRsp() {
   const latt = useRef(0);
   const long = useRef(0);
   const kakao = (window as any).kakao;

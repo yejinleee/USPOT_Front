@@ -15,7 +15,7 @@ const EnMap = () => {
   const y = useRef(0);
 
   useEffect(() => {
-    const container = document.getElementById('enmyplacemap');
+    const container = document.getElementById('myMap');
     const options = {
       center: new kakao.maps.LatLng(33.450701, 126.570667),
       level: 13,
@@ -69,7 +69,7 @@ const EnMap = () => {
 
   return (
     <>
-      <div id="enmyplacemap" style={{ width: '30vw', height:'30vw', margin:'auto' }}></div>
+      <div id="myMap" style={{ width: '30vw', height:'30vw', margin:'auto' }} />
       {open && <EnMakeCourse start={select} startplacename={startplacename} />}
     </>
   );

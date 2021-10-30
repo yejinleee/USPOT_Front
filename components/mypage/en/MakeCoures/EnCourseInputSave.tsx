@@ -9,7 +9,7 @@ interface Props {
 }
 
 const EnCourseInputSave: FC<Props> = (props: Props) => {
-  const [text, setText] = useState('코스');
+  const [text, setText] = useState('course');
   var local = sessionStorage.getItem('memberid');
   const headers = {
     Accept: 'application/json',
@@ -34,11 +34,11 @@ const EnCourseInputSave: FC<Props> = (props: Props) => {
         .then(() => {})
         .catch((error) => {});
 
-      alert('코스가 저장되었습니다!');
+      alert('Successfully saved!');
 
       location.reload();
     } else {
-      alert('코스에 장소를 담아주세요!');
+      alert('Please add the place on your course!');
     }
   };
 
@@ -46,8 +46,8 @@ const EnCourseInputSave: FC<Props> = (props: Props) => {
     <>
       <div className="courseinputsave">
         <form className="inputForm">
-          <span id="inputsave_text">내 코스로 저장해보세요!</span>
-          <input onChange={onChange} className="save_input" placeholder="코스 이름을 지어주세요" />
+          <span id="inputsave_text">Save your course!</span>
+          <input onChange={onChange} className="save_input" placeholder="Make your course name" />
           <button onClick={onClick} className="save_button" type="submit">
             save
           </button>

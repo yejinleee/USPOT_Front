@@ -44,7 +44,7 @@ const Main = () => {
   ));
   return (
     <>
-      <div className="reviselist">{courselist}</div>
+      <div className="reviselist" style={{margin:'2vh 0 1vh'}}>{courselist}</div>
       {state !== 0 && (
         <>
           <TodoTemplate courseid={state} coursename={name} setName={setName} />

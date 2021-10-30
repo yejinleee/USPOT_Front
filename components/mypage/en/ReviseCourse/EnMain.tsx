@@ -44,7 +44,7 @@ const EnMain = () => {
   ));
   return (
     <>
-      <div className="reviselist">{courselist}</div>
+      <div className="reviselist" style={{margin:'2vh 0 1vh'}}>{courselist}</div>
       {state !== 0 && (
         <>
           <EnTodoTemplate courseid={state} coursename={name} setName={setName} />

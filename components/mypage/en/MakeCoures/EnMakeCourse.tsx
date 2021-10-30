@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react';
 import '@components/mypage/Coursemap.css';
 import EnTodoTemplate from './EnTodoTemplate';
+import EnNone from '@components/mypage/en/MakeCoures/EnNone';
 interface Props {
   start: any;
   startplacename: string;
@@ -17,7 +18,7 @@ const EnMakeCourse: FC<Props> = (props: Props) => {
     <>
       <div className="setstartbtn_div">
         <button onClick={onClick} className="setstartbtn">
-          "{props.startplacename}"에서 출발하기
+          Depart from &lt;{props.startplacename}&gt;
         </button>
       </div>
       {exist && (
