@@ -16,7 +16,6 @@ const Container = (props: any) => {
       props.setChungbuktoggle(false);
       props.setChungnamtoggle(false);
       props.setDaejeontoggle(false);
-      props.setSejongtoggle(false);
       props.setJeonbuktoggle(false);
       props.setJeonnamtoggle(false);
       props.setGwangjutoggle(false);
@@ -34,7 +33,6 @@ const Container = (props: any) => {
       props.setChungbuktoggle(false);
       props.setChungnamtoggle(false);
       props.setDaejeontoggle(false);
-      props.setSejongtoggle(false);
       props.setJeonbuktoggle(false);
       props.setJeonnamtoggle(false);
       props.setGwangjutoggle(false);
@@ -52,7 +50,6 @@ const Container = (props: any) => {
       props.setChungbuktoggle(false);
       props.setChungnamtoggle(true);
       props.setDaejeontoggle(false);
-      props.setSejongtoggle(false);
       props.setJeonbuktoggle(false);
       props.setJeonnamtoggle(false);
       props.setGwangjutoggle(false);
@@ -70,7 +67,6 @@ const Container = (props: any) => {
       props.setChungbuktoggle(true);
       props.setChungnamtoggle(false);
       props.setDaejeontoggle(false);
-      props.setSejongtoggle(false);
       props.setJeonbuktoggle(false);
       props.setJeonnamtoggle(false);
       props.setGwangjutoggle(false);
@@ -88,7 +84,6 @@ const Container = (props: any) => {
       props.setChungbuktoggle(false);
       props.setChungnamtoggle(false);
       props.setDaejeontoggle(false);
-      props.setSejongtoggle(false);
       props.setJeonbuktoggle(false);
       props.setJeonnamtoggle(true);
       props.setGwangjutoggle(false);
@@ -106,7 +101,6 @@ const Container = (props: any) => {
       props.setChungbuktoggle(false);
       props.setChungnamtoggle(false);
       props.setDaejeontoggle(false);
-      props.setSejongtoggle(false);
       props.setJeonbuktoggle(true);
       props.setJeonnamtoggle(false);
       props.setGwangjutoggle(false);
@@ -124,7 +118,6 @@ const Container = (props: any) => {
       props.setChungbuktoggle(false);
       props.setChungnamtoggle(false);
       props.setDaejeontoggle(false);
-      props.setSejongtoggle(false);
       props.setJeonbuktoggle(false);
       props.setJeonnamtoggle(false);
       props.setGwangjutoggle(false);
@@ -142,7 +135,6 @@ const Container = (props: any) => {
       props.setChungbuktoggle(false);
       props.setChungnamtoggle(false);
       props.setDaejeontoggle(false);
-      props.setSejongtoggle(false);
       props.setJeonbuktoggle(false);
       props.setJeonnamtoggle(false);
       props.setGwangjutoggle(false);
@@ -160,7 +152,6 @@ const Container = (props: any) => {
       props.setChungbuktoggle(false);
       props.setChungnamtoggle(false);
       props.setDaejeontoggle(false);
-      props.setSejongtoggle(false);
       props.setJeonbuktoggle(false);
       props.setJeonnamtoggle(false);
       props.setGwangjutoggle(false);
@@ -178,7 +169,6 @@ const Container = (props: any) => {
       props.setChungbuktoggle(false);
       props.setChungnamtoggle(false);
       props.setDaejeontoggle(true);
-      props.setSejongtoggle(false);
       props.setJeonbuktoggle(false);
       props.setJeonnamtoggle(false);
       props.setGwangjutoggle(false);
@@ -196,7 +186,6 @@ const Container = (props: any) => {
       props.setChungbuktoggle(false);
       props.setChungnamtoggle(false);
       props.setDaejeontoggle(false);
-      props.setSejongtoggle(false);
       props.setJeonbuktoggle(false);
       props.setJeonnamtoggle(false);
       props.setGwangjutoggle(false);
@@ -214,7 +203,6 @@ const Container = (props: any) => {
       props.setChungbuktoggle(false);
       props.setChungnamtoggle(false);
       props.setDaejeontoggle(false);
-      props.setSejongtoggle(false);
       props.setJeonbuktoggle(false);
       props.setJeonnamtoggle(false);
       props.setGwangjutoggle(false);
@@ -232,7 +220,6 @@ const Container = (props: any) => {
       props.setChungbuktoggle(false);
       props.setChungnamtoggle(false);
       props.setDaejeontoggle(false);
-      props.setSejongtoggle(false);
       props.setJeonbuktoggle(false);
       props.setJeonnamtoggle(false);
       props.setGwangjutoggle(false);
@@ -240,24 +227,6 @@ const Container = (props: any) => {
       props.setGyeonnamtoggle(false);
       props.setDaegutoggle(false);
       props.setUlsantoggle(true);
-      props.setBusantoggle(false);
-    } else if (value.id === 14) {
-      props.setMap(value.cityLink);
-      props.setSelectedcity(value.name);
-      props.setGyeongitoggle(false);
-      props.setGangwontoggle(false);
-      props.setIncheontoggle(false);
-      props.setChungbuktoggle(false);
-      props.setChungnamtoggle(false);
-      props.setDaejeontoggle(false);
-      props.setSejongtoggle(false);
-      props.setJeonbuktoggle(false);
-      props.setJeonnamtoggle(false);
-      props.setGwangjutoggle(true);
-      props.setGyeonbuktoggle(false);
-      props.setGyeonnamtoggle(false);
-      props.setDaegutoggle(false);
-      props.setUlsantoggle(false);
       props.setBusantoggle(false);
     } else {
       props.setMap(value.cityLink);
@@ -268,10 +237,9 @@ const Container = (props: any) => {
       props.setChungbuktoggle(false);
       props.setChungnamtoggle(false);
       props.setDaejeontoggle(false);
-      props.setSejongtoggle(true);
       props.setJeonbuktoggle(false);
       props.setJeonnamtoggle(false);
-      props.setGwangjutoggle(false);
+      props.setGwangjutoggle(true);
       props.setGyeonbuktoggle(false);
       props.setGyeonnamtoggle(false);
       props.setDaegutoggle(false);

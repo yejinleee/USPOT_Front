@@ -5,7 +5,6 @@ import axios from 'axios';
 import EnThumbnail from '@components/2page/en/Thumbnail/EnThumbnail';
 import EnTop5Mapevent from '@components/2page/en/KaKaoMap/EnTop5Mapevent';
 import EnTop5MapRsp from '@components/2page/en/KaKaoMap/EnTop5MapRsp';
-import { imageSearch } from './image';
 import { History, LocationState } from 'history';
 
 interface Props {
@@ -39,102 +38,28 @@ const EnSlide: FC<Props> = (props: Props) => {
   const [mapx, setMapx] = useState([] as any);
   const [mapy, setMapy] = useState([] as any);
   const [top5data, setTop5data] = useState([] as any);
-  const [placeurl,setPlaceurl] = useState( [] as any);
+  const [placeurl, setPlaceurl] = useState([] as any);
 
   var dic: { [key: string]: number } = {
     가평군: 1,
-    광명시: 2,
-    연천군: 3,
-    남양주시: 4,
-    파주시: 5,
-    동두천시: 6,
-    화성시: 7,
-    양평군: 8,
     고양시: 9,
-    평택시: 10,
     수원시: 11,
-    안양시: 12,
-    오산시: 13,
-    의정부시: 14,
     강릉시: 15,
     춘천시: 16,
-    정선군: 17,
-    삼척시: 18,
-    태백시: 19,
-    동해시: 20,
-    원주시: 21,
-    횡성군: 22,
-    철원군: 23,
-    평창군: 24,
-    영월군: 25,
-    논산시: 26,
-    계룡시: 27,
-    공주시: 28,
-    홍성군: 29,
-    보령시: 30,
-    아산시: 31,
-    서천군: 32,
     천안시: 33,
-    예산군: 34,
-    영동군: 35,
     단양군: 36,
     청주시: 37,
-    충주시: 38,
-    제천시: 39,
-    증평군: 40,
-    옥천군: 41,
-    음성군: 42,
-    곡성군: 43,
-    광양시: 44,
     순천시: 45,
-    나주시: 46,
-    화순군: 47,
-    보성군: 48,
-    목포시: 49,
-    무안군: 50,
-    장성군: 51,
-    함평군: 52,
-    여수시: 53,
-    군산시: 54,
-    김제시: 55,
-    익산시: 56,
     전주시: 57,
-    정읍시: 58,
-    완주군: 59,
-    임실군: 60,
-    남원시: 61,
-    창원시: 62,
-    밀양시: 63,
-    진주시: 64,
     하동군: 65,
-    김해시: 66,
-    사천시: 67,
-    양산시: 68,
-    함안군: 69,
-    영덕군: 70,
-    구미시: 71,
-    예천군: 72,
     경주시: 73,
-    경산시: 74,
-    청도군: 75,
-    봉화군: 76,
-    영천시: 77,
-    상주시: 78,
-    군위군: 79,
-    영주시: 80,
-    포항시: 81,
-    의성군: 82,
-    문경시: 83,
-    칠곡군: 84,
     안동시: 85,
-    김천시: 86,
     인천: 87,
     대전: 88,
     대구: 89,
     부산: 90,
     울산: 91,
     광주: 92,
-    세종: 93,
   };
   var dic_category: { [key: string]: number } = {
     관광명소: 1,
@@ -142,17 +67,17 @@ const EnSlide: FC<Props> = (props: Props) => {
     카페: 3,
   };
   var city_engtokor: { [key: string]: string } = {
-    수원시 : 'Suwon',
-    강릉시 : 'Gangneung',
-    단양군 : 'Danyang',
-    천안시 : 'Cheonan',
-    전주시 : 'Jeonju',
-    순천시 : 'Suncheon',
-    경주시 :'Gyeonju',
-    안동시 : 'Andong',
-    하동군 : 'Hadong',
-    대구 : 'Daegu',
-    부산 : 'Busan',
+    수원시: 'Suwon',
+    강릉시: 'Gangneung',
+    단양군: 'Danyang',
+    천안시: 'Cheonan',
+    전주시: 'Jeonju',
+    순천시: 'Suncheon',
+    경주시: 'Gyeonju',
+    안동시: 'Andong',
+    하동군: 'Hadong',
+    대구: 'Daegu',
+    부산: 'Busan',
   };
   let imageSrc = `/src/icon/${dic_category[props.selectedcategory]}.png`;
   useEffect(() => {
@@ -167,41 +92,29 @@ const EnSlide: FC<Props> = (props: Props) => {
           setTop5placeid((prev: any) => [...prev, response.data.data[i].id]);
           setMapx((prev: any) => [...prev, response.data.data[i].location_x]);
           setMapy((prev: any) => [...prev, response.data.data[i].location_y]);
-          setPlaceurl( (prev:any) => [...prev, response.data.data[i].placeUrl]);
-        }
-        for (var i = 0; i < 5; i++) {
-          const name = response.data.data[i].name;
-          const params = {
-            query: name,
-            sort: 'accuracy',
-            size: 5,
-          };
-          const { data } = await imageSearch(params);
-
+          setPlaceurl((prev: any) => [...prev, response.data.data[i].placeUrl]);
           if (i === 0) {
-            setPic1('https://storep-phinf.pstatic.net/ogq_5a0024180a88a/original_6.png?type=p100_100');
+            setPic1(response.data.data[i].image);
           } else if (i === 1) {
-            setPic2(data.documents[0].image_url);
+            setPic2(response.data.data[i].image);
           } else if (i === 2) {
-            setPic3(data.documents[3].image_url);
+            setPic3(response.data.data[i].image);
           } else if (i === 3) {
-            setPic4(data.documents[1].image_url);
+            setPic4(response.data.data[i].image);
           } else {
-            setPic5(data.documents[0].image_url);
+            setPic5(response.data.data[i].image);
           }
         }
       })
       .catch((error) => {});
   }, []);
   var selectedplace;
-  selectedplace = top5name[btn_pic-1];
+  selectedplace = top5name[btn_pic - 1];
 
   return (
     <>
       <div className="title">
-        <h2>
-          TOP5 of {city_engtokor[props.selectedcity]}
-        </h2>
+        <h2>TOP5 of {city_engtokor[props.selectedcity]}</h2>
       </div>
       <div className="carousel">
         <div className="carousel_card">
@@ -341,14 +254,12 @@ const EnSlide: FC<Props> = (props: Props) => {
             <span className="circle" aria-hidden="true">
               <span className="icon arrow"></span>
             </span>
-            <span className="button-text">
-              View More !
-            </span>
+            <span className="button-text">View More !</span>
           </Link>
         </button>
       </div>
 
-      <div className="top5mapevent" style={{ position: 'relative', width:'100%' }}>
+      <div className="top5mapevent" style={{ position: 'relative', width: '100%' }}>
         <EnTop5Mapevent
           top5data={top5data}
           imageSrc={imageSrc}
@@ -358,7 +269,7 @@ const EnSlide: FC<Props> = (props: Props) => {
           history={props.history}
         />
       </div>
-      <div className="top5mapevent_responsive" style={{ position: 'relative' , width:'100%'}}>
+      <div className="top5mapevent_responsive" style={{ position: 'relative', width: '100%' }}>
         <EnTop5MapRsp
           top5data={top5data}
           imageSrc={imageSrc}

@@ -1,60 +1,41 @@
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import None from '../MakeCoures/None';
-import EnMap from './EnMap';
-import '@components/mypage/Search.scss';
 
-const EnLandingPage = () => {
-  const [InputText, setInputText] = useState('');
-  const [Place, setPlace] = useState('');
-  var local = sessionStorage.getItem('memberid');
-  try {
-    var memberid = Number(local.split('')[1]);
-  } catch {
-    var memberid = 0;
-  }
+const Container = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [station, setStation] = useState([] as any);
 
-  const onChange = (e: any) => {
-    setInputText(e.target.value);
-  };
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    setPlace(InputText);
-    setInputText('');
-  };
-
-  const [exist, setExsist] = useState(false);
-  useEffect(() => {
-    axios
-      .get(`/api/myplace/findall/${memberid}`)
-      .then(async (response) => {
-        if (response.data.data.length !== 0) {
-          setExsist(true);
-        }
-      })
-      .catch((error) => {});
-  });
+  // useEffect(() => {
+  //   axios.get()
+  // })
 
   return (
-    <>
-      {exist ? (
-        <>
-          <div className="startdisplay">
-            <form className="inputForm" onSubmit={handleSubmit}>
-              <input className="searchstart" placeholder="출발지를 입력하세요" onChange={onChange} value={InputText} />
-              <button className="startbutton" type="submit">
-                <img src="/src/icon/search.png" />
-              </button>
-            </form>
-          </div>
-          <EnMap searchPlace={Place} />
-        </>
-      ) : (
-        <None />
-      )}
-    </>
+    <div className="Searchinput">
+      {/* <input
+        type="text"
+        placeholder="어디로 떠나실건가요?"
+        onChange={(event) => {
+          setSearchTerm(event.target.value);
+        }}
+      />
+      <div className="container">
+        {JSONDATA.filter((val: any) => {
+          if (searchTerm == '') {
+            return val;
+          } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+            return val;
+          }
+        }).map((val: any, key: any) => {
+          return (
+            <div className="contry" key={key}>
+              <p onClick={() => selectCity(val)}>{val.name}</p>
+            </div>
+          );
+        })}
+      </div> */}
+    </div>
   );
 };
 
-export default React.memo(EnLandingPage);
+export default Container;
