@@ -44,9 +44,7 @@ const Main = () => {
   ));
   return (
     <>
-      <div className="likedlist" style={{ display: 'inline-block' }}>
-        {courselist}
-      </div>
+      <div className="reviselist">{courselist}</div>
       {state !== 0 && (
         <>
           <TodoTemplate courseid={state} coursename={name} setName={setName} />

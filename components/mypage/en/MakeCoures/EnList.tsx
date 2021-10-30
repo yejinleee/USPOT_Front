@@ -18,35 +18,6 @@ interface Props {
 const EnList: FC<Props> = (props: Props) => {
   const [text, setText] = useState('코스');
   var local = sessionStorage.getItem('memberid');
-  const headers = {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  };
-  try {
-    var memberid = Number(local.split('')[1]);
-  } catch {
-    var memberid = 0;
-  }
-  const onChange = (e: any) => {
-    setText(e.target.value);
-  };
-  const onClick = () => {
-    var name = text;
-    var myplaceList = props.todos;
-
-    if (myplaceList.length !== 0) {
-      axios
-        .post(`/api/en/course/add/${memberid}`, JSON.stringify({ name, myplaceList }), { headers })
-        .then(() => {})
-        .catch((error) => {});
-
-      alert('코스가 저장되었습니다!');
-
-      location.reload();
-    } else {
-      alert('코스에 장소를 담아주세요!');
-    }
-  };
 
   return (
     <>

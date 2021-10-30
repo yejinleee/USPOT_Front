@@ -14,7 +14,7 @@ interface Props {
 
 const LikeTourapi: FC<Props> = (props: Props) => {
   let api = process.env.REACT_APP_TOUR_API_KEY;
-  let number = 5;
+  let number = 6;
   let pnumber = 1;
   const [data, setData] = useState([] as any);
   const [names, setNames] = useState([] as any);
@@ -74,11 +74,12 @@ const LikeTourapi: FC<Props> = (props: Props) => {
   }, []);
 
   len = data.length;
-  const [like0, setLike0] = useState(0); //초기0 누르면1 눌렀다 빼면 2 //처음렌더링대 false라 else문들어갈까봐
+  const [like0, setLike0] = useState(0);
   const [like1, setLike1] = useState(0);
   const [like2, setLike2] = useState(0);
   const [like3, setLike3] = useState(0);
   const [like4, setLike4] = useState(0);
+  const [like5, setLike5] = useState(0);
 
   function func_post(e: number) {
     var placeId = id[e];
@@ -115,10 +116,8 @@ const LikeTourapi: FC<Props> = (props: Props) => {
       .catch((error) => {});
   }
   function func(e: number) {
-    //api에 post나 delete 하는 함수
     if (e === 0) {
       if (like0 === 0 || like0 === 2) {
-        //처음 onClick때 setlike 한게 func에 반영 안되서 이렇게 해야할듯
         func_post(e);
       } else if (like0 === 1) {
         func_delete(e);
@@ -145,6 +144,12 @@ const LikeTourapi: FC<Props> = (props: Props) => {
       if (like4 === 0 || like4 === 2) {
         func_post(e);
       } else if (like4 === 1) {
+        func_delete(e);
+      }
+    } else if (e === 5) {
+      if (like5 === 0 || like5 === 2) {
+        func_post(e);
+      } else if (like5 === 1) {
         func_delete(e);
       }
     }
@@ -271,7 +276,30 @@ const LikeTourapi: FC<Props> = (props: Props) => {
       </>
     );
   }
-
+  function makelike5() {
+    return (
+      <>
+        <li className="page3placelist">
+          <input
+            type="checkbox"
+            className="likeinput"
+            id="listidx5"
+            onClick={() => {
+              func(5);
+              like5 === 1 ? setLike5(2) : setLike5(1);
+            }}
+          />
+          <label className="p3custom" htmlFor="listidx5">
+            <span className="p3like">{like5 === 1 ? '💛' : '🤍'}</span>
+            <div className="p3likeplace">{names[5]}</div>
+            <div className="p3likeaddr">{addr[5]}</div>
+            <div>{dist[5]}m</div>
+            <img className="p3img" src={img[5]} alt={names[5]} />
+          </label>
+        </li>
+      </>
+    );
+  }
   function make() {
     //웹페이지에 표시할 태그들. return에서 호출
     if (len === 1) {
@@ -308,6 +336,17 @@ const LikeTourapi: FC<Props> = (props: Props) => {
           {makelike2()}
           {makelike3()}
           {makelike4()}
+        </>
+      );
+    } else if (len === 6) {
+      return (
+        <>
+          {makelike0()}
+          {makelike1()}
+          {makelike2()}
+          {makelike3()}
+          {makelike4()}
+          {makelike5()}
         </>
       );
     } else if (len === 0) {
