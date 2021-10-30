@@ -1,11 +1,7 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
-<<<<<<< HEAD
 import Coursemap from '@components/mypage/ko/Course/Coursemap';
 import CoursemapRsp from '@components/mypage/ko/Course/CoursemapRsp';
 import '@components/mypage/Coursemap.css'
-=======
-import '@components/mypage/Coursemap.css';
->>>>>>> 7aba736680146b81efd4276f6dc4d9a62c865a1a
 import TodoTemplate from '@components/mypage/ko/MakeCoures/TodoTemplate';
 interface Props {
   start: any;
