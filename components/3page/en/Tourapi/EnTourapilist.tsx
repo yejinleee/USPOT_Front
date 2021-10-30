@@ -96,7 +96,7 @@ const EnTourapilist: FC<Props> = (props: Props) => {
       'Content-Type': 'application/json',
     };
     if (memberid === 0) {
-      alert('You need to log in. Please log in.');
+      alert('You need to log in! Please log in');
       return props.history.push('/login');
     } else {
       axios
@@ -111,7 +111,6 @@ const EnTourapilist: FC<Props> = (props: Props) => {
         .catch((error) => {});
     }
   }
-  console.log(placeid);
   function func_delete(e: number) {
     axios
       .delete(`/api/en/myplace/deletebymyplace/${memberid}/${placeid[e]}`)
@@ -245,7 +244,7 @@ const EnTourapilist: FC<Props> = (props: Props) => {
         func_post(e);
       }
     }
-  } //func
+  }
 
   function makelike0() {
     return (
