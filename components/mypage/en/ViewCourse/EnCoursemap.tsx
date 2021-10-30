@@ -4,11 +4,12 @@ interface Props {
   courseid: any;
 }
 
-const Coursemap: FC<Props> = (props: Props) => {
+const EnCoursemap: FC<Props> = (props: Props) => {
   const kakao = (window as any).kakao;
   const [place, setPlace] = useState([] as any);
   const [coursemap, setCoursemap] = useState(null);
   const [markers, setMarkers] = useState([] as any);
+  const [name, setName] = useState();
 
   const x = useRef(0);
   const y = useRef(0);
@@ -25,10 +26,10 @@ const Coursemap: FC<Props> = (props: Props) => {
   useEffect(() => {
     setPlace([]);
     axios
-      .get(`/api/myplacecourse/findall/${props.courseid}`)
+      .get(`/api/en/myplacecourse/findall/${props.courseid}`)
       .then((response) => {
         setPlace(response.data.data);
-        console.log(response.data.data);
+        setName(response.data.data[0].courseName);
       })
       .catch((error) => {});
   }, [props.courseid]);
@@ -82,9 +83,7 @@ const Coursemap: FC<Props> = (props: Props) => {
   };
 
   function addMarker(position: any, idx: any, id: any) {
-    console.log(idx);
     var number = String(idx + 1) + String(idx + 1);
-    console.log(number);
     var imageSrc = `/src/icon/ㅇ.png`, // 마커 이미지 url, 스프라이트 이미지를 씁니다
       imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
       markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize),
@@ -118,9 +117,17 @@ const Coursemap: FC<Props> = (props: Props) => {
 
   return (
     <div style={{ position: 'relative' }}>
+      <div>{name}</div>
       <div id="coursemap" style={{ width: '50%', height: '40%', display: 'inline-block' }}></div>
+
+      {place.map((v: string, index: number) => (
+        <div>
+          <div>{index}</div>
+          <div>{place[index].myplaceDto.name}</div>
+        </div>
+      ))}
     </div>
   );
 };
 
-export default Coursemap;
+export default EnCoursemap;

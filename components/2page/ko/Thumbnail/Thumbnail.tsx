@@ -17,7 +17,6 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
   const [vloglist, setVloglist] = useState([] as any); //브이로그 id들 저장할 배열
   const [map, setMap] = useState(false);
   const [id, setId] = useState(null);
-  const [vlogplaceid, setVlogplaceid] = useState([] as any);
   var dic: { [key: string]: number } = {
     가평군: 1,
     고양시: 9,
@@ -49,14 +48,12 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
     axios
       .get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`)
       .then((response) => {
-        console.log(response.data.data);
         if (response.data.data[btn_pic - 1].vlog_list.length >= 5) {
           var number = 5;
         } else {
           number = response.data.data[btn_pic - 1].vlog_list.length;
         }
         for (var j = 0; j < number; j++) {
-          setVlogplaceid((prev: any) => [...prev, response.data.data[j].id]);
           setVloglist((prev: any) => [...prev, response.data.data[btn_pic - 1].vlog_list[j].url]);
         }
       })
@@ -100,10 +97,10 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
       {map && (
         <>
           <div className="youtubemapevent" style={{ position: 'relative', width: '100%' }}>
-            <YoutubeMapevent videoid={id} history={history} vlogplaceid={vlogplaceid} />
+            <YoutubeMapevent videoid={id} history={history} />
           </div>
           <div className="youtubemapevent_response" style={{ position: 'relative', width: '100%' }}>
-            <YoutubeMapRsp videoid={id} history={history} vlogplaceid={vlogplaceid} />
+            <YoutubeMapRsp videoid={id} history={history} />
           </div>
         </>
       )}

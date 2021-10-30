@@ -1,12 +1,12 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
-import CoursemapRsp from '@components/mypage/ko/Course/CoursemapRsp';
 import '@components/mypage/Coursemap.css';
+import EnCoursemapRsp from '../Course/EnCoursemapRsp';
 interface Props {
   start: any;
   startplacename: string;
 }
 
-const MakeCourse: FC<Props> = (props: Props) => {
+const EnMakeCourseRsp: FC<Props> = (props: Props) => {
   const [exist, setExist] = useState(false);
 
   const onClick = () => {
@@ -16,13 +16,12 @@ const MakeCourse: FC<Props> = (props: Props) => {
   return (
     <>
       <button onClick={onClick} className="setstartbtn">
-        {' '}
         "{props.startplacename}"에서 출발하기
       </button>
       {exist && (
         <>
           <div className="coursemap_responsive" style={{ position: 'relative' }}>
-            <CoursemapRsp />
+            <EnCoursemapRsp />
           </div>
         </>
       )}
@@ -30,4 +29,4 @@ const MakeCourse: FC<Props> = (props: Props) => {
   );
 };
 
-export default MakeCourse;
+export default EnMakeCourseRsp;

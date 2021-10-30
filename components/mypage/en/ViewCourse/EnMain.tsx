@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { FC, useEffect, useState } from 'react';
-import CourseList from './CourseList';
+import CourseList from './EnCourseList';
 
-const ViewMain = () => {
+const EnViewMain = () => {
   var local = sessionStorage.getItem('memberid');
   const [course, setCourese] = useState([] as any);
   try {
@@ -14,7 +14,7 @@ const ViewMain = () => {
   useEffect(() => {
     setCourese([]);
     axios
-      .get(`/api/course/findall/${memberid}`)
+      .get(`/api/en/course/findall/${memberid}`)
       .then(async (response) => {
         setCourese(response.data.data);
       })
@@ -22,14 +22,18 @@ const ViewMain = () => {
   }, []);
 
   const onClick = (id: number) => {
-    axios
-      .delete(`/api/course/delete/${id}`)
-      .then((response) => {})
-      .catch((error) => {});
-    setCourese([]);
+    if (window.confirm('Do you want to delete the course?')) {
+      axios
+        .delete(`/api/en/course/delete/${id}`)
+        .then((response) => {})
+        .catch((error) => {});
 
+      setCourese([]);
+
+      alert('The course has been deleted!');
+    }
     axios
-      .get(`/api/course/findall/${memberid}`)
+      .get(`/api/en/course/findall/${memberid}`)
       .then(async (response) => {
         setCourese(response.data.data);
       })
@@ -46,11 +50,11 @@ const ViewMain = () => {
 
   return (
     <>
-      <h3>코스 삭제하기</h3>
+      <h3>Delete the course</h3>
       {courselist}
-      <h3>코스 한눈에 보기</h3>
+      <h3>View my course list</h3>
       <CourseList courselist={course} />
     </>
   );
 };
-export default ViewMain;
+export default EnViewMain;

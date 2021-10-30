@@ -6,11 +6,11 @@ interface Props {
   onRemove: any;
 }
 
-const TodoItemList: FC<Props> = (props: Props) => {
+const EnTodoItemList: FC<Props> = (props: Props) => {
   var imgsrc = './src/icon/star.png';
   return (
     <>
-      <li className="courselist">{props.todos.name}</li>
+      <li>{props.todos.name}</li>
       <button onClick={() => props.onRemove(props.id)}>
         <img src={imgsrc} width="30" />
       </button>
@@ -18,4 +18,4 @@ const TodoItemList: FC<Props> = (props: Props) => {
   );
 };
 
-export default TodoItemList;
+export default EnTodoItemList;

@@ -1,11 +1,11 @@
-import React, { FC, memo, useEffect, useMemo, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import axios from 'axios';
-import Main from './Main';
-import None from './None';
+import EnMain from './EnMain';
+import EnNone from './EnNone';
 
 interface Props {}
 
-const MakeCourse: FC<Props> = (props: Props) => {
+const EnMakeCourse: FC<Props> = (props: Props) => {
   var local = sessionStorage.getItem('memberid');
   try {
     var memberid = Number(local.split('')[1]);
@@ -15,7 +15,7 @@ const MakeCourse: FC<Props> = (props: Props) => {
   const [exist, setExsist] = useState(false);
   useEffect(() => {
     axios
-      .get(`/api/course/findall/${memberid}`)
+      .get(`/api/en/course/findall/${memberid}`)
       .then(async (response) => {
         if (response.data.data.length !== 0) {
           setExsist(true);
@@ -24,7 +24,7 @@ const MakeCourse: FC<Props> = (props: Props) => {
       .catch((error) => {});
   }, []);
 
-  return <>{exist ? <Main /> : <None />}</>;
+  return <>{exist ? <EnMain /> : <EnNone />}</>;
 };
 
-export default MakeCourse;
+export default EnMakeCourse;

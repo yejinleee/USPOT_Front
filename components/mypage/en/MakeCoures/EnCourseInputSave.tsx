@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { FC, useState } from 'react';
-import TodoItem from './TodoItem';
 import '@components/mypage/List.scss';
 
 interface Props {
@@ -9,7 +8,7 @@ interface Props {
   placeid: any;
 }
 
-const CourseInputSave: FC<Props> = (props: Props) => {
+const EnCourseInputSave: FC<Props> = (props: Props) => {
   const [text, setText] = useState('코스');
   var local = sessionStorage.getItem('memberid');
   const headers = {
@@ -31,7 +30,7 @@ const CourseInputSave: FC<Props> = (props: Props) => {
 
     if (myplaceList.length !== 0) {
       axios
-        .post(`/api/course/add/${memberid}`, JSON.stringify({ name, myplaceList }), { headers })
+        .post(`/api/en/course/add/${memberid}`, JSON.stringify({ name, myplaceList }), { headers })
         .then(() => {})
         .catch((error) => {});
 
@@ -58,4 +57,4 @@ const CourseInputSave: FC<Props> = (props: Props) => {
   );
 };
 
-export default CourseInputSave;
+export default EnCourseInputSave;

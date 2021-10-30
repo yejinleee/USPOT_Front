@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
-import List from './List';
+import List from './EnList';
 interface Props {
   start: any;
 }
 
-const TodoTemplate: FC<Props> = (props: Props) => {
+const EnTodoTemplate: FC<Props> = (props: Props) => {
   var local = sessionStorage.getItem('memberid');
   try {
     var memberid = Number(local.split('')[1]);
@@ -22,11 +22,11 @@ const TodoTemplate: FC<Props> = (props: Props) => {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     };
-    var name = props.start.place_name;
-    var location_x = props.start.x;
-    var location_y = props.start.y;
-    var address = props.start.address_name;
-    var category = '출발지';
+    var name = props.start.name;
+    var location_x = props.start.location_x;
+    var location_y = props.start.location_y;
+    var address = '';
+    var category = 'start';
     var placeId = props.start.id;
 
     setTodos([]);
@@ -34,7 +34,7 @@ const TodoTemplate: FC<Props> = (props: Props) => {
 
     axios
       .post(
-        `/api/myplace/addfromstart/${memberid}`,
+        `/api/en/myplace/addfromstart/${memberid}`,
         JSON.stringify({ name, category, location_x, location_y, address, placeId }),
         { headers },
       )
@@ -42,15 +42,14 @@ const TodoTemplate: FC<Props> = (props: Props) => {
         setTodos((prev: any) => [...prev, res.data.data]);
         setIndex((prev: any) => [...prev, res.data.data.id]);
         setId(res.data.data.id);
+        console.log(res.data.data);
       })
-      .catch((error) => {
-        console.log(placelist);
-      });
+      .catch((error) => {});
   }, [props.start]);
 
   useEffect(() => {
     axios
-      .get(`/api/myplace/findall/${memberid}`)
+      .get(`/api/en/myplace/findall/${memberid}`)
       .then(async (response) => {
         setPlacelist(response.data.data);
       })
@@ -72,7 +71,7 @@ const TodoTemplate: FC<Props> = (props: Props) => {
     var myplaceid = list.id;
     setPlacelist(placelist.filter((place: any) => place.id !== myplaceid));
     setTodos(todos.filter((place: any) => place.id !== myplaceid));
-    axios.delete(`/api/myplace/deletebymyplace/${memberid}/${myplaceid}`).catch((error) => {});
+    axios.delete(`/api/en/myplace/deletebymyplace/${memberid}/${myplaceid}`).catch((error) => {});
   };
 
   const onRemove = (id: number) => {
@@ -83,18 +82,16 @@ const TodoTemplate: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="namelist" style={{ display: 'inline-block' }}>
-        <List
-          placelist={placelist}
-          todos={todos}
-          onClick={onClick}
-          ondeleteClick={ondeleteClick}
-          onRemove={onRemove}
-          start={id}
-        />
-      </div>
+      <List
+        placelist={placelist}
+        todos={todos}
+        onClick={onClick}
+        ondeleteClick={ondeleteClick}
+        onRemove={onRemove}
+        start={id}
+      />
     </>
   );
 };
 
-export default TodoTemplate;
+export default EnTodoTemplate;
