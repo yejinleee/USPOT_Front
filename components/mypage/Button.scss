@@ -26,6 +26,7 @@ button.mypagecourse {
   margin: 5px 5px;
   background-color: transparent;
   border: none;
+  cursor:pointer;
 }
 
 .mypagecourse:hover {
@@ -37,6 +38,7 @@ button.mypagecourse {
   margin: 0 20px;
   background-color: transparent;
   border: none;
+  cursor:pointer;
 }
 
 @media (max-width: 600px) {

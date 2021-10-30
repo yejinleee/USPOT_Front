@@ -10,6 +10,7 @@ const Map: FC<Props> = ({ children, Place }) => {
   const [select, setSelect] = useState('');
   const [open, setOpen] = useState(false);
   const [map, setMap] = useState(null);
+  const [startplacename,setStartplacename] = useState('');
 
   useEffect(() => {
     const container = document.getElementById('myMap');
@@ -62,6 +63,7 @@ const Map: FC<Props> = ({ children, Place }) => {
         infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
         infowindow.open(map, marker);
         setSelect(place);
+        setStartplacename(place.place_name)
         setOpen(true);
       });
     }
@@ -69,8 +71,8 @@ const Map: FC<Props> = ({ children, Place }) => {
 
   return (
     <>
-      <div id="myMap" style={{ width: '30vw', height: '30vw' }} />
-      {open && <MakeCourse start={select} />}
+      <div id="myMap" style={{ width: '30vw', height: '30vw', margin:'auto' }} />
+      {open && <MakeCourse start={select} startplacename={startplacename}/>}
     </>
   );
 };

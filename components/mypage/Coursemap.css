@@ -1,0 +1,22 @@
+/*MakeCourse.tsx에서 #coursemap*/
+.coursemap{
+    margin:auto;
+    display: block;
+}
+.coursemap_responsive{
+    display: none;
+}
+
+/*//맵 반응형 설정 (675px)*/
+@media screen and (max-width: 675px) {
+    .coursemap_responsive{
+        position: relative;
+        width: 90%;
+        height: 70vh;
+        margin: auto;
+        display: block;
+    }
+}
+
+
+

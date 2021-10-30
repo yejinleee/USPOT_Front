@@ -17,12 +17,12 @@ button.listbtn {
 }
 
 .likedlist {
-  width: 14em;
-  height: 5.5em;
+  width: 25vw;
+  height: 32vw;
   overflow: scroll;
   cursor: pointer;
   margin-top: 1em;
-  margin-left: 1.5em;
+  margin-left: 5vw;
   margin-bottom: 1.5em;
   &::-webkit-scrollbar {
     width: 0.8em;
@@ -40,4 +40,12 @@ button.listbtn {
   &::-webkit-scrollbar-track {
     background: #ffffff;
   }
+}
+
+.mypagelist{
+  padding-bottom: 0.5em;
+}
+
+.makecourselist{
+  text-align: center;
 }

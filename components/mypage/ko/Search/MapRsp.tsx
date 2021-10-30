@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useMemo, useState } from 'react';
-import MakeCourse from '@components/mypage/ko/MakeCoures/MakeCourse';
+import MakeCourseRsp from '@components/mypage/ko/MakeCoures/MakeCourseRsp';
 
 interface Props {
   Place: string;
@@ -10,6 +10,7 @@ const MapRsp: FC<Props> = ({ children, Place }) => {
   const [select, setSelect] = useState('');
   const [open, setOpen] = useState(false);
   const [map, setMap] = useState(null);
+  const [startplacename,setStartplacename] = useState('');
 
   useEffect(() => {
     const container = document.getElementById('myMapRsp');
@@ -62,6 +63,7 @@ const MapRsp: FC<Props> = ({ children, Place }) => {
         infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
         infowindow.open(map, marker);
         setSelect(place);
+        setStartplacename(place.place_name)
         setOpen(true);
       });
     }
@@ -70,8 +72,8 @@ const MapRsp: FC<Props> = ({ children, Place }) => {
   return (
     <>
       <div id="myMapRsp" style={{ width: '100%', height: '50%' }} />
-      {open && <MakeCourse start={select} />}
-    </>
+      {open && <MakeCourseRsp start={select} startplacename={startplacename}/>}
+        </>
   );
 };
 

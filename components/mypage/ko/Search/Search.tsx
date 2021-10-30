@@ -47,7 +47,7 @@ const LandingPage = () => {
           <div className="startdisplay">
             <form className="inputForm" onSubmit={handleSubmit}>
               <input className="searchstart" placeholder="출발지를 입력하세요" onChange={onChange} value={InputText} />
-              <button className="startbutton" type="submit">
+              <button className="searchbutton" type="submit">
                 <img src="/src/icon/search.png" />
               </button>
             </form>
@@ -56,9 +56,9 @@ const LandingPage = () => {
             <div className="searchplace" style={{ position: 'relative' }}>
               <Map Place={Place} />
             </div>
-          </div>
-          <div className="searchplace_responsive" style={{ position: 'relative' }}>
-            <MapRsp Place={Place} />
+            <div className="searchplace_responsive" style={{ position: 'relative' }}>
+              <MapRsp Place={Place} />
+            </div>
           </div>
         </>
       ) : (

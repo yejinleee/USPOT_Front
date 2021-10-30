@@ -40,13 +40,19 @@ const TodoItemList: FC<Props> = (props: Props) => {
       alert('코스에 장소를 담아주세요!');
     }
   };
+  var imgsrc = './src/icon/star.png';
 
   return (
     <>
       <input onChange={onChange} value={text} />
       <button onClick={onClick}>save</button>
       {props.todos.map((todo: any) => (
-        <TodoItem todos={todo} id={todo.id} onRemove={props.onRemove} />
+        <>
+          <li className="courselist">{todo.name}</li>
+          <button onClick={() => props.onRemove(todo.id)}>
+            <img src={imgsrc} width="30" />
+          </button>
+        </>
       ))}
     </>
   );

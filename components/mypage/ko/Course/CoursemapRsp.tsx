@@ -80,5 +80,5 @@ export default function Coursemap() {
     }
   };
 
-  return <div id="myplacemapRsp" style={{ width: '50vw', height: '50vw' }}></div>;
+  return <div id="myplacemapRsp" style={{ width: '100%', height: '50vw' }}></div>;
 }
