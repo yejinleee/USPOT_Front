@@ -9,17 +9,15 @@ const CourseList: FC<Props> = (props: Props) => {
   const [exist, setExist] = useState(false);
   function Likelist({ list, name }: any) {
     return (
-      <div>
-        <button
-          className="viewmycoursebutton"
-          onClick={() => {
-            setCourseid(list.courseid);
-            setExist(true);
-          }}
-        >
-          {name}
-        </button>
-      </div>
+      <button
+        className="viewmycoursebutton"
+        onClick={() => {
+          setCourseid(list.courseid);
+          setExist(true);
+        }}
+      >
+        <p>{name}</p>
+      </button>
     );
   }
 

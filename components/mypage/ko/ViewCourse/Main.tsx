@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { FC, useEffect, useState } from 'react';
 import CourseList from './CourseList';
+import '@components/mypage/ViewCourse.scss';
 
 const ViewMain = () => {
   var local = sessionStorage.getItem('memberid');

@@ -84,16 +84,15 @@ const Coursemap: FC<Props> = (props: Props) => {
 
   function addMarker(position: any, idx: any, id: any) {
     var number = String(idx + 1) + String(idx + 1);
-    var imageSrc = `/src/icon/ㅇ.png`, // 마커 이미지 url, 스프라이트 이미지를 씁니다
-      imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
+    var imageSrc = `/src/icon/${number}.png`,
+      imageSize = new kakao.maps.Size(36, 37),
       markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize),
       marker = new kakao.maps.Marker({
         position: position, // 마커의 위치
         image: markerImage,
       });
 
-    marker.setMap(coursemap); // 지도 위에 마커를 표출합니다
-    // 배열에 생성된 마커를 추가합니다
+    marker.setMap(coursemap);
     setMarkers((prev: any) => [...prev, marker]);
     return marker;
   }
