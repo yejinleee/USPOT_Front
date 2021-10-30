@@ -91,7 +91,6 @@ const TodoTemplate: FC<Props> = (props: Props) => {
           onRemove={onRemove}
           start={id}
         />
-      <div className="Likelistname">[하트 누른 장소들 목록]</div>
 
       {/*</div>*/}
     </>
