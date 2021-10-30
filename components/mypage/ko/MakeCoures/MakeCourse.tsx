@@ -1,5 +1,4 @@
 import React, { FC, memo, useEffect, useMemo, useState } from 'react';
-import Likedlist from '@components/mypage/ko/MakeCoures/Likedlist';
 import Coursemap from '@components/mypage/ko/Course/Coursemap';
 import CoursemapRsp from '@components/mypage/ko/Course/CoursemapRsp';
 import '@components/mypage/Coursemap.css'

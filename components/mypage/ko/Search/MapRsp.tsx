@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useMemo, useState } from 'react';
-import MakeCourseRsp from '@components/mypage/ko/MakeCoures/MakeCourseRsp';
+import MakeCourse from '@components/mypage/ko/MakeCoures/MakeCourse';
 
 interface Props {
   Place: string;
 }
 
-const MapRsp: FC<Props> = ({ children, Place }) => {
+const Map: FC<Props> = ({ children, Place }) => {
   const kakao = (window as any).kakao;
   const [select, setSelect] = useState('');
   const [open, setOpen] = useState(false);
@@ -71,10 +71,10 @@ const MapRsp: FC<Props> = ({ children, Place }) => {
 
   return (
     <>
-      <div id="myMapRsp" style={{ width: '100%', height: '50%' }} />
-      {open && <MakeCourseRsp start={select} startplacename={startplacename}/>}
-        </>
+      <div id="myMapRsp" style={{ width: '100%', height: '50%', margin:'auto' }} />
+      {open && <MakeCourse start={select} startplacename={startplacename}/>}
+    </>
   );
 };
 
-export default React.memo(MapRsp);
+export default React.memo(Map);

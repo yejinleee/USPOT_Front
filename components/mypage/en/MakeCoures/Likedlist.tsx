@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import Main from './Main';
 interface Props {
   start: any;
 }
@@ -9,7 +8,6 @@ const Likedlist: FC<Props> = (props: Props) => {
     <>
       <div className="Likedlist">
         <div className="Likelistname">[하트 누른 장소들 목록]</div>
-        <Main start={props.start} />
       </div>
     </>
   );
