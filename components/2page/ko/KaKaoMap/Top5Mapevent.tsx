@@ -32,7 +32,7 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
       latt.current += el.location_y;
       long.current += el.location_x;
     });
-    let container = document.getElementById('mapId');
+    let container = document.getElementById('entop5');
     let length = props.stationlist.length + props.top5data.length;
     let options = {
       center: new kakao.maps.LatLng(latt.current / length, long.current / length),
@@ -117,7 +117,7 @@ const Top5Mapevent: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div id="mapId" style={{ width: '50%', height: '50%' }}></div>
+      <div id="entop5" style={{ width: '50%', height: '50%' }}></div>
       <span className="liketop5_span" style={{ position: 'absolute', width: '50%' }}>
         <Liketop5
           top5name={props.top5name}

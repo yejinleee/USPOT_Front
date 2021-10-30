@@ -231,7 +231,6 @@ const Liketop5: FC<Props> = (props: Props) => {
               <label className="tcustom">
                 {heart(0)}
                 <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[0]}`, '_blank')}>
-                  {' '}
                   {props.top5name[0]}
                 </span>
               </label>
@@ -250,7 +249,6 @@ const Liketop5: FC<Props> = (props: Props) => {
               <label className="tcustom">
                 {heart(1)}
                 <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[1]}`, '_blank')}>
-                  {' '}
                   {props.top5name[1]}
                 </span>
               </label>
@@ -268,7 +266,6 @@ const Liketop5: FC<Props> = (props: Props) => {
               <label className="tcustom">
                 {heart(2)}
                 <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[2]}`, '_blank')}>
-                  {' '}
                   {props.top5name[2]}
                 </span>
               </label>
@@ -286,7 +283,6 @@ const Liketop5: FC<Props> = (props: Props) => {
               <label className="tcustom">
                 {heart(3)}
                 <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[3]}`, '_blank')}>
-                  {' '}
                   {props.top5name[3]}
                 </span>
               </label>
@@ -304,7 +300,6 @@ const Liketop5: FC<Props> = (props: Props) => {
               <label className="tcustom">
                 {heart(4)}
                 <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[4]}`, '_blank')}>
-                  {' '}
                   {props.top5name[4]}
                 </span>
               </label>

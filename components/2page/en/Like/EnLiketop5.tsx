@@ -232,7 +232,6 @@ const EnLiketop5: FC<Props> = (props: Props) => {
               <label className="tcustom">
                 {heart(0)}
                 <span className="tlikeplace" onClick={() => window.open(`${props.placeurl[0]}`, '_blank')}>
-                  {' '}
                   {props.top5name[0]}
                 </span>
               </label>
