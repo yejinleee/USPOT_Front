@@ -44,6 +44,7 @@ const EnMain = () => {
   ));
   return (
     <>
+      <div>Please choose a course to modify</div>
       <div className="reviselist">{courselist}</div>
       {state !== 0 && (
         <>
