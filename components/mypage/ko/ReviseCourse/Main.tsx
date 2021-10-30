@@ -52,7 +52,6 @@ const Main = () => {
       {state !== 0 && (
         <>
           <TodoTemplate courseid={state} coursename={name} setName={setName} />
-          <Coursemap />
         </>
       )}
     </>
