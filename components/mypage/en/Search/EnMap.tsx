@@ -2,6 +2,7 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import EnMakeCourse from '../MakeCoures/EnMakeCourse';
+import '@components/mypage/en/Search/Search.scss';
 
 const EnMap = () => {
   const kakao = (window as any).kakao;
@@ -14,7 +15,7 @@ const EnMap = () => {
   const y = useRef(0);
 
   useEffect(() => {
-    const container = document.getElementById('myplacemap');
+    const container = document.getElementById('enmyplacemap');
     const options = {
       center: new kakao.maps.LatLng(33.450701, 126.570667),
       level: 13,
@@ -68,7 +69,7 @@ const EnMap = () => {
 
   return (
     <>
-      <div id="myplacemap" style={{ width: '50vw', height: '50vw' }}></div>
+      <div id="enmyplacemap" style={{ width: '30vw', height:'30vw', margin:'auto' }}></div>
       {open && <EnMakeCourse start={select} startplacename={startplacename} />}
     </>
   );
