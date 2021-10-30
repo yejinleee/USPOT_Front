@@ -54,16 +54,16 @@ const EnController: FC<Props> = (props: Props) => {
         {/*인기순거리순*/}
         <div className="order" onClick={() => setApigopen(false)}>
           <span
-            onClick={() => funcArrange('popularity')}
+            onClick={() => funcArrange('B')}
             className="order_button"
-            id={selectedArrange === 'popularity' ? 'selected' : 'unselected'}
+            id={selectedArrange === 'B' ? 'selected' : 'unselected'}
           >
             Order of Popularity
           </span>
           <span
-            onClick={() => funcArrange('distance')}
+            onClick={() => funcArrange('E')}
             className="order_button"
-            id={selectedArrange === 'distance' ? 'selected' : 'unselected'}
+            id={selectedArrange === 'E' ? 'selected' : 'unselected'}
           >
             Order of Distance
           </span>
