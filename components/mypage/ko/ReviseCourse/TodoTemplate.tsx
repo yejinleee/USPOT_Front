@@ -73,7 +73,7 @@ const TodoTemplate: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="likedlist" style={{ display: 'inline-block' }}>
+      <div className="revisemyplace" style={{ display: 'inline-block' }}>
         {likedlist}
       </div>
       <TodoTitle>코스를 수정해 보아요!</TodoTitle>
