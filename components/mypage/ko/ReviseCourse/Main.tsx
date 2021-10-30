@@ -1,7 +1,5 @@
 import axios from 'axios';
 import React, { FC, useEffect, useState } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import Coursemap from '../Course/Coursemap';
 import TodoTemplate from './TodoTemplate';
 
 const Main = () => {

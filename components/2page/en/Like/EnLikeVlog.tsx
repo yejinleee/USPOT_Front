@@ -1553,7 +1553,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
           </div>
         </>
       );
-    }else if (len ===20) {
+    }else if (len >= 20) {
       return (
         <>
           <div className="likevlog_div">
