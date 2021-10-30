@@ -1,7 +1,9 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import TodoItemList from './TodoItemlist';
 import TodoTitle from './TodoTitle';
+import Likelistscroll from '@components/mypage/ko/MakeCoures/Likelistscroll';
 import '@components/mypage/List.scss';
+import Coursemap from '@components/mypage/ko/Course/Coursemap';
 
 interface Props {
   placelist: any;
@@ -13,37 +15,20 @@ interface Props {
 }
 
 const List: FC<Props> = (props: Props) => {
-  function Likelist({ list, name, onClick, ondeleteClick }: any) {
-    return (
-      <div className="mypagelist">
-        <button className="listbtn" onClick={() => onClick(list)}>
-          <img className="add" src="/src/icon/more.png" />
-        </button>
-        {name}
-        <button className="listbtn" onClick={() => ondeleteClick(list)}>
-          <img className="trash" src="/src/icon/trash.png" />
-        </button>
-      </div>
-    );
-  }
 
   return (
     <>
-      <div className="likedlist" style={{ display: 'inline-block' }}>
-        {props.placelist.map((v: string, index: number) => (
-          <Likelist
-            list={props.placelist[index]}
-            name={props.placelist[index].name}
-            onClick={props.onClick}
-            ondeleteClick={props.ondeleteClick}
-          />
-        ))}
-      </div>
       <div className="coursetitle">
-        <TodoTitle>코스를 만들어 보아요!</TodoTitle>
+        코스를 만들어 보아요!
       </div>
       <div className="makecourselist">
         <TodoItemList todos={props.todos} onRemove={props.onRemove} placeid={props.start} />
+      </div>
+      <div className="myplacemap_div">
+        <Coursemap />
+        <span className="likedlist" style={{ display: 'inline-block' , position:'absolute'}}>
+          <Likelistscroll placelist={props.placelist} todos={props.todos} onClick={props.onClick} ondeleteClick={props.ondeleteClick} onRemove={props.onRemove} start={props.start} />
+        </span>
       </div>
     </>
   );

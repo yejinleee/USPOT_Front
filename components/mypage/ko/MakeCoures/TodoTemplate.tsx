@@ -82,8 +82,8 @@ const TodoTemplate: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="namelist" style={{ display: 'inline-block' }}>
-        <List
+      {/*<div className="namelist" style={{ display: 'inline-block' }}>*/}
+      <List
           placelist={placelist}
           todos={todos}
           onClick={onClick}
@@ -91,7 +91,9 @@ const TodoTemplate: FC<Props> = (props: Props) => {
           onRemove={onRemove}
           start={id}
         />
-      </div>
+      <div className="Likelistname">[하트 누른 장소들 목록]</div>
+
+      {/*</div>*/}
     </>
   );
 };
