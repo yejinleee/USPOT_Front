@@ -52,7 +52,7 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
         })
         .catch((error) => {});
     }
-  }, []);
+  }, [props.vlogpid]);
 
   function func_post(e: number) {
     var ethplaceid = props.vlogplaceid[e];
@@ -67,16 +67,14 @@ const EnLikeVlog: FC<Props> = (props: Props) => {
           { memberid, ethplaceid },
           { withCredentials: true },
         )
-        .then(() => {
-        })
+        .then(() => {})
         .catch((error) => {});
     }
   }
   function func_delete(e: number) {
     axios
       .delete(`/api/en/myplace/deletebyplace/${memberid}/${props.vlogplaceid[e]}`)
-      .then(() => {
-      })
+      .then(() => {})
       .catch((error) => {});
   }
 
