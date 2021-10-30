@@ -4,6 +4,8 @@ import TodoTitle from './TodoTitle';
 import Likelistscroll from '@components/mypage/ko/MakeCoures/Likelistscroll';
 import '@components/mypage/List.scss';
 import Coursemap from '@components/mypage/ko/Course/Coursemap';
+import CourseInputSave from '@components/mypage/ko/MakeCoures/CourseInputSave';
+import axios from 'axios';
 
 interface Props {
   placelist: any;
@@ -16,20 +18,60 @@ interface Props {
 
 const List: FC<Props> = (props: Props) => {
 
+
+  //
+  const [text, setText] = useState('코스');
+  var local = sessionStorage.getItem('memberid');
+  const headers = {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  };
+  try {
+    var memberid = Number(local.split('')[1]);
+  } catch {
+    var memberid = 0;
+  }
+  const onChange = (e: any) => {
+    setText(e.target.value);
+  };
+  const onClick = () => {
+    var name = text;
+    var myplaceList = props.todos;
+
+    if (myplaceList.length !== 0) {
+      axios
+        .post(`/api/course/add/${memberid}`, JSON.stringify({ name, myplaceList }), { headers })
+        .then(() => {})
+        .catch((error) => {});
+
+      alert('코스가 저장되었습니다!');
+
+      location.reload();
+    } else {
+      alert('코스에 장소를 담아주세요!');
+    }
+  };
+
   return (
     <>
       <div className="coursetitle">
         코스를 만들어 보아요!
       </div>
+
       <div className="makecourselist">
         <TodoItemList todos={props.todos} onRemove={props.onRemove} placeid={props.start} />
       </div>
+      {/*코스저장save버튼*/}
+      <CourseInputSave todos={props.todos} onRemove={props.onRemove} placeid={props.start} />
       <div className="myplacemap_div">
         <Coursemap />
         <span className="likedlist" style={{ display: 'inline-block' , position:'absolute'}}>
           <Likelistscroll placelist={props.placelist} todos={props.todos} onClick={props.onClick} ondeleteClick={props.ondeleteClick} onRemove={props.onRemove} start={props.start} />
         </span>
       </div>
+
+
+
     </>
   );
 };

@@ -20,40 +20,31 @@ const TodoItemList: FC<Props> = (props: Props) => {
     var memberid = 0;
   }
 
-  const onChange = (e: any) => {
-    setText(e.target.value);
-  };
-  const onClick = () => {
-    var name = text;
-    var myplaceList = props.todos;
-
-    if (myplaceList.length !== 0) {
-      axios
-        .post(`/api/course/add/${memberid}`, JSON.stringify({ name, myplaceList }), { headers })
-        .then(() => {})
-        .catch((error) => {});
-
-      alert('코스가 저장되었습니다!');
-
-      location.reload();
-    } else {
-      alert('코스에 장소를 담아주세요!');
-    }
-  };
-  var imgsrc = './src/icon/star.png';
+  var imgsrc = './src/icon/x-mark.png';
 
   return (
     <>
-      <input onChange={onChange} value={text} />
-      <button onClick={onClick}>save</button>
-      {props.todos.map((todo: any) => (
-        <>
-          <li className="courselist">{todo.name}</li>
-          <button onClick={() => props.onRemove(todo.id)}>
-            <img src={imgsrc} width="30" />
-          </button>
-        </>
-      ))}
+      <ul className="courselist_ul">
+        {props.todos.map((todo: any, i:number) => (
+          <>
+            { i===0 ?
+              <li className="courselist">
+                {todo.name}
+                <button className="xmark_button" onClick={() => props.onRemove(todo.id)}>
+                  <img className="xmarkimg" src={imgsrc} width="15" />
+                </button>
+              </li>
+              :
+              <li className="courselist">
+                &nbsp;➜ {todo.name}
+                <button className="xmark_button" onClick={() => props.onRemove(todo.id)}>
+                  <img className="xmarkimg" src={imgsrc} width="15" />
+                </button>
+              </li>
+            }
+          </>
+        ))}
+      </ul>
     </>
   );
 };

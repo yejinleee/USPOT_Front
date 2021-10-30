@@ -19,14 +19,15 @@ const MakeCourse: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <button onClick={onClick} className="setstartbtn"> "{props.startplacename}"에서 출발하기</button>
+      <div className="setstartbtn_div">
+        <button onClick={onClick} className="setstartbtn"> "{props.startplacename}"에서 출발하기</button>
+      </div>
       {exist && (
         <>
           <div className="makecourse_div">
             <TodoTemplate start={props.start} />
           </div>
           <div className="coursemap" style={{position:'relative'}}>
-            {/*<Coursemap />*/}
           </div>
         </>
       )}

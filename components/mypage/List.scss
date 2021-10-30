@@ -16,12 +16,33 @@ button.listbtn {
   padding: 0;
 }
 
+//TodoItemlist
+.makecourselist{
+  //text-align: center;
+}
+.courselist_ul{
+ list-style: none;
+  display: table;
+}
+.courselist{
+  float:left;
+}
+.xmark_button{
+  background: transparent;
+  border: none;
+  cursor:pointer;
+}
+.xmarkimg{
+  margin-bottom: 0.4em;
+}
+
+
+
 .likedlist {
   width: 25vw;
-  height: 32vw;
+  height: 35vw;
   overflow: scroll;
   cursor: pointer;
-  margin-top: 1em;
   margin-left: 5vw;
   margin-bottom: 1.5em;
   &::-webkit-scrollbar {
@@ -41,11 +62,95 @@ button.listbtn {
     background: #ffffff;
   }
 }
+.Likelistname{
+  margin-bottom: 2vh;
+  border:1px solid rgb(92 88 88);
+  border-radius: 15px;
+  text-align: center;
+  padding:1.5px;
+}
 
 .mypagelist{
   padding-bottom: 0.5em;
 }
+.listbtn{
+  cursor:pointer;
+}
+.likeplacename{
+  cursor:pointer;
+}
 
-.makecourselist{
-  text-align: center;
+
+
+
+
+//CourseInputSave
+.courseinputsave{
+  text-align: right;
+  margin : 2.5vh 0px;
+}
+
+
+#inputsave_text{
+  font-size: 8px;
+  color: #a7a7a7;
+}
+
+.save_input {
+  display: inline-block;
+  width: 14em;
+  height: 2em;
+  font-size: 12px;
+  padding-left: 2%;
+  margin-bottom: 0.3em;
+  margin-left: 1em;
+  margin-top: 0.5%;
+  border-radius: 40px;
+  box-shadow: 0 3px 10px -1px rgb(0 0 0 / 40%);
+  background: #ffffff;
+  transition: all 0.3s ease;
+  border-color: #dedede;
+
+  &.focus {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.save_button {
+  margin-left: 10px;
+  margin-button: 10px;
+  height: 2em;
+  border: none;
+  background-color: transparent;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 3px 14px -1px rgb(0 0 0 / 60%);
+  width: 4em;
+  cursor: pointer;
+
+}
+
+.save_button img {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 600px) {
+  .save_input {
+    font-size: 10px;
+    width: 18em;
+    margin-top: 0;
+    height: 2.5em;
+  }
+  .save_button {
+    padding: 0 !important;
+    margin-left: 6px;
+    margin-right: 6px;
+    width: 20px;
+    height: 20px;
+  }
+  .save_button img {
+    width: 15px;
+    height: 15px;
+  }
 }
