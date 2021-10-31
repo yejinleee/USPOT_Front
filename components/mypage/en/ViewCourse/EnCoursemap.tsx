@@ -37,8 +37,8 @@ const EnCoursemap: FC<Props> = (props: Props) => {
             .delete(`/api/en/course/delete/${props.courseid}`)
             .then((response) => {})
             .catch((error) => {});
+          location.reload();
         }
-        location.reload();
       })
       .catch((error) => {});
   }, [props.courseid]);

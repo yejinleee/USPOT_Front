@@ -37,8 +37,8 @@ const Coursemaprsp: FC<Props> = (props: Props) => {
             .delete(`/api/course/delete/${props.courseid}`)
             .then((response) => {})
             .catch((error) => {});
+          location.reload();
         }
-        location.reload();
       })
       .catch((error) => {});
   }, [props.courseid]);

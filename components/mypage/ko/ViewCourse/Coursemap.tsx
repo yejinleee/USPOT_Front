@@ -36,8 +36,8 @@ const Coursemap: FC<Props> = (props: Props) => {
             .delete(`/api/course/delete/${props.courseid}`)
             .then((response) => {})
             .catch((error) => {});
+          location.reload();
         }
-        location.reload();
       })
       .catch((error) => {});
   }, [props.courseid]);
@@ -49,7 +49,6 @@ const Coursemap: FC<Props> = (props: Props) => {
   }, [place]);
 
   const mapscript = () => {
-    console.log(place);
     removeMarker();
 
     x.current = 0;
