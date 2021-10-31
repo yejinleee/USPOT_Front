@@ -78,7 +78,7 @@ const EnSlide: FC<Props> = (props: Props) => {
     순천시: 'Suncheon',
     전주시: 'Jeonju',
     하동군: 'Hadong',
-    경주시: 'Gyeonju',
+    경주시: 'Gyeongju',
     안동시: 'Andong',
     인천: 'Incheon',
     대전: 'Daejeon',

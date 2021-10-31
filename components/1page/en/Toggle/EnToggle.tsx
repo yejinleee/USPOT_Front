@@ -964,7 +964,7 @@ const Toggle = () => {
     Suncheon: '순천시',
     Jeonju: '전주시',
     Hadong: '하동군',
-    Gyeonju: '경주시',
+    Gyeongju: '경주시',
     Andong: '안동시',
     Incheon: '인천',
     Daejeon: '대전',
