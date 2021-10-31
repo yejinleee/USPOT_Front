@@ -133,7 +133,7 @@ const EnSlide: FC<Props> = (props: Props) => {
   return (
     <>
       <div className="title">
-        <h2 style={{marginBottom:'0px'}}>TOP5 of {category_kortoeng[props.selectedcategory]} in {city_engtokor[props.selectedcity]} </h2>
+        <h2 style={{marginBottom:'0px', marginTop:'0.8em'}}>TOP5 of {category_kortoeng[props.selectedcategory]} in {city_engtokor[props.selectedcity]} </h2>
       </div>
       <div className="carousel">
         <div className="carousel_card">
