@@ -25,9 +25,10 @@ const MakeCourse: FC<Props> = (props: Props) => {
         <>
           <div className="makecourse_div">
             <TodoTemplate start={props.start} />
+            {/*<List > 호출*/}
           </div>
-          <div className="coursemap" style={{position:'relative'}}>
-          </div>
+          {/*<div className="coursemap" style={{position:'relative'}}>*/}
+          {/*</div>*/}
         </>
       ) }
     </>

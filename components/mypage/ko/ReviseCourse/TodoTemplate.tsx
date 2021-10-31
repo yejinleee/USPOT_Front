@@ -1,12 +1,17 @@
 import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
-import TodoItemList from './TodoItemlist';
+import TodoItemList from '@components/mypage/ko/ReviseCourse/TodoItemlist';
 import TodoTitle from './TodoTitle';
 import '@components/mypage/Revisecss.scss';
+import CourseInputSave from '@components/mypage/ko/ReviseCourse/CourseInputSave';
+import Coursemap from '@components/mypage/ko/ReviseCourse/Coursemap';
+import Likelistscroll from '@components/mypage/ko/ReviseCourse/Likelistscroll';
+import CoursemapRsp from '@components/mypage/ko/Course/CoursemapRsp';
 interface Props {
   courseid: number;
   coursename: string;
   setCourese: any;
+  setName:any;
 }
 
 const TodoTemplate: FC<Props> = (props: Props) => {
@@ -57,6 +62,12 @@ const TodoTemplate: FC<Props> = (props: Props) => {
       }
     }
   };
+  const ondeleteClick = (list: any) => {
+    var myplaceid = list.id;
+    setPlacelist(placelist.filter((place: any) => place.id !== myplaceid));
+    setTodos(todos.filter((place: any) => place.id !== myplaceid));
+    axios.delete(`/api/myplace/deletebymyplace/${memberid}/${myplaceid}`).catch((error) => {});
+  };
 
   const likedlist: any = namelist.map((v: string, index: number) => (
     <>
@@ -74,17 +85,48 @@ const TodoTemplate: FC<Props> = (props: Props) => {
 
   return (
     <>
+      <div className="coursetitle">
+        코스이름을 수정할 수 있어요
+      </div>
+      <CourseInputSave todos={todos} onRemove={onRemove} courseid={props.courseid} coursename={props.coursename}/>
+
+      <div className="makecourselist">
+        <TodoItemList
+          todos={todos}
+          onRemove={onRemove}
+          onClick={onClick}
+          ondeleteClick={ondeleteClick}
+          // courseid={props.courseid}
+          // coursename={props.coursename}
+          // setName={props.setName}
+        />
+      </div>
+
+
+
+      <div className="myplacemap_div">
+        <div className="coursemap"  style={{ position: 'relative', width: '100%' }}>
+          <Coursemap />
+          <span className="likedlist" style={{ display: 'inline-block' , position:'absolute'}}>
+           {/*<Likelistscroll placelist={props.placelist} todos={props.todos} onClick={props.onClick} ondeleteClick={props.ondeleteClick} onRemove={props.onRemove} start={props.start} />*/}
+         </span>
+        </div>
+
+        {/*<div className="coursemap_responsive" style={{ position: 'relative', width: '100%' }}>*/}
+        {/*  <CoursemapRsp />*/}
+        {/*  <div className="likedlist" style={{ display: 'inline-block' , position:'absolute'}}>*/}
+        {/*    <Likelistscroll placelist={props.placelist} todos={props.todos} onClick={props.onClick} ondeleteClick={props.ondeleteClick} onRemove={props.onRemove} start={props.start} />*/}
+        {/*  </div>*/}
+        {/*</div>*/}
+
+
+      </div>
+
       <div className="revisemyplace" style={{ display: 'inline-block' }}>
         {likedlist}
       </div>
-      <TodoTitle>코스를 수정해 보아요!</TodoTitle>
-      <TodoItemList
-        todos={todos}
-        onRemove={onRemove}
-        courseid={props.courseid}
-        coursename={props.coursename}
-        setCourese={props.setCourese}
-      />
+      {/*<TodoTitle>코스를 수정해 보아요!</TodoTitle>*/}
+
     </>
   );
 };

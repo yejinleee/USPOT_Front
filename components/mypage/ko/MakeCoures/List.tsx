@@ -31,26 +31,6 @@ const List: FC<Props> = (props: Props) => {
   } catch {
     var memberid = 0;
   }
-  const onChange = (e: any) => {
-    setText(e.target.value);
-  };
-  const onClick = () => {
-    var name = text;
-    var myplaceList = props.todos;
-
-    if (myplaceList.length !== 0) {
-      axios
-        .post(`/api/course/add/${memberid}`, JSON.stringify({ name, myplaceList }), { headers })
-        .then(() => {})
-        .catch((error) => {});
-
-      alert('코스가 저장되었습니다!');
-
-      location.reload();
-    } else {
-      alert('코스에 장소를 담아주세요!');
-    }
-  };
 
   return (
     <>
@@ -63,6 +43,9 @@ const List: FC<Props> = (props: Props) => {
       </div>
       {/*코스저장save버튼*/}
       <CourseInputSave todos={props.todos} onRemove={props.onRemove} placeid={props.start} />
+
+
+
 
 
       <div className="myplacemap_div">
