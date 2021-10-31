@@ -136,7 +136,7 @@ const EnSlide: FC<Props> = (props: Props) => {
             <div className={imgloc[start]}>
               <div className="carousel-card-mask">
                 <img src={pic1} alt="pic" className="carousel-img" />
-                <span>
+                <span className="carousel_span">
                   <p className="top5name_p">{top5name[0]}</p>
                   <p className="top5phone_p">{top5phone[0]}</p>
                   <p className="top5add_p">{top5add[0]}</p>
@@ -146,7 +146,7 @@ const EnSlide: FC<Props> = (props: Props) => {
             <div className={imgloc[(start + 1) % 5]}>
               <div className="carousel-card-mask">
                 <img src={pic2} alt="pic" className="carousel-img" />
-                <span>
+                <span className="carousel_span">
                   <p className="top5name_p">{top5name[1]}</p>
                   <p className="top5phone_p">{top5phone[1]}</p>
                   <p className="top5add_p">{top5add[1]}</p>
@@ -156,7 +156,7 @@ const EnSlide: FC<Props> = (props: Props) => {
             <div className={imgloc[(start + 2) % 5]}>
               <div className="carousel-card-mask">
                 <img src={pic3} alt="pic" className="carousel-img" />
-                <span>
+                <span className="carousel_span">
                   <p className="top5name_p">{top5name[2]}</p>
                   <p className="top5phone_p">{top5phone[2]}</p>
                   <p className="top5add_p">{top5add[2]}</p>
@@ -166,7 +166,7 @@ const EnSlide: FC<Props> = (props: Props) => {
             <div className={imgloc[(start + 3) % 5]}>
               <div className="carousel-card-mask">
                 <img src={pic4} alt="pic" className="carousel-img" />
-                <span>
+                <span className="carousel_span">
                   <p className="top5name_p">{top5name[3]}</p>
                   <p className="top5phone_p">{top5phone[3]}</p>
                   <p className="top5add_p">{top5add[3]}</p>
@@ -176,7 +176,7 @@ const EnSlide: FC<Props> = (props: Props) => {
             <div className={imgloc[(start + 4) % 5]}>
               <div className="carousel-card-mask">
                 <img src={pic5} alt="pic" className="carousel-img" />
-                <span>
+                <span className="carousel_span">
                   <p className="top5name_p">{top5name[4]}</p>
                   <p className="top5phone_p">{top5phone[4]}</p>
                   <p className="top5add_p">{top5add[4]}</p>
