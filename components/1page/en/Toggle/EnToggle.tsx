@@ -965,7 +965,7 @@ const Toggle = () => {
   return (
     <>
       <img src={map} className="map" alt="map" />
-      <h4 style={{marginLeft:'2em'}}>Where do you want to go?</h4>
+      <h4 style={{marginLeft:'6em'}}>Where do you want to go?</h4>
 
       <div className="district_toggle">
         <div className="nextbutton">
