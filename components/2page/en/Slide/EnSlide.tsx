@@ -67,17 +67,25 @@ const EnSlide: FC<Props> = (props: Props) => {
     카페: 3,
   };
   var city_engtokor: { [key: string]: string } = {
+    가평군: 'Gapyeong',
+    고양시: 'Goyang',
     수원시: 'Suwon',
     강릉시: 'Gangneung',
-    단양군: 'Danyang',
+    춘천시: 'Chuncheon',
     천안시: 'Cheonan',
-    전주시: 'Jeonju',
+    단양군: 'Danyang',
+    청주시: 'Cheongju',
     순천시: 'Suncheon',
-    경주시: 'Gyeonju',
-    안동시: 'Andong',
+    전주시: 'Jeonju',
     하동군: 'Hadong',
+    경주시: 'Gyeongju',
+    안동시: 'Andong',
+    인천: 'Incheon',
+    대전: 'Daejeon',
     대구: 'Daegu',
     부산: 'Busan',
+    울산: 'Ulsan',
+    광주: 'Gwangju',
   };
   let imageSrc = `/src/icon/${dic_category[props.selectedcategory]}.png`;
   useEffect(() => {

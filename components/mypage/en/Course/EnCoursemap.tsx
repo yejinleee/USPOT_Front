@@ -44,12 +44,14 @@ export default function EnCoursemap() {
     myplace.forEach((el: any) => {
       var imageSize = new kakao.maps.Size(36, 37),
         imageOption = { offset: new kakao.maps.Point(27, 69) };
-      if (el.category === '관광명소') {
+      if (el.category === 'Attraction') {
         var id = 1;
-      } else if (el.category === '식당') {
+      } else if (el.category === 'Restaurant') {
         var id = 2;
-      } else {
+      } else if (el.category === 'Cafe') {
         var id = 3;
+      } else {
+        var id = 0;
       }
       var imageSrc = `/src/icon/${id}.png`;
       const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
@@ -82,7 +84,7 @@ export default function EnCoursemap() {
 
   return (
     <>
-      <div id="myplacemap" style={{ width: '50%', height: '50%'}}></div>
+      <div id="myplacemap" style={{ width: '50%', height: '50%' }}></div>
     </>
   );
 }
