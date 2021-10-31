@@ -953,17 +953,25 @@ const Toggle = () => {
   }
 
   var city_engtokor: { [key: string]: string } = {
+    Gapyeong: '가평군',
+    Goyang: '고양시',
     Suwon: '수원시',
     Gangneung: '강릉시',
-    Danyang: '단양군',
+    Chuncheon: '춘천시',
     Cheonan: '천안시',
-    Jeonju: '전주시',
+    Danyang: '단양군',
+    Cheongju: '청주시',
     Suncheon: '순천시',
+    Jeonju: '전주시',
+    Hadong: '하동군',
     Gyeonju: '경주시',
     Andong: '안동시',
-    Hadong: '하동군',
+    Incheon: '인천',
+    Daejeon: '대전',
     Daegu: '대구',
     Busan: '부산',
+    Ulsan: '울산',
+    Gwangju: '광주',
   };
   return (
     <>
