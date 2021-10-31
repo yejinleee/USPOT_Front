@@ -8,7 +8,6 @@ interface Props {
   onClick: any;
   ondeleteClick: any;
   onRemove: any;
-  start: any;
 }
 
 const Likelistscroll: FC<Props> = (props: Props) => {

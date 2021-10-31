@@ -108,24 +108,19 @@ const TodoTemplate: FC<Props> = (props: Props) => {
         <div className="coursemap"  style={{ position: 'relative', width: '100%' }}>
           <Coursemap />
           <span className="likedlist" style={{ display: 'inline-block' , position:'absolute'}}>
-           {/*<Likelistscroll placelist={props.placelist} todos={props.todos} onClick={props.onClick} ondeleteClick={props.ondeleteClick} onRemove={props.onRemove} start={props.start} />*/}
+           <Likelistscroll placelist={placelist} todos={todos} onClick={onClick} ondeleteClick={ondeleteClick} onRemove={onRemove} />
          </span>
         </div>
 
-        {/*<div className="coursemap_responsive" style={{ position: 'relative', width: '100%' }}>*/}
-        {/*  <CoursemapRsp />*/}
-        {/*  <div className="likedlist" style={{ display: 'inline-block' , position:'absolute'}}>*/}
-        {/*    <Likelistscroll placelist={props.placelist} todos={props.todos} onClick={props.onClick} ondeleteClick={props.ondeleteClick} onRemove={props.onRemove} start={props.start} />*/}
-        {/*  </div>*/}
-        {/*</div>*/}
+        <div className="coursemap_responsive" style={{ position: 'relative', width: '100%' }}>
+          <CoursemapRsp />
+          <div className="likedlist" style={{ display: 'inline-block' , position:'absolute'}}>
+            <Likelistscroll placelist={placelist} todos={todos} onClick={onClick} ondeleteClick={ondeleteClick} onRemove={onRemove}  />
+          </div>
+        </div>
 
 
       </div>
-
-      <div className="revisemyplace" style={{ display: 'inline-block' }}>
-        {likedlist}
-      </div>
-      {/*<TodoTitle>코스를 수정해 보아요!</TodoTitle>*/}
 
     </>
   );

@@ -18,7 +18,7 @@ interface Props {
   start: any;
 }
 
-const List: FC<Props> = (props: Props) => {
+const Myplacemapdiv: FC<Props> = (props: Props) => {
 
   const [text, setText] = useState('코스');
   var local = sessionStorage.getItem('memberid');
@@ -34,20 +34,6 @@ const List: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="coursetitle">
-        코스를 만들어 보아요!
-      </div>
-
-      <div className="makecourselist">
-        <TodoItemList todos={props.todos} onRemove={props.onRemove} placeid={props.start} />
-      </div>
-      {/*코스저장save버튼*/}
-      <CourseInputSave todos={props.todos} onRemove={props.onRemove} placeid={props.start} />
-
-
-
-
-
       <div className="myplacemap_div">
         <div className="coursemap"  style={{ position: 'relative', width: '100%' }}>
           <Coursemap />
@@ -72,4 +58,4 @@ const List: FC<Props> = (props: Props) => {
   );
 };
 
-export default List;
+export default Myplacemapdiv;
