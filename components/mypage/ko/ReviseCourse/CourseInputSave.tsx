@@ -9,7 +9,7 @@ interface Props {
 }
 
 const TodoItemList: FC<Props> = (props: Props) => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState(props.coursename);
   var local = sessionStorage.getItem('memberid');
   const headers = {
     Accept: 'application/json',

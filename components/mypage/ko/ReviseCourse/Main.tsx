@@ -35,7 +35,7 @@ const Main = () => {
       <button
         id={idx===index ? 'clickedcourse':'notclickedcourse'}
         key={index}
-        className="revisecoursebutton"
+        className="deletebutton"
         onClick={() => {
           onClick(course[index].courseid, index, course[index].name);
         }}

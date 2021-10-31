@@ -53,7 +53,7 @@ const EnCourseList = () => {
             setExist(true);
           }}
         >
-          <p className="deletename">{name}</p>
+          <span className="deletename">{name}</span>
         </button>
         <button
           className="viewimg"
