@@ -60,6 +60,6 @@
     margin: 0;
   }
   #top5 {
-    width: 16em;
+    width: 16em !important;
   }
 }

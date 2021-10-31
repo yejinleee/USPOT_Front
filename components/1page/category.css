@@ -86,6 +86,9 @@ img {
   .enbutton {
     margin: 7px;
   }
+  .cbutton {
+    margin: 7px;
+  }
 }
 @media screen and (max-width: 700px) {
   .enbutton {
@@ -96,6 +99,7 @@ img {
   }
   .encategory_box {
     margin-left: 0;
+    margin-top: 3px;
   }
   .categortimg {
     display: none;
@@ -109,6 +113,7 @@ img {
   .encategory_box {
     margin-left: 0;
     margin-bottom: 1em;
+    margin-top: 3px;
   }
   .enbutton {
     padding: 0.5em;
@@ -124,6 +129,7 @@ img {
   .encategory_box {
     display: grid !important;
     text-align: center;
+    margin-top: 3px;
   }
   .categortimg {
     display: none;
