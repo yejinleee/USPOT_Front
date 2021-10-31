@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import { History, LocationState } from 'history';
 import Slide from '@components/2page/ko/Slide/Slide';
 import EnSlide from '@components/2page/en/Slide/EnSlide';
-import Search from '@components/mypage/ko/Search/Search';
-import MakeCourse from '@components/mypage/ko/ReviseCourse/MakeCourse';
-import ViewMain from '@components/mypage/ko/ViewCourse/Main';
+import './Newcategory.css'
 
 interface Props {
   selectedcity:any;
@@ -32,16 +30,16 @@ const Newcategory: FC<Props> = (props: Props) => {
     return(
       <>
         <div className="displaycourse">
-          <div className="btncourse">
-            <button className={select === '관광명소' ? 'mypagecourse_clicked' : 'mypagecourse'} onClick={onClickTOR}>
+          <div className="btncategory">
+            <button className={select === '관광명소' ? 'newcategory_clicked' : 'newcategory'} onClick={onClickTOR}>
               <img className="categortimg" src="src/icon/관광명소.png" style={{ width: '3em', display:'block', margin:'auto' }} />
               관광명소
             </button>
-            <button className={select === '음식점' ? 'mypagecourse_clicked' : 'mypagecourse'} onClick={onClickRES}>
+            <button className={select === '음식점' ? 'newcategory_clicked' : 'newcategory'} onClick={onClickRES}>
               <img className="categortimg" src="src/icon/식당.png" style={{ width: '3em', display:'block', margin:'auto' }} />
               음식점
             </button>
-            <button className={select === '카페' ? 'mypagecourse_clicked' : 'mypagecourse'} onClick={onClickCAF}>
+            <button className={select === '카페' ? 'newcategory_clicked' : 'newcategory'} onClick={onClickCAF}>
               <img className="categortimg" src="src/icon/카페.png" style={{ width: '3em', display:'block', margin:'auto' }} />
               카페
             </button>
@@ -57,16 +55,16 @@ const Newcategory: FC<Props> = (props: Props) => {
     return(
       <>
         <div className="displaycourse">
-          <div className="btncourse">
-            <button className={select === '관광명소' ? 'mypagecourse_clicked' : 'mypagecourse'} onClick={onClickTOR}>
+          <div className="btncategory">
+            <button className={select === '관광명소' ? 'newcategory_clicked' : 'newcategory'} onClick={onClickTOR}>
               <img className="categortimg" src="src/icon/관광명소.png" style={{ width: '3em', display:'block', margin:'auto' }} />
               ATTRACTION
             </button>
-            <button className={select === '음식점' ? 'mypagecourse_clicked' : 'mypagecourse'} onClick={onClickRES}>
+            <button className={select === '음식점' ? 'newcategory_clicked' : 'newcategory'} onClick={onClickRES}>
               <img className="categortimg" src="src/icon/식당.png" style={{ width: '3em', display:'block', margin:'auto' }} />
               RESTAURANT
             </button>
-            <button className={select === '카페' ? 'mypagecourse_clicked' : 'mypagecourse'} onClick={onClickCAF}>
+            <button className={select === '카페' ? 'newcategory_clicked' : 'newcategory'} onClick={onClickCAF}>
               <img className="categortimg" src="src/icon/카페.png" style={{ width: '3em', display:'block', margin:'auto' }} />
               CAFE
             </button>
