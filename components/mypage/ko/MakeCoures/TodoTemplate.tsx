@@ -82,7 +82,6 @@ const TodoTemplate: FC<Props> = (props: Props) => {
 
   return (
     <>
-      {/*<div className="namelist" style={{ display: 'inline-block' }}>*/}
       <List
           placelist={placelist}
           todos={todos}
@@ -91,8 +90,6 @@ const TodoTemplate: FC<Props> = (props: Props) => {
           onRemove={onRemove}
           start={id}
         />
-
-      {/*</div>*/}
     </>
   );
 };

@@ -66,6 +66,11 @@ const EnSlide: FC<Props> = (props: Props) => {
     음식점: 2,
     카페: 3,
   };
+  var category_kortoeng : {[key :string] : string }={
+    관광명소: 'attraction',
+    음식점: 'restaurant',
+    카페: 'cafe',
+  }
   var city_engtokor: { [key: string]: string } = {
     가평군: 'Gapyeong',
     고양시: 'Goyang',
@@ -128,7 +133,7 @@ const EnSlide: FC<Props> = (props: Props) => {
   return (
     <>
       <div className="title">
-        <h2>TOP5 of {city_engtokor[props.selectedcity]}</h2>
+        <h2 style={{marginBottom:'0px'}}>TOP5 of {category_kortoeng[props.selectedcategory]} in {city_engtokor[props.selectedcity]} </h2>
       </div>
       <div className="carousel">
         <div className="carousel_card">

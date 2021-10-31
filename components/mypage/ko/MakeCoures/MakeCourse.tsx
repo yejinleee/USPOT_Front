@@ -1,9 +1,6 @@
-import React, { FC, memo, useEffect, useMemo, useState } from 'react';
-import Coursemap from '@components/mypage/ko/Course/Coursemap';
-import CoursemapRsp from '@components/mypage/ko/Course/CoursemapRsp';
+import React, { FC, useState } from 'react';
 import '@components/mypage/Coursemap.css'
 import TodoTemplate from '@components/mypage/ko/MakeCoures/TodoTemplate';
-import None from '@components/mypage/ko/MakeCoures/None';
 interface Props {
   start: any;
   startplacename : string;

@@ -55,11 +55,9 @@
   display: none;
 }
 
-.viewcourse_div{
+.viewcourse_div {
   border-top: 1px solid #cecece;
 }
-
-
 
 .viewcourseul {
   list-style: none;
@@ -97,9 +95,14 @@
   background: transparent;
   border: none;
   padding: 0;
-  cursor:pointer;
+  cursor: pointer;
 }
-
+.enviewcoursemap_rsp {
+  display: none;
+}
+.enviewcoursemap {
+  display: block;
+}
 @media screen and (max-width: 675px) {
   #coursemap {
     width: 100% !important;
@@ -128,7 +131,13 @@
   .viewtrashbutton {
     width: 20;
   }
-  .deletebutton{
+  .enviewcoursemap_rsp {
+    display: block;
+  }
+  .enviewcoursemap {
+    display: none;
+  }
+  .deletebutton {
     height: 20;
   }
 }

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { FC, useState } from 'react';
-import TodoItem from './TodoItem';
 import '@components/mypage/List.scss';
 
 interface Props {
