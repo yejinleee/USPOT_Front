@@ -25,8 +25,6 @@ const Liketop5: FC<Props> = (props: Props) => {
   const [like4, setLike4] = useState(0);
 
   const [dblikedlist, setDblikedlist] = useState([] as any);
-
-  console.log(like0, like1, like2, like3, like4);
   useEffect(() => {
     if (memberid !== 0) {
       axios
