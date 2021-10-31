@@ -65,7 +65,7 @@ button.listbtn {
 .Likelistname{
   margin-bottom: 2vh;
   border:1px solid rgb(92 88 88);
-  border-radius: 15px;
+  border-radius: 9px;
   text-align: center;
   padding:1.5px;
 }
@@ -120,11 +120,11 @@ button.listbtn {
   margin-left: 10px;
   margin-button: 10px;
   height: 2em;
-  border: none;
   background-color: transparent;
   background: #fff;
   border-radius: 15px;
-  box-shadow: 0 3px 14px -1px rgb(0 0 0 / 60%);
+  box-shadow: 4px 4px 4px -1px #F08080;
+  border: 1px solid #F08080;
   width: 4em;
   cursor: pointer;
 
