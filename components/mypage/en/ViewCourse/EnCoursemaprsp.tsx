@@ -4,7 +4,7 @@ interface Props {
   courseid: any;
 }
 
-const Coursemap: FC<Props> = (props: Props) => {
+const EnCoursemaprsp: FC<Props> = (props: Props) => {
   const kakao = (window as any).kakao;
   const [place, setPlace] = useState([] as any);
   const [coursemap, setCoursemap] = useState(null);
@@ -15,7 +15,7 @@ const Coursemap: FC<Props> = (props: Props) => {
   const y = useRef(0);
 
   useEffect(() => {
-    let container = document.getElementById('coursemap');
+    let container = document.getElementById('coursemap_rsp');
     let options = {
       center: new kakao.maps.LatLng(37.55699327194725, 126.97267350572926),
       level: 13,
@@ -26,7 +26,7 @@ const Coursemap: FC<Props> = (props: Props) => {
   useEffect(() => {
     setPlace([]);
     axios
-      .get(`/api/myplacecourse/findall/${props.courseid}`)
+      .get(`/api/en/myplacecourse/findall/${props.courseid}`)
       .then((response) => {
         setPlace(response.data.data);
         setName(response.data.data[0].courseName);
@@ -45,6 +45,7 @@ const Coursemap: FC<Props> = (props: Props) => {
 
     x.current = 0;
     y.current = 0;
+
     for (var i = 0; i < place.length; i++) {
       x.current += place[i].myplaceDto.location_x;
       y.current += place[i].myplaceDto.location_y;
@@ -53,42 +54,34 @@ const Coursemap: FC<Props> = (props: Props) => {
     var Position = new kakao.maps.LatLng(y.current / place.length, x.current / place.length);
     coursemap.setCenter(Position);
 
-    for (var i = 0; i < place.length; i++) {
-      var placePosition = new kakao.maps.LatLng(place[i].myplaceDto.location_y, place[i].myplaceDto.location_x),
-        marker = addMarker(placePosition, i, place[i].myplaceDto.categoryId);
-      var infowindow = new kakao.maps.InfoWindow({
-        content: `<span class="info-title">${place[i].myplaceDto.name}</span>`,
-      });
+    var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
 
-      infowindow.open(coursemap, marker);
+    function displayMarker(place: any, i: any) {
+      var placePosition = new kakao.maps.LatLng(place.myplaceDto.location_y, place.myplaceDto.location_x),
+        marker = addMarker(placePosition, i, place.myplaceDto.categoryId);
+      marker.setMap(coursemap);
 
-      var infoTitle = document.querySelectorAll('.info-title');
-      infoTitle.forEach(function (e: any) {
-        var w = e.offsetWidth + 10;
-        var ml = w / 2;
-        e.parentElement.style.top = '82px';
-        e.parentElement.style.left = '50%';
-        e.parentElement.style.marginLeft = -ml + 'px';
-        e.parentElement.previousSibling.style.display = 'none';
-        e.parentElement.parentElement.style.border = '0px';
-        e.parentElement.parentElement.style.background = 'unset';
-      });
-
-      infowindow.close();
-
-      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(coursemap, marker, infowindow));
-      kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-    }
-    function makeOverListener(map: any, marker: any, infowindow: { open: (arg0: any, arg1: any) => void }) {
-      return function () {
-        infowindow.open(map, marker);
-      };
-    }
-
-    function makeOutListener(infowindow: { close: () => void }) {
-      return function () {
+      kakao.maps.event.addListener(marker, 'click', function () {
+        infowindow.setContent(`<span class="info-title">${place.myplaceDto.name}</span>`);
+        infowindow.open(coursemap, marker);
+        var infoTitle = document.querySelectorAll('.info-title');
+        infoTitle.forEach(function (e: any) {
+          var w = e.offsetWidth;
+          var ml = w / 2;
+          e.parentElement.style.top = '62px';
+          e.parentElement.style.left = '50%';
+          e.parentElement.style.marginLeft = -ml + 'px';
+          e.parentElement.previousSibling.style.display = 'none';
+          e.parentElement.parentElement.style.border = '0px';
+          e.parentElement.parentElement.style.background = 'unset';
+        });
         infowindow.close();
-      };
+        infowindow.open(coursemap, marker);
+      });
+    }
+
+    for (let j = 0; j < place.length; j++) {
+      displayMarker(place[j], j);
     }
   };
 
@@ -101,7 +94,6 @@ const Coursemap: FC<Props> = (props: Props) => {
         position: position,
         image: markerImage,
       });
-
     marker.setMap(coursemap);
     setMarkers((prev: any) => [...prev, marker]);
     return marker;
@@ -132,12 +124,9 @@ const Coursemap: FC<Props> = (props: Props) => {
           </>
         ))}
       </ul>
-      <div
-        id="coursemap"
-        style={{ width: '60%', height: '60%', display: 'relative', margin: 'auto', marginBottom: '5px' }}
-      ></div>
+      <div id="coursemap_rsp" style={{ width: '100%', height: '50vw', display: 'relative', margin: 'auto' }}></div>
     </div>
   );
 };
 
-export default Coursemap;
+export default EnCoursemaprsp;

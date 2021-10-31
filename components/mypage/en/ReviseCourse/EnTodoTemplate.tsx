@@ -83,37 +83,40 @@ const EnTodoTemplate: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="coursetitle">
-        Modify your course name
-      </div>
-      <EnCourseInputSave todos={todos} onRemove={onRemove} courseid={props.courseid} coursename={props.coursename}/>
+      <div className="coursetitle">Modify your course name</div>
+      <EnCourseInputSave todos={todos} onRemove={onRemove} courseid={props.courseid} coursename={props.coursename} />
 
       <div className="makecourselist">
-        <EnTodoItemList
-          todos={todos}
-          onRemove={onRemove}
-          onClick={onClick}
-          ondeleteClick={ondeleteClick}
-        />
+        <EnTodoItemList todos={todos} onRemove={onRemove} onClick={onClick} ondeleteClick={ondeleteClick} />
       </div>
 
-
       <div className="myplacemap_div">
-        <div className="coursemap"  style={{ position: 'relative', width: '100%' }}>
+        <div className="coursemap" style={{ position: 'relative', width: '100%' }}>
           <EnCoursemap />
-          <span className="likedlist" style={{ display: 'inline-block' , position:'absolute'}}>
-           <EnLikelistscroll placelist={placelist} todos={todos} onClick={onClick} ondeleteClick={ondeleteClick} onRemove={onRemove} />
-         </span>
+          <span className="likedlist" style={{ display: 'inline-block', position: 'absolute' }}>
+            <EnLikelistscroll
+              placelist={placelist}
+              todos={todos}
+              onClick={onClick}
+              ondeleteClick={ondeleteClick}
+              onRemove={onRemove}
+            />
+          </span>
         </div>
 
         <div className="coursemap_responsive" style={{ position: 'relative', width: '100%' }}>
           <EnCoursemapRsp />
-          <div className="likedlist" style={{ display: 'inline-block' , position:'absolute'}}>
-            <EnLikelistscroll placelist={placelist} todos={todos} onClick={onClick} ondeleteClick={ondeleteClick} onRemove={onRemove}  />
+          <div className="likedlist" style={{ display: 'inline-block', position: 'absolute' }}>
+            <EnLikelistscroll
+              placelist={placelist}
+              todos={todos}
+              onClick={onClick}
+              ondeleteClick={ondeleteClick}
+              onRemove={onRemove}
+            />
           </div>
         </div>
       </div>
-
     </>
   );
 };

@@ -84,7 +84,6 @@ const YoutubeMapRsp: FC<Props> = ({ children, videoid, history }) => {
           e.parentElement.style.top = '62px';
           e.parentElement.style.left = '50%';
           e.parentElement.style.marginLeft = -ml + 'px';
-          e.parentElement.style.width = w + 'px';
           e.parentElement.previousSibling.style.display = 'none';
           e.parentElement.parentElement.style.border = '0px';
           e.parentElement.parentElement.style.background = 'unset';

@@ -91,7 +91,12 @@
   border: none;
   padding: 0;
 }
-
+.enviewcoursemap_rsp {
+  display: none;
+}
+.enviewcoursemap {
+  display: block;
+}
 @media screen and (max-width: 675px) {
   #coursemap {
     width: 100% !important;
@@ -118,5 +123,11 @@
   }
   .viewtrashbutton {
     width: 20;
+  }
+  .enviewcoursemap_rsp {
+    display: block;
+  }
+  .enviewcoursemap {
+    display: none;
   }
 }
