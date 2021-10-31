@@ -114,8 +114,8 @@ const Coursemap: FC<Props> = (props: Props) => {
   }
 
   return (
-    <div style={{ position: 'relative' }}>
-      <div className="viewcoursetitle">&lt;{name}&gt;</div>
+    <div className="viewcourse_div" style={{ position: 'relative' }}>
+      <div className="viewcoursetitle">{name}</div>
       <ul className="viewcourseul">
         {place.map((v: string, index: number) => (
           <>

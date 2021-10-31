@@ -34,9 +34,9 @@ const EnMain = () => {
   const courselist: any = course.map((v: string, index: number) => (
     <>
       <button
-        id={v}
+        id={idx===index ? 'clickedcourse':'notclickedcourse'}
         key={index}
-        className="revisecoursebutton"
+        className="deletebutton"
         onClick={() => {
           onClick(course[index].courseid, index, course[index].name);
         }}

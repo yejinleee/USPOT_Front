@@ -34,8 +34,8 @@ const List: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="coursetitle">
-        코스를 만들어 보아요!
+      <div className="coursetitle" style={{marginTop:'1em'}}>
+        목록에서 장소를 클릭하여 코스를 만들어보세요!
       </div>
 
       <div className="makecourselist">

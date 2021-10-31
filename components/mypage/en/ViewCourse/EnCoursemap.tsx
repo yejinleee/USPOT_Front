@@ -115,7 +115,7 @@ const EnCoursemap: FC<Props> = (props: Props) => {
 
   return (
     <div style={{ position: 'relative' }}>
-      <div className="viewcoursetitle">&lt;{name}&gt;</div>
+      <div className="viewcoursetitle">{name}</div>
       <ul className="viewcourseul">
         {place.map((v: string, index: number) => (
           <>
@@ -131,7 +131,11 @@ const EnCoursemap: FC<Props> = (props: Props) => {
           </>
         ))}
       </ul>
-      <div id="coursemap" style={{ width: '60%', height: '60%', display: 'relative', margin: 'auto' }}></div>
+      <div
+        id="coursemap"
+        style={{ width: '60%', height: '60%', display: 'relative', margin: 'auto', marginBottom: '5px' }}
+      >
+      </div>
     </div>
   );
 };
