@@ -62,10 +62,23 @@ export default function EnCoursemap() {
       });
 
       marker.setMap(myplacemap);
-      var infowindow = new kakao.maps.InfoWindow({
-        content: el.name,
-      });
 
+      var infowindow = new kakao.maps.InfoWindow({
+        content: `<span class="info-title">${el.name}</span>`,
+      });
+      infowindow.open(myplacemap, marker);
+      var infoTitle = document.querySelectorAll('.info-title');
+      infoTitle.forEach(function (e: any) {
+        var w = e.offsetWidth;
+        var ml = w / 2;
+        e.parentElement.style.top = '82px';
+        e.parentElement.style.left = '50%';
+        e.parentElement.style.marginLeft = -ml + 'px';
+        e.parentElement.previousSibling.style.display = 'none';
+        e.parentElement.parentElement.style.border = '0px';
+        e.parentElement.parentElement.style.background = 'unset';
+      });
+      infowindow.close();
       kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(myplacemap, marker, infowindow));
       kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
     });

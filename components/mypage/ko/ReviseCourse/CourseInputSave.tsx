@@ -4,8 +4,8 @@ import TodoItem from './TodoItem';
 interface Props {
   todos: any;
   onRemove: any;
-  courseid:any;
-  coursename:any;
+  courseid: any;
+  coursename: any;
 }
 
 const TodoItemList: FC<Props> = (props: Props) => {
@@ -33,7 +33,6 @@ const TodoItemList: FC<Props> = (props: Props) => {
         .put(`/api/course/update/${memberid}/${props.courseid}`, JSON.stringify({ name, myplaceList }), { headers })
         .then(() => {
           alert('코스가 수정되었습니다!');
-          location.reload();
         })
         .catch((error) => {});
     } else {
@@ -43,10 +42,12 @@ const TodoItemList: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="courseinputsave" style={{margin:'0', textAlign:'left'}}>
-        <form className="inputForm" style={{margin:'0'}}>
-          <input onChange={onChange} className="save_input"  value={text} placeholder={props.coursename} />
-          <button onClick={onClick} className="save_button"> save </button>
+      <div className="courseinputsave" style={{ margin: '0', textAlign: 'left' }}>
+        <form className="inputForm" style={{ margin: '0' }}>
+          <input onChange={onChange} className="save_input" value={text} placeholder={props.coursename} />
+          <button onClick={onClick} className="save_button">
+            save
+          </button>
         </form>
       </div>
     </>

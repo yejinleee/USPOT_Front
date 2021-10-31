@@ -4,14 +4,14 @@ import TodoItemList from '@components/mypage/ko/ReviseCourse/TodoItemlist';
 import TodoTitle from './TodoTitle';
 import '@components/mypage/Revisecss.scss';
 import CourseInputSave from '@components/mypage/ko/ReviseCourse/CourseInputSave';
-import Coursemap from '@components/mypage/ko/ReviseCourse/Coursemap';
+import Coursemap from '@components/mypage/ko/Course/Coursemap';
 import Likelistscroll from '@components/mypage/ko/ReviseCourse/Likelistscroll';
 import CoursemapRsp from '@components/mypage/ko/Course/CoursemapRsp';
 interface Props {
   courseid: number;
   coursename: string;
   setCourese: any;
-  setName:any;
+  setName: any;
 }
 
 const TodoTemplate: FC<Props> = (props: Props) => {
@@ -85,37 +85,40 @@ const TodoTemplate: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="coursetitle">
-        코스이름을 수정할 수 있어요
-      </div>
-      <CourseInputSave todos={todos} onRemove={onRemove} courseid={props.courseid} coursename={props.coursename}/>
+      <div className="coursetitle">코스이름을 수정할 수 있어요</div>
+      <CourseInputSave todos={todos} onRemove={onRemove} courseid={props.courseid} coursename={props.coursename} />
 
       <div className="makecourselist">
-        <TodoItemList
-          todos={todos}
-          onRemove={onRemove}
-          onClick={onClick}
-          ondeleteClick={ondeleteClick}
-        />
+        <TodoItemList todos={todos} onRemove={onRemove} onClick={onClick} ondeleteClick={ondeleteClick} />
       </div>
 
-
       <div className="myplacemap_div">
-        <div className="coursemap"  style={{ position: 'relative', width: '100%' }}>
+        <div className="coursemap" style={{ position: 'relative', width: '100%' }}>
           <Coursemap />
-          <span className="likedlist" style={{ display: 'inline-block' , position:'absolute'}}>
-           <Likelistscroll placelist={placelist} todos={todos} onClick={onClick} ondeleteClick={ondeleteClick} onRemove={onRemove} />
-         </span>
+          <span className="likedlist" style={{ display: 'inline-block', position: 'absolute' }}>
+            <Likelistscroll
+              placelist={placelist}
+              todos={todos}
+              onClick={onClick}
+              ondeleteClick={ondeleteClick}
+              onRemove={onRemove}
+            />
+          </span>
         </div>
 
         <div className="coursemap_responsive" style={{ position: 'relative', width: '100%' }}>
           <CoursemapRsp />
-          <div className="likedlist" style={{ display: 'inline-block' , position:'absolute'}}>
-            <Likelistscroll placelist={placelist} todos={todos} onClick={onClick} ondeleteClick={ondeleteClick} onRemove={onRemove}  />
+          <div className="likedlist" style={{ display: 'inline-block', position: 'absolute' }}>
+            <Likelistscroll
+              placelist={placelist}
+              todos={todos}
+              onClick={onClick}
+              ondeleteClick={ondeleteClick}
+              onRemove={onRemove}
+            />
           </div>
         </div>
       </div>
-
     </>
   );
 };
