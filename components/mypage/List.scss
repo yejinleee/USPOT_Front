@@ -135,6 +135,7 @@ button.listbtn {
   height: 18px;
 }
 
+
 //모바일 반응형
 @media (max-width: 675px) {
   .courseinputsave{
@@ -188,7 +189,7 @@ button.listbtn {
     width:100%;
     margin-left: 0;
     margin-top:2vh;
-    height: 50%;
+    height: 40%;
     position: relative !important;
 
   }
@@ -198,4 +199,9 @@ button.listbtn {
   width: 50%;
   height: 50%;
   display: inline-block;
+}
+@media (max-width: 375px) {
+  .courseinputsave {
+    text-align: end !important;
+  }
 }

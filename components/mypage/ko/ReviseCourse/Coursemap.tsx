@@ -84,10 +84,6 @@ export default function Coursemap() {
   return (
     <>
       <div id="myplacemap" style={{ width: '50%', height: '50%'}}></div>
-
-
-      {/*//원래*/}
-      {/*<div id="myplacemap" style={{ width: '35vw', height: '35vw', margin:'auto' }}></div>*/}
     </>
   )
 }
