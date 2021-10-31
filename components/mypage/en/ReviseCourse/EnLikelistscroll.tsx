@@ -9,10 +9,10 @@ interface Props {
   onRemove: any;
 }
 
-const Likelistscroll: FC<Props> = (props: Props) => {
+const EnLikelistscroll: FC<Props> = (props: Props) => {
   return (
     <>
-      <div className="Likelistname">마이플레이스 목록</div>
+      <div className="Likelistname">My Places lists</div>
       {props.placelist.map((v: string, index: number) => (
         <div className="mypagelist">
           <button className="listbtn" onClick={() => props.onClick(props.placelist[index])}>
@@ -30,4 +30,4 @@ const Likelistscroll: FC<Props> = (props: Props) => {
   );
 };
 
-export default Likelistscroll;
+export default EnLikelistscroll;

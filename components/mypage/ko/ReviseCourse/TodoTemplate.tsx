@@ -96,12 +96,8 @@ const TodoTemplate: FC<Props> = (props: Props) => {
           onRemove={onRemove}
           onClick={onClick}
           ondeleteClick={ondeleteClick}
-          // courseid={props.courseid}
-          // coursename={props.coursename}
-          // setName={props.setName}
         />
       </div>
-
 
 
       <div className="myplacemap_div">
@@ -118,8 +114,6 @@ const TodoTemplate: FC<Props> = (props: Props) => {
             <Likelistscroll placelist={placelist} todos={todos} onClick={onClick} ondeleteClick={ondeleteClick} onRemove={onRemove}  />
           </div>
         </div>
-
-
       </div>
 
     </>

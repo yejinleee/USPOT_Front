@@ -1,6 +1,7 @@
 /*global kakao */
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
+import '@components/mypage/List.scss';
 
 export default function EnCoursemap() {
   const latt = useRef(0);

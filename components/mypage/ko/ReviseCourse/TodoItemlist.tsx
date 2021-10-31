@@ -1,15 +1,9 @@
-import axios from 'axios';
 import React, { FC, useState } from 'react';
 interface Props {
   todos: any;
   onRemove: any;
   onClick:any;
   ondeleteClick:any;
-  // placeid: any;
-  // courseid:any;
-  // coursename:any;
-  // setName:any;
-
 }
 
 const TodoItemList: FC<Props> = (props: Props) => {
@@ -26,7 +20,6 @@ const TodoItemList: FC<Props> = (props: Props) => {
   }
 
   var imgsrc = './src/icon/x-mark.png';
-
 
   return (
     <>
