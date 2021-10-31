@@ -113,7 +113,7 @@ const EnCoursemap: FC<Props> = (props: Props) => {
   }
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div className="viewcourse_div" style={{ position: 'relative' }}>
       <div className="viewcoursetitle">{name}</div>
       <ul className="viewcourseul">
         {place.map((v: string, index: number) => (

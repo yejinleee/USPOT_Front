@@ -1,28 +1,28 @@
 
 .revisemyplace {
   display: block !important;
-    width: 25vw;
-    height: 25vh;
-    overflow: scroll;
-    cursor: pointer;
-    margin-left: 8vw;
-    margin-bottom: 1.5em;
-&::-webkit-scrollbar {
-     width: 0.8em;
-     height: 5%;
-     background: #ffffff;
- }
-&::-webkit-scrollbar-thumb {
-     border-radius: 3.5px;
-     background-color: #ced4da;
+  width: 25vw;
+  height: 25vh;
+  overflow: scroll;
+  cursor: pointer;
+  margin-left: 8vw;
+  margin-bottom: 1.5em;
+  &::-webkit-scrollbar {
+    width: 0.8em;
+    height: 5%;
+    background: #ffffff;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3.5px;
+    background-color: #ced4da;
 
-&:hover {
-     background-color: #adb5bd;
- }
-}
-&::-webkit-scrollbar-track {
-     background: #ffffff;
- }
+    &:hover {
+      background-color: #adb5bd;
+    }
+  }
+  &::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
 }
 
 

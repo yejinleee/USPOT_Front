@@ -1,13 +1,10 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC } from 'react';
 import TodoItemList from './TodoItemlist';
 import Likelistscroll from '@components/mypage/ko/MakeCoures/Likelistscroll';
 import '@components/mypage/List.scss';
 import Coursemap from '@components/mypage/ko/Course/Coursemap';
 import CoursemapRsp from '@components/mypage/ko/Course/CoursemapRsp';
 import CourseInputSave from '@components/mypage/ko/MakeCoures/CourseInputSave';
-import axios from 'axios';
-import Map from '@components/mypage/ko/Search/Map';
-import MapRsp from '@components/mypage/ko/Search/MapRsp';
 
 interface Props {
   placelist: any;
@@ -20,18 +17,6 @@ interface Props {
 
 const List: FC<Props> = (props: Props) => {
 
-  const [text, setText] = useState('코스');
-  var local = sessionStorage.getItem('memberid');
-  const headers = {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  };
-  try {
-    var memberid = Number(local.split('')[1]);
-  } catch {
-    var memberid = 0;
-  }
-
   return (
     <>
       <div className="coursetitle" style={{marginTop:'1em'}}>
@@ -41,12 +26,7 @@ const List: FC<Props> = (props: Props) => {
       <div className="makecourselist">
         <TodoItemList todos={props.todos} onRemove={props.onRemove} placeid={props.start} />
       </div>
-      {/*코스저장save버튼*/}
       <CourseInputSave todos={props.todos} onRemove={props.onRemove} placeid={props.start} />
-
-
-
-
 
       <div className="myplacemap_div">
         <div className="coursemap"  style={{ position: 'relative', width: '100%' }}>
@@ -63,11 +43,7 @@ const List: FC<Props> = (props: Props) => {
          </div>
         </div>
 
-
       </div>
-
-
-
     </>
   );
 };
