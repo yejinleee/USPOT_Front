@@ -226,7 +226,6 @@ const Liketop5: FC<Props> = (props: Props) => {
                 onClick={() => {
                   func(0);
                 }}
-                value="0"
               />
               <label className="tcustom">
                 {heart(0)}
