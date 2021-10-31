@@ -266,17 +266,17 @@ const Slide: FC<Props> = (props: Props) => {
           stationlist={station}
         />
       </div>
-      <div className="top5mapevent_responsive" style={{ position: 'relative', width: '100%' }}>
-        <Top5MapeventResponsive
-          top5data={top5data}
-          imageSrc={imageSrc}
-          top5name={top5name}
-          top5placeid={top5placeid}
-          placeurl={placeurl}
-          history={props.history}
-          stationlist={station}
-        />
-      </div>
+      {/*<div className="top5mapevent_responsive" style={{ position: 'relative', width: '100%' }}>*/}
+      {/*  <Top5MapeventResponsive*/}
+      {/*    top5data={top5data}*/}
+      {/*    imageSrc={imageSrc}*/}
+      {/*    top5name={top5name}*/}
+      {/*    top5placeid={top5placeid}*/}
+      {/*    placeurl={placeurl}*/}
+      {/*    history={props.history}*/}
+      {/*    stationlist={station}*/}
+      {/*  />*/}
+      {/*</div>*/}
 
       <Thumbnail
         selectedcity={props.selectedcity}

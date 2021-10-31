@@ -224,28 +224,28 @@ $framePad : 5px;
 /*    width: 100%;*/
 /*}*/
 
-.youtubemapevent{
-  margin: auto;
-  display: block;
-  padding-bottom: 10px;
-}
-.youtubemapevent_response{
-  display: none;
-}
-@media screen and (max-width: 675px) {
-  .youtubemapevent{
-    display: none;
-  }
-  .youtubemapevent_response{
-    position: relative;
-    width: 90%;
-    height: 70vh;
-    margin: auto;
-    display: block;
-    padding-bottom: 10px;
-
-  }
-}
+//.youtubemapevent{
+//  margin: auto;
+//  display: block;
+//  padding-bottom: 10px;
+//}
+//.youtubemapevent_response{
+//  display: none;
+//}
+//@media screen and (max-width: 675px) {
+//  .youtubemapevent{
+//    display: none;
+//  }
+//  .youtubemapevent_response{
+//    position: relative;
+//    width: 90%;
+//    height: 70vh;
+//    margin: auto;
+//    display: block;
+//    padding-bottom: 10px;
+//
+//  }
+//}
 #clickedvlog{
   border-bottom: 2px solid #F08080;
   padding-bottom: 3px;
