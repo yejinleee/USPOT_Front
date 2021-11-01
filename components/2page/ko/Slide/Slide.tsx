@@ -108,7 +108,7 @@ const Slide: FC<Props> = (props: Props) => {
   return (
     <>
       <div className="title">
-        <h2 style={{marginBottom:'0px', marginTop:'0.8em'}}>
+        <h2 style={{ marginBottom: '0px', marginTop: '0.8em' }}>
           {props.selectedcity}의 {props.selectedcategory} TOP5{' '}
         </h2>
       </div>

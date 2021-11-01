@@ -73,7 +73,8 @@ const YoutubeMapRsp: FC<Props> = ({ children, videoid, history }) => {
       var placePosition = new kakao.maps.LatLng(place.location_y, place.location_x),
         marker = addMarker(placePosition, i, place.categoryId);
       marker.setMap(youtubemap2);
-
+      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(youtubemap2, marker, infowindow));
+      kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
       kakao.maps.event.addListener(marker, 'click', function () {
         infowindow.setContent(`<span class="info-title">${place.name}</span>`);
         infowindow.open(youtubemap2, marker);
@@ -96,7 +97,16 @@ const YoutubeMapRsp: FC<Props> = ({ children, videoid, history }) => {
     for (let j = 0; j < place.length; j++) {
       displayMarker(place[j], j);
     }
-
+    function makeOverListener(map: any, marker: any, infowindow: { open: (arg0: any, arg1: any) => void }) {
+      return function () {
+        infowindow.open(map, marker);
+      };
+    }
+    function makeOutListener(infowindow: { close: () => void }) {
+      return function () {
+        infowindow.close();
+      };
+    }
     function addMarker(position: any, idx: any, id: any) {
       var imageSrc = `/src/icon/${id}.png`,
         imageSize = new kakao.maps.Size(36, 37),
