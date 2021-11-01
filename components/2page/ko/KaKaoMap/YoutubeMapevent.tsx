@@ -18,7 +18,7 @@ const YoutubeMapRsp: FC<Props> = ({ children, videoid, history }) => {
   const [markers, setMarkers] = useState([] as any);
   const [placeurl, setPlaceurl] = useState([] as any);
   const [vlogid, setVlogid] = useState([] as any);
-
+  const [infowindow, setInfowindow] = useState(null);
   const x = useRef(0);
   const y = useRef(0);
 
@@ -29,6 +29,7 @@ const YoutubeMapRsp: FC<Props> = ({ children, videoid, history }) => {
       level: 10,
     };
     setYoutubemap2(new kakao.maps.Map(container, options));
+    setInfowindow(new kakao.maps.InfoWindow({ zIndex: 1 }));
   }, []);
 
   useEffect(() => {
@@ -54,8 +55,8 @@ const YoutubeMapRsp: FC<Props> = ({ children, videoid, history }) => {
   }, [place]);
 
   const mapscript = () => {
+    infowindow.close();
     removeMarker();
-
     x.current = 0;
     y.current = 0;
 
@@ -63,40 +64,20 @@ const YoutubeMapRsp: FC<Props> = ({ children, videoid, history }) => {
       x.current += place[i].location_x;
       y.current += place[i].location_y;
     }
-
     var Position = new kakao.maps.LatLng(y.current / place.length, x.current / place.length);
     youtubemap2.setCenter(Position);
-
-    var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
 
     function displayMarker(place: any, i: any) {
       var placePosition = new kakao.maps.LatLng(place.location_y, place.location_x),
         marker = addMarker(placePosition, i, place.categoryId);
       marker.setMap(youtubemap2);
 
-      infowindow.setContent(`<span class="info-title">${place.name}</span>`);
-      infowindow.open(youtubemap2, marker);
-      var infoTitle = document.querySelectorAll('.info-title');
-      infoTitle.forEach(function (e: any) {
-        var w = e.offsetWidth;
-        var ml = w / 2;
-        e.parentElement.style.top = '82px';
-        e.parentElement.style.left = '50%';
-        e.parentElement.style.marginLeft = -ml + 'px';
-        e.parentElement.previousSibling.style.display = 'none';
-        e.parentElement.parentElement.style.border = '0px';
-        e.parentElement.parentElement.style.background = 'unset';
-      });
-      infowindow.close();
-      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(youtubemap2, marker, infowindow));
-      kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-
       kakao.maps.event.addListener(marker, 'click', function () {
         infowindow.setContent(`<span class="info-title">${place.name}</span>`);
         infowindow.open(youtubemap2, marker);
         var infoTitle = document.querySelectorAll('.info-title');
         infoTitle.forEach(function (e: any) {
-          var w = e.offsetWidth + 10;
+          var w = e.offsetWidth;
           var ml = w / 2;
           e.parentElement.style.top = '62px';
           e.parentElement.style.left = '50%';
@@ -113,16 +94,7 @@ const YoutubeMapRsp: FC<Props> = ({ children, videoid, history }) => {
     for (let j = 0; j < place.length; j++) {
       displayMarker(place[j], j);
     }
-    function makeOverListener(map: any, marker: any, infowindow: { open: (arg0: any, arg1: any) => void }) {
-      return function () {
-        infowindow.open(map, marker);
-      };
-    }
-    function makeOutListener(infowindow: { close: () => void }) {
-      return function () {
-        infowindow.close();
-      };
-    }
+
     function addMarker(position: any, idx: any, id: any) {
       var imageSrc = `/src/icon/${id}.png`,
         imageSize = new kakao.maps.Size(36, 37),
@@ -147,7 +119,7 @@ const YoutubeMapRsp: FC<Props> = ({ children, videoid, history }) => {
 
   return (
     <div style={{ position: 'relative' }}>
-      <div id="youtubemap" style={{ width: '100%', height: '50%' }}></div>
+      <div id="youtubemap" style={{ width: '50%', height: '40%' }}></div>
       <div className="likevlog_div">
         <LikeVlog vlogplacename={name} vlogpid={videoid} history={history} vlogplaceid={vlogid} placeurl={placeurl} />
       </div>
