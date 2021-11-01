@@ -11,6 +11,7 @@
   position: relative;
   /*transform: translate(-0vw);*/
   height: 30vw;
+  right:20%;
 }
 
 .carousel_card_item {
@@ -86,6 +87,23 @@ button#btn_now {
 .carousel_span{
   word-wrap:break-word;
 }
+.오른쪽으로{
+  position: relative;
+  right: -80%;
+  top: 30%;
+  width: 10%;
+  height: 30%;
+  opacity: -1;
+}
+.왼쪽으로{
+  position: relative;
+  left: 40%;
+  top: 30%;
+  width: 10%;
+  height: 30%;
+  opacity: -1;
+}
+
 
 .leftback {
   transform: translateX(0vw) translateY(1vh) scale(0.6);
