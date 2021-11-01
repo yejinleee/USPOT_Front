@@ -44,7 +44,8 @@ const Top5MapeventResponsive: FC<Props> = (props: Props) => {
         });
 
       marker.setMap(top5map);
-
+      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(top5map, marker, infowindow));
+      kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
       kakao.maps.event.addListener(marker, 'click', function () {
         infowindow.setContent(`<span class="info-title">${place.name}</span>`);
         infowindow.open(top5map, marker);
@@ -73,7 +74,8 @@ const Top5MapeventResponsive: FC<Props> = (props: Props) => {
         });
 
       marker.setMap(top5map);
-
+      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(top5map, marker, infowindow));
+      kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
       kakao.maps.event.addListener(marker, 'click', function () {
         infowindow.setContent(`<span class="info-title">${place.name}</span>`);
         infowindow.open(top5map, marker);
@@ -93,7 +95,17 @@ const Top5MapeventResponsive: FC<Props> = (props: Props) => {
         infowindow.open(top5map, marker);
       });
     }
+    function makeOverListener(map: any, marker: any, infowindow: { open: (arg0: any, arg1: any) => void }) {
+      return function () {
+        infowindow.open(map, marker);
+      };
+    }
 
+    function makeOutListener(infowindow: { close: () => void }) {
+      return function () {
+        infowindow.close();
+      };
+    }
     for (let i = 0; i < props.stationlist.length; i++) {
       displayMarker_s(props.stationlist[i]);
     }
