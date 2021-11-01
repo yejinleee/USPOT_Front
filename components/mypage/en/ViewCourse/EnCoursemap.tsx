@@ -28,8 +28,17 @@ const EnCoursemap: FC<Props> = (props: Props) => {
     axios
       .get(`/api/en/myplacecourse/findall/${props.courseid}`)
       .then((response) => {
-        setPlace(response.data.data);
-        setName(response.data.data[0].courseName);
+        if (response.data.data.length !== 0) {
+          setPlace(response.data.data);
+          setName(response.data.data[0].courseName);
+        } else {
+          alert('There is no place in the course. Delete the course!');
+          axios
+            .delete(`/api/en/course/delete/${props.courseid}`)
+            .then((response) => {})
+            .catch((error) => {});
+          location.reload();
+        }
       })
       .catch((error) => {});
   }, [props.courseid]);
@@ -133,8 +142,7 @@ const EnCoursemap: FC<Props> = (props: Props) => {
       <div
         id="coursemap"
         style={{ width: '60%', height: '60%', display: 'relative', margin: 'auto', marginBottom: '5px' }}
-      >
-      </div>
+      ></div>
     </div>
   );
 };

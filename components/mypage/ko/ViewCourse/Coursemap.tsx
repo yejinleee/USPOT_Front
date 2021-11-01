@@ -10,7 +10,6 @@ const Coursemap: FC<Props> = (props: Props) => {
   const [coursemap, setCoursemap] = useState(null);
   const [markers, setMarkers] = useState([] as any);
   const [name, setName] = useState();
-
   const x = useRef(0);
   const y = useRef(0);
 
@@ -28,8 +27,17 @@ const Coursemap: FC<Props> = (props: Props) => {
     axios
       .get(`/api/myplacecourse/findall/${props.courseid}`)
       .then((response) => {
-        setPlace(response.data.data);
-        setName(response.data.data[0].courseName);
+        if (response.data.data.length !== 0) {
+          setPlace(response.data.data);
+          setName(response.data.data[0].courseName);
+        } else {
+          alert('코스에 담아둔 장소가 없습니다! 코스를 삭제합니다!');
+          axios
+            .delete(`/api/course/delete/${props.courseid}`)
+            .then((response) => {})
+            .catch((error) => {});
+          location.reload();
+        }
       })
       .catch((error) => {});
   }, [props.courseid]);
@@ -115,28 +123,30 @@ const Coursemap: FC<Props> = (props: Props) => {
   }
 
   return (
-    <div className="viewcourse_div" style={{ position: 'relative' }}>
-      <div className="viewcoursetitle">{name}</div>
-      <ul className="viewcourseul">
-        {place.map((v: string, index: number) => (
-          <>
-            {index === 0 ? (
-              <>
-                <li className="viewcoruseli">{place[index].myplaceDto.name}</li>
-              </>
-            ) : (
-              <>
-                <li className="viewcoruseli">&nbsp;➜ {place[index].myplaceDto.name}</li>
-              </>
-            )}
-          </>
-        ))}
-      </ul>
-      <div
-        id="coursemap"
-        style={{ width: '60%', height: '60%', display: 'relative', margin: 'auto', marginBottom: '5px' }}
-      ></div>
-    </div>
+    <>
+      <div className="viewcourse_div" style={{ position: 'relative' }}>
+        <div className="viewcoursetitle">{name}</div>
+        <ul className="viewcourseul">
+          {place.map((v: string, index: number) => (
+            <>
+              {index === 0 ? (
+                <>
+                  <li className="viewcoruseli">{place[index].myplaceDto.name}</li>
+                </>
+              ) : (
+                <>
+                  <li className="viewcoruseli">&nbsp;➜ {place[index].myplaceDto.name}</li>
+                </>
+              )}
+            </>
+          ))}
+        </ul>
+        <div
+          id="coursemap"
+          style={{ width: '60%', height: '60%', display: 'relative', margin: 'auto', marginBottom: '5px' }}
+        ></div>
+      </div>
+    </>
   );
 };
 
