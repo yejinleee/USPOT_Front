@@ -4,7 +4,6 @@ import '@components/2page/Slide.scss';
 import axios from 'axios';
 import EnThumbnail from '@components/2page/en/Thumbnail/EnThumbnail';
 import EnTop5Mapevent from '@components/2page/en/KaKaoMap/EnTop5Mapevent';
-import EnTop5MapRsp from '@components/2page/en/KaKaoMap/EnTop5MapRsp';
 import { History, LocationState } from 'history';
 
 interface Props {
@@ -41,56 +40,55 @@ const EnSlide: FC<Props> = (props: Props) => {
   const [station, setStation] = useState([] as any);
 
   var dic: { [key: string]: number } = {
-    가평군: 1,
-    고양시: 9,
-    수원시: 11,
-    강릉시: 15,
-    춘천시: 16,
-    천안시: 33,
-    단양군: 36,
-    청주시: 37,
-    순천시: 45,
-    전주시: 57,
-    하동군: 65,
-    경주시: 73,
-    안동시: 85,
-    인천: 87,
-    대전: 88,
-    대구: 89,
-    부산: 90,
-    울산: 91,
-    광주: 92,
+    gapyeong: 1,
+    goyaong: 9,
+    suwon: 11,
+    gangneung: 15,
+    chuncheon: 16,
+    cheonan: 33,
+    danyang: 36,
+    cheongju: 37,
+    suncheon: 45,
+    jeonju: 57,
+    hadong: 65,
+    gyeongju: 73,
+    andong: 85,
+    incheon: 87,
+    daejeon: 88,
+    daegu: 89,
+    busan: 90,
+    gwangju: 92,
   };
   var dic_category: { [key: string]: number } = {
     관광명소: 1,
     음식점: 2,
     카페: 3,
   };
-  var category_kortoeng : {[key :string] : string }={
+  var category_kortoeng: { [key: string]: string } = {
     관광명소: 'attraction',
     음식점: 'restaurant',
     카페: 'cafe',
-  }
+  };
   var city_engtokor: { [key: string]: string } = {
-    가평군: 'Gapyeong',
-    고양시: 'Goyang',
-    수원시: 'Suwon',
-    강릉시: 'Gangneung',
-    춘천시: 'Chuncheon',
-    천안시: 'Cheonan',
-    단양군: 'Danyang',
-    청주시: 'Cheongju',
-    순천시: 'Suncheon',
-    전주시: 'Jeonju',
-    하동군: 'Hadong',
-    경주시: 'Gyeongju',
-    안동시: 'Andong',
-    인천: 'Incheon',
-    대전: 'Daejeon',
-    대구: 'Daegu',
-    부산: 'Busan',
-    울산: 'Ulsan',
-    광주: 'Gwangju',
+    gapyeong: 'Gapyeong',
+    goyang: 'Goyang',
+    suwon: 'Suwon',
+    gangneung: 'Gangneung',
+    chuncheon: 'Chuncheon',
+    cheonan: 'Cheonan',
+    danyang: 'Danyang',
+    cheongju: 'Cheongju',
+    suncheon: 'Suncheon',
+    jeonju: 'Jeonju',
+    hadong: 'Hadong',
+    gyeongju: 'Gyeongju',
+    andong: 'Andong',
+    incheon: 'Incheon',
+    daejeon: 'Daejeon',
+    daegu: 'Daegu',
+    busan: 'Busan',
+    ulsan: 'Ulsan',
+    gwangju: 'Gwangju',
   };
   let imageSrc = `/src/icon/${dic_category[props.selectedcategory]}.png`;
   useEffect(() => {
@@ -129,62 +127,60 @@ const EnSlide: FC<Props> = (props: Props) => {
   }, []);
   var selectedplace;
   selectedplace = top5name[btn_pic - 1];
-  function next(){
-    if(btn_pic===1){
+  function next() {
+    if (btn_pic === 1) {
       setStart(4);
-    }
-    else if(btn_pic===2){
+    } else if (btn_pic === 2) {
       setStart(3);
-    }
-    else if(btn_pic===3){
+    } else if (btn_pic === 3) {
       setStart(2);
-    }
-    else if(btn_pic===4){
+    } else if (btn_pic === 4) {
       setStart(1);
-    }
-    else if(btn_pic===5){
+    } else if (btn_pic === 5) {
       setStart(0);
     }
-    if (btn_pic===4){
+    if (btn_pic === 4) {
       setBtn_pic(5);
-    }
-    else{
-      setBtn_pic((btn_pic+1)%5);
+    } else {
+      setBtn_pic((btn_pic + 1) % 5);
     }
   }
-  function left(){
-    if(start===1){
+  function left() {
+    if (start === 1) {
       setStart(2);
-    }
-    else if(start===2){
+    } else if (start === 2) {
       setStart(3);
-    }
-    else if(start===3){
+    } else if (start === 3) {
       setStart(4);
-    }
-    else if(start===4){
+    } else if (start === 4) {
       setStart(0);
-    }
-    else if(start===0){
+    } else if (start === 0) {
       setStart(1);
     }
-    if (btn_pic===1){
+    if (btn_pic === 1) {
       setBtn_pic(5);
-    }
-    else{
-      setBtn_pic((btn_pic-1)%5);
+    } else {
+      setBtn_pic((btn_pic - 1) % 5);
     }
   }
   return (
     <>
       <div className="title">
-        <h2 style={{marginBottom:'0px', marginTop:'0.8em'}}>TOP5 of {category_kortoeng[props.selectedcategory]} in {city_engtokor[props.selectedcity]} </h2>
+        <h2 style={{ marginBottom: '0px', marginTop: '0.8em' }}>
+          TOP5 of {category_kortoeng[props.selectedcategory]} in {city_engtokor[props.selectedcity]}{' '}
+        </h2>
       </div>
       <div className="carousel">
         <div className="carousel_card">
           <div className="top5_carousel_container">
-            <button className="왼쪽으로"  onClick={left}> (( </button>
-            <button className="오른쪽으로"  onClick={next}> )) </button>
+            <button className="왼쪽으로" onClick={left}>
+              {' '}
+              (({' '}
+            </button>
+            <button className="오른쪽으로" onClick={next}>
+              {' '}
+              )){' '}
+            </button>
             <div className={imgloc[start]}>
               <div className="carousel-card-mask">
                 <img src={pic1} alt="pic" className="carousel-img" />
@@ -306,7 +302,7 @@ const EnSlide: FC<Props> = (props: Props) => {
         <button className="gotothirdbutton">
           <Link
             to={{
-              pathname: `/${props.selectedcity}/${props.selectedcategory}/more`,
+              pathname: `/${props.selectedcity}/${category_kortoeng[props.selectedcategory]}/more`,
               state: {
                 selectedplace: top5name[btn_pic - 1],
                 mapx: mapx[btn_pic - 1],
@@ -336,17 +332,6 @@ const EnSlide: FC<Props> = (props: Props) => {
           stationlist={station}
         />
       </div>
-      {/* <div className="top5mapevent_responsive" style={{ position: 'relative', width: '100%' }}>
-        <EnTop5MapRsp
-          top5data={top5data}
-          imageSrc={imageSrc}
-          top5name={top5name}
-          top5placeid={top5placeid}
-          placeurl={placeurl}
-          history={props.history}
-          stationlist={station}
-        />
-      </div> */}
 
       <EnThumbnail
         selectedcity={props.selectedcity}
