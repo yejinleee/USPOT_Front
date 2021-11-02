@@ -21,6 +21,7 @@ const Footer = () => {
           <br/>
           윤주리 dbswnfl2@naver.com
           <br/>
+          <p className="umm" style={{paddingTop:'0', color:'rgb(141 141 141'}}>추가적인 모델 학습 중이므로, 도시는 계속 업데이트 예정입니다.</p>
         </div>
         <br/>
         <br/>
