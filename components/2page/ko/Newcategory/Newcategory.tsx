@@ -1,5 +1,4 @@
 import React, { FC, useEffect,  useState } from 'react';
-import { Link } from 'react-router-dom';
 import { History, LocationState } from 'history';
 import Slide from '@components/2page/ko/Slide/Slide';
 import EnSlide from '@components/2page/en/Slide/EnSlide';

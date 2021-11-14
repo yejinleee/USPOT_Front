@@ -1,5 +1,5 @@
-import React, { FC, memo, useEffect, useMemo, useState } from 'react';
-import { Link, Route, RouteChildrenProps } from 'react-router-dom';
+import React, { FC, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../../Slide.scss';
 import Thumbnail from '@components/2page/ko/Thumbnail/Thumbnail';
 import axios from 'axios';
@@ -21,13 +21,11 @@ const Slide: FC<Props> = (props: Props) => {
   const [btn_pic, setBtn_pic] = useState(1);
   const [start, setStart] = useState(0);
 
-  const [imgloc, setImgloc] = useState([
-    'carousel_card_item center',
+  var imgloc = ['carousel_card_item center',
     'carousel_card_item right',
     'carousel_card_item leftback',
     'carousel_card_item rightback',
-    'carousel_card_item left',
-  ]);
+    'carousel_card_item left']
 
   const [top5name, setTop5name] = useState([] as any);
   const [top5phone, setTop5phone] = useState([] as any);

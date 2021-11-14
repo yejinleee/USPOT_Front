@@ -1,5 +1,3 @@
-/*global kakao */
-import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import '../../Top5Mapevent.css';
 import Liketop5 from '@components/2page/ko/Like/Liketop5';
