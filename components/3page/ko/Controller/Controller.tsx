@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import '@components/3page/Controller.scss';
 import Tourapilist from '@components/3page/ko/LikeTourapi/LikeTourapi';
 import { History, LocationState } from 'history';
-import { Link } from 'react-router-dom';
+
 interface Props {
   mapx: any;
   mapy: any;
