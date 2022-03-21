@@ -578,31 +578,29 @@ const Toggle = () => {
   }
 
   const gyeongi_list = gyeongi.city.map((v: string, index: number) => (
-    <>
-      <div
-        id={v}
-        key={index}
-        className="citylist"
-        onClick={() => {
-          setMap(gyeongi.city[index].city_link);
-          setSelectedcity(gyeongi.city[index].city_name);
-        }}
+    <div
+      id={v}
+      key={index}
+      className="citylist"
+      onClick={() => {
+        setMap(gyeongi.city[index].city_link);
+        setSelectedcity(gyeongi.city[index].city_name);
+      }}
+    >
+      <li
+        className="city_li"
+        style={map === gyeongi.city[index].city_link ? { fontSize: '1.2em', fontWeight: 'bolder' } : { fontSize: '' }}
       >
-        <li
-          className="city_li"
-          style={map === gyeongi.city[index].city_link ? { fontSize: '1.2em', fontWeight: 'bolder' } : { fontSize: '' }}
-        >
-          {gyeongi.city[index].city_name}
-        </li>
-        {map === gyeongi.city[index].city_link && (
-          <ul className="station_ul">
-            {gyeongi.city[index].station.map((li: any) => (
-              <li className="station_li">{li}</li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </>
+        {gyeongi.city[index].city_name}
+      </li>
+      {map === gyeongi.city[index].city_link && (
+        <ul className="station_ul">
+          {gyeongi.city[index].station.map((li: any) => (
+            <li className="station_li" key={li}>{li}</li>
+          ))}
+        </ul>
+      )}
+    </div>
   ));
   const gangwon_list = gangwon.city.map((v: string, index: number) => (
     <div
@@ -620,7 +618,7 @@ const Toggle = () => {
       {map === gangwon.city[index].city_link && (
         <ul className="station_ul">
           {gangwon.city[index].station.map((li: any) => (
-            <li className="station_li">{li}</li>
+            <li className="station_li" key={li}>{li}</li>
           ))}
         </ul>
       )}
@@ -642,7 +640,7 @@ const Toggle = () => {
       {map === chungnam.city[index].city_link && (
         <ul className="station_ul">
           {chungnam.city[index].station.map((li: any) => (
-            <li className="station_li">{li}</li>
+            <li className="station_li" key={li}>{li}</li>
           ))}
         </ul>
       )}
@@ -664,7 +662,7 @@ const Toggle = () => {
       {map === chungbuk.city[index].city_link && (
         <ul className="station_ul">
           {chungbuk.city[index].station.map((li: any) => (
-            <li className="station_li">{li}</li>
+            <li className="station_li" key={li}>{li}</li>
           ))}
         </ul>
       )}
@@ -686,7 +684,7 @@ const Toggle = () => {
       {map === jeonnam.city[index].city_link && (
         <ul className="station_ul">
           {jeonnam.city[index].station.map((li: any) => (
-            <li className="station_li">{li}</li>
+            <li className="station_li" key={li}>{li}</li>
           ))}
         </ul>
       )}
@@ -708,7 +706,7 @@ const Toggle = () => {
       {map === jeonbuk.city[index].city_link && (
         <ul className="station_ul">
           {jeonbuk.city[index].station.map((li: any) => (
-            <li className="station_li">{li}</li>
+            <li className="station_li" key={li}>{li}</li>
           ))}
         </ul>
       )}
@@ -733,7 +731,7 @@ const Toggle = () => {
       {map === gyeongnam.city[index].city_link && (
         <ul className="station_ul">
           {gyeongnam.city[index].station.map((li: any) => (
-            <li className="station_li">{li}</li>
+            <li className="station_li" key={li}>{li}</li>
           ))}
         </ul>
       )}
@@ -758,7 +756,7 @@ const Toggle = () => {
       {map === gyeongbuk.city[index].city_link && (
         <ul className="station_ul">
           {gyeongbuk.city[index].station.map((li: any) => (
-            <li className="station_li">{li}</li>
+            <li className="station_li" key={li}>{li}</li>
           ))}
         </ul>
       )}
@@ -780,7 +778,7 @@ const Toggle = () => {
       {map === incheon.city[index].city_link && (
         <ul className="station_ul">
           {incheon.city[index].station.map((li: any) => (
-            <li className="station_li">{li}</li>
+            <li className="station_li" key={li}>{li}</li>
           ))}
         </ul>
       )}
@@ -802,7 +800,7 @@ const Toggle = () => {
       {map === daejeon.city[index].city_link && (
         <ul className="station_ul">
           {daejeon.city[index].station.map((li: any) => (
-            <li className="station_li">{li}</li>
+            <li className="station_li" key={li}>{li}</li>
           ))}
         </ul>
       )}
@@ -824,7 +822,7 @@ const Toggle = () => {
       {map === daegu.city[index].city_link && (
         <ul className="station_ul">
           {daegu.city[index].station.map((li: any) => (
-            <li className="station_li">{li}</li>
+            <li className="station_li" key={li}>{li}</li>
           ))}
         </ul>
       )}
@@ -846,7 +844,7 @@ const Toggle = () => {
       {map === busan.city[index].city_link && (
         <ul className="station_ul">
           {busan.city[index].station.map((li: any) => (
-            <li className="station_li">{li}</li>
+            <li className="station_li" key={li}>{li}</li>
           ))}
         </ul>
       )}
@@ -868,7 +866,7 @@ const Toggle = () => {
       {map === gwangju.city[index].city_link && (
         <ul className="station_ul">
           {gwangju.city[index].station.map((li: any) => (
-            <li className="station_li">{li}</li>
+            <li className="station_li" key={li}>{li}</li>
           ))}
         </ul>
       )}

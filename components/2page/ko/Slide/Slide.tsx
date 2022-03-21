@@ -86,7 +86,7 @@ const Slide: FC<Props> = (props: Props) => {
   useEffect(() => {
     axios
       .get(
-        `/api/place/findtop5/${dic[props.selectedcity]}/${dic_category[props.selectedcategory]}`)
+        process.env.REACT_APP_DB_HOST + `/api/place/findtop5/${dic[props.selectedcity]}/${dic_category[props.selectedcategory]}`)
       .then(async (response) => {
         setTop5data(response.data.data);
         for (var i = 0; i < 5; i++) {
