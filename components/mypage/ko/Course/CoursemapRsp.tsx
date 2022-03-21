@@ -17,7 +17,7 @@ export default function CoursemapRsp() {
 
   useEffect(() => {
     axios
-      .get(`/api/myplace/findall/${memberid}`)
+      .get(process.env.REACT_APP_DB_HOST + `/api/myplace/findall/${memberid}`)
       .then(async (response) => {
         setMyplace(response.data.data);
       })

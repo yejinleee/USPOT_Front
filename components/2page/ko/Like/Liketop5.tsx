@@ -27,7 +27,7 @@ const Liketop5: FC<Props> = (props: Props) => {
   useEffect(() => {
     if (memberid !== 0) {
       axios
-        .get(`/api/myplace/findall/${memberid}`)
+        .get(process.env.REACT_APP_DB_HOST + `/api/myplace/findall/${memberid}`)
         .then(async (response) => {
           for (var i = 0; i < response.data.data.length; i++) {
             setDblikedlist((prev: any) => [...prev, response.data.data[i].placeId]);
@@ -45,7 +45,7 @@ const Liketop5: FC<Props> = (props: Props) => {
     } else {
       axios
         .post(
-          `/api/myplace/add/${memberid}/${props.top5placeid[e]}`,
+          process.env.REACT_APP_DB_HOST + `/api/myplace/add/${memberid}/${props.top5placeid[e]}`,
           { memberid, ethplaceid },
           { withCredentials: true },
         )
@@ -55,7 +55,7 @@ const Liketop5: FC<Props> = (props: Props) => {
   }
   function func_delete(e: number) {
     axios
-      .delete(`/api/myplace/deletebyplace/${memberid}/${props.top5placeid[e]}`)
+      .delete(process.env.REACT_APP_DB_HOST + `/api/myplace/deletebyplace/${memberid}/${props.top5placeid[e]}`)
       .then(() => {})
       .catch((error) => {});
   }

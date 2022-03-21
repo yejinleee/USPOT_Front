@@ -123,7 +123,7 @@ const Toggle = () => {
 
   useEffect(() => {
     axios
-      .get('/api/province/findall')
+      .get(process.env.REACT_APP_DB_HOST + '/api/province/findall')
       .then((response) => {
         for (var i = 0; i < response.data.data.length; i++) {
           setIndex(i);

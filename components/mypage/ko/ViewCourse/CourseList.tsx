@@ -18,7 +18,7 @@ const CourseList = () => {
   useEffect(() => {
     setCourese([]);
     axios
-      .get(`/api/course/findall/${memberid}`)
+      .get(process.env.REACT_APP_DB_HOST + `/api/course/findall/${memberid}`)
       .then(async (response) => {
         setCourese(response.data.data);
       })
@@ -28,13 +28,13 @@ const CourseList = () => {
   const onClick = (id: number) => {
     if (window.confirm('코스를 삭제 하시겠습니까?')) {
       axios
-        .delete(`/api/course/delete/${id}`)
+        .delete(process.env.REACT_APP_DB_HOST + `/api/course/delete/${id}`)
         .then((response) => {})
         .catch((error) => {});
       alert('코스가 삭제 되었습니다!');
     }
     axios
-      .get(`/api/course/findall/${memberid}`)
+      .get(process.env.REACT_APP_DB_HOST + `/api/course/findall/${memberid}`)
       .then(async (response) => {
         setCourese(response.data.data);
       })

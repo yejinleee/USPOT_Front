@@ -30,7 +30,9 @@ const TodoItemList: FC<Props> = (props: Props) => {
     var myplaceList = props.todos;
     if (myplaceList.length !== 0) {
       axios
-        .put(`/api/course/update/${memberid}/${props.courseid}`, JSON.stringify({ name, myplaceList }), { headers })
+        .put(
+          process.env.REACT_APP_DB_HOST + `/api/course/update/${memberid}/${props.courseid}`,
+          JSON.stringify({ name, myplaceList }), { headers })
         .then(() => {
           alert('코스가 수정되었습니다!');
         })

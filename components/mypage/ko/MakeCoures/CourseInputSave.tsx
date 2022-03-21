@@ -30,7 +30,7 @@ const CourseInputSave: FC<Props> = (props: Props) => {
 
     if (myplaceList.length !== 0) {
       axios
-        .post(`/api/course/add/${memberid}`, JSON.stringify({ name, myplaceList }), { headers })
+        .post(process.env.REACT_APP_DB_HOST + `/api/course/add/${memberid}`, JSON.stringify({ name, myplaceList }), {headers })
         .then(() => {})
         .catch((error) => {});
 

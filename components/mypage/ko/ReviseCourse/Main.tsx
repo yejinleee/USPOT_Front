@@ -18,7 +18,7 @@ const Main = () => {
   useEffect(() => {
     setCourese([]);
     axios
-      .get(`/api/course/findall/${memberid}`)
+      .get(process.env.REACT_APP_DB_HOST + `/api/course/findall/${memberid}`)
       .then(async (response) => {
         setCourese(response.data.data);
       })

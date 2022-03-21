@@ -98,7 +98,7 @@ const LikeTourapi: FC<Props> = (props: Props) => {
     } else {
       axios
         .post(
-          `/api/myplace/addfromapi/${memberid}`,
+          process.env.REACT_APP_DB_HOST + `/api/myplace/addfromapi/${memberid}`,
           JSON.stringify({ name, category, location_x, location_y, address, placeId }),
           { headers },
         )
@@ -111,7 +111,7 @@ const LikeTourapi: FC<Props> = (props: Props) => {
 
   function func_delete(e: number) {
     axios
-      .delete(`/api/myplace/deletebymyplace/${memberid}/${placeid[e]}`)
+      .delete(process.env.REACT_APP_DB_HOST + `/api/myplace/deletebymyplace/${memberid}/${placeid[e]}`)
       .then(() => {})
       .catch((error) => {});
   }

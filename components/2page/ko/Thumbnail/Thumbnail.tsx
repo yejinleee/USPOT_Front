@@ -44,7 +44,7 @@ const Thumbnail: FC<Props> = ({ children, selectedcity, selectedcategory, btn_pi
   useEffect(() => {
     setVloglist([]);
     axios
-      .get(`/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`)
+      .get(process.env.REACT_APP_DB_HOST + `/api/place/findtop5/${dic[selectedcity]}/${dic_category[selectedcategory]}`)
       .then((response) => {
         if (response.data.data[btn_pic - 1].vlog_list.length >= 5) {
           var number = 5;

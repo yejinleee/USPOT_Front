@@ -34,7 +34,7 @@ const TodoTemplate: FC<Props> = (props: Props) => {
 
     axios
       .post(
-        `/api/myplace/addfromstart/${memberid}`,
+        process.env.REACT_APP_DB_HOST + `/api/myplace/addfromstart/${memberid}`,
         JSON.stringify({ name, category, location_x, location_y, address, placeId }),
         { headers },
       )
@@ -49,7 +49,7 @@ const TodoTemplate: FC<Props> = (props: Props) => {
 
   useEffect(() => {
     axios
-      .get(`/api/myplace/findall/${memberid}`)
+      .get(process.env.REACT_APP_DB_HOST + `/api/myplace/findall/${memberid}`)
       .then(async (response) => {
         setPlacelist(response.data.data);
       })
@@ -71,7 +71,9 @@ const TodoTemplate: FC<Props> = (props: Props) => {
     var myplaceid = list.id;
     setPlacelist(placelist.filter((place: any) => place.id !== myplaceid));
     setTodos(todos.filter((place: any) => place.id !== myplaceid));
-    axios.delete(`/api/myplace/deletebymyplace/${memberid}/${myplaceid}`).catch((error) => {});
+    axios
+      .delete(process.env.REACT_APP_DB_HOST + `/api/myplace/deletebymyplace/${memberid}/${myplaceid}`)
+      .catch((error) => {});
   };
 
   const onRemove = (id: number) => {

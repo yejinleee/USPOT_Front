@@ -28,7 +28,7 @@ const TodoTemplate: FC<Props> = (props: Props) => {
 
   useEffect(() => {
     axios
-      .get(`/api/myplace/findall/${memberid}`)
+      .get(process.env.REACT_APP_DB_HOST + `/api/myplace/findall/${memberid}`)
       .then((response) => {
         for (var i = 0; i < response.data.data.length; i++) {
           setPlacelist(response.data.data);
@@ -42,7 +42,7 @@ const TodoTemplate: FC<Props> = (props: Props) => {
     setTodos([]);
     setIndex([]);
     axios
-      .get(`/api/myplacecourse/findall/${props.courseid}`)
+      .get(process.env.REACT_APP_DB_HOST + `/api/myplacecourse/findall/${props.courseid}`)
       .then(async (response) => {
         for (var i = 0; i < response.data.data.length; i++) {
           setTodos((prev: any) => [...prev, response.data.data[i].myplaceDto]);
@@ -66,7 +66,9 @@ const TodoTemplate: FC<Props> = (props: Props) => {
     var myplaceid = list.id;
     setPlacelist(placelist.filter((place: any) => place.id !== myplaceid));
     setTodos(todos.filter((place: any) => place.id !== myplaceid));
-    axios.delete(`/api/myplace/deletebymyplace/${memberid}/${myplaceid}`).catch((error) => {});
+    axios
+      .delete(process.env.REACT_APP_DB_HOST + `/api/myplace/deletebymyplace/${memberid}/${myplaceid}`)
+      .catch((error) => {});
   };
 
   const likedlist: any = namelist.map((v: string, index: number) => (

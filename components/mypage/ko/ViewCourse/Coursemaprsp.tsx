@@ -26,7 +26,7 @@ const Coursemaprsp: FC<Props> = (props: Props) => {
   useEffect(() => {
     setPlace([]);
     axios
-      .get(`/api/myplacecourse/findall/${props.courseid}`)
+      .get(process.env.REACT_APP_DB_HOST + `/api/myplacecourse/findall/${props.courseid}`)
       .then((response) => {
         if (response.data.data.length !== 0) {
           setPlace(response.data.data);
@@ -34,7 +34,7 @@ const Coursemaprsp: FC<Props> = (props: Props) => {
         } else {
           alert('코스에 담아둔 장소가 없습니다! 코스를 삭제합니다!');
           axios
-            .delete(`/api/course/delete/${props.courseid}`)
+            .delete(process.env.REACT_APP_DB_HOST + `/api/course/delete/${props.courseid}`)
             .then((response) => {})
             .catch((error) => {});
           location.reload();
