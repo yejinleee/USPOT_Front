@@ -1,11 +1,10 @@
-import React, { FC, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, Route } from 'react-router-dom';
 import axios from 'axios';
 import '@components/1page/Toggle.scss';
 import Container from '@components/1page/ko/Container/Container';
 
 const Toggle = () => {
-  const [selectedcategory, setSelectedcategory] = useState('안');
   const [selectedcity, setSelectedcity] = useState('없음'); //선택된도시 props로 넘겨주려고
 
   const [map, setMap] = useState('src/지도.png');
@@ -24,6 +23,22 @@ const Toggle = () => {
   const [busantoggle, setBusantoggle] = useState(false);
   const [gwangjutoggle, setGwangjutoggle] = useState(false);
 
+  const [defaultCity, setDefaultCity ]= useState({
+    id: '',
+    name: '',
+    link: '',
+    city: [],
+  } as any);
+  function settingCity(eachCity:any,eachindex:any,stationlist:any){
+    if (eachCity.id != '') {
+      if (flag) {
+        if (stationlist != '') {
+          eachCity.city[eachindex.current].station = stationlist;
+          eachindex.current += 1;
+        }
+      }
+    }
+  }
   const [gyeongi, setGyeongi] = useState({
     id: '',
     name: '',
@@ -121,6 +136,13 @@ const Toggle = () => {
   const busanindex = useRef(0);
   const gwangjuindex = useRef(0);
 
+  function setEachDistrct(response:any,i:number,j:number){
+    setStationlist([]);
+    setFlag(false);
+    for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
+      setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+    }
+  }
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_DB_HOST + '/api/province/findall')
@@ -129,11 +151,7 @@ const Toggle = () => {
           setIndex(i);
           if (i === 0) {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-              setStationlist([]);
-              setFlag(false);
-              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
-              }
+              setEachDistrct(response,i,j);
               setGyeongi((prev: any) => ({
                 ...prev,
                 id: i + 1,
@@ -154,11 +172,7 @@ const Toggle = () => {
             setFlag(false);
           } else if (i === 1) {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-              setStationlist([]);
-              setFlag(false);
-              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
-              }
+              setEachDistrct(response,i,j);
               setGangwon((prev: any) => ({
                 ...prev,
                 id: i + 1,
@@ -179,11 +193,7 @@ const Toggle = () => {
             setFlag(false);
           } else if (i === 2) {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-              setStationlist([]);
-              setFlag(false);
-              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
-              }
+              setEachDistrct(response,i,j);
               setChungnam((prev: any) => ({
                 ...prev,
                 id: i + 1,
@@ -204,11 +214,7 @@ const Toggle = () => {
             setFlag(false);
           } else if (i === 3) {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-              setStationlist([]);
-              setFlag(false);
-              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
-              }
+              setEachDistrct(response,i,j);
               setChungbuk((prev: any) => ({
                 ...prev,
                 id: i + 1,
@@ -229,11 +235,7 @@ const Toggle = () => {
             setFlag(false);
           } else if (i === 4) {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-              setStationlist([]);
-              setFlag(false);
-              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
-              }
+              setEachDistrct(response,i,j);
               setJeonnam((prev: any) => ({
                 ...prev,
                 id: i + 1,
@@ -254,11 +256,7 @@ const Toggle = () => {
             setFlag(false);
           } else if (i === 5) {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-              setStationlist([]);
-              setFlag(false);
-              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
-              }
+              setEachDistrct(response,i,j);
               setJeonbuk((prev: any) => ({
                 ...prev,
                 id: i + 1,
@@ -279,11 +277,7 @@ const Toggle = () => {
             setFlag(false);
           } else if (i === 6) {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-              setStationlist([]);
-              setFlag(false);
-              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
-              }
+              setEachDistrct(response,i,j);
               setGyeongnam((prev: any) => ({
                 ...prev,
                 id: i + 1,
@@ -304,11 +298,7 @@ const Toggle = () => {
             setFlag(false);
           } else if (i === 7) {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-              setStationlist([]);
-              setFlag(false);
-              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
-              }
+              setEachDistrct(response,i,j);
               setGyeongbuk((prev: any) => ({
                 ...prev,
                 id: i + 1,
@@ -329,11 +319,7 @@ const Toggle = () => {
             setFlag(false);
           } else if (i === 8) {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-              setStationlist([]);
-              setFlag(false);
-              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
-              }
+              setEachDistrct(response,i,j);
               setIncheon((prev: any) => ({
                 ...prev,
                 id: i + 1,
@@ -354,11 +340,7 @@ const Toggle = () => {
             setFlag(false);
           } else if (i === 9) {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-              setStationlist([]);
-              setFlag(false);
-              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
-              }
+              setEachDistrct(response,i,j);
               setDajeon((prev: any) => ({
                 ...prev,
                 id: i + 1,
@@ -379,11 +361,7 @@ const Toggle = () => {
             setFlag(false);
           } else if (i === 10) {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-              setStationlist([]);
-              setFlag(false);
-              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
-              }
+              setEachDistrct(response,i,j);
               setDaegu((prev: any) => ({
                 ...prev,
                 id: i + 1,
@@ -404,11 +382,7 @@ const Toggle = () => {
             setFlag(false);
           } else if (i === 11) {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-              setStationlist([]);
-              setFlag(false);
-              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
-              }
+              setEachDistrct(response,i,j);
               setBusan((prev: any) => ({
                 ...prev,
                 id: i + 1,
@@ -429,11 +403,7 @@ const Toggle = () => {
             setFlag(false);
           } else {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
-              setStationlist([]);
-              setFlag(false);
-              for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-                setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
-              }
+              setEachDistrct(response,i,j);
               setGwangju((prev: any) => ({
                 ...prev,
                 id: i + 1,
@@ -463,10 +433,14 @@ const Toggle = () => {
       if (flag) {
         if (stationlist != '') {
           gyeongi.city[gyeongiindex.current].station = stationlist;
+          // console.log(gyeongi.city[gyeongiindex.current].station);
           gyeongiindex.current += 1;
+          // console.log("성공");
+
         }
       }
     }
+    // settingCity(gyeongi,gyeongiindex,stationlist);
   } else if (index === 1) {
     if (gangwon.id != '') {
       if (flag) {
@@ -925,7 +899,6 @@ const Toggle = () => {
         </div>
 
         <Container
-          selectedcategory={selectedcategory}
           selectedcity={selectedcity}
           setGyeongitoggle={setGyeongitoggle}
           setGangwontoggle={setGangwontoggle}
