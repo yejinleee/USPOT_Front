@@ -36,6 +36,7 @@ const Toggle = () => {
           eachCity.city[eachindex.current].station = stationlist;
           eachindex.current += 1;
         }
+        console.log("함수");
       }
     }
   }
@@ -120,7 +121,7 @@ const Toggle = () => {
 
   const [stationlist, setStationlist] = useState([] as any);
   const [flag, setFlag] = useState(false);
-  const [index, setIndex] = useState(0);
+  const districtIndex= useRef(0);
 
   const gyeongiindex = useRef(0);
   const gangwonindex = useRef(0);
@@ -148,7 +149,7 @@ const Toggle = () => {
       .get(process.env.REACT_APP_DB_HOST + '/api/province/findall')
       .then((response) => {
         for (var i = 0; i < response.data.data.length; i++) {
-          setIndex(i);
+          districtIndex.current = i;
           if (i === 0) {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
               setEachDistrct(response,i,j);
@@ -428,29 +429,30 @@ const Toggle = () => {
       .catch((error) => {});
   }, []);
 
-  if (index === 0) {
-    if (gyeongi.id != '') {
-      if (flag) {
-        if (stationlist != '') {
-          gyeongi.city[gyeongiindex.current].station = stationlist;
-          // console.log(gyeongi.city[gyeongiindex.current].station);
-          gyeongiindex.current += 1;
-          // console.log("성공");
+  if (districtIndex.current === 0) {
+    // if (gyeongi.id != '') {
+    //   if (flag) {
+    //     if (stationlist != '') {
+    //       gyeongi.city[gyeongiindex.current].station = stationlist;
+    //       gyeongiindex.current += 1;
+    //       console.log("성공");
+    //
+    //     }
+    //   }
+    // }
+    settingCity(gyeongi,gyeongiindex,stationlist);
+  } else if (districtIndex.current === 1) {
+    // if (gangwon.id != '') {
+    //   if (flag) {
+    //     if (stationlist != '') {
+    //       gangwon.city[gangwonindex.current].station = stationlist;
+    //       gangwonindex.current += 1;
+    //     }
+    //   }
+    // }
+    settingCity(gangwon,gangwonindex,stationlist);
 
-        }
-      }
-    }
-    // settingCity(gyeongi,gyeongiindex,stationlist);
-  } else if (index === 1) {
-    if (gangwon.id != '') {
-      if (flag) {
-        if (stationlist != '') {
-          gangwon.city[gangwonindex.current].station = stationlist;
-          gangwonindex.current += 1;
-        }
-      }
-    }
-  } else if (index === 2) {
+  } else if (districtIndex.current === 2) {
     if (chungnam.id != '') {
       if (flag) {
         if (stationlist != '') {
@@ -459,7 +461,7 @@ const Toggle = () => {
         }
       }
     }
-  } else if (index === 3) {
+  } else if (districtIndex.current === 3) {
     if (chungbuk.id != '') {
       if (flag) {
         if (stationlist != '') {
@@ -468,7 +470,7 @@ const Toggle = () => {
         }
       }
     }
-  } else if (index === 4) {
+  } else if (districtIndex.current === 4) {
     if (jeonnam.id != '') {
       if (flag) {
         if (stationlist != '') {
@@ -477,7 +479,7 @@ const Toggle = () => {
         }
       }
     }
-  } else if (index === 5) {
+  } else if (districtIndex.current === 5) {
     if (jeonbuk.id != '') {
       if (flag) {
         if (stationlist != '') {
@@ -486,7 +488,7 @@ const Toggle = () => {
         }
       }
     }
-  } else if (index === 6) {
+  } else if (districtIndex.current === 6) {
     if (gyeongnam.id != '') {
       if (flag) {
         if (stationlist != '') {
@@ -495,7 +497,7 @@ const Toggle = () => {
         }
       }
     }
-  } else if (index === 7) {
+  } else if (districtIndex.current === 7) {
     if (gyeongbuk.id != '') {
       if (flag) {
         if (stationlist != '') {
@@ -504,7 +506,7 @@ const Toggle = () => {
         }
       }
     }
-  } else if (index === 8) {
+  } else if (districtIndex.current === 8) {
     if (incheon.id != '') {
       if (flag) {
         if (stationlist != '') {
@@ -513,7 +515,7 @@ const Toggle = () => {
         }
       }
     }
-  } else if (index === 9) {
+  } else if (districtIndex.current === 9) {
     if (daejeon.id != '') {
       if (flag) {
         if (stationlist != '') {
@@ -522,7 +524,7 @@ const Toggle = () => {
         }
       }
     }
-  } else if (index === 10) {
+  } else if (districtIndex.current === 10) {
     if (daegu.id != '') {
       if (flag) {
         if (stationlist != '') {
@@ -531,7 +533,7 @@ const Toggle = () => {
         }
       }
     }
-  } else if (index === 11) {
+  } else if (districtIndex.current === 11) {
     if (busan.id != '') {
       if (flag) {
         if (stationlist != '') {
