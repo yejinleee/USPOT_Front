@@ -23,20 +23,14 @@ const Toggle = () => {
   const [busantoggle, setBusantoggle] = useState(false);
   const [gwangjutoggle, setGwangjutoggle] = useState(false);
 
-  const [defaultCity, setDefaultCity ]= useState({
-    id: '',
-    name: '',
-    link: '',
-    city: [],
-  } as any);
-  function settingCity(eachCity:any,eachindex:any,stationlist:any){
+
+  function settingCity(eachCity:any,eachIndex:any,stationList:any){
     if (eachCity.id != '') {
       if (flag) {
-        if (stationlist != '') {
-          eachCity.city[eachindex.current].station = stationlist;
-          eachindex.current += 1;
+        if (stationList != '') {
+          eachCity.city[eachIndex.current].station = stationList;
+          eachIndex.current += 1;
         }
-        console.log("함수");
       }
     }
   }
@@ -119,7 +113,7 @@ const Toggle = () => {
     city: [],
   } as any);
 
-  const [stationlist, setStationlist] = useState([] as any);
+  const [stationList, setStationList] = useState([] as any);
   const [flag, setFlag] = useState(false);
   const districtIndex= useRef(0);
 
@@ -138,17 +132,17 @@ const Toggle = () => {
   const gwangjuindex = useRef(0);
 
   function setEachDistrct(response:any,i:number,j:number){
-    setStationlist([]);
+    setStationList([]);
     setFlag(false);
     for (var k = 0; k < response.data.data[i].cityList[j].stationList.length; k++) {
-      setStationlist((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
+      setStationList((prev: any) => [...prev, response.data.data[i].cityList[j].stationList[k].name]);
     }
   }
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_DB_HOST + '/api/province/findall')
       .then((response) => {
-        for (var i = 0; i < response.data.data.length; i++) {
+        for (let i = 0; i < response.data.data.length; i++) {
           districtIndex.current = i;
           if (i === 0) {
             for (var j = 0; j < response.data.data[i].cityList.length; j++) {
@@ -172,7 +166,7 @@ const Toggle = () => {
             }
             setFlag(false);
           } else if (i === 1) {
-            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            for (j = 0; j < response.data.data[i].cityList.length; j++) {
               setEachDistrct(response,i,j);
               setGangwon((prev: any) => ({
                 ...prev,
@@ -193,7 +187,7 @@ const Toggle = () => {
             }
             setFlag(false);
           } else if (i === 2) {
-            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            for (j = 0; j < response.data.data[i].cityList.length; j++) {
               setEachDistrct(response,i,j);
               setChungnam((prev: any) => ({
                 ...prev,
@@ -214,7 +208,7 @@ const Toggle = () => {
             }
             setFlag(false);
           } else if (i === 3) {
-            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            for (j = 0; j < response.data.data[i].cityList.length; j++) {
               setEachDistrct(response,i,j);
               setChungbuk((prev: any) => ({
                 ...prev,
@@ -235,7 +229,7 @@ const Toggle = () => {
             }
             setFlag(false);
           } else if (i === 4) {
-            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            for (j = 0; j < response.data.data[i].cityList.length; j++) {
               setEachDistrct(response,i,j);
               setJeonnam((prev: any) => ({
                 ...prev,
@@ -256,7 +250,7 @@ const Toggle = () => {
             }
             setFlag(false);
           } else if (i === 5) {
-            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            for (j = 0; j < response.data.data[i].cityList.length; j++) {
               setEachDistrct(response,i,j);
               setJeonbuk((prev: any) => ({
                 ...prev,
@@ -277,7 +271,7 @@ const Toggle = () => {
             }
             setFlag(false);
           } else if (i === 6) {
-            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            for (j = 0; j < response.data.data[i].cityList.length; j++) {
               setEachDistrct(response,i,j);
               setGyeongnam((prev: any) => ({
                 ...prev,
@@ -298,7 +292,7 @@ const Toggle = () => {
             }
             setFlag(false);
           } else if (i === 7) {
-            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            for (j = 0; j < response.data.data[i].cityList.length; j++) {
               setEachDistrct(response,i,j);
               setGyeongbuk((prev: any) => ({
                 ...prev,
@@ -319,7 +313,7 @@ const Toggle = () => {
             }
             setFlag(false);
           } else if (i === 8) {
-            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            for (j = 0; j < response.data.data[i].cityList.length; j++) {
               setEachDistrct(response,i,j);
               setIncheon((prev: any) => ({
                 ...prev,
@@ -340,7 +334,7 @@ const Toggle = () => {
             }
             setFlag(false);
           } else if (i === 9) {
-            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            for (j = 0; j < response.data.data[i].cityList.length; j++) {
               setEachDistrct(response,i,j);
               setDajeon((prev: any) => ({
                 ...prev,
@@ -361,7 +355,7 @@ const Toggle = () => {
             }
             setFlag(false);
           } else if (i === 10) {
-            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            for (j = 0; j < response.data.data[i].cityList.length; j++) {
               setEachDistrct(response,i,j);
               setDaegu((prev: any) => ({
                 ...prev,
@@ -382,7 +376,7 @@ const Toggle = () => {
             }
             setFlag(false);
           } else if (i === 11) {
-            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            for (j = 0; j < response.data.data[i].cityList.length; j++) {
               setEachDistrct(response,i,j);
               setBusan((prev: any) => ({
                 ...prev,
@@ -403,7 +397,7 @@ const Toggle = () => {
             }
             setFlag(false);
           } else {
-            for (var j = 0; j < response.data.data[i].cityList.length; j++) {
+            for (j = 0; j < response.data.data[i].cityList.length; j++) {
               setEachDistrct(response,i,j);
               setGwangju((prev: any) => ({
                 ...prev,
@@ -432,31 +426,31 @@ const Toggle = () => {
   if (districtIndex.current === 0) {
     // if (gyeongi.id != '') {
     //   if (flag) {
-    //     if (stationlist != '') {
-    //       gyeongi.city[gyeongiindex.current].station = stationlist;
+    //     if (stationList != '') {
+    //       gyeongi.city[gyeongiindex.current].station = stationList;
     //       gyeongiindex.current += 1;
     //       console.log("성공");
     //
     //     }
     //   }
     // }
-    settingCity(gyeongi,gyeongiindex,stationlist);
+    settingCity(gyeongi,gyeongiindex,stationList);
   } else if (districtIndex.current === 1) {
     // if (gangwon.id != '') {
     //   if (flag) {
-    //     if (stationlist != '') {
-    //       gangwon.city[gangwonindex.current].station = stationlist;
+    //     if (stationList != '') {
+    //       gangwon.city[gangwonindex.current].station = stationList;
     //       gangwonindex.current += 1;
     //     }
     //   }
     // }
-    settingCity(gangwon,gangwonindex,stationlist);
+    settingCity(gangwon,gangwonindex,stationList);
 
   } else if (districtIndex.current === 2) {
     if (chungnam.id != '') {
       if (flag) {
-        if (stationlist != '') {
-          chungnam.city[chungnamindex.current].station = stationlist;
+        if (stationList != '') {
+          chungnam.city[chungnamindex.current].station = stationList;
           chungnamindex.current += 1;
         }
       }
@@ -464,8 +458,8 @@ const Toggle = () => {
   } else if (districtIndex.current === 3) {
     if (chungbuk.id != '') {
       if (flag) {
-        if (stationlist != '') {
-          chungbuk.city[chungbukindex.current].station = stationlist;
+        if (stationList != '') {
+          chungbuk.city[chungbukindex.current].station = stationList;
           chungbukindex.current += 1;
         }
       }
@@ -473,8 +467,8 @@ const Toggle = () => {
   } else if (districtIndex.current === 4) {
     if (jeonnam.id != '') {
       if (flag) {
-        if (stationlist != '') {
-          jeonnam.city[jeonnamindex.current].station = stationlist;
+        if (stationList != '') {
+          jeonnam.city[jeonnamindex.current].station = stationList;
           jeonnamindex.current += 1;
         }
       }
@@ -482,8 +476,8 @@ const Toggle = () => {
   } else if (districtIndex.current === 5) {
     if (jeonbuk.id != '') {
       if (flag) {
-        if (stationlist != '') {
-          jeonbuk.city[jeonbukindex.current].station = stationlist;
+        if (stationList != '') {
+          jeonbuk.city[jeonbukindex.current].station = stationList;
           jeonbukindex.current += 1;
         }
       }
@@ -491,8 +485,8 @@ const Toggle = () => {
   } else if (districtIndex.current === 6) {
     if (gyeongnam.id != '') {
       if (flag) {
-        if (stationlist != '') {
-          gyeongnam.city[gyeongnamindex.current].station = stationlist;
+        if (stationList != '') {
+          gyeongnam.city[gyeongnamindex.current].station = stationList;
           gyeongnamindex.current += 1;
         }
       }
@@ -500,8 +494,8 @@ const Toggle = () => {
   } else if (districtIndex.current === 7) {
     if (gyeongbuk.id != '') {
       if (flag) {
-        if (stationlist != '') {
-          gyeongbuk.city[gyeongbukindex.current].station = stationlist;
+        if (stationList != '') {
+          gyeongbuk.city[gyeongbukindex.current].station = stationList;
           gyeongbukindex.current += 1;
         }
       }
@@ -509,8 +503,8 @@ const Toggle = () => {
   } else if (districtIndex.current === 8) {
     if (incheon.id != '') {
       if (flag) {
-        if (stationlist != '') {
-          incheon.city[incheonindex.current].station = stationlist;
+        if (stationList != '') {
+          incheon.city[incheonindex.current].station = stationList;
           incheonindex.current += 1;
         }
       }
@@ -518,8 +512,8 @@ const Toggle = () => {
   } else if (districtIndex.current === 9) {
     if (daejeon.id != '') {
       if (flag) {
-        if (stationlist != '') {
-          daejeon.city[daejeonindex.current].station = stationlist;
+        if (stationList != '') {
+          daejeon.city[daejeonindex.current].station = stationList;
           daejeonindex.current += 1;
         }
       }
@@ -527,8 +521,8 @@ const Toggle = () => {
   } else if (districtIndex.current === 10) {
     if (daegu.id != '') {
       if (flag) {
-        if (stationlist != '') {
-          daegu.city[daeguindex.current].station = stationlist;
+        if (stationList != '') {
+          daegu.city[daeguindex.current].station = stationList;
           daeguindex.current += 1;
         }
       }
@@ -536,8 +530,8 @@ const Toggle = () => {
   } else if (districtIndex.current === 11) {
     if (busan.id != '') {
       if (flag) {
-        if (stationlist != '') {
-          busan.city[busanindex.current].station = stationlist;
+        if (stationList != '') {
+          busan.city[busanindex.current].station = stationList;
           busanindex.current += 1;
         }
       }
@@ -545,8 +539,8 @@ const Toggle = () => {
   } else {
     if (gwangju.id != '') {
       if (flag) {
-        if (stationlist != '') {
-          gwangju.city[gwangjuindex.current].station = stationlist;
+        if (stationList != '') {
+          gwangju.city[gwangjuindex.current].station = stationList;
           gwangjuindex.current += 1;
         }
       }
