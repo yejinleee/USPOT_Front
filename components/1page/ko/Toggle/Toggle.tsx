@@ -3,7 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import axios from 'axios';
 import '@components/1page/Toggle.scss';
 import Container from '@components/1page/ko/Container/Container';
-//remote set-url
+
 const Toggle = () => {
   const [selectedcity, setSelectedcity] = useState('없음'); //선택된도시 props로 넘겨주려고
 
