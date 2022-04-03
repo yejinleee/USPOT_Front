@@ -123,7 +123,9 @@ const Toggle = () => {
   const gwangjuindex = useRef(0);
 
   useEffect(() => {
-    axios.get('/api/en/province/findall').then((response) => {
+    axios
+      .get(process.env.REACT_APP_DB_HOST + '/api/province/findall')
+      .then((response) => {
       for (var i = 0; i < response.data.data.length; i++) {
         setIndex(i);
         if (i === 0) {

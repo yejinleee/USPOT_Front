@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useRef, useCallback, useEffect, useState } from 'react';
 import useInput from '@pages/Signup/useinput';
 import Layout from '@layouts/Layouts';
 import Logout from './Logout';
@@ -45,6 +45,10 @@ const LogIn = ({ history }: RouteComponentProps) => {
     },
     [username, password],
   );
+  const inputRef = useRef<HTMLInputElement>(null);
+  useEffect( ()=>{
+    inputRef.current.focus();
+  }, [] )  //처음 렌더링되자마자 ID입력란에 focus
 
   return (
     <>
@@ -53,6 +57,7 @@ const LogIn = ({ history }: RouteComponentProps) => {
           <form id="login_inner" onSubmit={onSubmit} method="POST">
             <div className="input-box">
               <input
+                ref={inputRef}
                 className="loginput"
                 type="text"
                 id="username"
