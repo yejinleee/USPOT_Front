@@ -29,13 +29,14 @@
 
 </div>
 <br />
+
 #### `마이 플레이스에서 코스로 저!장!`
-하트 눌러두었던 장소들로 코스를 만들어 보세요\
+하트 눌러두었던 장소들로 코스를 만들어 보세요 \
 나중에 코스를 수정할 수 있고 지도에서 한눈에 볼 수도 있어요
 <div align="left">
-  <img src="https://user-images.githubusercontent.com/81412212/162616245-22494e95-738b-49f5-83a3-36d34070bc25.png" width=250 >
-  <img src="https://user-images.githubusercontent.com/81412212/162616104-66d5a071-b7ee-4c50-bd03-8f2f4dd5a3a0.png" width=250>
-  <img src="https://user-images.githubusercontent.com/81412212/162616334-b0f1bea7-743a-45d0-a53c-eaa158d0fab5.png" width=250>
+  <img src="https://user-images.githubusercontent.com/81412212/162616245-22494e95-738b-49f5-83a3-36d34070bc25.png" width=250 height=250>
+  <img src="https://user-images.githubusercontent.com/81412212/162616104-66d5a071-b7ee-4c50-bd03-8f2f4dd5a3a0.png" width=250 height=250>
+  <img src="https://user-images.githubusercontent.com/81412212/162616334-b0f1bea7-743a-45d0-a53c-eaa158d0fab5.png" width=250 height=250>
 
 </div>
 
@@ -53,7 +54,6 @@
 
 
 
-<br />
 
 ## 💻 기술 스택
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"> &nbsp;
