@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import Toggle from '@components/1page/ko/Toggle/Toggle';
 import Layouts from '@layouts/Layouts';
 import EnToggle from '@components/1page/en/Toggle/EnToggle';
+import ToggleApp from '@components/1page/ko/Toggle/ToggleApp';
+
 const HomePage = () => {
   if (!localStorage.getItem('language')) {
     localStorage.setItem('language', 'KO');
@@ -16,7 +18,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Layouts>{language[1] === 'KO' ? <Toggle /> : <EnToggle />}</Layouts>
+      <Layouts>{language[1] === 'KO' ? <ToggleApp /> : <EnToggle />}</Layouts>
     </>
   );
 };

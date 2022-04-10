@@ -5,216 +5,65 @@ import '@components/1page/Container.scss';
 
 const Container = (props: any) => {
   const [searchTerm, setSearchTerm] = useState('');
-
+  const handleToggle = (n:number)=>{
+    props.setToggles( props.toggles.map((each:any) =>
+      each.id === n ? { ...each, toggle:!each.toggle}
+        : each.toggle === true ? {...each, toggle:!each.toggle} : each
+    ));
+  }
   const selectCity = (value: any) => {
     if (value.id === 1) {
-      props.setGyeongitoggle(true);
       props.setMap(value.cityLink);
       props.setSelectedcity(value.name);
-      props.setGangwontoggle(false);
-      props.setIncheontoggle(false);
-      props.setChungbuktoggle(false);
-      props.setChungnamtoggle(false);
-      props.setDaejeontoggle(false);
-      props.setJeonbuktoggle(false);
-      props.setJeonnamtoggle(false);
-      props.setGwangjutoggle(false);
-      props.setGyeonbuktoggle(false);
-      props.setGyeonnamtoggle(false);
-      props.setDaegutoggle(false);
-      props.setBusantoggle(false);
+      handleToggle(1);
     } else if (value.id === 2) {
       props.setMap(value.cityLink);
       props.setSelectedcity(value.name);
-      props.setGyeongitoggle(false);
-      props.setGangwontoggle(true);
-      props.setIncheontoggle(false);
-      props.setChungbuktoggle(false);
-      props.setChungnamtoggle(false);
-      props.setDaejeontoggle(false);
-      props.setJeonbuktoggle(false);
-      props.setJeonnamtoggle(false);
-      props.setGwangjutoggle(false);
-      props.setGyeonbuktoggle(false);
-      props.setGyeonnamtoggle(false);
-      props.setDaegutoggle(false);
-      props.setBusantoggle(false);
+      handleToggle(2);
     } else if (value.id === 3) {
       props.setMap(value.cityLink);
       props.setSelectedcity(value.name);
-      props.setGyeongitoggle(false);
-      props.setGangwontoggle(false);
-      props.setIncheontoggle(false);
-      props.setChungbuktoggle(false);
-      props.setChungnamtoggle(true);
-      props.setDaejeontoggle(false);
-      props.setJeonbuktoggle(false);
-      props.setJeonnamtoggle(false);
-      props.setGwangjutoggle(false);
-      props.setGyeonbuktoggle(false);
-      props.setGyeonnamtoggle(false);
-      props.setDaegutoggle(false);
-      props.setBusantoggle(false);
+      handleToggle(3)
     } else if (value.id === 4) {
       props.setMap(value.cityLink);
       props.setSelectedcity(value.name);
-      props.setGyeongitoggle(false);
-      props.setGangwontoggle(false);
-      props.setIncheontoggle(false);
-      props.setChungbuktoggle(true);
-      props.setChungnamtoggle(false);
-      props.setDaejeontoggle(false);
-      props.setJeonbuktoggle(false);
-      props.setJeonnamtoggle(false);
-      props.setGwangjutoggle(false);
-      props.setGyeonbuktoggle(false);
-      props.setGyeonnamtoggle(false);
-      props.setDaegutoggle(false);
-      props.setBusantoggle(false);
+      handleToggle(4)
     } else if (value.id === 5) {
       props.setMap(value.cityLink);
       props.setSelectedcity(value.name);
-      props.setGyeongitoggle(false);
-      props.setGangwontoggle(false);
-      props.setIncheontoggle(false);
-      props.setChungbuktoggle(false);
-      props.setChungnamtoggle(false);
-      props.setDaejeontoggle(false);
-      props.setJeonbuktoggle(false);
-      props.setJeonnamtoggle(true);
-      props.setGwangjutoggle(false);
-      props.setGyeonbuktoggle(false);
-      props.setGyeonnamtoggle(false);
-      props.setDaegutoggle(false);
-      props.setBusantoggle(false);
+      handleToggle(5)
     } else if (value.id === 6) {
       props.setMap(value.cityLink);
       props.setSelectedcity(value.name);
-      props.setGyeongitoggle(false);
-      props.setGangwontoggle(false);
-      props.setIncheontoggle(false);
-      props.setChungbuktoggle(false);
-      props.setChungnamtoggle(false);
-      props.setDaejeontoggle(false);
-      props.setJeonbuktoggle(true);
-      props.setJeonnamtoggle(false);
-      props.setGwangjutoggle(false);
-      props.setGyeonbuktoggle(false);
-      props.setGyeonnamtoggle(false);
-      props.setDaegutoggle(false);
-      props.setBusantoggle(false);
+      handleToggle(6)
     } else if (value.id === 7) {
       props.setMap(value.cityLink);
       props.setSelectedcity(value.name);
-      props.setGyeongitoggle(false);
-      props.setGangwontoggle(false);
-      props.setIncheontoggle(false);
-      props.setChungbuktoggle(false);
-      props.setChungnamtoggle(false);
-      props.setDaejeontoggle(false);
-      props.setJeonbuktoggle(false);
-      props.setJeonnamtoggle(false);
-      props.setGwangjutoggle(false);
-      props.setGyeonbuktoggle(false);
-      props.setGyeonnamtoggle(true);
-      props.setDaegutoggle(false);
-      props.setBusantoggle(false);
+      handleToggle(7)
     } else if (value.id === 8) {
       props.setMap(value.cityLink);
       props.setSelectedcity(value.name);
-      props.setGyeongitoggle(false);
-      props.setGangwontoggle(false);
-      props.setIncheontoggle(false);
-      props.setChungbuktoggle(false);
-      props.setChungnamtoggle(false);
-      props.setDaejeontoggle(false);
-      props.setJeonbuktoggle(false);
-      props.setJeonnamtoggle(false);
-      props.setGwangjutoggle(false);
-      props.setGyeonbuktoggle(true);
-      props.setGyeonnamtoggle(false);
-      props.setDaegutoggle(false);
-      props.setBusantoggle(false);
+      handleToggle(8)
     } else if (value.id === 9) {
       props.setMap(value.cityLink);
       props.setSelectedcity(value.name);
-      props.setGyeongitoggle(false);
-      props.setGangwontoggle(false);
-      props.setIncheontoggle(true);
-      props.setChungbuktoggle(false);
-      props.setChungnamtoggle(false);
-      props.setDaejeontoggle(false);
-      props.setJeonbuktoggle(false);
-      props.setJeonnamtoggle(false);
-      props.setGwangjutoggle(false);
-      props.setGyeonbuktoggle(false);
-      props.setGyeonnamtoggle(false);
-      props.setDaegutoggle(false);
-      props.setBusantoggle(false);
+      handleToggle(9)
     } else if (value.id === 10) {
       props.setMap(value.cityLink);
       props.setSelectedcity(value.name);
-      props.setGyeongitoggle(false);
-      props.setGangwontoggle(false);
-      props.setIncheontoggle(false);
-      props.setChungbuktoggle(false);
-      props.setChungnamtoggle(false);
-      props.setDaejeontoggle(true);
-      props.setJeonbuktoggle(false);
-      props.setJeonnamtoggle(false);
-      props.setGwangjutoggle(false);
-      props.setGyeonbuktoggle(false);
-      props.setGyeonnamtoggle(false);
-      props.setDaegutoggle(false);
-      props.setBusantoggle(false);
+      handleToggle(10)
     } else if (value.id === 11) {
       props.setMap(value.cityLink);
       props.setSelectedcity(value.name);
-      props.setGyeongitoggle(false);
-      props.setGangwontoggle(false);
-      props.setIncheontoggle(false);
-      props.setChungbuktoggle(false);
-      props.setChungnamtoggle(false);
-      props.setDaejeontoggle(false);
-      props.setJeonbuktoggle(false);
-      props.setJeonnamtoggle(false);
-      props.setGwangjutoggle(false);
-      props.setGyeonbuktoggle(false);
-      props.setGyeonnamtoggle(false);
-      props.setDaegutoggle(true);
-      props.setBusantoggle(false);
+      handleToggle(11)
     } else if (value.id === 12) {
       props.setMap(value.cityLink);
       props.setSelectedcity(value.name);
-      props.setGyeongitoggle(false);
-      props.setGangwontoggle(false);
-      props.setIncheontoggle(false);
-      props.setChungbuktoggle(false);
-      props.setChungnamtoggle(false);
-      props.setDaejeontoggle(false);
-      props.setJeonbuktoggle(false);
-      props.setJeonnamtoggle(false);
-      props.setGwangjutoggle(false);
-      props.setGyeonbuktoggle(false);
-      props.setGyeonnamtoggle(false);
-      props.setDaegutoggle(false);
-      props.setBusantoggle(true);
+      handleToggle(12)
     } else {
       props.setMap(value.cityLink);
       props.setSelectedcity(value.name);
-      props.setGyeongitoggle(false);
-      props.setGangwontoggle(false);
-      props.setIncheontoggle(false);
-      props.setChungbuktoggle(false);
-      props.setChungnamtoggle(false);
-      props.setDaejeontoggle(false);
-      props.setJeonbuktoggle(false);
-      props.setJeonnamtoggle(false);
-      props.setGwangjutoggle(true);
-      props.setGyeonbuktoggle(false);
-      props.setGyeonnamtoggle(false);
-      props.setDaegutoggle(false);
-      props.setBusantoggle(false);
+      handleToggle(13);
     }
   };
 

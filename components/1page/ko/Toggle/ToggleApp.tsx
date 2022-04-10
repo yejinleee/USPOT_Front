@@ -4,7 +4,7 @@ import axios from 'axios';
 import '@components/1page/Toggle.scss';
 import Container from '@components/1page/ko/Container/Container';
 
-const Toggle = () => {
+const ToggleApp = () => {
   const [selectedcity, setSelectedcity] = useState('없음'); //선택된도시 props로 넘겨주려고
 
   const [map, setMap] = useState('src/지도.png');
@@ -23,10 +23,55 @@ const Toggle = () => {
   const [busantoggle, setBusantoggle] = useState(false);
   const [gwangjutoggle, setGwangjutoggle] = useState(false);
 
-  const handleToggle =(e:any)=>{
+  const [toggles, setToggles] = useState([
+    {
+      id:1, //경기
+      toggle:false
+    },{
+      id:2, //강원
+      toggle:false
+    },{
+      id:3, //충남
+      toggle:false
+    },{
+      id:4, //충븍
+      toggle:false
+    },{
+      id:5, //전남
+      toggle:false
+    },{
+      id:6, //전북
+      toggle:false
+    },{
+      id:7, //경남
+      toggle:false
+    },{
+      id:8, //경북
+      toggle:false
+    },{
+      id:9, //인천
+      toggle:false
+    },{
+      id:10, //대전
+      toggle:false
+    },{
+      id:11, //대구
+      toggle:false
+    },{
+      id:12, //부산
+      toggle:false
+    },{
+      id:13, //광주
+      toggle:false
+    },
+  ])
 
+  const handleToggle = (n:number)=>{
+    setToggles( toggles.map((each:any) =>
+      each.id === n ? { ...each, toggle:!each.toggle}
+      : each.toggle === true ? {...each, toggle:!each.toggle} : each
+    ));
   }
-
 
   function settingCity(eachCity:any,eachIndex:any,stationList:any){
     if (eachCity.id != '') {
@@ -43,14 +88,12 @@ const Toggle = () => {
     name: '',
     link: '',
     city: [],
-    toggle: true,
   } as any);
   const [gangwon, setGangwon] = useState({
     id: '',
     name: '',
     link: '',
     city: [],
-    toggle: false,
   } as any);
   const [chungnam, setChungnam] = useState({
     id: '',
@@ -913,6 +956,8 @@ const Toggle = () => {
 
         <Container
           selectedcity={selectedcity}
+          toggles={toggles}
+          setToggles={setToggles}
           setGyeongitoggle={setGyeongitoggle}
           setGangwontoggle={setGangwontoggle}
           setChungnamtoggle={setChungnamtoggle}
@@ -933,305 +978,152 @@ const Toggle = () => {
         <label
           className="district"
           onClick={() => {
-            setGyeongitoggle(!gyeongitoggle);
-            setGangwontoggle(false);
-            setIncheontoggle(false);
-            setChungbuktoggle(false);
-            setChungnamtoggle(false);
-            setDaejeontoggle(false);
-            setJeonbuktoggle(false);
-            setJeonnamtoggle(false);
-            setGwangjutoggle(false);
-            setGyeonbuktoggle(false);
-            setGyeonnamtoggle(false);
-            setDaegutoggle(false);
-            setBusantoggle(false);
-            !gyeongitoggle && setMap(gyeongi.link);
+            handleToggle(1)
+            setMap(gyeongi.link);
           }}
-          id={gyeongitoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+          id={toggles[0].toggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
-          <span style={gyeongitoggle ? { color: '#3A3945' } : { color: '#3A3945' }}>{gyeongi.name}</span>
+          <span className="district_name" >{gyeongi.name}</span>
         </label>
-        <div>{gyeongitoggle && gyeongi_list}</div>
+        <div>{toggles[0].toggle && gyeongi_list}</div>
+
         <label
           className="district"
           onClick={() => {
-            setGyeongitoggle(false);
-            setGangwontoggle(!gangwontoggle);
-            setIncheontoggle(false);
-            setChungbuktoggle(false);
-            setChungnamtoggle(false);
-            setDaejeontoggle(false);
-            setJeonbuktoggle(false);
-            setJeonnamtoggle(false);
-            setGwangjutoggle(false);
-            setGyeonbuktoggle(false);
-            setGyeonnamtoggle(false);
-            setDaegutoggle(false);
-            setBusantoggle(false);
-            !gangwontoggle && setMap(gangwon.link);
+            handleToggle(2)
+            setMap(gangwon.link);
           }}
-          id={gangwontoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+          id={toggles[1].toggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
           <span className="district_name">{gangwon.name}</span>
         </label>
-        <div>{gangwontoggle && gangwon_list}</div>
+        <div>{toggles[1].toggle && gangwon_list}</div>
+
         <label
           className="district"
           onClick={() => {
-            setGyeongitoggle(false);
-            setGangwontoggle(false);
-            setIncheontoggle(!incheontoggle);
-            setChungbuktoggle(false);
-            setChungnamtoggle(false);
-            setDaejeontoggle(false);
-            setJeonbuktoggle(false);
-            setJeonnamtoggle(false);
-            setGwangjutoggle(false);
-            setGyeonbuktoggle(false);
-            setGyeonnamtoggle(false);
-            setDaegutoggle(false);
-            setBusantoggle(false);
-            !incheontoggle && setMap(incheon.link);
+            handleToggle(3)
+            setMap(incheon.link);
           }}
-          id={incheontoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+          id={toggles[2].toggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
           <span className="district_name">{incheon.name}</span>
         </label>
-        <div>{incheontoggle && incheon_list}</div>
+        <div>{toggles[2].toggle && incheon_list}</div>
         <label
           className="district"
           onClick={() => {
-            setGyeongitoggle(false);
-            setGangwontoggle(false);
-            setIncheontoggle(false);
-            setChungbuktoggle(!chungbuktoggle);
-            setChungnamtoggle(false);
-            setDaejeontoggle(false);
-            setJeonbuktoggle(false);
-            setJeonnamtoggle(false);
-            setGwangjutoggle(false);
-            setGyeonbuktoggle(false);
-            setGyeonnamtoggle(false);
-            setDaegutoggle(false);
-            setBusantoggle(false);
-            !chungbuktoggle && setMap(chungbuk.link);
+            handleToggle(4)
+            setMap(chungbuk.link);
           }}
-          id={chungbuktoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+          id={toggles[3].toggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
           <span className="district_name">{chungbuk.name}</span>
         </label>
-        <div>{chungbuktoggle && chungbuk_list}</div>
+        <div>{toggles[3].toggle && chungbuk_list}</div>
+
         <label
           className="district"
           onClick={() => {
-            setGyeongitoggle(false);
-            setGangwontoggle(false);
-            setIncheontoggle(false);
-            setChungbuktoggle(false);
-            setChungnamtoggle(!chungnamtoggle);
-            setDaejeontoggle(false);
-            setJeonbuktoggle(false);
-            setJeonnamtoggle(false);
-            setGwangjutoggle(false);
-            setGyeonbuktoggle(false);
-            setGyeonnamtoggle(false);
-            setDaegutoggle(false);
-            setBusantoggle(false);
-            !chungnamtoggle && setMap(chungnam.link);
+            handleToggle(5)
+            setMap(chungnam.link);
           }}
-          id={chungnamtoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+          id={toggles[4].toggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
           <span className="district_name">{chungnam.name}</span>
         </label>
-        <div>{chungnamtoggle && chungnam_list}</div>
+        <div>{toggles[4].toggle && chungnam_list}</div>
         <label
           className="district"
           onClick={() => {
-            setGyeongitoggle(false);
-            setGangwontoggle(false);
-            setIncheontoggle(false);
-            setChungbuktoggle(false);
-            setChungnamtoggle(false);
-            setDaejeontoggle(!daejeontoggle);
-            setJeonbuktoggle(false);
-            setJeonnamtoggle(false);
-            setGwangjutoggle(false);
-            setGyeonbuktoggle(false);
-            setGyeonnamtoggle(false);
-            setDaegutoggle(false);
-            setBusantoggle(false);
-            !daejeontoggle && setMap(daejeon.link);
+            handleToggle(6)
+            setMap(daejeon.link);
           }}
-          id={daejeontoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+          id={toggles[5].toggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
           <span className="district_name">{daejeon.name}</span>
         </label>
-        <div>{daejeontoggle && daejeon_list}</div>
+        <div>{toggles[5].toggle && daejeon_list}</div>
         <label
           className="district"
           onClick={() => {
-            setGyeongitoggle(false);
-            setGangwontoggle(false);
-            setIncheontoggle(false);
-            setChungbuktoggle(false);
-            setChungnamtoggle(false);
-            setDaejeontoggle(false);
-            setJeonbuktoggle(!jeonbuktoggle);
-            setJeonnamtoggle(false);
-            setGwangjutoggle(false);
-            setGyeonbuktoggle(false);
-            setGyeonnamtoggle(false);
-            setDaegutoggle(false);
-            setBusantoggle(false);
-            !jeonbuktoggle && setMap(jeonbuk.link);
+            handleToggle(7)
+            setMap(jeonbuk.link);
           }}
-          id={jeonbuktoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+          id={toggles[6].toggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
           <span className="district_name">{jeonbuk.name}</span>
         </label>
-        <div>{jeonbuktoggle && jeonbuk_list}</div>
+        <div>{toggles[6].toggle && jeonbuk_list}</div>
         <label
           className="district"
           onClick={() => {
-            setGyeongitoggle(false);
-            setGangwontoggle(false);
-            setIncheontoggle(false);
-            setChungbuktoggle(false);
-            setChungnamtoggle(false);
-            setDaejeontoggle(false);
-            setJeonbuktoggle(false);
-            setJeonnamtoggle(!jeonnamtoggle);
-            setGwangjutoggle(false);
-            setGyeonbuktoggle(false);
-            setGyeonnamtoggle(false);
-            setDaegutoggle(false);
-            setBusantoggle(false);
-            !jeonnamtoggle && setMap(jeonnam.link);
+            handleToggle(8)
+            setMap(jeonnam.link);
           }}
-          id={jeonnamtoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+          id={toggles[7].toggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
           <span className="district_name">{jeonnam.name}</span>
         </label>
-        <div>{jeonnamtoggle && jeonnam_list}</div>
+        <div>{toggles[7].toggle && jeonnam_list}</div>
         <label
           className="district"
           onClick={() => {
-            setGyeongitoggle(false);
-            setGangwontoggle(false);
-            setIncheontoggle(false);
-            setChungbuktoggle(false);
-            setChungnamtoggle(false);
-            setDaejeontoggle(false);
-            setJeonbuktoggle(false);
-            setJeonnamtoggle(false);
-            setGwangjutoggle(!gwangjutoggle);
-            setGyeonbuktoggle(false);
-            setGyeonnamtoggle(false);
-            setDaegutoggle(false);
-            setBusantoggle(false);
-            !gwangjutoggle && setMap(gwangju.link);
+            handleToggle(9)
+            setMap(gwangju.link);
           }}
-          id={gwangjutoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+          id={toggles[8].toggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
           <span className="district_name">{gwangju.name}</span>
         </label>
-        <div>{gwangjutoggle && gwangju_list}</div>
+        <div>{toggles[8].toggle && gwangju_list}</div>
         <label
           className="district"
           onClick={() => {
-            setGyeongitoggle(false);
-            setGangwontoggle(false);
-            setIncheontoggle(false);
-            setChungbuktoggle(false);
-            setChungnamtoggle(false);
-            setDaejeontoggle(false);
-            setJeonbuktoggle(false);
-            setJeonnamtoggle(false);
-            setGwangjutoggle(false);
-            setGyeonbuktoggle(!gyeongbuktoggle);
-            setGyeonnamtoggle(false);
-            setDaegutoggle(false);
-            setBusantoggle(false);
-            !gyeongbuktoggle && setMap(gyeongbuk.link);
+            handleToggle(10)
+            setMap(gyeongbuk.link);
           }}
-          id={gyeongbuktoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+          id={toggles[9].toggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
           <span className="district_name">{gyeongbuk.name}</span>
         </label>
-        <div>{gyeongbuktoggle && gyeongbuk_list}</div>
+        <div>{toggles[9].toggle && gyeongbuk_list}</div>
         <label
           className="district"
           onClick={() => {
-            setGyeongitoggle(false);
-            setGangwontoggle(false);
-            setIncheontoggle(false);
-            setChungbuktoggle(false);
-            setChungnamtoggle(false);
-            setDaejeontoggle(false);
-            setJeonbuktoggle(false);
-            setJeonnamtoggle(false);
-            setGwangjutoggle(false);
-            setGyeonbuktoggle(false);
-            setGyeonnamtoggle(!gyeongnamtoggle);
-            setDaegutoggle(false);
-            setBusantoggle(false);
-            !gyeongnamtoggle && setMap(gyeongnam.link);
+            handleToggle(11)
+            setMap(gyeongnam.link);
           }}
-          id={gyeongnamtoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+          id={toggles[10].toggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
           <span className="district_name">{gyeongnam.name}</span>
         </label>
-        <div>{gyeongnamtoggle && gyeongnam_list}</div>
+        <div>{toggles[10].toggle && gyeongnam_list}</div>
         <label
           className="district"
           onClick={() => {
-            setGyeongitoggle(false);
-            setGangwontoggle(false);
-            setIncheontoggle(false);
-            setChungbuktoggle(false);
-            setChungnamtoggle(false);
-            setDaejeontoggle(false);
-            setJeonbuktoggle(false);
-            setJeonnamtoggle(false);
-            setGwangjutoggle(false);
-            setGyeonbuktoggle(false);
-            setGyeonnamtoggle(false);
-            setDaegutoggle(!daegutoggle);
-            setBusantoggle(false);
-            !daegutoggle && setMap(daegu.link);
+            handleToggle(12)
+            setMap(daegu.link);
           }}
-          id={daegutoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+          id={toggles[11].toggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
           <span className="district_name">{daegu.name}</span>
         </label>
-        <div>{daegutoggle && daegu_list}</div>
+        <div>{toggles[11].toggle && daegu_list}</div>
         <label
           className="district"
           onClick={() => {
-            setGyeongitoggle(false);
-            setGangwontoggle(false);
-            setIncheontoggle(false);
-            setChungbuktoggle(false);
-            setChungnamtoggle(false);
-            setDaejeontoggle(false);
-            setJeonbuktoggle(false);
-            setJeonnamtoggle(false);
-            setGwangjutoggle(false);
-            setGyeonbuktoggle(false);
-            setGyeonnamtoggle(false);
-            setDaegutoggle(false);
-            setBusantoggle(!busantoggle);
-            !busantoggle && setMap(busan.link);
+            handleToggle(13)
+            setMap(busan.link);
           }}
-          id={busantoggle ? 'selecteddistrict' : 'notselecteddistrict'}
+          id={toggles[12].toggle ? 'selecteddistrict' : 'notselecteddistrict'}
         >
           <span className="district_name">{busan.name}</span>
         </label>
-        <div>{busantoggle && busan_list}</div>
+        <div>{toggles[12].toggle && busan_list}</div>
       </div>
     </>
   );
 };
 
-export default Toggle;
+export default ToggleApp;
