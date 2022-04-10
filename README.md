@@ -18,35 +18,38 @@
 <div align="center">
   <img src="https://user-images.githubusercontent.com/81412212/162610576-667db7d0-213e-4c39-87b2-84ab511391e7.png" width=400>
 </div  >
-브이로그, 블로그 등 열심히 찾아다니지 않아도 핫한 장소들을 바로 볼 수 있어요!
+<br />
+
+#### `분석 결과 추천!`
+브이로그, 블로그 등 열심히 찾아다니지 않아도 핫한 장소들을 바로 볼 수 있어요!\
 관심있는 장소에는 하트💛
 <div align="center">
   <img src="https://user-images.githubusercontent.com/81412212/162611243-14d21fb4-7308-4ec9-9991-a04ed6ce09a5.png" width=400 height=500>
     <img src="https://user-images.githubusercontent.com/81412212/162611703-3dd507ef-8ced-4ec4-83bd-3c41cccdbf59.png" width=300 height=500>
 
 </div>
-
-#### `마이페이지`
-나에게 많이 나온 키워드로 나를 소개하세요.  
-나를 잘 표현하는 소개를 Pick 해서 마이페이지를 구성하고 링크로 공유해서 주변에 자랑해 보세요!
+<br />
+#### `마이 플레이스에서 코스로 저!장!`
+하트 눌러두었던 장소들로 코스를 만들어 보세요\
+나중에 코스를 수정할 수 있고 지도에서 한눈에 볼 수도 있어요
 <div align="left">
-  <img src="https://user-images.githubusercontent.com/81412212/162616245-22494e95-738b-49f5-83a3-36d34070bc25.png" width=300 >
-  <img src="https://user-images.githubusercontent.com/81412212/162616104-66d5a071-b7ee-4c50-bd03-8f2f4dd5a3a0.png" width=300>
-  <img src="https://user-images.githubusercontent.com/81412212/162616334-b0f1bea7-743a-45d0-a53c-eaa158d0fab5.png" width=300>
+  <img src="https://user-images.githubusercontent.com/81412212/162616245-22494e95-738b-49f5-83a3-36d34070bc25.png" width=250 >
+  <img src="https://user-images.githubusercontent.com/81412212/162616104-66d5a071-b7ee-4c50-bd03-8f2f4dd5a3a0.png" width=250>
+  <img src="https://user-images.githubusercontent.com/81412212/162616334-b0f1bea7-743a-45d0-a53c-eaa158d0fab5.png" width=250>
 
 </div>
 
 <br />
 
-## 👦🏻👧🏻👩🏻👱🏻‍♀️👩🏻‍🦰 We are
-> Team 광광
+## ❤️ We are
+> Team 광광 👦🏻👧🏻👩🏻👱🏻‍♀️👩🏻‍🦰
 
 > Front-End 팀
 
 
 |**이예진**|**정지연**|
 |:--:|:--:|
-|[@yejinlee](https://github.com/yejinleee)|[@Jiyeon-Jeong](https://github.com/jeongjiyeon315)|
+|[@yejinleee](https://github.com/yejinleee)|[@Jiyeon-Jeong](https://github.com/jeongjiyeon315)|
 
 
 
@@ -60,3 +63,6 @@
 <!-- <br />
 <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=black">
 <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=black"> -->
+
+## 🏆 성과
+> 한국관광공사X카카오 주관 2021 관광데이터 활용 공모전 **장려상** 수상
