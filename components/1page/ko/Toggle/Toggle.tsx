@@ -23,10 +23,6 @@ const Toggle = () => {
   const [busantoggle, setBusantoggle] = useState(false);
   const [gwangjutoggle, setGwangjutoggle] = useState(false);
 
-  const handleToggle =(e:any)=>{
-
-  }
-
 
   function settingCity(eachCity:any,eachIndex:any,stationList:any){
     if (eachCity.id != '') {
